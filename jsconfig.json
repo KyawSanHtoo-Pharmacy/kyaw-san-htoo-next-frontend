@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/ksh-components": ["components/index"],
+      "@/ksh-containers/*": ["containers/*"],
+      "@/ksh-contexts/*": ["contexts/*"],
+      "@/ksh-data/*": ["data/*"],
+      "@/ksh-utils/*": ["utils/*"],
+      "@/ksh-styles/*": ["styles/*"],
+      "@/ksh-theme/*": ["theme/*"]
+    }
+  }
+}
