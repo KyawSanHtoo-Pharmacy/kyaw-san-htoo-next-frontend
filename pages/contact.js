@@ -1,7 +1,14 @@
+import Head from 'next/head'
+
 export default function ContactPage() {
   return (
-    <div>
-      <h1>Contact Page</h1>
-    </div>
+    <>
+      <Head>
+        <title>Contact - Kyaw San Htoo - Pharmacy in Pathein</title>
+      </Head>
+      <div>
+        <h1>Contact Page</h1>
+      </div>
+    </>
   )
 }

@@ -1,9 +1,15 @@
 import styled from '@emotion/styled'
 
 const Heading = styled.h1`
-  color: ${({ theme }) => theme.kshBrand};
+  text-align: center;
 `
 
 export default function HomePage() {
-  return <Heading>Sa Kyone Tot Kg Layyy</Heading>
+  return (
+    <Heading>
+      သင်ဘယ်လို
+      <br />
+      ခံစားနေရပါသလဲ
+    </Heading>
+  )
 }

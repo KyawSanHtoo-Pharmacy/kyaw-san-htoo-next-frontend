@@ -1,7 +1,11 @@
+import { Header, Container } from './Navbar-styles'
+
 export default function Navbar() {
   return (
-    <div>
-      <h1>Navbar</h1>
-    </div>
+    <Header>
+      <Container>
+        <p>Navbar</p>
+      </Container>
+    </Header>
   )
 }
