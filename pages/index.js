@@ -1,15 +1,9 @@
-import styled from '@emotion/styled'
-
-const Heading = styled.h1`
-  text-align: center;
-`
+import JumbotronContainer from '@/ksh-containers/JumbotronContainer'
 
 export default function HomePage() {
   return (
-    <Heading>
-      သင်ဘယ်လို
-      <br />
-      ခံစားနေရပါသလဲ
-    </Heading>
+    <>
+      <JumbotronContainer />
+    </>
   )
 }

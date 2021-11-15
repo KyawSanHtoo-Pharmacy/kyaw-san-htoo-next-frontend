@@ -33,9 +33,8 @@ export const lightTheme = {
     dividerOne: colors.kshBrandV2,
     dividerTwo: colors.kshDarkV2,
     warning: colors.kshRed,
-    footer: 'F5F5F5',
+    footer: '#F5F5F5',
   },
-  containerPadding: '6.25em 7.81em',
   boxShadow: '',
   blurLevel: '',
 }

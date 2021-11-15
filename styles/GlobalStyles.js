@@ -1,4 +1,17 @@
 import { Global, css } from '@emotion/react'
+import styled from '@emotion/styled'
+
+export const GlobalContainer = styled.div`
+  padding: 6.25em 7.81em;
+
+  @media screen and (max-width: 980px) {
+    padding: 3.13em 3.91em;
+  }
+
+  @media screen and (max-width: 500px) {
+    padding: 3.13em 1.25em;
+  }
+`
 
 export default function GlobalStyles({ theme }) {
   return (
@@ -8,13 +21,18 @@ export default function GlobalStyles({ theme }) {
           font-family: 'Bahnschrift';
           font-style: normal;
           font-display: swap;
-          src: local('Bahnschrift'), url(/fonts/bahnschrift.TTF) format('TTF');
+          src: local('Bahnschrift'), url('/fonts/bahnschrift.TTF') format('TTF');
         }
 
         * {
           padding: 0;
           margin: 0;
           box-sizing: border-box;
+        }
+
+        ::selection {
+          color: ${theme.colors.heading};
+          background-color: ${theme.colors.text};
         }
 
         html,
@@ -25,7 +43,7 @@ export default function GlobalStyles({ theme }) {
 
         body {
           font-size: 1vw;
-          line-height: 1.5;
+          line-height: 1.8;
           color: ${theme.colors.text};
           background-color: ${theme.colors.bodyBg};
         }
@@ -49,19 +67,30 @@ export default function GlobalStyles({ theme }) {
         h5,
         h6 {
           color: ${theme.colors.heading};
+          line-height: 1.5;
         }
 
         h1 {
           font-size: 4.69em;
         }
 
+        h2 {
+          font-size: 3.13em;
+        }
+
+        h3 {
+          font-size: 2.34em;
+        }
+
         p {
           font-size: 1.41em;
         }
 
-        a {
+        a,
+        button {
           color: inherit;
           text-decoration: none;
+          cursor: pointer;
         }
 
         img {
