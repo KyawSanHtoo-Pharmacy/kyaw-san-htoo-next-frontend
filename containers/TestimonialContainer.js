@@ -1,0 +1,44 @@
+import { TestimonialCard } from '@/ksh-components'
+import { GlobalContainer } from '@/ksh-styles/GlobalStyles'
+const { testimonialData } = require('@/ksh-data/testimonialData')
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Navigation, Pagination, A11y } from 'swiper'
+
+export default function TestimonialContainer() {
+  return (
+    <GlobalContainer>
+      <TestimonialCard.Heading>ဝယ်သူတို့ရဲ့ စကားသံများ</TestimonialCard.Heading>
+      <TestimonialCard.Frame>
+        <Swiper
+          // install Swiper modules
+          modules={[Navigation, Pagination, A11y]}
+          spaceBetween={16}
+          slidesPerView={3}
+          navigation
+          pagination={{ clickable: true }}
+          onSwiper={swiper => console.log(swiper)}
+          onSlideChange={() => console.log('slide change')}
+          breakpoints={{
+            0: {
+              slidesPerView: 1,
+            },
+            560: {
+              slidesPerView: 2,
+            },
+            768: {
+              slidesPerView: 3,
+            },
+            1000: {
+              slidesPerView: 3,
+            },
+          }}>
+          {testimonialData.map(testimonial => (
+            <SwiperSlide key={testimonial.id}>
+              <TestimonialCard testimonial={testimonial} />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </TestimonialCard.Frame>
+    </GlobalContainer>
+  )
+}

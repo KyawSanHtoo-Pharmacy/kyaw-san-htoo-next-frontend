@@ -1,0 +1,60 @@
+{
+  "categoryCardData": [
+    {
+      "id": 1,
+      "name": "ချောင်းဆိုးပျောက်ဆေးများ",
+      "path": "chaung-soe-pyout-say",
+      "image": "/temp/category-placeholder.jpg",
+      "altText": "blah blah"
+    },
+    {
+      "id": 2,
+      "name": "ကိုဗစ်-၁၉ ဆက်စပ်ပစ္စည်းများ",
+      "path": "covid-19-say-myrr",
+      "image": "/temp/category-placeholder.jpg",
+      "altText": "blah blah"
+    },
+    {
+      "id": 3,
+      "name": "အားဆေးများ",
+      "path": "arr-say",
+      "image": "/temp/category-placeholder.jpg",
+      "altText": "blah blah"
+    },
+    {
+      "id": 4,
+      "name": "နှလုံးရောဂါ ဆေးများ",
+      "path": "heart",
+      "image": "/temp/category-placeholder.jpg",
+      "altText": "blah blah"
+    },
+    {
+      "id": 5,
+      "name": "အားဆေးများ",
+      "path": "arr-say",
+      "image": "/temp/category-placeholder.jpg",
+      "altText": "blah blah"
+    },
+    {
+      "id": 6,
+      "name": "နှလုံးရောဂါ ဆေးများ",
+      "path": "heart",
+      "image": "/temp/category-placeholder.jpg",
+      "altText": "blah blah"
+    },
+    {
+      "id": 1,
+      "name": "ချောင်းဆိုးပျောက်ဆေးများ",
+      "path": "chaung-soe-pyout-say",
+      "image": "/temp/category-placeholder.jpg",
+      "altText": "blah blah"
+    },
+    {
+      "id": 2,
+      "name": "ကိုဗစ်-၁၉ ဆက်စပ်ပစ္စည်းများ",
+      "path": "covid-19-say-myrr",
+      "image": "/temp/category-placeholder.jpg",
+      "altText": "blah blah"
+    }
+  ]
+}

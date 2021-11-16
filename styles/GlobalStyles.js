@@ -78,6 +78,12 @@ export default function GlobalStyles({ theme }) {
           font-size: 3.13em;
         }
 
+        @media screen and (max-width: 500px) {
+          h2 {
+            font-size: 1.88em;
+          }
+        }
+
         h3 {
           font-size: 2.34em;
         }
