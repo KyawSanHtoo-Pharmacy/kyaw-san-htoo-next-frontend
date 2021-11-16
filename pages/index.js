@@ -1,9 +1,9 @@
 import JumbotronContainer from '@/ksh-containers/JumbotronContainer'
-import {Banner} from '@/ksh-components'
+import BannerContainer from '@/ksh-containers/BannerContainer'
 export default function HomePage() {
   return (
     <>
-      <Banner/>
+      <BannerContainer/>
       <JumbotronContainer />
     </>
   )

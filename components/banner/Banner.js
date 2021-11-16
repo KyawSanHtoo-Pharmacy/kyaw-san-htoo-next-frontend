@@ -1,19 +1,13 @@
 import {useState} from 'react';
 import {BannerContainer,BannerTitle, BannerContent, DropdownWrapper, Dropdown, FixedText, ClickAble, DropdownData} from './Banner-Style'
 
-
 const Banner = () => {
     const [dropdownState, setDropdownState] = useState(false);
-
     const clickHandler = () =>{
         setDropdownState(!dropdownState);
     }
-
     return (
         <>
-        <BannerContainer>
-           <BannerContent>
-             <BannerTitle>သင်ဘယ်လို <br/> ခံစားနေရပါသလဲ</BannerTitle>
              <DropdownWrapper>
                 <ClickAble onClick = {clickHandler} >
                  <Dropdown>
@@ -25,13 +19,21 @@ const Banner = () => {
                  <FixedText>နေတယ်</FixedText>
                  </ClickAble>
                  <DropdownData dropdownState = {dropdownState} >
-
                  </DropdownData>
              </DropdownWrapper>
-           </BannerContent>
-        </BannerContainer>
         </>
     )
 }
-
 export default Banner
+
+Banner.Section = function BannerSection ({ children, ...restProps }) {
+    return <BannerContainer {...restProps} > {children} </BannerContainer>
+}
+
+Banner.Content = function BannerContentWrapper ({children, ...restProps}) {
+    return <BannerContent {...restProps} >  {children}  </BannerContent>
+}
+
+Banner.Title  = function TheTitle ({children, ...restProps}) {
+    return <BannerTitle {...restProps} > {children} </BannerTitle>
+}
