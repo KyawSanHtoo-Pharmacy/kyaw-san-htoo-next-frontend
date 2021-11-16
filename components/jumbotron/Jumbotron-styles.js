@@ -35,7 +35,7 @@ export const Item = styled.div`
 
 export const ImageWrapper = styled.div`
   width: 49%;
-  height: 282px;
+  height: 22.03em;
   position: relative;
 `
 

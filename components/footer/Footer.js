@@ -29,11 +29,11 @@ export default function Footer() {
           <Group>
             <InfoText>info@kyawsanhtoopharmacy.com</InfoText>
             <SocialIconWrapper>
-              <SocialIcon href='!#' target='_blank'>
-                <Image src='/icons/facebook.svg' width='18' height='18' />
+              <SocialIcon href='google.com' target='_blank'>
+                <Image src='/icons/facebook.svg' width='18' height='18' alt='facebook-icon' />
               </SocialIcon>
-              <SocialIcon href='!#' target='_blank'>
-                <Image src='/icons/viber.svg' width='19' height='19' />
+              <SocialIcon href='google.com' target='_blank'>
+                <Image src='/icons/viber.svg' width='19' height='19' alt='viber-icon' />
               </SocialIcon>
             </SocialIconWrapper>
           </Group>
@@ -44,7 +44,7 @@ export default function Footer() {
         <GroupWrapper>
           <Group>
             <Link href='/' passHref>
-              <Image src='/logos/kyaw-san-htoo-logo-landscape.svg' width='135' height='19' />
+              <Image src='/logos/kyaw-san-htoo-logo-landscape.svg' width='135' height='19' alt='kyaw-san-htoo-logo' />
             </Link>
           </Group>
           <Group>
@@ -53,15 +53,15 @@ export default function Footer() {
           <Group>
             <InfoText small>
               Designed & Developed by{' '}
-              <a href='!#' target='_blank'>
+              <a href='google.com' target='_blank'>
                 Aung Pyae
               </a>{' '}
               |{' '}
-              <a href='!#' target='_blank'>
+              <a href='google.com' target='_blank'>
                 Yaung
               </a>{' '}
               |{' '}
-              <a href='!#' target='_blank'>
+              <a href='google.com' target='_blank'>
                 Ye
               </a>
             </InfoText>

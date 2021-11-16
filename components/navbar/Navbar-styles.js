@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import styled from '@emotion/styled'
 
 export const Header = styled.header``
@@ -57,7 +56,7 @@ export const NavLink = styled.a`
   font-weight: ${({ active }) => active && '700'};
 `
 
-export const Logo = styled(Image)``
+export const Logo = styled.a``
 
 export const Button = styled.button`
   display: flex;
@@ -75,7 +74,7 @@ export const ButtonText = styled.p`
   margin-bottom: -0.3em;
 `
 
-export const Icon = styled(Image)`
+export const Icon = styled.a`
   cursor: pointer;
 `
 export const MobileMenuButton = styled.button`

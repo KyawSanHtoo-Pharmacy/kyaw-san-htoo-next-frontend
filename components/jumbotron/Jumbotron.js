@@ -1,11 +1,11 @@
 import Image from 'next/image'
 import { Section, Frame, Heading, Item, ImageWrapper, ContentWrapper, Title, Body } from './Jumbotron-styles'
 
-export default function Jumbotron({ data: { title, body, image } }) {
+export default function Jumbotron({ data: { title, body, image, altText } }) {
   return (
     <Item>
       <ImageWrapper>
-        <Image src={image} layout='fill' />
+        <Image src={image} alt={altText} layout='fill' />
       </ImageWrapper>
       <ContentWrapper>
         <Title>{title}</Title>

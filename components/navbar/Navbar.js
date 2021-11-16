@@ -11,32 +11,36 @@ export default function Navbar() {
       <Container>
         <Group as='nav'>
           {navLinks.map(link => (
-            <Link href={link.path}>
-              <NavLink key={link.id} active={router.pathname === link.path}>
-                {link.text}
-              </NavLink>
+            <Link href={link.path} key={link.id}>
+              <NavLink active={router.pathname === link.path}>{link.text}</NavLink>
             </Link>
           ))}
         </Group>
 
         <Group>
           <Link href='/' passHref>
-            <Logo src='/logos/kyaw-san-htoo-logo-landscape.svg' width='210' height='32' />
+            <Logo>
+              <Image src='/logos/kyaw-san-htoo-logo-landscape.svg' width='210' height='32' alt='kyaw-san-htoo-logo' />
+            </Logo>
           </Link>
         </Group>
 
         <Group>
           <Button>
-            <Icon src='/icons/cart.svg' width='24' height='24' />
+            <Icon>
+              <Image src='/icons/cart.svg' width='24' height='24' alt='cart-icon' />
+            </Icon>
             <ButtonText>ဆေးဝယ်စာရင်း</ButtonText>
           </Button>
           <Link href='/help' passHref>
-            <Icon src='/icons/help.svg' width='24' height='24' />
+            <Icon>
+              <Image src='/icons/help.svg' width='24' height='24' alt='help-icon' />
+            </Icon>
           </Link>
         </Group>
 
         <MobileMenuButton>
-          <Image src='/icons/mobile-menu.png' width='25' height='24' />
+          <Image src='/icons/mobile-menu.png' width='25' height='24' alt='mobile-menu-icon' />
         </MobileMenuButton>
       </Container>
     </Header>
