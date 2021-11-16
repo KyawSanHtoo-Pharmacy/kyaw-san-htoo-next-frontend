@@ -8,10 +8,10 @@ export default function Navbar() {
   const router = useRouter()
   return (
     <Header>
-      <Container as='nav'>
-        <Group>
+      <Container>
+        <Group as='nav'>
           {navLinks.map(link => (
-            <Link href={link.path} key={link.id} passHref>
+            <Link href={link.path} key={link.id}>
               <NavLink active={router.pathname === link.path}>{link.text}</NavLink>
             </Link>
           ))}

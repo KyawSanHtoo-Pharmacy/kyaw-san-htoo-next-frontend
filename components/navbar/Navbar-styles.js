@@ -22,13 +22,13 @@ export const Group = styled.div`
   align-items: center;
   flex: 1;
 
-  &:nth-of-type(1) {
+  &:nth-child(1) {
     @media screen and (max-width: 1100px) {
       display: none;
     }
   }
 
-  &:nth-of-type(2) {
+  &:nth-child(2) {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -38,7 +38,7 @@ export const Group = styled.div`
     }
   }
 
-  &:nth-of-type(3) {
+  &:nth-child(3) {
     display: flex;
     align-items: center;
     justify-content: flex-end;
