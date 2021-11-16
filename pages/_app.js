@@ -3,6 +3,10 @@ import { Navbar, Footer } from '@/ksh-components'
 import { ThemeProvider } from '@emotion/react'
 import { lightTheme } from '@/ksh-theme/theme'
 import GlobalStyles from '@/ksh-styles/GlobalStyles'
+import 'swiper/css'
+import 'swiper/css/navigation'
+import 'swiper/css/pagination'
+import 'swiper/css/scrollbar'
 
 function MyKSHApp({ Component, pageProps }) {
   return (
