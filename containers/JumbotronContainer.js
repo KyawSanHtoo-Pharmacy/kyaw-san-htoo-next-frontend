@@ -1,4 +1,5 @@
-import { Jumbotron } from '@/ksh-components'
+import Link from 'next/link'
+import { Jumbotron, Button } from '@/ksh-components'
 import { GlobalContainer } from '@/ksh-styles/GlobalStyles'
 const { jumbotronData } = require('@/ksh-data/jumbotronData.json')
 
@@ -11,6 +12,9 @@ export default function JumbotronContainer() {
           {jumbotronData.map(jumbotron => (
             <Jumbotron key={jumbotron.id} data={jumbotron} />
           ))}
+          <Link href='/help'>
+            <Button as='a'>အသုံးပြုနည်း</Button>
+          </Link>
         </Jumbotron.Frame>
       </GlobalContainer>
     </Jumbotron.Section>
