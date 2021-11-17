@@ -108,6 +108,10 @@ export default function GlobalStyles({ theme }) {
           max-width: 100%;
           object-fit: cover;
         }
+
+        .mm-number {
+          font-size: 1.2em;
+        }
       `}
     />
   )

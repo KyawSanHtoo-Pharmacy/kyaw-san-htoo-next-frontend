@@ -1,4 +1,3 @@
-// ########## Colors from Figma ##########
 const colors = {
   kshBrand: '#5ABEAE',
   kshBrandV1: '#91D4C9',
@@ -21,20 +20,19 @@ const colors = {
   kshRed: '#EE5C3C',
 }
 
-// ########## Light Theme ##########
 export const lightTheme = {
   colors: {
-    bodyBg: colors.kshLight, //white
-    heading: colors.kshBrand, //green
-    text: colors.kshDark, //dark-blue
+    bodyBg: colors.kshLight,
+    heading: colors.kshBrand,
+    text: colors.kshDark,
     paleText: colors.kshDarkV1,
-    offWhite: colors.kshOffWhite, //shade
+    offWhite: colors.kshOffWhite,
     testimonial: colors.kshBrandV3,
     dividerOne: colors.kshBrandV2,
     dividerTwo: colors.kshDarkV2,
     warning: colors.kshRed,
     footer: '#F5F5F5',
   },
-  greenBoxShadow: '0px 20px 25px -5px rgba(0, 0, 0, 0.1), 0px 10px 10px -5px rgba(0, 0, 0, 0.04)',
+  greenBoxShadow: '0px 4px 4px rgba(7, 93, 80, 0.03), 0px 20px 35px -5px rgba(90, 190, 174, 0.15)',
   blurLevel: '',
 }
