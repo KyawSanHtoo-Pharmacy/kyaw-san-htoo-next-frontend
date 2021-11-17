@@ -14,6 +14,9 @@ import {
   PreviousPrice,
   Price,
   Button,
+  InfoBar,
+  CategoryName,
+  Count,
 } from './ProductCard-styles'
 
 export default function ProductCard({ availability }) {
@@ -24,21 +27,21 @@ export default function ProductCard({ availability }) {
       </ImageWrapper>
       <ContentWrapper>
         <Content>
-          <MyanmarName>ဂျာနူမတ်</MyanmarName>
+          <MyanmarName>ဘိုင်အိုဂျက်ဆစ်</MyanmarName>
           <Group>
-            <EnglishName>Janumet</EnglishName>
+            <EnglishName>Biogesic</EnglishName>
             <NoticePill availability={availability}>{availability ? 'ပစ္စည်း ရှိ' : 'ပစ္စည်း ကုန်'}</NoticePill>
           </Group>
           <Group>
             <Price>
-              <span>၁၄၀၀</span>ကျပ်/ <span>၁</span>ကဒ်
+              <span>၅၀၀</span> ကျပ်/ <span>၁</span> ကဒ်
             </Price>
             <PreviousPrice>
-              <span>၁၆၀၀</span>ကျပ်
+              <span>၆၀၀</span> ကျပ်
             </PreviousPrice>
           </Group>
         </Content>
-        <Link href='/categories/chaung-soe-pyout-say/janumet'>
+        <Link href='/categories/chaung-soe-pyout-say/biogesic'>
           <Button>အသေးစိတ် ကြည့်မယ်</Button>
         </Link>
       </ContentWrapper>
@@ -52,4 +55,16 @@ ProductCard.Section = function ProductCardSection({ children, ...restProps }) {
 
 ProductCard.Frame = function ProductCardFrame({ children, ...restProps }) {
   return <Frame {...restProps}>{children}</Frame>
+}
+
+ProductCard.InfoBar = function ProductCardInfoBar({ children, ...restProps }) {
+  return <InfoBar {...restProps}>{children}</InfoBar>
+}
+
+ProductCard.CategoryName = function ProductCardCategoryName({ children, ...restProps }) {
+  return <CategoryName {...restProps}>{children}</CategoryName>
+}
+
+ProductCard.Count = function ProductCardCount({ children, ...restProps }) {
+  return <Count {...restProps}>{children}</Count>
 }

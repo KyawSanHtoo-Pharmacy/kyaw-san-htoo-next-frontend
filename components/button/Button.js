@@ -1,4 +1,4 @@
-import { StyledButton, WhiteButton } from './Button-styles'
+import { StyledButton, WhiteButton, OffWhiteButton } from './Button-styles'
 
 export default function Button({ children, ...restProps }) {
   return (
@@ -13,5 +13,13 @@ Button.White = function ButtonWhite({ children, ...restProps }) {
     <WhiteButton {...restProps}>
       <span>{children}</span>
     </WhiteButton>
+  )
+}
+
+Button.OffWhite = function ButtonOffWhite({ children, ...restProps }) {
+  return (
+    <OffWhiteButton {...restProps}>
+      <span>{children}</span>
+    </OffWhiteButton>
   )
 }

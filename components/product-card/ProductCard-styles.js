@@ -7,6 +7,7 @@ export const Frame = styled.div`
   grid-column-gap: 16px;
   grid-row-gap: 40px;
   grid-template-columns: repeat(auto-fit, minmax(19.8em, 1fr));
+  margin-top: 5em;
 `
 
 export const Item = styled.div`
@@ -41,6 +42,7 @@ export const MyanmarName = styled.h2`
   font-size: 1.88em;
   font-weight: normal;
   margin-bottom: 0.34em;
+  color: ${({ theme }) => theme.colors.text};
 `
 
 export const Group = styled.div`
@@ -51,6 +53,8 @@ export const Group = styled.div`
 
 export const EnglishName = styled.h3`
   font-size: 1.41em;
+  color: ${({ theme }) => theme.colors.text};
+  font-weight: normal;
 `
 
 //NoticePill Component Lote Yan
@@ -58,6 +62,7 @@ export const EnglishName = styled.h3`
 export const Price = styled.p`
   font-size: 1.3em;
   font-weight: bold;
+  font-weight: normal;
   & > span {
     font-size: 1.3em;
   }
@@ -67,6 +72,7 @@ export const PreviousPrice = styled.p`
   font-size: 0.9em;
   text-decoration: line-through;
   color: ${({ theme }) => theme.colors.paleText};
+  font-weight: normal;
 
   & > span {
     font-size: 1.3em;
@@ -81,4 +87,22 @@ export const Button = styled.a`
   width: 100%;
   padding: 1em;
   text-align: center;
+`
+
+export const InfoBar = styled.div`
+  display: flex;
+  align-items: center;
+  padding-bottom: 0.8em;
+  margin-top: 6.25em;
+  border-bottom: 1px solid ${({ theme }) => theme.colors.dividerOne};
+`
+
+export const CategoryName = styled.p`
+  font-size: 1.25em;
+  color: ${({ theme }) => theme.colors.heading};
+`
+
+export const Count = styled.p`
+  font-size: 1.25em;
+  margin-left: 12em;
 `
