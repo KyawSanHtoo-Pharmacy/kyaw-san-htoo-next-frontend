@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import styled from '@emotion/styled'
-
+import { Contact } from '@/ksh-components'
 const Heading = styled.h1`
   text-align: center;
   line-height: 1.2;
@@ -13,9 +13,7 @@ export default function ContactPage() {
       <Head>
         <title>Contact - Kyaw San Htoo - Pharmacy in Pathein</title>
       </Head>
-      <div>
-        <Heading>Contact Page</Heading>
-      </div>
+      <Contact/>
     </>
   )
 }
