@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { motion } from 'framer-motion'
-export const CartWrapper = styled.div`
+export const CartWrapper = styled(motion.div)`
     position : absolute;
     right : 0; top : 0;
     width: 550px; height : 100vh;

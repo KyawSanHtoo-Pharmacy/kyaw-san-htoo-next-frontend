@@ -10,6 +10,7 @@ export const CartHeading = styled.div`
         align-items : center;
         height : inherit;
         margin-left : 17px;
+        cursor : pointer;
     }
 `
 export const CartTitle = styled.h1`
@@ -116,7 +117,7 @@ export const ItemCost = styled.div`
     p{
         margin : 0 auto;
         width : 80%;
-        padding: 0.5em 0em;
+        padding: 0.6em 0em;
         border-radius: 10px;
         background-color: ${({theme}) => theme.colors.offWhite};
     }
