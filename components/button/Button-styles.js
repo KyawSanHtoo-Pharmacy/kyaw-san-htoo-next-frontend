@@ -7,6 +7,7 @@ export const StyledButton = styled.button`
   border: 1px solid ${({ theme }) => theme.colors.heading};
   border-radius: 100vw;
   font-size: 1.25em;
+  width : ${({Big}) => Big? "100%" : "unset" };
 `
 
 export const WhiteButton = styled.button`

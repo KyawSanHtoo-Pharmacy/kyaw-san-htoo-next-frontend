@@ -32,6 +32,7 @@ export const lightTheme = {
     dividerTwo: colors.kshDarkV2,
     warning: colors.kshRed,
     footer: '#F5F5F5',
+    whiteText : colors.kshLight
   },
   greenBoxShadow: '0px 4px 4px rgba(7, 93, 80, 0.03), 0px 20px 35px -5px rgba(90, 190, 174, 0.15)',
   blurLevel: '',

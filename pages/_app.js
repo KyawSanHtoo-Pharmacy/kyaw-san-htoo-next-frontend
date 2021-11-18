@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { Navbar, Footer, MinimalFooter } from '@/ksh-components'
+import { Cart } from '@/ksh-components'
 import { ThemeProvider } from '@emotion/react'
 import { lightTheme } from '@/ksh-theme/theme'
 import GlobalStyles from '@/ksh-styles/GlobalStyles'
@@ -31,6 +32,7 @@ function MyKSHApp({ Component, pageProps }) {
       <ThemeProvider theme={lightTheme}>
         <GlobalStyles theme={lightTheme} />
         <Navbar />
+        <Cart/>
         <Component {...pageProps} />
         {router.pathname === '/contact' ? <MinimalFooter /> : <Footer />}
       </ThemeProvider>
