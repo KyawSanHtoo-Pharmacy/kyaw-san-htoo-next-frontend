@@ -7,6 +7,13 @@ export const StyledButton = styled.button`
   border: 1px solid ${({ theme }) => theme.colors.heading};
   border-radius: 100vw;
   font-size: 1.25em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  & > span {
+    margin-bottom: -0.4em;
+  }
 `
 
 export const WhiteButton = styled.button`
@@ -16,6 +23,13 @@ export const WhiteButton = styled.button`
   border: 1px solid ${({ theme }) => theme.colors.bodyBg};
   border-radius: 100vw;
   font-size: 1.25em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  & > span {
+    margin-bottom: -0.4em;
+  }
 `
 
 export const OffWhiteButton = styled.button`
@@ -26,6 +40,8 @@ export const OffWhiteButton = styled.button`
   border-radius: 100vw;
   font-size: ${({ small }) => (small ? ' 1.09em' : '1.25em')};
   display: flex;
+  align-items: center;
+  justify-content: center;
 
   & > span {
     margin-bottom: -0.4em;

@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { NoticePill } from '@/ksh-components'
 import {
   Section,
+  Heading,
   Frame,
   Item,
   Group,
@@ -51,6 +52,10 @@ export default function ProductCard({ availability }) {
 
 ProductCard.Section = function ProductCardSection({ children, ...restProps }) {
   return <Section {...restProps}>{children}</Section>
+}
+
+ProductCard.Heading = function ProductCardHeading({ children, ...restProps }) {
+  return <Heading {...restProps}>{children}</Heading>
 }
 
 ProductCard.Frame = function ProductCardFrame({ children, ...restProps }) {

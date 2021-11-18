@@ -2,12 +2,16 @@ import styled from '@emotion/styled'
 
 export const Section = styled.section``
 
+export const Heading = styled.h2`
+  text-align: ${({ textAlign }) => textAlign || 'left'};
+`
+
 export const Frame = styled.div`
   display: grid;
   grid-column-gap: 16px;
   grid-row-gap: 40px;
   grid-template-columns: repeat(auto-fit, minmax(19.8em, 1fr));
-  margin-top: 5em;
+  margin-top: ${({ mt }) => mt || '5em'}; ;
 `
 
 export const Item = styled.div`
