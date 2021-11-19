@@ -14,16 +14,19 @@ import {
     QuantityShow,
     ItemCost,
     Plus, Min,
-    MNum
+    MNum,
+    ButtonWrapper
 } from './CartContent-Styles';
+import { Button } from '@/ksh-components'
 import {CartStates} from '@/ksh-contexts/Cart-Context'
 
-function CartContent() {
+function CartContent({nextPage}) {
     const [cartVisibile, setCartVisible] = useContext(CartStates);
     const BackHandler = () => {
         setCartVisible(!cartVisibile);
     }
     return (
+        <>
         <Cart1stPage>
         <CartHeading>
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" onClick={BackHandler}  >
@@ -86,7 +89,11 @@ function CartContent() {
             </ItemCost>
         </ItemsWrapper>
         </Cart1stPage>
-        // <h1>Here Cart Comes</h1>
+        {/* // <h1>Here Cart Comes</h1> */}
+        <ButtonWrapper>
+                <Button Big onClick = {nextPage} >ဆက်လုပ်ဆောင်မယ်</Button>
+        </ButtonWrapper>
+        </>
     )
 }
 

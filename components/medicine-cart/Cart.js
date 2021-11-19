@@ -2,7 +2,7 @@ import React, {useState, useContext, useEffect} from 'react'
 import CartContent from './Cart-Content/CartContent'
 import Payment from './Payment/Payment'
 import {CartWrapper, 
-        ButtonWrapper,
+        Container,
         BlurOverlay
         } from './Cart-Styles'
 import { Button } from '@/ksh-components'
@@ -56,12 +56,7 @@ function Cart() {
                     type: 'Tween',
                   }}
                 >
-        
-                {pages === 1 ?  <CartContent/> :   <Payment/>}
-        
-                <ButtonWrapper>
-                <Button Big onClick = {nextPage} >ဆက်လုပ်ဆောင်မယ်</Button>
-                </ButtonWrapper>
+                {pages === 1 ?  <CartContent nextPage={nextPage} /> :   <Payment/>}
                 </CartWrapper> </>
 
             ) : ""
@@ -72,3 +67,11 @@ function Cart() {
 }
 
 export default Cart
+
+Cart.Container = ({children, ...restProps}) => {
+  return (
+    <Container {...restProps} >
+      {children}
+    </Container>
+  )
+}

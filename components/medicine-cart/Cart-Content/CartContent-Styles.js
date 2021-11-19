@@ -115,10 +115,16 @@ export const ItemCost = styled.div`
     flex : 1;
     text-align: center;
     p{
+        font-size: 20px;
         margin : 0 auto;
         width : 80%;
         padding: 0.6em 0em;
         border-radius: 10px;
         background-color: ${({theme}) => theme.colors.offWhite};
     }
+`
+
+export const ButtonWrapper = styled.div`
+    padding: 0px 17px 0px 17px;
+    margin-bottom: 20px;
 `
