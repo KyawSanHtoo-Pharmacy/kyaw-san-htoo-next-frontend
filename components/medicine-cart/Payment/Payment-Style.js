@@ -132,10 +132,20 @@ export const Amount = styled.p`
 export const KPayWrapper = styled.div`
        margin : 20px 0px;
        padding : 0px 17px;
+
+
 `
 export const KPayDescription = styled.p`
         font-size : 15px;
 `
+
+export const Line = styled.div`
+    margin-top: 10px;
+    width: 100%;
+    height : 0.6px;
+    background-color: ${({theme}) => theme.colors.dividerTwo };
+`
+
 export const AccountWrapper = styled.div`
         margin-top: 10px;
         background-color: ${({theme}) => theme.colors.offWhite};

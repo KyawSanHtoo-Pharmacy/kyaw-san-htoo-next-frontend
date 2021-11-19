@@ -13,7 +13,7 @@ import {PaymentWrapper,
         SummaryWrapper,
         SummaryHeading, CostdescriptionWrapper, CostText, Amount,
         KPayWrapper, KPayDescription, AccountWrapper,  HeadingWrapper, AccountHeading, AccountDetails, Name, Phone,
-        ButtonWrapper
+        ButtonWrapper, Line
     } from "./Payment-Style";
 import { Button } from '@/ksh-components'
 function Payment() {
@@ -78,6 +78,7 @@ function Payment() {
                         <AccountHeading>အကောင့်အမည်</AccountHeading>
                         <AccountHeading>ဖုန်းနံပါတ်</AccountHeading>
                     </HeadingWrapper>
+                    <Line></Line>
                     <AccountDetails>
                         <Name>မမ</Name>       <Phone>၀၉ ၁၂၃၄ ၅၆၇၈၉</Phone>
                         <Name>ညီမလေး</Name>   <Phone>၀၉ ၁၂၃၄ ၅၆၇၈၉</Phone>
