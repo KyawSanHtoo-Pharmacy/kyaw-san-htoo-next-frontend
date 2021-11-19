@@ -13,7 +13,9 @@ export default function JumbotronContainer() {
             <Jumbotron key={jumbotron.id} data={jumbotron} />
           ))}
           <Link href='/help'>
-            <Button as='a'>အသုံးပြုနည်း</Button>
+            <Button as='a'>
+              <span>အသုံးပြုနည်း</span>
+            </Button>
           </Link>
         </Jumbotron.Frame>
       </GlobalContainer>

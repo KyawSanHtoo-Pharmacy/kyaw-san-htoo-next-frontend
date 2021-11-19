@@ -67,15 +67,15 @@ export default function GlobalStyles({ theme }) {
         h5,
         h6 {
           color: ${theme.colors.heading};
-          line-height: 1.5;
+          line-height: 1.6;
         }
 
         h1 {
-          font-size: 4.69em;
+          font-size: 3.13em;
         }
 
         h2 {
-          font-size: 3.13em;
+          font-size: 2.5em;
         }
 
         @media screen and (max-width: 500px) {
@@ -85,16 +85,16 @@ export default function GlobalStyles({ theme }) {
         }
 
         h3 {
-          font-size: 2.34em;
+          font-size: 1.72em;
         }
-        @media screen and (min-width: 500px) {
+        @media screen and (max-width: 500px) {
           h3 {
             font-size: 1.41em;
           }
         }
 
         p {
-          font-size: 1.41em;
+          font-size: 1.25em;
         }
 
         a,

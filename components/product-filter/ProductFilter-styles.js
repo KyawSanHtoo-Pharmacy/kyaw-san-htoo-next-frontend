@@ -4,6 +4,10 @@ import { motion } from 'framer-motion'
 export const Container = styled.div`
   position: relative;
   z-index: 10;
+
+  @media screen and (max-width: 1200px) {
+    align-self: flex-end;
+  }
 `
 
 export const Frame = styled(motion.div)`
@@ -14,6 +18,24 @@ export const Frame = styled(motion.div)`
   background-color: ${({ theme }) => theme.colors.bodyBg};
   padding: 1.88em;
   border-radius: 1.25em;
+
+  @media screen and (max-width: 872px) {
+    width: 85vw;
+  }
+
+  @media screen and (max-width: 678px) {
+    width: 80vw;
+  }
+
+  @media screen and (max-width: 440px) {
+    width: 90vw;
+  }
+  @media screen and (max-width: 678px) {
+    width: 89vw;
+  }
+  @media screen and (max-width: 320px) {
+    width: 85vw;
+  }
 `
 
 export const SquareArrow = styled.div`

@@ -11,7 +11,15 @@ export const Frame = styled.div`
   grid-column-gap: 16px;
   grid-row-gap: 40px;
   grid-template-columns: repeat(auto-fit, minmax(19.8em, 1fr));
-  margin-top: ${({ mt }) => mt || '5em'}; ;
+  margin-top: ${({ mt }) => mt || '5em'};
+
+  @media screen and (max-width: 1022px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media screen and (max-width: 870px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
 `
 
 export const Item = styled.div`
@@ -21,7 +29,6 @@ export const Item = styled.div`
 
 export const ImageWrapper = styled.div`
   width: 80%;
-  /* height: 14.06em; */
   aspect-ratio: 5 / 4;
   position: relative;
   overflow: hidden;
@@ -42,8 +49,7 @@ export const Content = styled.div`
   padding: 1.88em;
 `
 
-export const MyanmarName = styled.h2`
-  font-size: 1.88em;
+export const MyanmarName = styled.h3`
   font-weight: normal;
   margin-bottom: 0.34em;
   color: ${({ theme }) => theme.colors.text};
@@ -55,8 +61,7 @@ export const Group = styled.div`
   justify-content: space-between;
 `
 
-export const EnglishName = styled.h3`
-  font-size: 1.41em;
+export const EnglishName = styled.p`
   color: ${({ theme }) => theme.colors.text};
   font-weight: normal;
 `
@@ -64,7 +69,6 @@ export const EnglishName = styled.h3`
 //NoticePill Component Lote Yan
 
 export const Price = styled.p`
-  font-size: 1.3em;
   font-weight: bold;
   font-weight: normal;
   & > span {
@@ -99,6 +103,10 @@ export const InfoBar = styled.div`
   padding-bottom: 0.8em;
   margin-top: 6.25em;
   border-bottom: 1px solid ${({ theme }) => theme.colors.dividerOne};
+
+  @media screen and (max-width: 1200px) {
+    justify-content: space-between;
+  }
 `
 
 export const CategoryName = styled.p`
@@ -109,4 +117,8 @@ export const CategoryName = styled.p`
 export const Count = styled.p`
   font-size: 1.25em;
   margin-left: 12em;
+
+  @media screen and (max-width: 1200px) {
+    margin-left: 0;
+  }
 `

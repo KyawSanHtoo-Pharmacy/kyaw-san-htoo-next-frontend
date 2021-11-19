@@ -10,6 +10,7 @@ export const StyledButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
+  display: none;
 
   & > span {
     margin-bottom: -0.4em;
