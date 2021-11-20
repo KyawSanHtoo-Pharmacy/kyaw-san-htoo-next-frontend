@@ -15,6 +15,9 @@ function Cart() {
     const nextPage = () => {
         setPages(pages + 1)
     }
+    const prePage = () => {
+      setPages(pages - 1)
+    }
 
     useEffect( () => {
         if(cartVisibile){       //to alter scrollablity of the entire page
@@ -56,7 +59,7 @@ function Cart() {
                     type: 'Tween',
                   }}
                 >
-                {pages === 1 ?  <CartContent nextPage={nextPage} /> :   <Payment/>}
+                {pages === 1 ?  <CartContent nextPage={nextPage} /> :   <Payment prePage={prePage} />}
                 </CartWrapper> </>
 
             ) : ""

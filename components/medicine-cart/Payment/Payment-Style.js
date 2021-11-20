@@ -31,7 +31,7 @@ export const PaymentTitle = styled.h1`
 `
 
 export const MethodDescription = styled.p`
-    margin-top : 20px;
+    margin-top : 30px;
     padding-left : 17px;
     font-size : 15px;
     font-weight : 700;
@@ -48,8 +48,8 @@ export const MethodPills = styled.p`
 font-size: 1.09em;
 flex : 1;
 align-self : center;
-color: ${({ theme }) => theme.colors.text};
-background-color: ${({ theme }) => theme.colors.offWhite};
+color: ${({ theme, active }) => active ? theme.colors.bodyBg :  theme.colors.text};
+background-color: ${({ theme, active }) => active ? theme.colors.heading : theme.colors.offWhite};
 border: 1px solid ${({ theme }) => theme.colors.heading};
 border-radius: 100vw;
 padding: 0.5em 0.8em;
@@ -64,7 +64,7 @@ text-align : center;
 `
 export const PaymentForm = styled.form`
     padding : 0px 17px 17px;
-    margin-top : 20px;
+    margin-top : 30px;
 `
 
 export const FormGroup = styled.div`
@@ -98,7 +98,7 @@ export const FormInput = styled.input`
 `
 
 export const SummaryWrapper = styled.div`
-   margin : 20px auto;
+   margin : 30px auto;
    padding : 0px 17px;
 `
 
@@ -153,6 +153,7 @@ export const AccountWrapper = styled.div`
         border-radius: 8px;
 `
 export const HeadingWrapper = styled.div`
+        margin-bottom : 10px;
         display : grid;
         grid-template-columns: 2.5fr 1fr;
 `
@@ -170,12 +171,42 @@ export const AccountDetails = styled.div`
 
 export const Name = styled.p`
         font-size: 15px;
+        margin-bottom: 10px;
 `
 
 export const Phone = styled.p`
         font-size: 15px;
 `
 export const ButtonWrapper = styled.div`
+    margin-top: 50px;
     padding: 0px 17px 0px 17px;
     margin-bottom: 20px;
+`
+export const UploadWrapper = styled.div`
+    margin-top : 20px;
+    display : grid;
+    grid-template-columns: 2.5fr 1fr;
+    align-items : center;
+`
+export const UploadDescripton = styled.p`
+    font-size: 14px;
+    font-weight: bold;
+`
+export const UploadButton = styled.p`
+font-size: 1.09em;
+flex : 1;
+align-self : center;
+color: ${({ theme, active }) => active ? theme.colors.bodyBg :  theme.colors.text};
+background-color: ${({ theme, active }) => active ? theme.colors.heading : theme.colors.offWhite};
+border: 1px solid ${({ theme }) => theme.colors.heading};
+border-radius: 100vw;
+padding: 1.2em 0.8em;
+margin: 0 0.5em 0.5em 0;
+cursor : pointer;
+text-align : center;
+
+ &:hover{
+    background-color: ${({ theme }) => theme.colors.heading};
+    color : ${({ theme }) => theme.colors.bodyBg};
+ }
 `
