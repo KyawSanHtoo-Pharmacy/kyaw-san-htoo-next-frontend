@@ -1,4 +1,4 @@
-import {useContext} from 'react'
+import { useContext } from 'react'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { Navbar, Footer, MinimalFooter } from '@/ksh-components'
@@ -7,8 +7,8 @@ import { ThemeProvider } from '@emotion/react'
 import { lightTheme } from '@/ksh-theme/theme'
 import GlobalStyles from '@/ksh-styles/GlobalStyles'
 
-import {CartProvider} from '@/ksh-contexts/Cart-Context'
-import {CartStates} from '@/ksh-contexts/Cart-Context'
+import { CartProvider } from '@/ksh-contexts/Cart-Context'
+import { CartStates } from '@/ksh-contexts/Cart-Context'
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
@@ -36,9 +36,9 @@ function MyKSHApp({ Component, pageProps }) {
       <ThemeProvider theme={lightTheme}>
         <GlobalStyles theme={lightTheme} />
         <CartProvider>
-        <Navbar />
-        <Cart/>
-        <Component {...pageProps} />
+          <Navbar />
+          <Cart />
+          <Component {...pageProps} />
         </CartProvider>
         {router.pathname === '/contact' ? <MinimalFooter /> : <Footer />}
       </ThemeProvider>
