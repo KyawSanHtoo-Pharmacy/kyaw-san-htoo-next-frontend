@@ -5,37 +5,43 @@ export const CartHeading = styled.div`
   width: 100%;
   background-color: ${({ theme }) => theme.colors.heading};
   display: flex;
+  align-items: center;
+  height: 80px;
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+
   svg {
     display: flex;
     align-items: center;
     height: inherit;
-    margin-left: 17px;
     cursor: pointer;
+    position: absolute;
+    left: 17px;
+    top: 50%;
+    transform: translateY(-50%);
   }
 `
 export const CartTitle = styled.h1`
   color: ${({ theme }) => theme.colors.whiteText};
   font-size: 1.4em;
-  padding: 24px 0px 24px 17px;
   font-weight: 700px;
   line-height: 32px;
   text-align: center;
   flex: 1;
   display: flex;
-  justify-content: center;
-`
-export const MNum = styled.span`
-  background-color: white;
-  color: ${({ theme }) => theme.colors.heading};
-  width: 40px;
-  aspect-ratio: 1;
-  display: flex;
-  justify-content: center;
   align-items: center;
-  border-radius: 100vw;
-  margin-left: 10px;
-  span {
-    margin-bottom: 11px;
+  justify-content: center;
+
+  & > .number {
+    background-color: white;
+    color: ${({ theme }) => theme.colors.heading};
+    width: 40px;
+    aspect-ratio: 1;
+    border-radius: 100vw;
+    margin-left: 10px;
   }
 `
 
@@ -91,6 +97,7 @@ export const ItemQuentity = styled.div`
   margin: 0 auto;
   border: 1px solid ${({ theme }) => theme.colors.heading};
   border-radius: 10px;
+  overflow: hidden;
 `
 export const QuantityShow = styled.input`
   text-align: center;
@@ -102,20 +109,29 @@ export const QuantityShow = styled.input`
   &:focus-within {
     border: 0;
   }
+
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Firefox */
+  &[type='number'] {
+    -moz-appearance: textfield;
+  }
 `
 export const Plus = styled.button`
   background-color: ${({ theme }) => theme.colors.offWhite};
   color: ${({ theme }) => theme.colors.text};
   border: none;
   font-weight: 900;
-  border-radius: 10px 0px 0px 10px;
 `
 export const Min = styled.button`
   background-color: ${({ theme }) => theme.colors.offWhite};
   color: ${({ theme }) => theme.colors.text};
   border: none;
   font-weight: 900;
-  border-radius: 0px 10px 10px 0px;
 `
 
 //3rd column

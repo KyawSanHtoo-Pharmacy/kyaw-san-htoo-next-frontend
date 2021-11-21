@@ -21,7 +21,7 @@ import {
 import { Button } from '@/ksh-components'
 import { CartStates } from '@/ksh-contexts/Cart-Context'
 
-function CartContent({ nextPage }) {
+function CartContent({ nextPage, medicineToBuy, updateItemQuantity, handleQuantityChange }) {
   const [cartVisibile, setCartVisible] = useContext(CartStates)
   const BackHandler = () => {
     setCartVisible(!cartVisibile)
@@ -43,10 +43,8 @@ function CartContent({ nextPage }) {
             />
           </svg>
           <CartTitle>
-            ဆေးဝယ်စာရင်း{' '}
-            <MNum>
-              <span>၃</span>
-            </MNum>{' '}
+            <span className='text'>ဆေးဝယ်စာရင်း</span>
+            <span className='number'>၃</span>
           </CartTitle>
         </CartHeading>
 
@@ -58,57 +56,29 @@ function CartContent({ nextPage }) {
           </ItemTitles>
         </ItemTitleWrapper>
 
-        <ItemsWrapper>
-          <ItemsToBuy>
-            <ItemImg>
-              <Image src='/temp/product-placeholder.jpg' layout='fill' />
-            </ItemImg>
-            <ItemName>ဆောလ်မျုစ်</ItemName>
-          </ItemsToBuy>
-          <ItemQuentity>
-            <Plus>-</Plus>
-            <QuantityShow type='text' value='၁' />
-            <Min>+</Min>
-          </ItemQuentity>
-          <ItemCost>
-            <p> ၈၀၀</p>
-          </ItemCost>
-        </ItemsWrapper>
-
-        <ItemsWrapper>
-          <ItemsToBuy>
-            <ItemImg>
-              <Image src='/temp/product-placeholder.jpg' layout='fill' />
-            </ItemImg>
-            <ItemName>ဆောလ်မျုစ်</ItemName>
-          </ItemsToBuy>
-          <ItemQuentity>
-            <Plus>-</Plus>
-            <QuantityShow type='text' value='၁' />
-            <Min>+</Min>
-          </ItemQuentity>
-          <ItemCost>
-            <p> ၈၀၀</p>
-          </ItemCost>
-        </ItemsWrapper>
-
-        <ItemsWrapper>
-          <ItemsToBuy>
-            <ItemImg>
-              <Image src='/temp/product-placeholder.jpg' layout='fill' />
-            </ItemImg>
-            <ItemName>ဆောလ်မျုစ်</ItemName>
-          </ItemsToBuy>
-          <ItemQuentity>
-            <Plus>-</Plus>
-            <QuantityShow type='text' value='၁' />
-            <Min>+</Min>
-          </ItemQuentity>
-
-          <ItemCost>
-            <p> ၈၀၀</p>
-          </ItemCost>
-        </ItemsWrapper>
+        {medicineToBuy.map(({ id, image, name, quantity, price }) => (
+          <ItemsWrapper key={id}>
+            <ItemsToBuy>
+              <ItemImg>
+                <Image src={image} layout='fill' alt={name} />
+              </ItemImg>
+              <ItemName>{name}</ItemName>
+            </ItemsToBuy>
+            <ItemQuentity>
+              <Min onClick={() => updateItemQuantity(id, -1)}>-</Min>
+              <QuantityShow
+                type='number'
+                value={quantity}
+                min='0'
+                onChange={e => handleQuantityChange(id, e.target.value)}
+              />
+              <Plus onClick={() => updateItemQuantity(id, 1)}>+</Plus>
+            </ItemQuentity>
+            <ItemCost>
+              <p>{price * quantity ? price * quantity : 0}</p>
+            </ItemCost>
+          </ItemsWrapper>
+        ))}
       </Cart1stPage>
       {/* // <h1>Here Cart Comes</h1> */}
       <ButtonWrapper>

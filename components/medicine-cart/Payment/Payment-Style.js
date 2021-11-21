@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 
-export const PaymentWrapper = styled.div`
+export const PaymentForm = styled.form`
   /* padding : 0px 17px; */
 `
 
@@ -8,7 +8,12 @@ export const PaymentHeading = styled.div`
   width: 100%;
   background-color: ${({ theme }) => theme.colors.heading};
   display: flex;
-  position: relative;
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+
   svg {
     position: absolute;
     left: 17px;
@@ -45,25 +50,43 @@ export const MethodWrapper = styled.div`
   padding-left: 17px;
 `
 
-export const MethodPills = styled.p`
+export const MethodPills = styled.div`
   font-size: 1.09em;
   flex: 1;
   align-self: center;
-  color: ${({ theme, active }) => (active ? theme.colors.bodyBg : theme.colors.text)};
-  background-color: ${({ theme, active }) => (active ? theme.colors.heading : theme.colors.offWhite)};
-  border: 1px solid ${({ theme }) => theme.colors.heading};
-  border-radius: 100vw;
-  padding: 0.5em 0.8em;
+  display: flex;
+  align-items: center;
   margin: 0 0.5em 0.5em 0;
-  cursor: pointer;
-  text-align: center;
 
-  &:hover {
-    background-color: ${({ theme }) => theme.colors.heading};
+  & > label {
+    width: 100%;
+    color: ${({ theme, active }) => (active ? theme.colors.bodyBg : theme.colors.text)};
+    background-color: ${({ theme, active }) => (active ? theme.colors.heading : theme.colors.offWhite)};
+    border: 1px solid ${({ theme }) => theme.colors.heading};
+    border-radius: 100vw;
+    padding: 0.5em 0.8em;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.1s ease-out;
+    user-select: none;
+  }
+
+  & > label:hover {
+    background-color: ${({ theme }) => theme.colors.testimonial};
+  }
+
+  & > input {
+    display: none;
+  }
+
+  & > input[type='radio']:checked + label {
     color: ${({ theme }) => theme.colors.bodyBg};
+    background-color: ${({ theme }) => theme.colors.heading};
+    border: 1px solid ${({ theme }) => theme.colors.heading};
   }
 `
-export const PaymentForm = styled.form`
+
+export const PaymentInputWrapper = styled.div`
   padding: 0px 17px 17px;
   margin-top: 30px;
 `
@@ -191,7 +214,7 @@ export const UploadDescripton = styled.p`
   font-size: 14px;
   font-weight: bold;
 `
-export const UploadButton = styled.p`
+export const UploadButton = styled.input`
   font-size: 1.09em;
   flex: 1;
   align-self: center;

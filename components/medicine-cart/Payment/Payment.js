@@ -1,13 +1,12 @@
 import React, { useState } from 'react'
-import { Cart } from '@/ksh-components/'
 import {
-  PaymentWrapper,
+  PaymentForm,
   PaymentHeading,
   PaymentTitle,
   MethodDescription,
   MethodWrapper,
   MethodPills,
-  PaymentForm,
+  PaymentInputWrapper,
   FormGroup,
   Label,
   FormInput,
@@ -31,43 +30,42 @@ import {
   UploadButton,
 } from './Payment-Style'
 import { Button } from '@/ksh-components'
-function Payment({ prePage }) {
-  //MethodStates & Handling
-  const [methodpills, setMethodpills] = useState([
-    {
-      id: '0',
-      buttonText: 'ဆိုင်လာယူမယ်',
-      status: false,
-      activestatus: false,
-    },
-    {
-      id: '1',
-      buttonText: 'အိမ်အရောက်ပို့ပေးပါ',
-      status: true,
-      activestatus: false,
-    },
-  ])
-  const [homeDelivery, setHomeDelivery] = useState(false)
 
-  const [kPaymodeOn, setkPaymodeOn] = useState(false)
+const orderFormInitialState = {
+  name: '',
+  phone: '',
+  address: '',
+  delivery_method: 'ဆိုင်လာယူမယ်',
+  payment_method: 'ငွေသားနဲ့ ပေးချေမယ်',
+  payment_screenshot: '',
+}
 
-  const grabActive = index => {
-    console.log(methodpills[index].activestatus)
-    const updatedState = methodpills.map(pill => {
-      if (pill.id === index) {
-        pill.activestatus = true
-      } else {
-        pill.activestatus = false
-      }
-    })
+export default function Payment({ prePage }) {
+  const [orderFormData, setOrderFormData] = useState(orderFormInitialState)
+  const { name, phone, address, delivery_method, payment_method } = orderFormData
 
-    console.log(updatedState)
+  const handleOrderFormDataChange = e => {
+    if (e.target.type === 'file') {
+      setOrderFormData(prevData => {
+        return { ...prevData, payment_screenshot: e.target.files[0] }
+      })
+    } else {
+      const { name, value } = e.target
+      setOrderFormData(prevData => {
+        return { ...prevData, [name]: value }
+      })
+    }
   }
 
+  console.log(orderFormData)
+
   return (
-    <PaymentWrapper>
+    <PaymentForm
+      onSubmit={e => {
+        e.preventDefault()
+        console.log({ orderFormData })
+      }}>
       <PaymentHeading>
-        {/* <Cart.Container> */}
         <svg
           width='24'
           height='24'
@@ -81,39 +79,48 @@ function Payment({ prePage }) {
           />
         </svg>
         <PaymentTitle>အော်ဒါတင်ရန်</PaymentTitle>
-        {/* </Cart.Container> */}
       </PaymentHeading>
 
       <MethodDescription>ဆိုင်လာယူမလား။ အိမ်ရောက်ပို့ပေးရမလား။</MethodDescription>
       <MethodWrapper>
-        {methodpills.map((pill, index) => (
-          <MethodPills
-            key={pill.id}
-            onClick={() => {
-              setHomeDelivery(pill.status), grabActive(index)
-            }}
-            active={pill.activestatus}>
-            {pill.buttonText}
-          </MethodPills>
-        ))}
+        <MethodPills>
+          <input
+            type='radio'
+            name='delivery_method'
+            id='ဆိုင်လာယူမယ်'
+            value='ဆိုင်လာယူမယ်'
+            checked={delivery_method === 'ဆိုင်လာယူမယ်'}
+            onChange={handleOrderFormDataChange}
+          />
+          <label htmlFor='ဆိုင်လာယူမယ်'>ဆိုင်လာယူမယ်</label>
+        </MethodPills>
+        <MethodPills>
+          <input
+            type='radio'
+            name='delivery_method'
+            id='အိမ်အရောက်ပို့ပေးပါ'
+            value='အိမ်အရောက်ပို့ပေးပါ'
+            checked={delivery_method === 'အိမ်အရောက်ပို့ပေးပါ'}
+            onChange={handleOrderFormDataChange}
+          />
+          <label htmlFor='အိမ်အရောက်ပို့ပေးပါ'>အိမ်အရောက်ပို့ပေးပါ</label>
+        </MethodPills>
       </MethodWrapper>
 
-      <PaymentForm>
+      <PaymentInputWrapper>
         <FormGroup>
-          <Label>နာမည်</Label>
-          <FormInput type='text' />
+          <Label htmlFor='name'>နာမည်</Label>
+          <FormInput type='text' name='name' id='name' value={name} onChange={handleOrderFormDataChange} />
         </FormGroup>
         <FormGroup>
-          <Label>ဖုန်းနံပါတယ်</Label>
-          <FormInput type='text' />
+          <Label htmlFor='phone'>ဖုန်းနံပါတယ်</Label>
+          <FormInput type='text' name='phone' id='phone' value={phone} onChange={handleOrderFormDataChange} />
         </FormGroup>
-        {homeDelivery && (
-          <FormGroup>
-            <Label>နေရပ်လိပ်စာ</Label>
-            <FormInput type='text' />
-          </FormGroup>
-        )}
-      </PaymentForm>
+        <FormGroup>
+          <Label htmlFor='address'>နေရပ်လိပ်စာ</Label>
+          <FormInput type='text' name='address' id='address' value={address} onChange={handleOrderFormDataChange} />
+        </FormGroup>
+      </PaymentInputWrapper>
 
       <SummaryWrapper>
         <SummaryHeading>ကုန်ကျငွေများ</SummaryHeading>
@@ -132,37 +139,53 @@ function Payment({ prePage }) {
         <SummaryHeading>ငွေဘယ်လိုပေးချေမလဲ။</SummaryHeading>
       </SummaryWrapper>
       <MethodWrapper>
-        <MethodPills onClick={() => setkPaymodeOn(false)}>ငွေသားနဲ့ ပေးချေမယ်</MethodPills>
-        <MethodPills onClick={() => setkPaymodeOn(true)}>K Pay နဲ့ ပေးချေမယ်</MethodPills>
+        <MethodPills>
+          <input
+            type='radio'
+            name='payment_method'
+            id='ငွေသားနဲ့ ပေးချေမယ်'
+            value='ငွေသားနဲ့ ပေးချေမယ်'
+            checked={payment_method === 'ငွေသားနဲ့ ပေးချေမယ်'}
+            onChange={handleOrderFormDataChange}
+          />
+          <label htmlFor='ငွေသားနဲ့ ပေးချေမယ်'>ငွေသားနဲ့ ပေးချေမယ်</label>
+        </MethodPills>
+        <MethodPills>
+          <input
+            type='radio'
+            name='payment_method'
+            id='KPay နဲ့ ပေးချေမယ်'
+            value='KPay နဲ့ ပေးချေမယ်'
+            checked={payment_method === 'KPay နဲ့ ပေးချေမယ်'}
+            onChange={handleOrderFormDataChange}
+          />
+          <label htmlFor='KPay နဲ့ ပေးချေမယ်'>KPay နဲ့ ပေးချေမယ်</label>
+        </MethodPills>
       </MethodWrapper>
 
-      {kPaymodeOn && (
-        <KPayWrapper>
-          <KPayDescription>အောက်ပါ အကောင့်များကို ငွေလွှဲနိုင်ပါတယ်။</KPayDescription>
-          <AccountWrapper>
-            <HeadingWrapper>
-              <AccountHeading>အကောင့်အမည်</AccountHeading>
-              <AccountHeading>ဖုန်းနံပါတ်</AccountHeading>
-            </HeadingWrapper>
-            <Line></Line>
-            <AccountDetails>
-              <Name>မမ</Name> <Phone>၀၉ ၁၂၃၄ ၅၆၇၈၉</Phone>
-              <Name>ညီမလေး</Name> <Phone>၀၉ ၁၂၃၄ ၅၆၇၈၉</Phone>
-            </AccountDetails>
-          </AccountWrapper>
+      <KPayWrapper>
+        <KPayDescription>အောက်ပါ အကောင့်များကို ငွေလွှဲနိုင်ပါတယ်။</KPayDescription>
+        <AccountWrapper>
+          <HeadingWrapper>
+            <AccountHeading>အကောင့်အမည်</AccountHeading>
+            <AccountHeading>ဖုန်းနံပါတ်</AccountHeading>
+          </HeadingWrapper>
+          <Line></Line>
+          <AccountDetails>
+            <Name>မမ</Name> <Phone>၀၉ ၁၂၃၄ ၅၆၇၈၉</Phone>
+            <Name>ညီမလေး</Name> <Phone>၀၉ ၁၂၃၄ ၅၆၇၈၉</Phone>
+          </AccountDetails>
+        </AccountWrapper>
 
-          <UploadWrapper>
-            <UploadDescripton>ငွေလွှဲဖြတ်ပိုင်း ထည့်သွင်းရန်</UploadDescripton>
-            <UploadButton>ပုံတင်မယ်</UploadButton>
-          </UploadWrapper>
-        </KPayWrapper>
-      )}
+        <UploadWrapper>
+          <UploadDescripton>ငွေလွှဲဖြတ်ပိုင်း ထည့်သွင်းရန်</UploadDescripton>
+          <UploadButton type='file' name='payment_screenshot' onChange={handleOrderFormDataChange} />
+        </UploadWrapper>
+      </KPayWrapper>
 
       <ButtonWrapper>
         <Button Big>အော်ဒါတင်မယ်</Button>
       </ButtonWrapper>
-    </PaymentWrapper>
+    </PaymentForm>
   )
 }
-
-export default Payment
