@@ -15,6 +15,7 @@ export const StyledButton = styled.button`
   & > span {
     margin-bottom: -0.4em;
   }
+  width: ${({ Big }) => (Big ? '100%' : 'unset')};
 `
 
 export const WhiteButton = styled.button`

@@ -1,10 +1,18 @@
+import { useContext } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 const { navLinks } = require('@/ksh-data/navLinks.json')
 import { Header, Container, Group, NavLink, Logo, Button, ButtonText, Icon, MobileMenuButton } from './Navbar-styles'
 
+import {CartStates} from '@/ksh-contexts/Cart-Context'
+
 export default function Navbar() {
+  const [cartVisibile, setCartVisible] = useContext(CartStates);
+  const CartButtonHandler = () => {
+    setCartVisible(true)
+  }
+
   const router = useRouter()
   return (
     <Header>
@@ -26,11 +34,11 @@ export default function Navbar() {
         </Group>
 
         <Group>
-          <Button>
+          <Button onClick = {CartButtonHandler} >
             <Icon>
               <Image src='/icons/cart.svg' width='24' height='24' alt='cart-icon' />
             </Icon>
-            <ButtonText>ဆေးဝယ်စာရင်း</ButtonText>
+            <ButtonText  >ဆေးဝယ်စာရင်း</ButtonText>
           </Button>
           <Link href='/help' passHref>
             <Icon>
