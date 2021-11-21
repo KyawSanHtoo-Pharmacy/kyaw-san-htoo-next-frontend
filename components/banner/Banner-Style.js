@@ -29,12 +29,6 @@ export const Dropdown = styled.div`
     transition: 0.03s all ease-in-out;
   }
 `
-export const Dropdown = styled.p`
-  padding: 0 0.6em 0 0;
-  svg {
-    margin: 0px 6px;
-  }
-`
 export const FixedText = styled.p``
 
 export const BannerTitle = styled.h1`

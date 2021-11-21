@@ -18,6 +18,7 @@ import {
   InfoBar,
   CategoryName,
   Count,
+  PriceWrapper,
 } from './ProductCard-styles'
 
 export default function ProductCard({ availability }) {
@@ -34,12 +35,14 @@ export default function ProductCard({ availability }) {
             <NoticePill availability={availability}>{availability ? 'ပစ္စည်း ရှိ' : 'ပစ္စည်း ကုန်'}</NoticePill>
           </Group>
           <Group>
-            <Price>
-              <span>၅၀၀</span> ကျပ်/ <span>၁</span> ကဒ်
-            </Price>
-            <PreviousPrice>
-              <span>၆၀၀</span> ကျပ်
-            </PreviousPrice>
+            <PriceWrapper>
+              <Price>
+                <span>၅၀၀</span> ကျပ်/ <span>၁</span> ကဒ်
+              </Price>
+              <PreviousPrice>
+                <span>၆၀၀</span> ကျပ်
+              </PreviousPrice>
+            </PriceWrapper>
           </Group>
         </Content>
         <Link href='/categories/chaung-soe-pyout-say/biogesic'>
