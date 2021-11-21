@@ -20,6 +20,10 @@ export const Frame = styled.div`
   @media screen and (max-width: 870px) {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  @media screen and (max-width: 360px) {
+    grid-template-columns: 1fr;
+  }
 `
 
 export const Item = styled.div`
@@ -43,36 +47,78 @@ export const ContentWrapper = styled.div`
   border-radius: 0.63em;
   overflow: hidden;
   box-shadow: ${({ theme }) => theme.greenBoxShadow};
+
+  @media screen and (max-width: 400px) {
+    padding-top: 36%;
+  }
 `
 
 export const Content = styled.div`
   padding: 1.88em;
+
+  @media screen and (max-width: 400px) {
+    padding: 0.94em;
+  }
 `
 
 export const MyanmarName = styled.h3`
   font-weight: normal;
   margin-bottom: 0.34em;
   color: ${({ theme }) => theme.colors.text};
+
+  @media screen and (min-width: 361px) and (max-width: 400px) {
+    font-size: 1.25em;
+  }
 `
 
 export const Group = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  @media screen and (max-width: 400px) {
+    &:not(:last-of-type) {
+      margin-bottom: 0.6em;
+    }
+  }
 `
 
 export const EnglishName = styled.p`
   color: ${({ theme }) => theme.colors.text};
   font-weight: normal;
+
+  @media screen and (min-width: 361px) and (max-width: 400px) {
+    font-size: 1.09em;
+  }
 `
 
-//NoticePill Component Lote Yan
+export const PriceWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0.3em;
+
+  @media screen and (min-width: 361px) and (max-width: 600px) {
+    flex-direction: column;
+    margin-top: 0;
+    align-items: flex-start;
+  }
+
+  @media screen and (max-width: 361px) {
+    margin-top: -0.5em;
+  }
+`
 
 export const Price = styled.p`
   font-weight: bold;
   font-weight: normal;
   & > span {
     font-size: 1.3em;
+  }
+
+  @media screen and (min-width: 361px) and (max-width: 400px) {
+    font-size: 1.25em;
   }
 `
 
@@ -85,6 +131,12 @@ export const PreviousPrice = styled.p`
   & > span {
     font-size: 1.3em;
   }
+
+  @media screen and (min-width: 361px) and (max-width: 600px) {
+    font-size: 1.09em;
+    order: -1;
+    margin-bottom: -0.6em;
+  }
 `
 
 export const Button = styled.a`
@@ -95,13 +147,17 @@ export const Button = styled.a`
   width: 100%;
   padding: 1em;
   text-align: center;
+
+  @media screen and (min-width: 361px) and (max-width: 400px) {
+    font-size: 0.94em;
+  }
 `
 
 export const InfoBar = styled.div`
   display: flex;
   align-items: center;
   padding-bottom: 0.8em;
-  margin-top: 6.25em;
+  margin-top: 3.13em;
   border-bottom: 1px solid ${({ theme }) => theme.colors.dividerOne};
 
   @media screen and (max-width: 1200px) {

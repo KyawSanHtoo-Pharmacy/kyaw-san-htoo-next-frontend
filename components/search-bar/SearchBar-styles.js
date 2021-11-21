@@ -55,14 +55,19 @@ export const Input = styled.input`
 export const Button = styled.button`
   position: absolute;
   top: 50%;
-  transform: translateY(-51%);
+  transform: translateY(-50%);
   right: 0.65em;
   background-color: ${({ theme }) => theme.colors.heading};
   color: ${({ theme }) => theme.colors.bodyBg};
   border: none;
   border-radius: 100vw;
   font-size: 1.09em;
-  padding: 0.7em 1em;
+  padding: 0.6em 1em;
+  display: flex;
+
+  & > span {
+    margin-bottom: -0.2em;
+  }
 
   @media screen and (max-width: 1200px) {
     transform: translateY(-69%);
