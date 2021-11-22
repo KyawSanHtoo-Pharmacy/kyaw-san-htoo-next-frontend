@@ -116,10 +116,14 @@ export default function Payment({ prePage }) {
           <Label htmlFor='phone'>ဖုန်းနံပါတယ်</Label>
           <FormInput type='text' name='phone' id='phone' value={phone} onChange={handleOrderFormDataChange} />
         </FormGroup>
-        <FormGroup>
+        { 
+          orderFormData.delivery_method === 'အိမ်အရောက်ပို့ပေးပါ' ? (
+          <FormGroup>
           <Label htmlFor='address'>နေရပ်လိပ်စာ</Label>
           <FormInput type='text' name='address' id='address' value={address} onChange={handleOrderFormDataChange} />
-        </FormGroup>
+          </FormGroup>
+          ) : ""
+        }
       </PaymentInputWrapper>
 
       <SummaryWrapper>
@@ -163,25 +167,30 @@ export default function Payment({ prePage }) {
         </MethodPills>
       </MethodWrapper>
 
-      <KPayWrapper>
-        <KPayDescription>အောက်ပါ အကောင့်များကို ငွေလွှဲနိုင်ပါတယ်။</KPayDescription>
-        <AccountWrapper>
-          <HeadingWrapper>
-            <AccountHeading>အကောင့်အမည်</AccountHeading>
-            <AccountHeading>ဖုန်းနံပါတ်</AccountHeading>
-          </HeadingWrapper>
-          <Line></Line>
-          <AccountDetails>
-            <Name>မမ</Name> <Phone>၀၉ ၁၂၃၄ ၅၆၇၈၉</Phone>
-            <Name>ညီမလေး</Name> <Phone>၀၉ ၁၂၃၄ ၅၆၇၈၉</Phone>
-          </AccountDetails>
-        </AccountWrapper>
-
-        <UploadWrapper>
-          <UploadDescripton>ငွေလွှဲဖြတ်ပိုင်း ထည့်သွင်းရန်</UploadDescripton>
-          <UploadButton type='file' name='payment_screenshot' onChange={handleOrderFormDataChange} />
-        </UploadWrapper>
-      </KPayWrapper>
+      {
+        orderFormData.payment_method === 'KPay နဲ့ ပေးချေမယ်' ? (
+          <KPayWrapper>
+          <KPayDescription>အောက်ပါ အကောင့်များကို ငွေလွှဲနိုင်ပါတယ်။</KPayDescription>
+          <AccountWrapper>
+            <HeadingWrapper>
+              <AccountHeading>အကောင့်အမည်</AccountHeading>
+              <AccountHeading>ဖုန်းနံပါတ်</AccountHeading>
+            </HeadingWrapper>
+            <Line></Line>
+            <AccountDetails>
+              <Name>မမ</Name> <Phone>၀၉ ၁၂၃၄ ၅၆၇၈၉</Phone>
+              <Name>ညီမလေး</Name> <Phone>၀၉ ၁၂၃၄ ၅၆၇၈၉</Phone>
+            </AccountDetails>
+          </AccountWrapper>
+  
+          <UploadWrapper>
+            <UploadDescripton>ငွေလွှဲဖြတ်ပိုင်း ထည့်သွင်းရန်</UploadDescripton>
+            <UploadButton type='file' name='payment_screenshot' onChange={handleOrderFormDataChange} />
+          </UploadWrapper>
+        </KPayWrapper>
+        ) : ""
+      }
+     
 
       <ButtonWrapper>
         <Button Big>အော်ဒါတင်မယ်</Button>
