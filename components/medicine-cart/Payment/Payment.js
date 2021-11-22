@@ -28,6 +28,7 @@ import {
   UploadWrapper,
   UploadDescripton,
   UploadButton,
+  UploadButtonWrapper
 } from './Payment-Style'
 import { Button } from '@/ksh-components'
 
@@ -185,7 +186,11 @@ export default function Payment({ prePage }) {
   
           <UploadWrapper>
             <UploadDescripton>ငွေလွှဲဖြတ်ပိုင်း ထည့်သွင်းရန်</UploadDescripton>
-            <UploadButton type='file' name='payment_screenshot' onChange={handleOrderFormDataChange} />
+            <UploadButtonWrapper>
+            <label for="Screenshot" >ပုံတင်မယ်</label>
+            <UploadButton type='file' id="Screenshot"  name='payment_screenshot' onChange={handleOrderFormDataChange} ></UploadButton>
+            </UploadButtonWrapper>
+          
           </UploadWrapper>
         </KPayWrapper>
         ) : ""

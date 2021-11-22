@@ -205,7 +205,7 @@ export const ButtonWrapper = styled.div`
   margin-bottom: 20px;
 `
 export const UploadWrapper = styled.div`
-  margin-top: 20px;
+  margin-top: 30px;
   display: grid;
   grid-template-columns: 2.5fr 1fr;
   align-items: center;
@@ -214,7 +214,9 @@ export const UploadDescripton = styled.p`
   font-size: 14px;
   font-weight: bold;
 `
-export const UploadButton = styled.input`
+export const UploadButtonWrapper = styled.div`
+
+label {
   font-size: 1.09em;
   flex: 1;
   align-self: center;
@@ -231,4 +233,11 @@ export const UploadButton = styled.input`
     background-color: ${({ theme }) => theme.colors.heading};
     color: ${({ theme }) => theme.colors.bodyBg};
   }
+}
+
+`
+
+export const UploadButton = styled.input`
+  display: none;
+
 `
