@@ -1,4 +1,4 @@
-import styled from '@emotion/styled'
+import styled from 'styled-components'
 
 export const PaymentForm = styled.form`
   /* padding : 0px 17px; */
@@ -215,29 +215,26 @@ export const UploadDescripton = styled.p`
   font-weight: bold;
 `
 export const UploadButtonWrapper = styled.div`
+  label {
+    font-size: 1.09em;
+    flex: 1;
+    align-self: center;
+    color: ${({ theme, active }) => (active ? theme.colors.bodyBg : theme.colors.text)};
+    background-color: ${({ theme, active }) => (active ? theme.colors.heading : theme.colors.offWhite)};
+    border: 1px solid ${({ theme }) => theme.colors.heading};
+    border-radius: 100vw;
+    padding: 1.2em 0.8em;
+    margin: 0 0.5em 0.5em 0;
+    cursor: pointer;
+    text-align: center;
 
-label {
-  font-size: 1.09em;
-  flex: 1;
-  align-self: center;
-  color: ${({ theme, active }) => (active ? theme.colors.bodyBg : theme.colors.text)};
-  background-color: ${({ theme, active }) => (active ? theme.colors.heading : theme.colors.offWhite)};
-  border: 1px solid ${({ theme }) => theme.colors.heading};
-  border-radius: 100vw;
-  padding: 1.2em 0.8em;
-  margin: 0 0.5em 0.5em 0;
-  cursor: pointer;
-  text-align: center;
-
-  &:hover {
-    background-color: ${({ theme }) => theme.colors.heading};
-    color: ${({ theme }) => theme.colors.bodyBg};
+    &:hover {
+      background-color: ${({ theme }) => theme.colors.heading};
+      color: ${({ theme }) => theme.colors.bodyBg};
+    }
   }
-}
-
 `
 
 export const UploadButton = styled.input`
   display: none;
-
 `

@@ -28,7 +28,7 @@ import {
   UploadWrapper,
   UploadDescripton,
   UploadButton,
-  UploadButtonWrapper
+  UploadButtonWrapper,
 } from './Payment-Style'
 import { Button } from '@/ksh-components'
 
@@ -117,14 +117,14 @@ export default function Payment({ prePage }) {
           <Label htmlFor='phone'>ဖုန်းနံပါတယ်</Label>
           <FormInput type='text' name='phone' id='phone' value={phone} onChange={handleOrderFormDataChange} />
         </FormGroup>
-        { 
-          orderFormData.delivery_method === 'အိမ်အရောက်ပို့ပေးပါ' ? (
+        {orderFormData.delivery_method === 'အိမ်အရောက်ပို့ပေးပါ' ? (
           <FormGroup>
-          <Label htmlFor='address'>နေရပ်လိပ်စာ</Label>
-          <FormInput type='text' name='address' id='address' value={address} onChange={handleOrderFormDataChange} />
+            <Label htmlFor='address'>နေရပ်လိပ်စာ</Label>
+            <FormInput type='text' name='address' id='address' value={address} onChange={handleOrderFormDataChange} />
           </FormGroup>
-          ) : ""
-        }
+        ) : (
+          ''
+        )}
       </PaymentInputWrapper>
 
       <SummaryWrapper>
@@ -168,9 +168,8 @@ export default function Payment({ prePage }) {
         </MethodPills>
       </MethodWrapper>
 
-      {
-        orderFormData.payment_method === 'KPay နဲ့ ပေးချေမယ်' ? (
-          <KPayWrapper>
+      {orderFormData.payment_method === 'KPay နဲ့ ပေးချေမယ်' ? (
+        <KPayWrapper>
           <KPayDescription>အောက်ပါ အကောင့်များကို ငွေလွှဲနိုင်ပါတယ်။</KPayDescription>
           <AccountWrapper>
             <HeadingWrapper>
@@ -183,19 +182,22 @@ export default function Payment({ prePage }) {
               <Name>ညီမလေး</Name> <Phone>၀၉ ၁၂၃၄ ၅၆၇၈၉</Phone>
             </AccountDetails>
           </AccountWrapper>
-  
+
           <UploadWrapper>
             <UploadDescripton>ငွေလွှဲဖြတ်ပိုင်း ထည့်သွင်းရန်</UploadDescripton>
             <UploadButtonWrapper>
-            <label for="Screenshot" >ပုံတင်မယ်</label>
-            <UploadButton type='file' id="Screenshot"  name='payment_screenshot' onChange={handleOrderFormDataChange} ></UploadButton>
+              <label htmlFor='Screenshot'>ပုံတင်မယ်</label>
+              <UploadButton
+                type='file'
+                id='Screenshot'
+                name='payment_screenshot'
+                onChange={handleOrderFormDataChange}></UploadButton>
             </UploadButtonWrapper>
-          
           </UploadWrapper>
         </KPayWrapper>
-        ) : ""
-      }
-     
+      ) : (
+        ''
+      )}
 
       <ButtonWrapper>
         <Button Big>အော်ဒါတင်မယ်</Button>

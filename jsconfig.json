@@ -9,7 +9,8 @@
       "@/ksh-data/*": ["data/*"],
       "@/ksh-utils/*": ["utils/*"],
       "@/ksh-styles/*": ["styles/*"],
-      "@/ksh-theme/*": ["theme/*"]
+      "@/ksh-theme/*": ["theme/*"],
+      "@/ksh-config/*": ["config/*"]
     }
   }
 }

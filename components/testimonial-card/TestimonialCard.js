@@ -1,15 +1,15 @@
 import { Section, Heading, Frame, Item, Text, InfoWrapper, Info, InfoText, Icon } from './TestimonialCard-styles'
 
-export default function TestimonialCard({ testimonial: { text, customer, what } }) {
+export default function TestimonialCard({ testimonial: { customer_name, occupation, text } }) {
   return (
     <Item>
       <Text>{text}</Text>
       <InfoWrapper>
         <Info>
-          <InfoText>{customer}</InfoText>
+          <InfoText>{customer_name}</InfoText>
         </Info>
         <Info>
-          <InfoText>{what}</InfoText>
+          <InfoText>{occupation}</InfoText>
         </Info>
       </InfoWrapper>
       <Icon src='/icons/quote.svg' alt='testimonial-icon' />

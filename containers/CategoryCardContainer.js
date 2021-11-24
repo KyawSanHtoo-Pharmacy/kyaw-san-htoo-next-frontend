@@ -11,14 +11,11 @@ export default function CategoryCardContainer() {
         <CategoryCard.Heading>မရှိမဖြစ် ဆေးဝါးနှင့် ဆေးပစ္စည်းများ</CategoryCard.Heading>
         <CategoryCard.Frame>
           <Swiper
-            // install Swiper modules
             modules={[Navigation, Pagination, A11y]}
             spaceBetween={16}
             slidesPerView={4}
             navigation
             pagination={{ clickable: true }}
-            onSwiper={swiper => console.log(swiper)}
-            onSlideChange={() => console.log('slide change')}
             breakpoints={{
               0: {
                 slidesPerView: 1,
@@ -44,17 +41,3 @@ export default function CategoryCardContainer() {
     </CategoryCard.Section>
   )
 }
-
-// export default function CategoryCardContainer() {
-//   return (
-//     <CategoryCard.Section>
-//       <GlobalContainer>
-//         <CategoryCard.Frame>
-//           {categoryCardData.map(category => (
-//             <CategoryCard key={category.id} category={category} />
-//           ))}
-//         </CategoryCard.Frame>
-//       </GlobalContainer>
-//     </CategoryCard.Section>
-//   )
-// }

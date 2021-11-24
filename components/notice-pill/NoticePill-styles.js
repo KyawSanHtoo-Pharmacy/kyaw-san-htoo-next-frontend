@@ -1,4 +1,4 @@
-import styled from '@emotion/styled'
+import styled from 'styled-components'
 
 export const Pill = styled.div`
   font-size: 0.9em;

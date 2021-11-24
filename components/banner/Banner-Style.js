@@ -1,6 +1,7 @@
-import styled from '@emotion/styled'
+import styled from 'styled-components'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+
 export const BannerContainer = styled.section``
 export const BannerContent = styled.div`
   padding-top: 6.22em;

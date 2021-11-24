@@ -1,4 +1,4 @@
-import styled from '@emotion/styled'
+import styled from 'styled-components'
 const cubiz = 'all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)'
 
 export const Container = styled.div`

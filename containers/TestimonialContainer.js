@@ -1,10 +1,10 @@
 import { TestimonialCard } from '@/ksh-components'
 import { GlobalContainer } from '@/ksh-styles/GlobalStyles'
-const { testimonialData } = require('@/ksh-data/testimonialData')
+// const { testimonialData } = require('@/ksh-data/testimonialData')
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation, Pagination, A11y } from 'swiper'
 
-export default function TestimonialContainer() {
+export default function TestimonialContainer({ testimonials }) {
   return (
     <GlobalContainer>
       <TestimonialCard.Heading>ဝယ်သူတို့ရဲ့ စကားသံများ</TestimonialCard.Heading>
@@ -32,7 +32,7 @@ export default function TestimonialContainer() {
               slidesPerView: 3,
             },
           }}>
-          {testimonialData.map(testimonial => (
+          {testimonials.map(testimonial => (
             <SwiperSlide key={testimonial.id}>
               <TestimonialCard testimonial={testimonial} />
             </SwiperSlide>
