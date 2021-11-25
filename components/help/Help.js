@@ -1,0 +1,59 @@
+import { GlobalContainer } from '@/ksh-styles/GlobalStyles'
+import React from 'react'
+import Image from 'next/image'
+import { LeftColumn, Helpwrapper, Menu, Menuheading, Menulist, MenuItem, Content , ContentWrapper, ContentHeading, ImgColumn, Instructions, StepWrapper, StepHeading, Steps, InstructionsWrapper, StickyImg} from './helpStyle'
+function Help() {
+    return (
+        <>
+        <GlobalContainer>
+            <Helpwrapper>
+                <LeftColumn>
+                <Menu>
+                    <Menuheading>ဝပ်ဆိုက်ဒ် အသုံးပြုနည်း</Menuheading>
+                    <Menulist>
+                        <MenuItem>ဆေးတွေ ဘယ်လိုရှာမလဲ။</MenuItem>
+                        <MenuItem>လိုချင်တဲ့ဆေးကုန်နေရင် ဘာလုပ်လို့ရမလဲ။</MenuItem>
+                        <MenuItem>ဆေးဝယ်စာရင်းကို ဘယ်လိုသုံးမလဲ။</MenuItem>
+                        <MenuItem>အော်ဒါဘယ်လိုတင်မလဲ။</MenuItem>
+                    </Menulist>
+                </Menu>
+                </LeftColumn>
+                <Content>
+
+                <ContentWrapper>
+                    <ContentHeading>ဆေးတွေ ဘယ်လိုရှာမလဲ</ContentHeading>
+                    <InstructionsWrapper>
+                    <ImgColumn>
+                    <StickyImg>
+                    <Image src = "/temp/phoneImage.png" layout="fill" alt="" ></Image>
+                    </StickyImg>
+                    </ImgColumn>
+                    <Instructions>
+                        <StepWrapper>
+                            <StepHeading>အဆင့် ၁</StepHeading>
+                            <Steps>အဆင့်မြင့်အားဆေး၊ နှာစေးချောင်းဆိုးပျောက်ဆေး၊ ကလေးအားဆေး၊ ဆေးပြား၊ ဓာတ်ဆား၊ အာရုံကြောဆေးများ၊ အရေပြားလိမ်းဆေး၊ ဆီးချိုတိုင်းစက်အစရှိသည်တို့ ကို မှာယူနိုင်ပါတယ်။</Steps>
+                        </StepWrapper>
+                        <StepWrapper>
+                            <StepHeading>အဆင့် ၂</StepHeading>
+                            <Steps>အဆင့်မြင့်အားဆေး၊ နှာစေးချောင်းဆိုးပျောက်ဆေး၊ ကလေးအားဆေး၊ ဆေးပြား၊ ဓာတ်ဆား၊ အာရုံကြောဆေးများ၊ အရေပြားလိမ်းဆေး၊ ဆီးချိုတိုင်းစက်အစရှိသည်တို့ ကို မှာယူနိုင်ပါတယ်။</Steps>
+                        </StepWrapper>
+                        <StepWrapper>
+                            <StepHeading>အဆင့် ၃</StepHeading>
+                            <Steps>အဆင့်မြင့်အားဆေး၊ နှာစေးချောင်းဆိုးပျောက်ဆေး၊ ကလေးအားဆေး၊ ဆေးပြား၊ ဓာတ်ဆား၊ အာရုံကြောဆေးများ၊ အရေပြားလိမ်းဆေး၊ ဆီးချိုတိုင်းစက်အစရှိသည်တို့ ကို မှာယူနိုင်ပါတယ်။</Steps>
+                        </StepWrapper>
+                        <StepWrapper>
+                            <StepHeading>အဆင့် ၄</StepHeading>
+                            <Steps>အဆင့်မြင့်အားဆေး၊ နှာစေးချောင်းဆိုးပျောက်ဆေး၊ ကလေးအားဆေး၊ ဆေးပြား၊ ဓာတ်ဆား၊ အာရုံကြောဆေးများ၊ အရေပြားလိမ်းဆေး၊ ဆီးချိုတိုင်းစက်အစရှိသည်တို့ ကို မှာယူနိုင်ပါတယ်။</Steps>
+                        </StepWrapper>
+                    </Instructions>
+                    </InstructionsWrapper>
+                </ContentWrapper>
+
+                </Content>
+            </Helpwrapper>
+        </GlobalContainer>
+        </>
+    )
+}
+
+export default Help
