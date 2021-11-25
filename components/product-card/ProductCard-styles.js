@@ -46,7 +46,7 @@ export const ContentWrapper = styled.div`
   padding-top: 34%;
   border-radius: 0.63em;
   overflow: hidden;
-  box-shadow: ${({ theme }) => theme.greenBoxShadow};
+  box-shadow: ${({ theme }) => theme.boxShadows.green};
 
   @media screen and (max-width: 400px) {
     padding-top: 36%;

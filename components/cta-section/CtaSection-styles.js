@@ -1,7 +1,10 @@
 import styled from 'styled-components'
 
 export const Section = styled.section`
-  background-color: ${({ theme }) => theme.colors.heading};
+  /* background-color: ${({ theme }) => theme.colors.heading}; */
+  background-image: url('/temp/cta-bg.jpg');
+  background-position: center center;
+  background-size: cover;
 `
 
 export const Content = styled.div`

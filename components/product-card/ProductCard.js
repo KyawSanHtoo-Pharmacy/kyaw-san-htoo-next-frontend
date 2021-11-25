@@ -45,7 +45,7 @@ export default function ProductCard({ availability }) {
             </PriceWrapper>
           </Group>
         </Content>
-        <Link href='/categories/chaung-soe-pyout-say/biogesic'>
+        <Link href='/categories/chaung-soe-pyout-say/biogesic' passHref>
           <Button>အသေးစိတ် ကြည့်မယ်</Button>
         </Link>
       </ContentWrapper>

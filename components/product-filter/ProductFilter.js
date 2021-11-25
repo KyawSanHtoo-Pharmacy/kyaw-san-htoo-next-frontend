@@ -18,7 +18,7 @@ export default function ProductFilter() {
 
   useEffect(() => {
     document.body.style.overflow = isFilterOpen ? 'hidden' : 'unset'
-  }, [])
+  }, [isFilterOpen])
 
   return (
     <>

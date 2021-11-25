@@ -3,7 +3,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 const { navLinks } = require('@/ksh-data/navLinks.json')
-import { Header, Container, Group, NavLink, Logo, Button, ButtonText, Icon, MobileMenuButton } from './Navbar-styles'
+import { Header, Container, Group, NavLink, Logo, Button, Icon, MobileMenuButton } from './Navbar-styles'
 
 import { CartStates } from '@/ksh-contexts/Cart-Context'
 
@@ -19,7 +19,7 @@ export default function Navbar() {
       <Container as='nav'>
         <Group>
           {navLinks.map(link => (
-            <Link href={link.path} key={link.id}>
+            <Link href={link.path} key={link.id} passHref>
               <NavLink active={router.pathname === link.path}>{link.text}</NavLink>
             </Link>
           ))}
@@ -36,13 +36,13 @@ export default function Navbar() {
         <Group>
           <Button onClick={CartButtonHandler}>
             <Icon>
-              <Image src='/icons/cart.svg' width='24' height='24' alt='cart-icon' />
+              <Image src='/icons/cart.svg' layout='fill' alt='cart-icon' />
             </Icon>
-            <ButtonText>ဆေးဝယ်စာရင်း</ButtonText>
+            <span>ဆေးဝယ်စာရင်း</span>
           </Button>
           <Link href='/help' passHref>
             <Icon>
-              <Image src='/icons/help.svg' width='24' height='24' alt='help-icon' />
+              <Image src='/icons/help.svg' layout='fill' alt='help-icon' />
             </Icon>
           </Link>
         </Group>

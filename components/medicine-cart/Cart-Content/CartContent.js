@@ -83,7 +83,7 @@ function CartContent({ nextPage, medicineToBuy, updateItemQuantity, handleQuanti
       {/* // <h1>Here Cart Comes</h1> */}
       <ButtonWrapper>
         <Button Big onClick={nextPage}>
-          ဆက်လုပ်ဆောင်မယ်
+          <span>ဆက်လုပ်ဆောင်မယ်</span>
         </Button>
       </ButtonWrapper>
     </>

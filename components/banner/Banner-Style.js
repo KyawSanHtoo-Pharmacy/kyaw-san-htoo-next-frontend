@@ -1,35 +1,59 @@
-import styled from 'styled-components'
+import styled, { keyframes, css } from 'styled-components'
 import { motion } from 'framer-motion'
-import Link from 'next/link'
+import Image from 'next/image'
 
-export const BannerContainer = styled.section``
-export const BannerContent = styled.div`
-  padding-top: 6.22em;
-  padding-bottom: 13.97em;
-  background: url('/illustrations/HeroBackground.jpg');
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: bottom;
+export const BannerContainer = styled.section`
+  min-height: calc(100vh - 6em);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: relative;
+`
+
+export const BannerBackground = styled(Image)``
+
+export const BannerContent = styled.div`
+  margin-top: -10em;
+  position: relative;
+  z-index: 1;
 `
 export const DropdownWrapper = styled.div`
   width: fit-content;
   margin: 2.34em auto;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  position: relative;
 `
 export const ClickAble = styled.div`
   display: flex;
 `
-export const Dropdown = styled.div`
-  font-size: 20px;
-  padding: 0px 20px;
+
+const arrow = keyframes`${css`
+  from {
+    opacity: 0;
+    transform: translateY(-0.3em);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0.3em);
+  }
+`}
+`
+
+export const Dropdown = styled.p`
   svg {
-    margin: 0px 6px;
-    transform: ${({ dropdownState }) => (dropdownState ? 'rotate(180deg)' : 'unset')};
-    transition: 0.03s all ease-in-out;
+    opacity: 0;
+    transform: translateY(-0.3em);
+    margin: 0 1.25em 0 0.2em;
+    /* transform: ${({ dropdownState }) => (dropdownState ? 'rotate(180deg)' : 'unset')}; */
+    /* transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); */
+    animation: ${arrow} 1s ease-out infinite alternate;
   }
 `
+
 export const FixedText = styled.p``
 
 export const BannerTitle = styled.h1`
@@ -37,24 +61,24 @@ export const BannerTitle = styled.h1`
 `
 export const DropdownData = styled(motion.div)`
   position: absolute;
-  margin: 50px auto 0px auto;
-  padding: 10px;
-  left: 0;
-  right: 0;
+  padding: 1.25em;
+  top: 3em;
   text-align: center;
   border-radius: 8px;
   width: 400px;
-  background-color: ${({ theme }) => theme.colors.offWhite};
+  background-color: ${({ theme }) => theme.colors.bodyBg};
   display: flex;
   flex-direction: column;
   justify-content: center;
+  box-shadow: ${({ theme }) => theme.boxShadows.green};
 `
 export const PillWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  margin-bottom: 1em;
 `
-export const ViewAll = styled(Link)`
+export const ViewAll = styled.a`
   text-decoration: underline;
 `
 

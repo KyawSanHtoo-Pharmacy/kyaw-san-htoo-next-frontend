@@ -21,7 +21,7 @@ export const Item = styled.div`
 
 export const Text = styled.p`
   text-align: center;
-  padding: 3.13em 0.63em 2.5em;
+  padding: 3em 1.2em 2em 1.2em;
 `
 
 export const InfoWrapper = styled.div`

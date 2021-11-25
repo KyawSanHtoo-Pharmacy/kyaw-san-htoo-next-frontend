@@ -112,6 +112,27 @@ export default function GlobalStyles({ theme }) {
         .mm-number {
           font-size: 1.2em;
         }
+
+        .swiper {
+        }
+
+        .swiper-button-next,
+        .swiper-button-prev {
+          display: none;
+        }
+
+        .swiper-pagination {
+        }
+
+        .swiper-pagination-bullet {
+          background: ${theme.colors.heading};
+          transition: all 0.2s ease-out;
+          border-radius: 0.2em;
+        }
+
+        .swiper-pagination-bullet-active {
+          transform: scaleX(1.5);
+        }
       `}
     />
   )
