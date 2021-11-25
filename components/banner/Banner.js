@@ -41,14 +41,14 @@ const Banner = () => {
     stateHandler()
   }, [dropdownState])
 
-  useEffect(() => {
-    if (dropdownState) {
-      //to alter scrollablity of the entire page
-      document.body.style.overflow = 'hidden'
-    } else {
-      document.body.style.overflow = 'unset'
-    }
-  }, [dropdownState])
+  // useEffect(() => {
+  //   if (dropdownState) {
+  //     //to alter scrollablity of the entire page
+  //     document.body.style.overflow = 'hidden'
+  //   } else {
+  //     document.body.style.overflow = 'unset'
+  //   }
+  // }, [dropdownState])
 
   //return jsx
   return (

@@ -56,7 +56,11 @@ export const NavLink = styled.a`
   font-weight: ${({ active }) => active && '700'};
 `
 
-export const Logo = styled.a``
+export const Logo = styled.a`
+  width: 15em;
+  height: 2.3em;
+  position: relative;
+`
 
 export const Button = styled.button`
   display: flex;
@@ -76,6 +80,8 @@ export const ButtonText = styled.p`
 
 export const Icon = styled.a`
   cursor: pointer;
+  display: grid;
+  place-items: center;
 `
 export const MobileMenuButton = styled.button`
   background: none;

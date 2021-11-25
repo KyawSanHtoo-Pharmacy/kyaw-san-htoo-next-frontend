@@ -29,6 +29,8 @@ export const Group = styled.div`
   flex: 1;
   margin: ${({ mt = 0 }) => mt};
   padding-right: 1em;
+  display: flex;
+  flex-direction: column;
 
   @media screen and (max-width: 980px) {
     flex: unset;
@@ -47,6 +49,12 @@ export const Group = styled.div`
 
 export const InfoText = styled.p`
   font-size: ${props => (props.large ? '1.48em' : props.small ? '1.09em' : '1.25em')}; ;
+`
+
+export const Logo = styled.a`
+  width: 10em;
+  height: 1.53em;
+  position: relative;
 `
 
 export const SocialIconWrapper = styled.div`

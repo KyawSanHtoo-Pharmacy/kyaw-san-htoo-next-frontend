@@ -5,10 +5,10 @@ import { useRouter } from 'next/router'
 const { navLinks } = require('@/ksh-data/navLinks.json')
 import { Header, Container, Group, NavLink, Logo, Button, ButtonText, Icon, MobileMenuButton } from './Navbar-styles'
 
-import {CartStates} from '@/ksh-contexts/Cart-Context'
+import { CartStates } from '@/ksh-contexts/Cart-Context'
 
 export default function Navbar() {
-  const [cartVisibile, setCartVisible] = useContext(CartStates);
+  const [cartVisibile, setCartVisible] = useContext(CartStates)
   const CartButtonHandler = () => {
     setCartVisible(true)
   }
@@ -28,17 +28,17 @@ export default function Navbar() {
         <Group>
           <Link href='/' passHref>
             <Logo>
-              <Image src='/logos/kyaw-san-htoo-logo-landscape.svg' width='210' height='32' alt='kyaw-san-htoo-logo' />
+              <Image src='/logos/kyaw-san-htoo-logo-landscape.svg' layout='fill' alt='kyaw-san-htoo-logo' />
             </Logo>
           </Link>
         </Group>
 
         <Group>
-          <Button onClick = {CartButtonHandler} >
+          <Button onClick={CartButtonHandler}>
             <Icon>
               <Image src='/icons/cart.svg' width='24' height='24' alt='cart-icon' />
             </Icon>
-            <ButtonText  >ဆေးဝယ်စာရင်း</ButtonText>
+            <ButtonText>ဆေးဝယ်စာရင်း</ButtonText>
           </Button>
           <Link href='/help' passHref>
             <Icon>

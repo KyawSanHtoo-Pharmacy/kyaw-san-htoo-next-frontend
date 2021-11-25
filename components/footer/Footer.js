@@ -9,6 +9,7 @@ import {
   SocialIconWrapper,
   SocialIcon,
   Divider,
+  Logo,
 } from './Footer-styles'
 
 export default function Footer() {
@@ -44,7 +45,9 @@ export default function Footer() {
         <GroupWrapper>
           <Group>
             <Link href='/' passHref>
-              <Image src='/logos/kyaw-san-htoo-logo-landscape.svg' width='135' height='19' alt='kyaw-san-htoo-logo' />
+              <Logo>
+                <Image src='/logos/kyaw-san-htoo-logo-landscape.svg' layout='fill' alt='kyaw-san-htoo-logo' />
+              </Logo>
             </Link>
           </Group>
           <Group>
