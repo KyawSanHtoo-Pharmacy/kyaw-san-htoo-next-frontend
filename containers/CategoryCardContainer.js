@@ -1,10 +1,9 @@
 import { CategoryCard } from '@/ksh-components'
 import { GlobalContainer } from '@/ksh-styles/GlobalStyles'
-const { categoryCardData } = require('@/ksh-data/categoryCardData')
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation, Pagination, A11y } from 'swiper'
 
-export default function CategoryCardContainer() {
+export default function CategoryCardContainer({ categories }) {
   return (
     <CategoryCard.Section>
       <GlobalContainer>
@@ -30,7 +29,7 @@ export default function CategoryCardContainer() {
                 slidesPerView: 4,
               },
             }}>
-            {categoryCardData.map(category => (
+            {categories.map(category => (
               <SwiperSlide key={category.id}>
                 <CategoryCard category={category} />
               </SwiperSlide>

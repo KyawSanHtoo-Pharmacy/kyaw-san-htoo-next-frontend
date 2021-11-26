@@ -1,12 +1,21 @@
 import styled from 'styled-components'
 
-export const Header = styled.header``
+export const Header = styled.header`
+  background: ${({ theme }) => theme.colors.bodyBg};
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: ${({ theme, isScrolled }) => (isScrolled ? theme.boxShadows.nav : '')};
+  transition: all 0.2s ease-out;
+`
 
 export const Container = styled.div`
-  padding: 1.56em 7.81em;
+  /* padding: 1em 7.81em; */
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: ${({ isScrolled }) => (isScrolled ? '0.8em 7.81em' : '1.2em 7.81em')};
+  transition: all 0.2s ease-out;
 
   @media screen and (max-width: 980px) {
     padding: 1.56em 3.91em;
@@ -70,18 +79,20 @@ export const Button = styled.button`
   border-radius: 100vw;
   padding: 1.17em 1.56em;
   margin-right: 1.88em;
-`
+  font-size: 1em;
 
-export const ButtonText = styled.p`
-  font-size: 1.25em;
-  font-weight: 300;
-  margin-bottom: -0.3em;
+  & > span {
+    margin-bottom: -0.4em;
+  }
 `
 
 export const Icon = styled.a`
   cursor: pointer;
   display: grid;
   place-items: center;
+  width: 1.88em;
+  aspect-ratio: 1;
+  position: relative;
 `
 export const MobileMenuButton = styled.button`
   background: none;

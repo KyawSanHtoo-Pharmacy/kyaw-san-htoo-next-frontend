@@ -1,32 +1,34 @@
 {
-    "bannerpillData" : [
-        {
-            "id" : 1,
-            "issues" : "နှာစီး"
-        },
-        {
-            "id" : 2,
-            "issues" : "ခေါင်းကိုက်"
-        },
-        {
-            "id" : 3,
-            "issues" : "ဆီးချိုတက်/ကျ"
-        },
-        {
-            "id" : 4,
-            "issues" : "သွေးတိုး/သွေးကျ"
-        },
-        {
-            "id" : 5,
-            "issues" : "ဗိုက်အောင့်"
-        },
-        {
-            "id" : 6,
-            "issues" : "စိတ်ကျ"
-        },
-        {
-            "id" : 7,
-            "issues" : "ခေါင်းမူး"
-        }
-    ]
+  "bannerpillData": [
+    {
+      "id": 1,
+      "issues": "နှာစီး",
+      "path": "/categories/runny-nose"
+    },
+    {
+      "id": 2,
+      "issues": "ခေါင်းကိုက်",
+      "path": "/categories/migraine"
+    },
+    {
+      "id": 3,
+      "issues": "ဆီးချိုတက်/ကျ",
+      "path": "/categories/diabetes"
+    },
+    {
+      "id": 4,
+      "issues": "သွေးတိုး/သွေးကျ",
+      "path": "/categories/hypertension"
+    },
+    {
+      "id": 5,
+      "issues": "ဗိုက်အောင့်",
+      "path": "/categories/stomach-ache"
+    },
+    {
+      "id": 6,
+      "issues": "စိတ်ကျ",
+      "path": "/categories/depression"
+    }
+  ]
 }

@@ -10,7 +10,7 @@ export const ContactWrapper = styled.section`
 
 export const ContactImg = styled.div`
   flex: 1;
-  height: 80vh;
+  height: 74.7vh;
   position: relative;
 
   @media only screen and (max-width: 650px) {
@@ -26,7 +26,8 @@ export const ContactContent = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
-  padding: 1.7em 7.03em;
+  /* padding: 1.7em 7.03em; */
+  padding: 3.13em 0 3.13em 6.25em;
 
   @media only screen and (max-width: 965px) {
     padding: 1.7em 4.03em 1.7em 6.03em;
@@ -52,7 +53,6 @@ export const Description = styled.p``
 
 export const ContactTitle = styled.h1`
   font-size: 2.4em;
-  line-height: 2;
   margin-top: 0.4em;
 
   @media only screen and (max-width: 955px) {

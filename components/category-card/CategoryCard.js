@@ -1,19 +1,28 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { Section, Heading, Frame, Item, ImageWrapper, ContentWrapper, CategoryName } from './CategoryCard-styles'
+import { API_URL } from '@/ksh-config/index'
 
-export default function CategoryCard({ category: { name, path, image, altText } }) {
+export default function CategoryCard({ category }) {
+   const { category_name_eng, category_name_mm, slug, category_image } = category
+  console.log(category);
+
   return (
-    <Link href={`/categories/${path}`} passHref>
+    <Link href={`/categories/${slug}`} passHref>
       <Item>
-        <ImageWrapper>
-          <Image src={image} layout='fill' alt={altText} />
-        </ImageWrapper>
+        {/* <ImageWrapper>
+          <Image
+            src={`${API_URL}${category_image.formats.medium.url}`}
+            layout='fill'
+            alt={`${category_name_eng} - ${category_name_mm}`}
+          />
+        </ImageWrapper> */}
         <ContentWrapper>
-          <CategoryName>{name}</CategoryName>
+          <CategoryName>{category_name_mm}</CategoryName>
         </ContentWrapper>
       </Item>
     </Link>
+
   )
 }
 

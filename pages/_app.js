@@ -1,13 +1,11 @@
-import { useContext } from 'react'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { Navbar, Footer, MinimalFooter } from '@/ksh-components'
-import { Cart } from '@/ksh-components'
 import { ThemeProvider } from 'styled-components'
 import { lightTheme } from '@/ksh-theme/theme'
-import GlobalStyles from '@/ksh-styles/GlobalStyles'
+import { Cart } from '@/ksh-components'
 import { CartProvider } from '@/ksh-contexts/Cart-Context'
-import { CartStates } from '@/ksh-contexts/Cart-Context'
+import { GlobalStyles } from '@/ksh-styles/GlobalStyles'
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
@@ -27,7 +25,7 @@ function MyKSHApp({ Component, pageProps }) {
         <link rel='shortcut icon' type='image/svg' href='/favicon.svg' />
       </Head>
       <ThemeProvider theme={lightTheme}>
-        <GlobalStyles theme={lightTheme} />
+        <GlobalStyles />
         <CartProvider>
           <Navbar />
           <Cart />

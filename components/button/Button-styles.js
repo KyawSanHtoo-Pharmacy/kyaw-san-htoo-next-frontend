@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { keyframes, css } from 'styled-components'
 
 export const StyledButton = styled.button`
   padding: 1.02em 3.13em;
@@ -7,11 +7,20 @@ export const StyledButton = styled.button`
   border: 1px solid ${({ theme }) => theme.colors.heading};
   border-radius: 100vw;
   font-size: 1.25em;
+  width: ${({ Big }) => (Big ? '100%' : 'unset')};
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  transition: all 0.2s ease-out;
 
   & > span {
     margin-bottom: -0.4em;
   }
-  width: ${({ Big }) => (Big ? '100%' : 'unset')};
+
+  &:hover {
+    background: ${({ theme }) => theme.colors.text};
+    border: 1px solid ${({ theme }) => theme.colors.text};
+  }
 `
 
 export const WhiteButton = styled(StyledButton)`
@@ -19,8 +28,10 @@ export const WhiteButton = styled(StyledButton)`
   background: ${({ theme }) => theme.colors.bodyBg};
   border: 1px solid ${({ theme }) => theme.colors.bodyBg};
 
-  & > span {
-    margin-bottom: -0.4em;
+  &:hover {
+    color: ${({ theme }) => theme.colors.bodyBg};
+    background: ${({ theme }) => theme.colors.text};
+    border: 1px solid ${({ theme }) => theme.colors.text};
   }
 `
 
@@ -29,8 +40,15 @@ export const OffWhiteButton = styled(StyledButton)`
   background: ${({ theme }) => theme.colors.offWhite};
   border: 1px solid ${({ theme }) => theme.colors.offWhite};
   font-size: ${({ small }) => (small ? ' 1.09em' : '1.25em')};
+  display: flex;
 
   & > span {
     margin-bottom: -0.4em;
+  }
+
+  &:hover {
+    color: ${({ theme }) => theme.colors.bodyBg};
+    background: ${({ theme }) => theme.colors.text};
+    border: 1px solid ${({ theme }) => theme.colors.text};
   }
 `

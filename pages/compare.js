@@ -78,12 +78,12 @@ export default function compare() {
         </Accordion>
 
         <ProductCard.Heading>ဆက်စပ် ဆေးဝါးများ</ProductCard.Heading>
-        <ProductCard.Frame mt='3.13em'>
+        {/* <ProductCard.Frame mt='3.13em'>
           <ProductCard availability={true} />
           <ProductCard availability={true} />
           <ProductCard availability={false} />
           <ProductCard availability={true} />
-        </ProductCard.Frame>
+        </ProductCard.Frame> */}
       </GlobalContainer>
     </Compare.Section>
   )

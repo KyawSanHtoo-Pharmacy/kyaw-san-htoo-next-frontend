@@ -5,7 +5,7 @@ export const StyledFooter = styled.footer`
 `
 
 export const Container = styled.div`
-  padding: 3.13em 7.81em;
+  padding: 2.3em 7.81em 2em;
 
   @media screen and (max-width: 980px) {
     padding: 3.13em 3.91em;
@@ -18,7 +18,8 @@ export const Container = styled.div`
 
 export const GroupWrapper = styled.div`
   display: flex;
-  align-items: flex-start;
+  align-items: center;
+  justify-content: flex-start;
 
   @media screen and (max-width: 980px) {
     flex-wrap: wrap;

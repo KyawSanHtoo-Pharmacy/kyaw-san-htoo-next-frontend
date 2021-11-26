@@ -1,4 +1,4 @@
-//imports and requires
+import Link from 'next/link'
 import { useState, useEffect } from 'react'
 import {
   BannerContainer,
@@ -12,45 +12,40 @@ import {
   Pill,
   PillWrapper,
   ViewAll,
+  BannerBackground,
 } from './Banner-Style'
 import { AnimatePresence } from 'framer-motion'
 const { bannerpillData } = require('@/ksh-data/bannerpillData.json')
 
 const Banner = () => {
-  //states
   const [dropdownState, setDropdownState] = useState(false)
   const [dropdownText, setDropdownText] = useState('နေမကောင်းဖြစ်')
 
-  //state handlers
   const HoverHandler = e => {
     setDropdownText(e)
   }
 
-  const clickHandler = () => {
+  const clickHandler = e => {
+    e.stopPropagation()
     setDropdownState(!dropdownState)
   }
-  const stateHandler = () => {
+  //close dropdowndata when click on other areas
+  useEffect(() => {
+    document.addEventListener('click', () => setDropdownState(false))
+  }, [])
+  // const stateHandler = () => {
+  //   if (dropdownState == false) {
+  //     setDropdownText('နေမကောင်းဖြစ်')
+  //   }
+  // }
+
+  useEffect(() => {
+    //to throw back to default text of dropdown
     if (dropdownState == false) {
       setDropdownText('နေမကောင်းဖြစ်')
     }
-  }
-
-  //component hook-style lifecircle
-  useEffect(() => {
-    //to throw back to default text of dropdown
-    stateHandler()
   }, [dropdownState])
 
-  // useEffect(() => {
-  //   if (dropdownState) {
-  //     //to alter scrollablity of the entire page
-  //     document.body.style.overflow = 'hidden'
-  //   } else {
-  //     document.body.style.overflow = 'unset'
-  //   }
-  // }, [dropdownState])
-
-  //return jsx
   return (
     <>
       <DropdownWrapper>
@@ -70,8 +65,8 @@ const Banner = () => {
         <AnimatePresence>
           {dropdownState && (
             <DropdownData
+              onClick={e => e.stopPropagation()}
               dropdownState={dropdownState}
-              key='DropDownMedicine'
               initial={{
                 opacity: 0,
                 y: 24,
@@ -85,21 +80,24 @@ const Banner = () => {
                 y: 24,
               }}
               transition={{
-                duration: 0.6,
+                duration: 0.3,
                 type: 'spring',
               }}>
               <PillWrapper>
                 {bannerpillData.map(pill => (
-                  <Pill
-                    key={pill.id}
-                    onMouseEnter={() => {
-                      HoverHandler(pill.issues)
-                    }}>
-                    {pill.issues}
-                  </Pill>
+                  <Link href={pill.path} key={pill.id} passHref>
+                    <Pill
+                      onMouseEnter={() => {
+                        HoverHandler(pill.issues)
+                      }}>
+                      {pill.issues}
+                    </Pill>
+                  </Link>
                 ))}
               </PillWrapper>
-              <ViewAll href='/categories/all'>ဆေးအားလုံးကြည့်မယ်</ViewAll>
+              <Link href='/categories/all' passHref>
+                <ViewAll>ဆေးအားလုံးကြည့်မယ်</ViewAll>
+              </Link>
             </DropdownData>
           )}
         </AnimatePresence>
@@ -111,7 +109,16 @@ export default Banner
 
 //Compound component spilittings
 Banner.Section = function BannerSection({ children, ...restProps }) {
-  return <BannerContainer {...restProps}> {children} </BannerContainer>
+  return (
+    <BannerContainer {...restProps}>
+      {children}
+      <BannerBackground
+        src='/images/home-hero-bg-pc.svg'
+        layout='fill'
+        alt='a doctor in pharmacy asking how are you feeling today'
+      />
+    </BannerContainer>
+  )
 }
 
 Banner.Content = function BannerContentWrapper({ children, ...restProps }) {

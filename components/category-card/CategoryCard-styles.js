@@ -16,6 +16,7 @@ export const Item = styled.div`
   flex-direction: column;
   align-items: center;
   position: relative;
+  cursor: pointer;
 
   &::before {
     content: '';
@@ -36,7 +37,7 @@ export const ImageWrapper = styled.div`
   position: relative;
   border-radius: 0.63em;
   overflow: hidden;
-  box-shadow: ${({ theme }) => theme.greenBoxShadow};
+  box-shadow: ${({ theme }) => theme.boxShadows.green};
   margin-bottom: 1.2em;
 `
 
