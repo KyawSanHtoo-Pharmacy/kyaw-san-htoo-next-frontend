@@ -8,7 +8,7 @@ export const LeftColumn = styled.div`
     flex : 1;
 `
 
-export const Menu = styled.div`
+export const Menu = styled.nav`
     top : 1.5em;
     position: sticky;
 `
@@ -26,13 +26,14 @@ export const MenuItem = styled.li`
 
 export const Content = styled.div`
     flex : 2;
+    scroll-behavior: smooth;
 `
 export const ContentHeading = styled.h1`
     padding: 0px 0px 25px;
     margin-top: -15px;
     font-style: normal;
     font-weight: bold;
-    font-size: 40px;
+    font-size: 34px;
     line-height: 69px;
     color : ${({theme}) => theme.colors.text};
     position : sticky;
@@ -54,7 +55,6 @@ position : sticky;
 
 `
 export const StickyImg = styled.div`
-
 `
 
 export const Instructions = styled.div`
@@ -81,5 +81,6 @@ font-size: 16px;
 line-height: 31px;
 `
 
-export const ContentWrapper = styled.div`
+export const ContentWrapper = styled.section`
+margin-bottom: 5em;
 `

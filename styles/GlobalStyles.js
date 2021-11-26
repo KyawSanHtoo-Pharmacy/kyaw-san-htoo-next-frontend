@@ -41,11 +41,16 @@ export default function GlobalStyles({ theme }) {
             Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
         }
 
+        html {
+          scroll-behavior: smooth;
+        }
+
         body {
           font-size: 1vw;
           line-height: 1.8;
           color: ${theme.colors.text};
           background-color: ${theme.colors.bodyBg};
+
         }
 
         @media screen and (max-width: 1200px) {
