@@ -10,7 +10,7 @@ export const Frame = styled.div`
   display: grid;
   grid-column-gap: 16px;
   grid-row-gap: 40px;
-  grid-template-columns: repeat(auto-fit, minmax(19.8em, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(19.8em, 1fr));
   margin-top: ${({ mt }) => mt || '5em'};
 
   @media screen and (max-width: 1022px) {

@@ -1,7 +1,7 @@
 import { ProductCard, SearchBar, ProductFilter } from '@/ksh-components'
 import { GlobalContainer } from '@/ksh-styles/GlobalStyles'
 
-export default function ProductCardContainer() {
+export default function ProductCardContainer({ medicines, count, category }) {
   return (
     <ProductCard.Section>
       <GlobalContainer>
@@ -11,23 +11,16 @@ export default function ProductCardContainer() {
         </SearchBar.Container>
 
         <ProductCard.InfoBar>
-          <ProductCard.CategoryName>ဆေးအားလုံး</ProductCard.CategoryName>
+          <ProductCard.CategoryName>{category}</ProductCard.CategoryName>
           <ProductCard.Count>
-            ရလဒ်ပေါင်း <span className='mm-number'>၈၄,၀၀၀</span>
+            ရလဒ်ပေါင်း <span className='mm-number'>{count}</span>
           </ProductCard.Count>
         </ProductCard.InfoBar>
 
         <ProductCard.Frame>
-          <ProductCard availability={true} />
-          <ProductCard availability={true} />
-          <ProductCard availability={false} />
-          <ProductCard availability={true} />
-          <ProductCard availability={true} />
-          <ProductCard availability={false} />
-          <ProductCard availability={true} />
-          <ProductCard availability={false} />
-          <ProductCard availability={true} />
-          <ProductCard availability={true} />
+          {medicines.map(medicine => (
+            <ProductCard key={medicine.id} medicine={medicine} />
+          ))}
         </ProductCard.Frame>
       </GlobalContainer>
     </ProductCard.Section>

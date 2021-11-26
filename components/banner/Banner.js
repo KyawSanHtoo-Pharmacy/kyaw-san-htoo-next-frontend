@@ -25,9 +25,14 @@ const Banner = () => {
     setDropdownText(e)
   }
 
-  const clickHandler = () => {
+  const clickHandler = e => {
+    e.stopPropagation()
     setDropdownState(!dropdownState)
   }
+  //close dropdowndata when click on other areas
+  useEffect(() => {
+    document.addEventListener('click', () => setDropdownState(false))
+  }, [])
   // const stateHandler = () => {
   //   if (dropdownState == false) {
   //     setDropdownText('နေမကောင်းဖြစ်')
@@ -60,6 +65,7 @@ const Banner = () => {
         <AnimatePresence>
           {dropdownState && (
             <DropdownData
+              onClick={e => e.stopPropagation()}
               dropdownState={dropdownState}
               initial={{
                 opacity: 0,
@@ -79,13 +85,14 @@ const Banner = () => {
               }}>
               <PillWrapper>
                 {bannerpillData.map(pill => (
-                  <Pill
-                    key={pill.id}
-                    onMouseEnter={() => {
-                      HoverHandler(pill.issues)
-                    }}>
-                    {pill.issues}
-                  </Pill>
+                  <Link href={pill.path} key={pill.id} passHref>
+                    <Pill
+                      onMouseEnter={() => {
+                        HoverHandler(pill.issues)
+                      }}>
+                      {pill.issues}
+                    </Pill>
+                  </Link>
                 ))}
               </PillWrapper>
               <Link href='/categories/all' passHref>

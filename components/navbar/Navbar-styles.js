@@ -5,14 +5,17 @@ export const Header = styled.header`
   position: sticky;
   top: 0;
   z-index: 100;
-  box-shadow: ${({ theme }) => theme.boxShadows.nav};
+  box-shadow: ${({ theme, isScrolled }) => (isScrolled ? theme.boxShadows.nav : '')};
+  transition: all 0.2s ease-out;
 `
 
 export const Container = styled.div`
-  padding: 1em 7.81em;
+  /* padding: 1em 7.81em; */
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: ${({ isScrolled }) => (isScrolled ? '0.8em 7.81em' : '1.2em 7.81em')};
+  transition: all 0.2s ease-out;
 
   @media screen and (max-width: 980px) {
     padding: 1.56em 3.91em;

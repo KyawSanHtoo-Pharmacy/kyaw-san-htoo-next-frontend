@@ -20,32 +20,50 @@ import {
   Count,
   PriceWrapper,
 } from './ProductCard-styles'
+import { API_URL } from '@/ksh-config/index'
 
-export default function ProductCard({ availability }) {
+export default function ProductCard({ medicine }) {
+  const {
+    product_images,
+    product_other_names,
+    product_name_eng,
+    product_quantity,
+    product_price,
+    product_previous_price,
+    product_unit,
+    slug,
+    categories,
+  } = medicine
+  const isAvailable = product_quantity > 0
+
   return (
     <Item>
       <ImageWrapper>
-        <Image src='/temp/product-placeholder.jpg' alt='blah blah' layout='fill' />
+        <Image
+          src={`${API_URL}${product_images[Math.floor(Math.random() * 3)].formats.medium.url}`}
+          alt={`${product_name_eng} - ${product_other_names.mm} - ${product_other_names.nicknames}`}
+          layout='fill'
+        />
       </ImageWrapper>
       <ContentWrapper>
         <Content>
-          <MyanmarName>ဘိုင်အိုဂျက်ဆစ်</MyanmarName>
+          <MyanmarName>{product_other_names.mm}</MyanmarName>
           <Group>
-            <EnglishName>Biogesic</EnglishName>
-            <NoticePill availability={availability}>{availability ? 'ပစ္စည်း ရှိ' : 'ပစ္စည်း ကုန်'}</NoticePill>
+            <EnglishName>{product_name_eng}</EnglishName>
+            <NoticePill availability={isAvailable}>{isAvailable ? 'ပစ္စည်း ရှိ' : 'ပစ္စည်း ကုန်'}</NoticePill>
           </Group>
           <Group>
             <PriceWrapper>
               <Price>
-                <span>၅၀၀</span> ကျပ်/ <span>၁</span> ကဒ်
+                <span>{product_price}</span> ကျပ်/ <span>၁</span> {product_unit}
               </Price>
               <PreviousPrice>
-                <span>၆၀၀</span> ကျပ်
+                <span>{product_previous_price}</span> ကျပ်
               </PreviousPrice>
             </PriceWrapper>
           </Group>
         </Content>
-        <Link href='/categories/chaung-soe-pyout-say/biogesic' passHref>
+        <Link href={`/categories/${categories[0].slug}/${slug}`} passHref>
           <Button>အသေးစိတ် ကြည့်မယ်</Button>
         </Link>
       </ContentWrapper>

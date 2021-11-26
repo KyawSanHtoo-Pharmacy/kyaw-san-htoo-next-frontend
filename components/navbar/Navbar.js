@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
@@ -8,15 +8,22 @@ import { Header, Container, Group, NavLink, Logo, Button, Icon, MobileMenuButton
 import { CartStates } from '@/ksh-contexts/Cart-Context'
 
 export default function Navbar() {
-  const [cartVisibile, setCartVisible] = useContext(CartStates)
+  const [_, setCartVisible] = useContext(CartStates)
   const CartButtonHandler = () => {
     setCartVisible(true)
   }
 
+  const [isScrolled, setIsScrolled] = useState(false)
+  const updateScrollState = () => (window.scrollY > 0 ? setIsScrolled(true) : setIsScrolled(false))
+  useEffect(() => {
+    document.addEventListener('scroll', updateScrollState)
+    return () => document.removeEventListener('scroll', updateScrollState)
+  }, [])
+
   const router = useRouter()
   return (
-    <Header>
-      <Container as='nav'>
+    <Header isScrolled={isScrolled}>
+      <Container as='nav' isScrolled={isScrolled}>
         <Group>
           {navLinks.map(link => (
             <Link href={link.path} key={link.id} passHref>

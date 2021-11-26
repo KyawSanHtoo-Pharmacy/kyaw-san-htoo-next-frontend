@@ -5,11 +5,11 @@ import { CtaSection } from '@/ksh-components'
 import BannerContainer from '@/ksh-containers/BannerContainer'
 import { API_URL } from '@/ksh-config/index'
 
-export default function HomePage({ testimonials }) {
+export default function HomePage({ testimonials, categories }) {
   return (
     <>
       <BannerContainer />
-      <CategoryCardContainer />
+      <CategoryCardContainer categories={categories} />
       <JumbotronContainer />
       <TestimonialContainer testimonials={testimonials} />
       <CtaSection />
@@ -18,11 +18,14 @@ export default function HomePage({ testimonials }) {
 }
 
 export async function getStaticProps() {
-  const resp = await fetch(`${API_URL}/testimonials`)
-  const testimonials = await resp.json()
+  const testimonialsResp = await fetch(`${API_URL}/testimonials`)
+  const testimonials = await testimonialsResp.json()
+
+  const categoriesResp = await fetch(`${API_URL}/categories`)
+  const categories = await categoriesResp.json()
 
   return {
-    props: { testimonials },
+    props: { testimonials, categories },
     revalidate: 1,
   }
 }

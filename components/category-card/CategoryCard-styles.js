@@ -16,6 +16,7 @@ export const Item = styled.div`
   flex-direction: column;
   align-items: center;
   position: relative;
+  cursor: pointer;
 
   &::before {
     content: '';
