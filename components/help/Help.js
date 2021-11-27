@@ -1,4 +1,4 @@
-import {useEffect, useRef} from 'react'
+import {useEffect} from 'react'
 import { GlobalContainer } from '@/ksh-styles/GlobalStyles'
 import React from 'react'
 import Image from 'next/image'
