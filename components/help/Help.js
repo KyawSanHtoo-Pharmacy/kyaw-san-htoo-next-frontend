@@ -6,16 +6,15 @@ import { LeftColumn, Helpwrapper, Menu, Menuheading, Menulist, MenuItem, Content
 function Help() {
     
     useEffect( () => {
-
+        console.log('component mount')
             const option = {
-                root : document.querySelector('#Gcontainer'),
-                threshold : 1.0,
-                 rootMargin: '0% 0px -80% 0px'
+                 rootMargin: '0% 0px -95% 0px', 
             }    
 
-            const observer = new IntersectionObserver( function (entries, observer) {
+            const observer = new IntersectionObserver( function (entries) {
                 entries.forEach(entry => {
                     const id = entry.target.getAttribute('id')
+
                     if(entry.intersectionRatio > 0) {
                         document.querySelector(`nav li a[href="#${id}"]`).parentElement.style.color = "#5ABEAE";
                         console.log(entry)
@@ -23,24 +22,20 @@ function Help() {
                     else{
                         document.querySelector(`nav li a[href="#${id}"]`).parentElement.style.color = "unset";
                     }
-                    
-                        // document.querySelector(`nav li a[href="#${id}"]`).parentElement.style.color = "green";
-                        // console.log(document.querySelector(`nav li a[href="#${id}"]`));
-
                 })
             } , option);
 
             document.querySelectorAll('.contents').forEach(content => {
                 observer.observe(content);
             })
-          
+            return () => {observer.disconnect(), console.log('component unmount')}; //componentdie
     }, [] )
-
 
     return (
         <>
         <GlobalContainer  id="Gcontainer" >
             <Helpwrapper >
+
                 <LeftColumn>
                 <Menu aria-label="Table of contents" >
                     <Menuheading>ဝပ်ဆိုက်ဒ် အသုံးပြုနည်း</Menuheading>
@@ -52,8 +47,8 @@ function Help() {
                     </Menulist>
                 </Menu>
                 </LeftColumn>
-                <Content  >
 
+                <Content>
                 <ContentWrapper id = "content-1" className="contents scrollArea"  >
                     <ContentHeading id="initial-header" >ဆေးတွေ ဘယ်လိုရှာမလဲ</ContentHeading>
                     <InstructionsWrapper>
@@ -111,8 +106,8 @@ function Help() {
                     </Instructions>
                     </InstructionsWrapper>
                 </ContentWrapper>
-
                 </Content>
+
             </Helpwrapper>
         </GlobalContainer>
         </>
