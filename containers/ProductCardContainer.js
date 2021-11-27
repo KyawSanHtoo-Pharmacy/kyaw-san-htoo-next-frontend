@@ -1,23 +1,11 @@
-import { ProductCard, SearchBar, ProductFilter } from '@/ksh-components'
+import { ProductCard } from '@/ksh-components'
 import { GlobalContainer } from '@/ksh-styles/GlobalStyles'
 
-export default function ProductCardContainer({ medicines, count, category }) {
+export default function ProductCardContainer({ medicines }) {
   return (
     <ProductCard.Section>
-      <GlobalContainer>
-        <SearchBar.Container>
-          <SearchBar />
-          <ProductFilter />
-        </SearchBar.Container>
-
-        <ProductCard.InfoBar>
-          <ProductCard.CategoryName>{category}</ProductCard.CategoryName>
-          <ProductCard.Count>
-            ရလဒ်ပေါင်း <span className='mm-number'>{count}</span>
-          </ProductCard.Count>
-        </ProductCard.InfoBar>
-
-        <ProductCard.Frame>
+      <GlobalContainer style={{ paddingTop: '0' }}>
+        <ProductCard.Frame mt='0'>
           {medicines.map(medicine => (
             <ProductCard key={medicine.id} medicine={medicine} />
           ))}

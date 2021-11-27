@@ -10,7 +10,7 @@ export const ContactWrapper = styled.section`
 
 export const ContactImg = styled.div`
   flex: 1;
-  height: 74.7vh;
+  height: calc(100vh - 13em);
   position: relative;
 
   @media only screen and (max-width: 650px) {

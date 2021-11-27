@@ -1,10 +1,26 @@
 import ProductCardContainer from '@/ksh-containers/ProductCardContainer'
+import { ProductCard, SearchBar, ProductFilter } from '@/ksh-components'
+import { GlobalContainer } from '@/ksh-styles/GlobalStyles'
 import { API_URL } from '@/ksh-config/index'
 
 export default function AllMedicinePage({ medicines, count, category }) {
   return (
     <>
-      <ProductCardContainer medicines={medicines} count={count} category={category} />
+      <GlobalContainer>
+        <SearchBar.Container>
+          <SearchBar />
+          <ProductFilter />
+        </SearchBar.Container>
+
+        <ProductCard.InfoBar>
+          <ProductCard.CategoryName>{category}</ProductCard.CategoryName>
+          <ProductCard.Count>
+            ရလဒ်ပေါင်း <span className='mm-number'>{count}</span>
+          </ProductCard.Count>
+        </ProductCard.InfoBar>
+      </GlobalContainer>
+
+      <ProductCardContainer medicines={medicines} />
     </>
   )
 }

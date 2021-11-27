@@ -128,6 +128,16 @@ export const GlobalStyles = createGlobalStyle`${css`
   .swiper-pagination-bullet-active {
     transform: scaleX(1.5);
   }
+
+  #nprogress .bar {
+  background: ${({ theme }) => theme.colors.heading}; !important;
+  height: 3px !important;
+}
+
+#nprogress .peg {
+  box-shadow: 0 0 10px ${({ theme }) => theme.colors.heading};, 0 0 5px ${({ theme }) =>
+  theme.colors.heading}; !important;
+}
 `}
 
 

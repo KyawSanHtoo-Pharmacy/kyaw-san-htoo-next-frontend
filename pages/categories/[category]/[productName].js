@@ -59,7 +59,7 @@ export async function getStaticProps({ params: { productName, category } }) {
       medicine_details: medicine[0].product_details,
       medicine_info: {
         product_name_eng: medicine[0].product_name_eng,
-        product_name_mm: medicine[0].product_other_names.mm,
+        product_name_mm: medicine[0].product_name_mm,
         product_company: medicine[0].product_company,
         product_unit: medicine[0].product_unit,
         product_price: medicine[0].product_price,

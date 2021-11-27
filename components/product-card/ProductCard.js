@@ -25,8 +25,9 @@ import { API_URL } from '@/ksh-config/index'
 export default function ProductCard({ medicine }) {
   const {
     product_images,
-    product_other_names,
     product_name_eng,
+    product_name_mm,
+    product_nicknames,
     product_quantity,
     product_price,
     product_previous_price,
@@ -41,13 +42,13 @@ export default function ProductCard({ medicine }) {
       <ImageWrapper>
         <Image
           src={`${API_URL}${product_images[Math.floor(Math.random() * 3)].formats.medium.url}`}
-          alt={`${product_name_eng} - ${product_other_names.mm} - ${product_other_names.nicknames}`}
+          alt={`${product_name_eng} - ${product_name_mm} - ${product_nicknames}`}
           layout='fill'
         />
       </ImageWrapper>
       <ContentWrapper>
         <Content>
-          <MyanmarName>{product_other_names.mm}</MyanmarName>
+          <MyanmarName>{product_name_mm}</MyanmarName>
           <Group>
             <EnglishName>{product_name_eng}</EnglishName>
             <NoticePill availability={isAvailable}>{isAvailable ? 'ပစ္စည်း ရှိ' : 'ပစ္စည်း ကုန်'}</NoticePill>

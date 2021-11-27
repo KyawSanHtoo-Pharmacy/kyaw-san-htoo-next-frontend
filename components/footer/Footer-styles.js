@@ -58,6 +58,11 @@ export const Logo = styled.a`
   position: relative;
 `
 
+export const MiniLogo = styled(Logo)`
+  width: 2.4em;
+  height: 1.6em;
+`
+
 export const SocialIconWrapper = styled.div`
   display: flex;
   align-items: center;
