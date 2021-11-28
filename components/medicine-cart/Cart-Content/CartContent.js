@@ -20,6 +20,7 @@ import {
 } from './CartContent-Styles'
 import { Button } from '@/ksh-components'
 import { CartStates } from '@/ksh-contexts/Cart-Context'
+import { changeMyanNum } from '@/ksh-helpers'
 
 function CartContent({ nextPage, medicineToBuy, updateItemQuantity, handleQuantityChange }) {
   const [cartVisibile, setCartVisible] = useContext(CartStates)
@@ -68,14 +69,14 @@ function CartContent({ nextPage, medicineToBuy, updateItemQuantity, handleQuanti
               <Min onClick={() => updateItemQuantity(id, -1)}>-</Min>
               <QuantityShow
                 type='number'
-                value={quantity}
+                value={changeMyanNum(quantity)}
                 min='0'
                 onChange={e => handleQuantityChange(id, e.target.value)}
               />
               <Plus onClick={() => updateItemQuantity(id, 1)}>+</Plus>
             </ItemQuentity>
             <ItemCost>
-              <p>{price * quantity ? price * quantity : 0}</p>
+              <p>{price * quantity ? changeMyanNum(price * quantity) : changeMyanNum(0)}</p>
             </ItemCost>
           </ItemsWrapper>
         ))}

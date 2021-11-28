@@ -109,6 +109,7 @@ export const GlobalStyles = createGlobalStyle`${css`
   }
 
   .swiper {
+    /* overflow-y: scroll; */
   }
 
   .swiper-button-next,
@@ -117,12 +118,16 @@ export const GlobalStyles = createGlobalStyle`${css`
   }
 
   .swiper-pagination {
+    margin-bottom: -80px;
   }
 
   .swiper-pagination-bullet {
     background: ${({ theme }) => theme.colors.heading};
     transition: all 0.2s ease-out;
     border-radius: 0.2em;
+    width: 20px;
+    height: 20px;
+    
   }
 
   .swiper-pagination-bullet-active {
@@ -130,17 +135,13 @@ export const GlobalStyles = createGlobalStyle`${css`
   }
 
   #nprogress .bar {
-  background: ${({ theme }) => theme.colors.heading}; !important;
-  height: 3px !important;
-}
+    background: ${({ theme }) => theme.colors.heading}; !important;
+    height: 3px !important;
+  }
 
-#nprogress .peg {
-  box-shadow: 0 0 10px ${({ theme }) => theme.colors.heading};, 0 0 5px ${({ theme }) =>
+  #nprogress .peg {
+    box-shadow: 0 0 10px ${({ theme }) => theme.colors.heading};, 0 0 5px ${({ theme }) =>
   theme.colors.heading}; !important;
-}
-`}
-
-
-       
-
+  }
+`}  
 `

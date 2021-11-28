@@ -1,4 +1,4 @@
-import styled, { keyframes, css } from 'styled-components'
+import styled from 'styled-components'
 
 export const StyledButton = styled.button`
   padding: 1.02em 3.13em;

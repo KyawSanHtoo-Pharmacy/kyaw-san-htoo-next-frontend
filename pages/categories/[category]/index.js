@@ -2,6 +2,7 @@ import ProductCardContainer from '@/ksh-containers/ProductCardContainer'
 import { ProductCard, SearchBar, ProductFilter } from '@/ksh-components'
 import { GlobalContainer } from '@/ksh-styles/GlobalStyles'
 import { API_URL } from '@/ksh-config/index'
+import { changeMyanNum } from '@/ksh-helpers'
 
 export default function AllMedicinePage({ medicines, count, category }) {
   return (
@@ -15,7 +16,7 @@ export default function AllMedicinePage({ medicines, count, category }) {
         <ProductCard.InfoBar>
           <ProductCard.CategoryName>{category}</ProductCard.CategoryName>
           <ProductCard.Count>
-            ရလဒ်ပေါင်း <span className='mm-number'>{count}</span>
+            ရလဒ်ပေါင်း <span className='mm-number'>{changeMyanNum(count)}</span>
           </ProductCard.Count>
         </ProductCard.InfoBar>
       </GlobalContainer>
@@ -43,17 +44,20 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params: { category } }) {
-  const resp = await fetch(`${API_URL}/medicines?categories.slug_contains=${category === 'all' ? '' : category}`)
-  const categoryData = await resp.json()
+  const URL_TO_FETCH =
+    category === 'all' ? `${API_URL}/medicines` : `${API_URL}/medicines?categories.slug_contains=${category}`
 
-  const categoryResp = await fetch(`${API_URL}/categories?slug=${category}`)
-  const singleCategory = await categoryResp.json()
+  const REQUESTS = [fetch(URL_TO_FETCH), fetch(`${API_URL}/categories?slug=${category}`)]
+  const [medicinesResp, singleCategoryResp] = await Promise.all(REQUESTS)
+  const categoryData = await medicinesResp.json()
+  const singleCategory = await singleCategoryResp.json()
 
   return {
     props: {
       medicines: categoryData,
       count: categoryData.length,
-      category: category === 'all' ? 'ဆေးအားလုံး' : singleCategory[0].category_name_mm,
+      // I dont know why this check for singleCategory[0] is needed, but to fix the error in console :((
+      category: category === 'all' ? 'ဆေးအားလုံး' : singleCategory[0] ? singleCategory[0].category_name_mm : null,
     },
   }
 }

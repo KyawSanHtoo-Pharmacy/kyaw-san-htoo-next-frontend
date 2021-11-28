@@ -1,6 +1,11 @@
 import { Accordion, ProductDetails } from '@/ksh-components'
 
 export default function ProductDetailsInfoContainer({ medicine_details, medicine_info }) {
+  // I dont know why this check is needed, but to fix the error in console :((
+  if (!medicine_details || !medicine_info) {
+    return null
+  }
+
   const { description, benefits, side_effects, doctor_suggestions, how_to, warnings } = medicine_details
 
   return (

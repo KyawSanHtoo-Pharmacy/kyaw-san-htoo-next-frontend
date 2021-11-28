@@ -16,7 +16,11 @@ function contact() {
   return (
     <ContactWrapper>
       <ContactImg>
-        <Image src='/temp/contact-placeholder.jpg' layout='fill' alt='kyaw-san-htoo-pharmacy' />
+        <Image
+          src='https://res.cloudinary.com/kyawsanhtoo-pharmacy/image/upload/v1638100159/243724047_165332972421422_8626863540491597743_n_6cc9e8521e.jpg'
+          layout='fill'
+          alt='kyaw-san-htoo-pharmacy'
+        />
       </ContactImg>
       <ContactContent>
         <UpperContent>

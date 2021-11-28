@@ -3,8 +3,9 @@ import { ImageShowcase, ProductCard } from '@/ksh-components'
 import ProductDetailsInfoContainer from '@/ksh-containers/ProductDetailsInfoContainer'
 import { API_URL } from '@/ksh-config/index'
 import { GlobalContainer } from '@/ksh-styles/GlobalStyles'
+import { memo } from 'react'
 
-export default function ProductDetailsPage({ medicine_images, medicine_details, medicine_info, relatedMedicines }) {
+function ProductDetailsPage({ medicine_images, medicine_details, medicine_info, relatedMedicines }) {
   return (
     <>
       <ProductDetails>
@@ -27,6 +28,8 @@ export default function ProductDetailsPage({ medicine_images, medicine_details, 
     </>
   )
 }
+
+export default memo(ProductDetailsPage)
 
 export async function getStaticPaths() {
   const resp = await fetch(`${API_URL}/medicines`)
@@ -55,14 +58,14 @@ export async function getStaticProps({ params: { productName, category } }) {
 
   return {
     props: {
-      medicine_images: medicine[0].product_images,
-      medicine_details: medicine[0].product_details,
+      medicine_images: medicine[0] ? medicine[0].product_images : null,
+      medicine_details: medicine[0] ? medicine[0].product_details : null,
       medicine_info: {
-        product_name_eng: medicine[0].product_name_eng,
-        product_name_mm: medicine[0].product_name_mm,
-        product_company: medicine[0].product_company,
-        product_unit: medicine[0].product_unit,
-        product_price: medicine[0].product_price,
+        product_name_eng: medicine[0] ? medicine[0].product_name_eng : null,
+        product_name_mm: medicine[0] ? medicine[0].product_name_mm : null,
+        product_company: medicine[0] ? medicine[0].product_company : null,
+        product_unit: medicine[0] ? medicine[0].product_unit : null,
+        product_price: medicine[0] ? medicine[0].product_price : null,
       },
       relatedMedicines: relatedMedicines.filter(medicine => medicine.slug !== productName),
     },

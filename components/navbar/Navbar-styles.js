@@ -66,9 +66,10 @@ export const NavLink = styled.a`
 `
 
 export const Logo = styled.a`
-  width: 15em;
-  height: 2.3em;
+  width: ${({ isScrolled }) => (isScrolled ? '14em' : '15em')};
+  height: ${({ isScrolled }) => (isScrolled ? '2.2em' : '2.3em')};
   position: relative;
+  transition: all 0.2s ease-out;
 `
 
 export const Button = styled.button`
