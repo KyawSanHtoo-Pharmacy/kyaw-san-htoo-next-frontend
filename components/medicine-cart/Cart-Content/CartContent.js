@@ -22,7 +22,7 @@ import { Button } from '@/ksh-components'
 import { CartStates } from '@/ksh-contexts/Cart-Context'
 
 function CartContent({ nextPage, medicineToBuy, updateItemQuantity, handleQuantityChange }) {
-  const [cartVisibile, setCartVisible] = useContext(CartStates)
+  const [cartVisibile, setCartVisible] = useContext(CartStates).visibility 
   const BackHandler = () => {
     setCartVisible(!cartVisibile)
   }

@@ -5,22 +5,25 @@ import { CartWrapper, Inner, BlurOverlay } from './Cart-Styles'
 import { CartStates } from '@/ksh-contexts/Cart-Context'
 import { AnimatePresence } from 'framer-motion'
 
-const list = [
-  { id: 1, image: '/temp/product-placeholder.jpg', name: 'ဆောလ်မျုစ်', quantity: 2, price: '800' },
-  { id: 2, image: '/temp/product-placeholder.jpg', name: 'ဆောလ်မျုစ်', quantity: 4, price: '800' },
-  { id: 3, image: '/temp/product-placeholder.jpg', name: 'ဆောလ်မျုစ်', quantity: 1, price: '800' },
-  { id: 4, image: '/temp/product-placeholder.jpg', name: 'ဆောလ်မျုစ်', quantity: 1, price: '800' },
-  { id: 5, image: '/temp/product-placeholder.jpg', name: 'ဆောလ်မျုစ်', quantity: 1, price: '800' },
-  { id: 6, image: '/temp/product-placeholder.jpg', name: 'ဆောလ်မျုစ်', quantity: 1, price: '800' },
-  { id: 7, image: '/temp/product-placeholder.jpg', name: 'ဆောလ်မျုစ်', quantity: 1, price: '800' },
-  { id: 8, image: '/temp/product-placeholder.jpg', name: 'ဆောလ်မျုစ်', quantity: 1, price: '800' },
-  { id: 9, image: '/temp/product-placeholder.jpg', name: 'ဆောလ်မျုစ်', quantity: 1, price: '800' },
-  { id: 10, image: '/temp/product-placeholder.jpg', name: 'ဆောလ်မျုစ်', quantity: 1, price: '800' },
-]
+// const list = [
+//   { id: 1, image: '/temp/product-placeholder.jpg', name: 'ဆောလ်မျုစ်', quantity: 2, price: '800' },
+//   { id: 2, image: '/temp/product-placeholder.jpg', name: 'ဆောလ်မျုစ်', quantity: 4, price: '800' },
+//   { id: 3, image: '/temp/product-placeholder.jpg', name: 'ဆောလ်မျုစ်', quantity: 1, price: '800' },
+//   { id: 4, image: '/temp/product-placeholder.jpg', name: 'ဆောလ်မျုစ်', quantity: 1, price: '800' },
+//   { id: 5, image: '/temp/product-placeholder.jpg', name: 'ဆောလ်မျုစ်', quantity: 1, price: '800' },
+//   { id: 6, image: '/temp/product-placeholder.jpg', name: 'ဆောလ်မျုစ်', quantity: 1, price: '800' },
+//   { id: 7, image: '/temp/product-placeholder.jpg', name: 'ဆောလ်မျုစ်', quantity: 1, price: '800' },
+//   { id: 8, image: '/temp/product-placeholder.jpg', name: 'ဆောလ်မျုစ်', quantity: 1, price: '800' },
+//   { id: 9, image: '/temp/product-placeholder.jpg', name: 'ဆောလ်မျုစ်', quantity: 1, price: '800' },
+//   { id: 10, image: '/temp/product-placeholder.jpg', name: 'ဆောလ်မျုစ်', quantity: 1, price: '800' },
+// ]
 
 function Cart() {
-  const [medicineToBuy, setMedicineToBuy] = useState(list)
-  const [cartVisibile] = useContext(CartStates) //call the context
+  const value = useContext(CartStates);
+
+  const [medicineToBuy, setMedicineToBuy] = value.itemsInCart
+  const [cartVisibile] = value.visibility //call the context
+
   const [pages, setPages] = useState(1)
   const nextPage = () => {
     setPages(pages + 1)
