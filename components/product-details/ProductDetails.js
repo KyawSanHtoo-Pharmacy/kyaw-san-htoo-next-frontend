@@ -10,12 +10,6 @@ import {
   PaleText,
 } from './ProductDetails-styles'
 import { Counter, Button } from '@/ksh-components'
-<<<<<<< HEAD
-
-export default function ProductDetails({ medicine_info }) {
-  const { product_name_eng, product_name_mm, product_company, product_unit, product_price } = medicine_info
-
-=======
 import { CartStates } from '@/ksh-contexts/Cart-Context'
 export default function ProductDetails() {
 
@@ -30,7 +24,6 @@ export default function ProductDetails() {
     quantity: 10,
     price: '80000'
   }
->>>>>>> implementing-cart
   return (
     <Container>
       <MyanmarName>{product_name_mm}</MyanmarName>

@@ -8,12 +8,8 @@ import { Header, Container, Group, NavLink, Logo, Button, Icon, MobileMenuButton
 import { CartStates } from '@/ksh-contexts/Cart-Context'
 
 export default function Navbar() {
-<<<<<<< HEAD
-  const [_, setCartVisible] = useContext(CartStates)
-=======
   const [cartVisibile, setCartVisible] = useContext(CartStates).visibility
 
->>>>>>> implementing-cart
   const CartButtonHandler = () => {
     setCartVisible(true)
   }
