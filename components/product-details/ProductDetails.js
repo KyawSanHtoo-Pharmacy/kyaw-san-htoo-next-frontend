@@ -11,7 +11,9 @@ import {
 } from './ProductDetails-styles'
 import { Counter, Button } from '@/ksh-components'
 import { CartStates } from '@/ksh-contexts/Cart-Context'
+import { changeMyanNum } from '@/ksh-helpers'
 export default function ProductDetails() {
+
 
   const value = useContext(CartStates);
   const {dispatch} = useContext(CartStates)
@@ -45,7 +47,7 @@ export default function ProductDetails() {
         <VerticleGroup>
           <Label>ကျသင့်ငွေ</Label>
           <InfoText>
-            <span className='mm-number'>{product_price}</span> ကျပ်
+            <span className='mm-number'>{changeMyanNum(product_price)}</span> ကျပ်
           </InfoText>
         </VerticleGroup>
       </HorizontalGroup>

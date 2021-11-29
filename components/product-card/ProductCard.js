@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { NoticePill } from '@/ksh-components'
+import { changeMyanNum } from '@/ksh-helpers'
 import {
   Section,
   Heading,
@@ -20,13 +21,13 @@ import {
   Count,
   PriceWrapper,
 } from './ProductCard-styles'
-import { API_URL } from '@/ksh-config/index'
 
 export default function ProductCard({ medicine }) {
   const {
     product_images,
-    product_other_names,
     product_name_eng,
+    product_name_mm,
+    product_nicknames,
     product_quantity,
     product_price,
     product_previous_price,
@@ -39,15 +40,18 @@ export default function ProductCard({ medicine }) {
   return (
     <Item>
       <ImageWrapper>
+        {/* not sure bluring image works or not, just test */}
         <Image
-          src={`${API_URL}${product_images[Math.floor(Math.random() * 3)].formats.medium.url}`}
-          alt={`${product_name_eng} - ${product_other_names.mm} - ${product_other_names.nicknames}`}
+          src={product_images[0].formats.medium.url}
+          alt={`${product_name_eng} - ${product_name_mm} - ${product_nicknames}`}
           layout='fill'
+          placeholder='blur'
+          blurDataURL={product_images[0].hash}
         />
       </ImageWrapper>
       <ContentWrapper>
         <Content>
-          <MyanmarName>{product_other_names.mm}</MyanmarName>
+          <MyanmarName>{product_name_mm}</MyanmarName>
           <Group>
             <EnglishName>{product_name_eng}</EnglishName>
             <NoticePill availability={isAvailable}>{isAvailable ? 'ပစ္စည်း ရှိ' : 'ပစ္စည်း ကုန်'}</NoticePill>
@@ -55,10 +59,10 @@ export default function ProductCard({ medicine }) {
           <Group>
             <PriceWrapper>
               <Price>
-                <span>{product_price}</span> ကျပ်/ <span>၁</span> {product_unit}
+                <span>{changeMyanNum(product_price)}</span> ကျပ်/ <span>၁</span> {product_unit}
               </Price>
               <PreviousPrice>
-                <span>{product_previous_price}</span> ကျပ်
+                <span>{changeMyanNum(product_previous_price)}</span> ကျပ်
               </PreviousPrice>
             </PriceWrapper>
           </Group>

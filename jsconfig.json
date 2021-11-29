@@ -7,7 +7,7 @@
       "@/ksh-containers/*": ["containers/*"],
       "@/ksh-contexts/*": ["contexts/*"],
       "@/ksh-data/*": ["data/*"],
-      "@/ksh-utils/*": ["utils/*"],
+      "@/ksh-helpers": ["helpers/index"],
       "@/ksh-styles/*": ["styles/*"],
       "@/ksh-theme/*": ["theme/*"],
       "@/ksh-config/*": ["config/*"]

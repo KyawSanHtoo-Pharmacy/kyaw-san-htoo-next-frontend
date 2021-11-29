@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { StyledFooter, Container, GroupWrapper, Group, InfoText, Logo } from './Footer-styles'
+import { StyledFooter, Container, GroupWrapper, Group, InfoText, MiniLogo } from './Footer-styles'
 
 export default function MinimalFooter() {
   return (
@@ -9,9 +9,9 @@ export default function MinimalFooter() {
         <GroupWrapper>
           <Group>
             <Link href='/' passHref>
-              <Logo>
-                <Image src='/logos/kyaw-san-htoo-logo-landscape.svg' layout='fill' alt='kyaw-san-htoo-logo' />
-              </Logo>
+              <MiniLogo>
+                <Image src='/logos/kyaw-san-htoo-logo-mini.svg' layout='fill' alt='kyaw-san-htoo-logo' />
+              </MiniLogo>
             </Link>
           </Group>
           <Group>

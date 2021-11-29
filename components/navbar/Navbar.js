@@ -35,7 +35,7 @@ export default function Navbar() {
 
         <Group>
           <Link href='/' passHref>
-            <Logo>
+            <Logo isScrolled={isScrolled}>
               <Image src='/logos/kyaw-san-htoo-logo-landscape.svg' layout='fill' alt='kyaw-san-htoo-logo' />
             </Logo>
           </Link>

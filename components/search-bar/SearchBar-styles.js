@@ -31,7 +31,7 @@ export const Input = styled.input`
   width: 100%;
   font-size: 1.25em;
   font-family: inherit;
-  padding: 1em 2em;
+  padding: 1em 1.5em;
   background-color: ${({ theme }) => theme.colors.offWhite};
   color: ${({ theme }) => theme.colors.text};
   border-radius: 100vw;

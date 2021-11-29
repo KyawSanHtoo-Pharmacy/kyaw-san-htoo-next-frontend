@@ -1,7 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { Section, Heading, Frame, Item, ImageWrapper, ContentWrapper, CategoryName } from './CategoryCard-styles'
-import { API_URL } from '@/ksh-config/index'
 
 export default function CategoryCard({ category }) {
    const { category_name_eng, category_name_mm, slug, category_image } = category
@@ -10,13 +9,16 @@ export default function CategoryCard({ category }) {
   return (
     <Link href={`/categories/${slug}`} passHref>
       <Item>
-        {/* <ImageWrapper>
+        <ImageWrapper>
+          {/* not sure bluring image works or not, just test */}
           <Image
-            src={`${API_URL}${category_image.formats.medium.url}`}
+            src={category_image.formats.medium.url}
             layout='fill'
             alt={`${category_name_eng} - ${category_name_mm}`}
+            placeholder='blur'
+            blurDataURL={category_image.hash}
           />
-        </ImageWrapper> */}
+        </ImageWrapper> 
         <ContentWrapper>
           <CategoryName>{category_name_mm}</CategoryName>
         </ContentWrapper>
