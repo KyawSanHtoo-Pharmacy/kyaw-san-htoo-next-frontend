@@ -11,7 +11,7 @@ export const cartReducer = (state, action) => {
                         if(med.id === id) {
                           const newq =  med.quantity += quantity
                           console.log("id same detected!")
-                          return {...med, quanity : newq}
+                          return {...med, quanity : newq} 
                         }else{
                           return med
                         }

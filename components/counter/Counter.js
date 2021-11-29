@@ -2,8 +2,8 @@ import { useState } from 'react'
 import { Container, Button, Amount } from './Counter-styles'
 import { changeMyanNum } from '@/ksh-helpers'
 
-export default function Counter({ product_unit }) {
-  const [amount, setAmount] = useState(1)
+export default function Counter({ product_unit, setAmount, amount }) {
+  // const [amount, setAmount] = useState(1)
   return (
     <Container>
       <Button onClick={() => amount > 1 && setAmount(prev => prev - 1)}>

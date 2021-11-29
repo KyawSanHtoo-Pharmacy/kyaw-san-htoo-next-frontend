@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import {
   Container,
   MyanmarName,
@@ -12,20 +12,28 @@ import {
 import { Counter, Button } from '@/ksh-components'
 import { CartStates } from '@/ksh-contexts/Cart-Context'
 import { changeMyanNum } from '@/ksh-helpers'
-export default function ProductDetails() {
-
+export default function ProductDetails({ medicine_info }) {
+  const {product_image,  product_id, product_name_eng, product_name_mm, product_company, product_unit, product_price } = medicine_info
+  const [amount, setAmount] = useState(1)
 
   const value = useContext(CartStates);
   const {dispatch} = useContext(CartStates)
-  console.log(dispatch);
+  const [,setCartVisible] = value.visibility
+
 
   const newItem = {
-    id : 11,
-    image: '/temp/product-placeholder.jpg',
-    name: 'ဆောလ်မျုစ်',
-    quantity: 10,
-    price: '80000'
+    id : product_id,
+    image: product_image,
+    name: product_name_mm,
+    quantity: amount,
+    price: product_price * amount
   }
+
+
+  const clickHanlder = () => {
+    setCartVisible(true);
+  }
+
   return (
     <Container>
       <MyanmarName>{product_name_mm}</MyanmarName>
@@ -42,17 +50,22 @@ export default function ProductDetails() {
       <HorizontalGroup>
         <VerticleGroup>
           <Label>ပမာဏ</Label>
-          <Counter product_uni={product_unit} />
+          <Counter amount = {amount} setAmount = {setAmount} product_uni={product_unit} />
         </VerticleGroup>
         <VerticleGroup>
           <Label>ကျသင့်ငွေ</Label>
           <InfoText>
-            <span className='mm-number'>{changeMyanNum(product_price)}</span> ကျပ်
+            <span className='mm-number'>{changeMyanNum(product_price * amount )}</span> ကျပ်
           </InfoText>
         </VerticleGroup>
       </HorizontalGroup>
       <Button 
-      onClick = { () => dispatch({type : 'ADD_TO_CART', newItem} )} 
+      onClick = { () => 
+                  {
+                   dispatch({type : 'ADD_TO_CART', newItem})
+                   setCartVisible(true);
+                  } 
+                }  
       >
         <span>ဝယ်မယ့် စာရင်းထဲ ထည့်မယ်</span>
       </Button>
