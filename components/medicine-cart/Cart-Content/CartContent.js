@@ -70,7 +70,7 @@ function CartContent({ nextPage, medicineToBuy }) {
             </ItemsToBuy>
             <ItemQuentity>
               <Min 
-              onClick = { () => dispatch({type : 'updateItemQuantity', dec : {id : id, decamt : -1 } }) }
+              onClick = { () => dispatch({type : 'updateItemQuantity', payload : {id : id, amount : -1 } }) }
               >-</Min>
               <QuantityShow
                 type='number'
@@ -79,7 +79,7 @@ function CartContent({ nextPage, medicineToBuy }) {
                 onChange = { e => dispatch({type : 'handleQuantityChange', newQ : {id : id, val : e.target.value} }) }
               />
               <Plus 
-                onClick = { () => dispatch({type : 'updateItemQuantity', dec : {id : id, decamt : 1 } }) }
+                onClick = { () => dispatch({type : 'updateItemQuantity', payload : {id : id, amount : 1 } }) }
               >+</Plus>
             </ItemQuentity>
             <ItemCost>

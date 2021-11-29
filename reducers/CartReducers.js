@@ -25,8 +25,8 @@ export const cartReducer = (state, action) => {
 //Case-2
         case 'updateItemQuantity' : 
                 const updatedMedicineToBuyList = state.map(item => {
-                const payloadId = action.dec.id
-                const PayloadAmount = action.dec.decamt
+                const payloadId = action.payload.id
+                const PayloadAmount = action.payload.amount
                 if (item.id === payloadId) {
                   return {
                     ...item,

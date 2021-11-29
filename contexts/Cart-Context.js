@@ -21,8 +21,6 @@ export const CartProvider = props => {
   const value = {
     visibility : [cartVisibile, setCartVisible],
     itemsInCart : [medicineToBuy],
-    // addToCart : addToCart
-    // dispatchFun : dispatch
     dispatch : dispatch
   }
 
