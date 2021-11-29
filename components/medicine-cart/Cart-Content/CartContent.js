@@ -21,8 +21,12 @@ import {
 import { Button } from '@/ksh-components'
 import { CartStates } from '@/ksh-contexts/Cart-Context'
 
-function CartContent({ nextPage, medicineToBuy, updateItemQuantity, handleQuantityChange }) {
-  const [cartVisibile, setCartVisible] = useContext(CartStates)
+function CartContent({ nextPage, medicineToBuy }) {
+  
+  const value = useContext(CartStates);
+  const {dispatch} = useContext(CartStates)
+  const [cartVisibile, setCartVisible] = value.visibility 
+
   const BackHandler = () => {
     setCartVisible(!cartVisibile)
   }
@@ -44,7 +48,7 @@ function CartContent({ nextPage, medicineToBuy, updateItemQuantity, handleQuanti
           </svg>
           <CartTitle>
             <span className='text'>ဆေးဝယ်စာရင်း</span>
-            <span className='number'>၃</span>
+            <span className='number'>{ medicineToBuy.length }</span>
           </CartTitle>
         </CartHeading>
 
@@ -60,19 +64,23 @@ function CartContent({ nextPage, medicineToBuy, updateItemQuantity, handleQuanti
           <ItemsWrapper key={id}>
             <ItemsToBuy>
               <ItemImg>
-                <Image src={image} layout='fill' alt={name} />
+                <Image src={image} layout='fill' alt={name} /> 
               </ItemImg>
               <ItemName>{name}</ItemName>
             </ItemsToBuy>
             <ItemQuentity>
-              <Min onClick={() => updateItemQuantity(id, -1)}>-</Min>
+              <Min 
+              onClick = { () => dispatch({type : 'updateItemQuantity', payload : {id : id, amount : -1 } }) }
+              >-</Min>
               <QuantityShow
                 type='number'
                 value={quantity}
-                min='0'
-                onChange={e => handleQuantityChange(id, e.target.value)}
+                min='0' 
+                onChange = { e => dispatch({type : 'handleQuantityChange', newQ : {id : id, val : e.target.value} }) }
               />
-              <Plus onClick={() => updateItemQuantity(id, 1)}>+</Plus>
+              <Plus 
+                onClick = { () => dispatch({type : 'updateItemQuantity', payload : {id : id, amount : 1 } }) }
+              >+</Plus>
             </ItemQuentity>
             <ItemCost>
               <p>{price * quantity ? price * quantity : 0}</p>

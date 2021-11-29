@@ -3,9 +3,18 @@ import styled from 'styled-components';
 export const Helpwrapper = styled.div`
     display: flex;
     position : relative;
+
+    @media only screen and (max-width: 700px) {
+        flex-direction: column;
+    }
+ 
 `
 export const LeftColumn = styled.div`
     flex : 1;
+    @media only screen and (max-width: 700px) {
+        margin-bottom: 5em;
+    }
+
 `
 export const Menu = styled.nav`
     top : 1.5em;
@@ -41,10 +50,19 @@ export const ContentHeading = styled.h1`
     top : 0;
     background-color: #ffffff;
     z-index : 50;
+
+    @media only screen and (max-width: 700px) {
+        font-size: 30px;
+    }
 `
 export const InstructionsWrapper = styled.div`
     margin-top: 40px;
     display : flex;
+
+    @media only screen and (max-width: 450px) {
+        flex-direction: column;
+        margin-top: 0px;
+    }
 `
 export const ImgColumn = styled.div`
     position : sticky;
@@ -52,11 +70,20 @@ export const ImgColumn = styled.div`
     width : 198px;
     height : 420px;
 
+    @media only screen and (max-width: 450px) {
+        top : 0;
+        position : relative;
+        margin : 20px auto;
+    }
+
 `
 export const StickyImg = styled.div``
 export const Instructions = styled.div`
     flex : 2;
     padding-left : 25px;
+    @media only screen and (max-width: 450px) {
+        padding-left : 0px;
+    }
 `
 export const StepWrapper = styled.div`
     margin : 0px 0px 25px;

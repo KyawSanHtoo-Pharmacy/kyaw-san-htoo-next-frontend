@@ -1,3 +1,4 @@
+import { useContext } from 'react'
 import {
   Container,
   MyanmarName,
@@ -9,10 +10,27 @@ import {
   PaleText,
 } from './ProductDetails-styles'
 import { Counter, Button } from '@/ksh-components'
+<<<<<<< HEAD
 
 export default function ProductDetails({ medicine_info }) {
   const { product_name_eng, product_name_mm, product_company, product_unit, product_price } = medicine_info
 
+=======
+import { CartStates } from '@/ksh-contexts/Cart-Context'
+export default function ProductDetails() {
+
+  const value = useContext(CartStates);
+  const {dispatch} = useContext(CartStates)
+  console.log(dispatch);
+
+  const newItem = {
+    id : 11,
+    image: '/temp/product-placeholder.jpg',
+    name: 'ဆောလ်မျုစ်',
+    quantity: 10,
+    price: '80000'
+  }
+>>>>>>> implementing-cart
   return (
     <Container>
       <MyanmarName>{product_name_mm}</MyanmarName>
@@ -38,7 +56,9 @@ export default function ProductDetails({ medicine_info }) {
           </InfoText>
         </VerticleGroup>
       </HorizontalGroup>
-      <Button>
+      <Button 
+      onClick = { () => dispatch({type : 'ADD_TO_CART', newItem} )} 
+      >
         <span>ဝယ်မယ့် စာရင်းထဲ ထည့်မယ်</span>
       </Button>
     </Container>
