@@ -1,3 +1,4 @@
+import { useContext } from 'react'
 import {
   Container,
   MyanmarName,
@@ -9,8 +10,19 @@ import {
   PaleText,
 } from './ProductDetails-styles'
 import { Counter, Button } from '@/ksh-components'
-
+import { CartStates } from '@/ksh-contexts/Cart-Context'
 export default function ProductDetails() {
+
+  const value = useContext(CartStates);
+  const addToCart = value.addToCart
+
+  const newItem = {
+    id : 11,
+    image: '/temp/product-placeholder.jpg',
+    name: 'ဆောလ်မျုစ်',
+    quantity: 10,
+    price: '80000'
+  }
   return (
     <Container>
       <MyanmarName>ဆောလ်မျုစ်</MyanmarName>
@@ -36,7 +48,7 @@ export default function ProductDetails() {
           </InfoText>
         </VerticleGroup>
       </HorizontalGroup>
-      <Button>
+      <Button onClick = { () => addToCart(newItem)} >
         <span>ဝယ်မယ့် စာရင်းထဲ ထည့်မယ်</span>
       </Button>
     </Container>

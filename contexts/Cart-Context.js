@@ -16,10 +16,36 @@ export const CartProvider = props => {
     { id: 9, image: '/temp/product-placeholder.jpg', name: 'ဆောလ်မျုစ်', quantity: 1, price: '800' },
     { id: 10, image: '/temp/product-placeholder.jpg', name: 'ဆောလ်မျုစ်', quantity: 1, price: '800' },
   ])
+  
+
+  const addToCart = (newItem) => {
+    const {id, quantity} = newItem
+    const isAlreadyInCart = medicineToBuy.some( med => med.id === id )
+
+    if(isAlreadyInCart) {
+      console.log("update ha!!!")
+        const updatedMed = medicineToBuy.map( med => {
+          if(med.id === id) {
+            const newq =  med.quantity += quantity
+            console.log("id same detected!")
+            return {...med, quanity : newq}
+          }else{
+            return med
+          }
+        } )
+        setMedicineToBuy(updatedMed);
+    }
+    else{
+      console.log("new new!!");
+      setMedicineToBuy([...medicineToBuy, newItem]);
+    }
+    
+   }
 
   const value = {
     visibility : [cartVisibile, setCartVisible],
-    itemsInCart : [medicineToBuy, setMedicineToBuy]
+    itemsInCart : [medicineToBuy, setMedicineToBuy],
+    addToCart : addToCart
   }
 
   return <CartStates.Provider value={value}>{props.children}</CartStates.Provider>

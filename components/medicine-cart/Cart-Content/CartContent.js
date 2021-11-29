@@ -22,7 +22,11 @@ import { Button } from '@/ksh-components'
 import { CartStates } from '@/ksh-contexts/Cart-Context'
 
 function CartContent({ nextPage, medicineToBuy, updateItemQuantity, handleQuantityChange }) {
-  const [cartVisibile, setCartVisible] = useContext(CartStates).visibility 
+  
+  const value = useContext(CartStates);
+
+  const [cartVisibile, setCartVisible] = value.visibility 
+
   const BackHandler = () => {
     setCartVisible(!cartVisibile)
   }
@@ -44,7 +48,7 @@ function CartContent({ nextPage, medicineToBuy, updateItemQuantity, handleQuanti
           </svg>
           <CartTitle>
             <span className='text'>ဆေးဝယ်စာရင်း</span>
-            <span className='number'>၃</span>
+            <span className='number'>{ medicineToBuy.length }</span>
           </CartTitle>
         </CartHeading>
 
