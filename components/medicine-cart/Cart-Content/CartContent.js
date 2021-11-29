@@ -21,10 +21,10 @@ import {
 import { Button } from '@/ksh-components'
 import { CartStates } from '@/ksh-contexts/Cart-Context'
 
-function CartContent({ nextPage, medicineToBuy, updateItemQuantity, handleQuantityChange }) {
+function CartContent({ nextPage, medicineToBuy }) {
   
   const value = useContext(CartStates);
-
+  const {dispatch} = useContext(CartStates)
   const [cartVisibile, setCartVisible] = value.visibility 
 
   const BackHandler = () => {
@@ -64,19 +64,23 @@ function CartContent({ nextPage, medicineToBuy, updateItemQuantity, handleQuanti
           <ItemsWrapper key={id}>
             <ItemsToBuy>
               <ItemImg>
-                <Image src={image} layout='fill' alt={name} />
+                <Image src={image} layout='fill' alt={name} /> 
               </ItemImg>
               <ItemName>{name}</ItemName>
             </ItemsToBuy>
             <ItemQuentity>
-              <Min onClick={() => updateItemQuantity(id, -1)}>-</Min>
+              <Min 
+              onClick = { () => dispatch({type : 'updateItemQuantity', dec : {id : id, decamt : -1 } }) }
+              >-</Min>
               <QuantityShow
                 type='number'
                 value={quantity}
-                min='0'
-                onChange={e => handleQuantityChange(id, e.target.value)}
+                min='0' 
+                onChange = { e => dispatch({type : 'handleQuantityChange', newQ : {id : id, val : e.target.value} }) }
               />
-              <Plus onClick={() => updateItemQuantity(id, 1)}>+</Plus>
+              <Plus 
+                onClick = { () => dispatch({type : 'updateItemQuantity', dec : {id : id, decamt : 1 } }) }
+              >+</Plus>
             </ItemQuentity>
             <ItemCost>
               <p>{price * quantity ? price * quantity : 0}</p>

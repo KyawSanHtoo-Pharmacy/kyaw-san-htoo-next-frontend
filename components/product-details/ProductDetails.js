@@ -14,7 +14,8 @@ import { CartStates } from '@/ksh-contexts/Cart-Context'
 export default function ProductDetails() {
 
   const value = useContext(CartStates);
-  const addToCart = value.addToCart
+  const {dispatch} = useContext(CartStates)
+  console.log(dispatch);
 
   const newItem = {
     id : 11,
@@ -48,7 +49,9 @@ export default function ProductDetails() {
           </InfoText>
         </VerticleGroup>
       </HorizontalGroup>
-      <Button onClick = { () => addToCart(newItem)} >
+      <Button 
+      onClick = { () => dispatch({type : 'ADD_TO_CART', newItem} )} 
+      >
         <span>ဝယ်မယ့် စာရင်းထဲ ထည့်မယ်</span>
       </Button>
     </Container>
