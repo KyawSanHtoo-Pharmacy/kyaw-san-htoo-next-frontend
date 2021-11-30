@@ -12,34 +12,36 @@ import {
 import { Counter, Button } from '@/ksh-components'
 import { CartStates } from '@/ksh-contexts/Cart-Context'
 import { changeMyanNum } from '@/ksh-helpers'
+import { useRouter } from 'next/router'
+
 export default function ProductDetails({ medicine_info }) {
+  const router = useRouter()
+
   const {
     product_image,
-    product_image_hash,
-    product_id,
+    product_images,
+    id,
     product_name_eng,
     product_name_mm,
     product_company,
     product_unit,
     product_price,
+    product_quantity,
+    medicine_to_compare,
+    slug,
   } = medicine_info
   const [amount, setAmount] = useState(1)
-
   const value = useContext(CartStates)
   const { dispatch } = useContext(CartStates)
   const [, setCartVisible] = value.visibility
 
   const newItem = {
-    id: product_id,
-    image: product_image,
+    id,
+    image: product_images[0].formats.thumbnail.url,
     name: product_name_mm,
     quantity: amount,
     price: product_price * amount,
-    hash: product_image_hash,
-  }
-
-  const clickHanlder = () => {
-    setCartVisible(true)
+    hash: product_images[0].hash,
   }
 
   return (
@@ -67,13 +69,23 @@ export default function ProductDetails({ medicine_info }) {
           </InfoText>
         </VerticleGroup>
       </HorizontalGroup>
-      <Button
-        onClick={() => {
-          dispatch({ type: 'ADD_TO_CART', newItem })
-          setCartVisible(true)
-        }}>
-        <span>ဝယ်မယ့် စာရင်းထဲ ထည့်မယ်</span>
-      </Button>
+      {product_quantity === '0' ? (
+        <Button
+          onClick={() => {
+            dispatch({ type: 'ADD_TO_CART', newItem })
+            setCartVisible(true)
+          }}>
+          <span>ဝယ်မယ့် စာရင်းထဲ ထည့်မယ်</span>
+        </Button>
+      ) : (
+        <Button
+          onClick={e => {
+            e.preventDefault()
+            router.push(`/compare?outstock=${slug}&instock=${medicine_to_compare}`)
+          }}>
+          <span>Compare ml ly </span>
+        </Button>
+      )}
     </Container>
   )
 }

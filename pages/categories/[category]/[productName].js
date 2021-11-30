@@ -60,16 +60,17 @@ export async function getStaticProps({ params: { productName, category } }) {
     props: {
       medicine_images: medicine[0] ? medicine[0].product_images : null,
       medicine_details: medicine[0] ? medicine[0].product_details : null,
-      medicine_info: {
-        product_image: medicine[0] ? medicine[0].product_images[0].formats.thumbnail.url : null,
-        product_image_hash: medicine[0] ? medicine[0].product_images[0].hash : null,
-        product_id: medicine[0] ? medicine[0].id : null,
-        product_name_eng: medicine[0] ? medicine[0].product_name_eng : null,
-        product_name_mm: medicine[0] ? medicine[0].product_name_mm : null,
-        product_company: medicine[0] ? medicine[0].product_company : null,
-        product_unit: medicine[0] ? medicine[0].product_unit : null,
-        product_price: medicine[0] ? medicine[0].product_price : null,
-      },
+      medicine_info: medicine[0] ? medicine[0] : 'null',
+      // medicine_info: {
+      //   product_image: medicine[0] ? medicine[0].product_images[0].formats.thumbnail.url : null,
+      //   product_image_hash: medicine[0] ? medicine[0].product_images[0].hash : null,
+      //   product_id: medicine[0] ? medicine[0].id : null,
+      //   product_name_eng: medicine[0] ? medicine[0].product_name_eng : null,
+      //   product_name_mm: medicine[0] ? medicine[0].product_name_mm : null,
+      //   product_company: medicine[0] ? medicine[0].product_company : null,
+      //   product_unit: medicine[0] ? medicine[0].product_unit : null,
+      //   product_price: medicine[0] ? medicine[0].product_price : null,
+      // },
       relatedMedicines: relatedMedicines.filter(medicine => medicine.slug !== productName),
     },
   }

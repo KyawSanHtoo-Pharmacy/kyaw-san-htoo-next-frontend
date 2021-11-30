@@ -3,6 +3,7 @@ import { ProductCard, SearchBar, ProductFilter } from '@/ksh-components'
 import { GlobalContainer } from '@/ksh-styles/GlobalStyles'
 import { API_URL } from '@/ksh-config/index'
 import qs from 'qs'
+import { changeMyanNum } from '@/ksh-helpers'
 
 export default function AllMedicinePage({ medicines, keyword }) {
   return (
@@ -16,7 +17,7 @@ export default function AllMedicinePage({ medicines, keyword }) {
         <ProductCard.InfoBar>
           <ProductCard.CategoryName>Search Result for: {keyword}</ProductCard.CategoryName>
           <ProductCard.Count>
-            ရလဒ်ပေါင်း <span className='mm-number'>{medicines.length}</span>
+            ရလဒ်ပေါင်း <span className='mm-number'>{changeMyanNum(medicines.length)}</span>
           </ProductCard.Count>
         </ProductCard.InfoBar>
       </GlobalContainer>

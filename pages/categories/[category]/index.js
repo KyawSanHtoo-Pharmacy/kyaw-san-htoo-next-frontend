@@ -57,7 +57,7 @@ export async function getStaticProps({ params: { category } }) {
       medicines: categoryData,
       count: categoryData.length,
       // I dont know why this check for singleCategory[0] is needed, but to fix the error in console :((
-      category: category === 'all' ? 'ဆေးအားလုံး' : singleCategory[0] ? singleCategory[0].category_name_mm : null,
+      category: category === 'all' ? 'ဆေးအားလုံး' : singleCategory[0] ? singleCategory[0].category_name_long : null,
     },
   }
 }

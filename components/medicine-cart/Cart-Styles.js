@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { motion } from 'framer-motion'
 
 export const CartWrapper = styled(motion.div)`
-  position: absolute;
+  position: fixed;
   right: 0;
   top: 0;
   width: 550px;

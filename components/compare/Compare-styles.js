@@ -1,7 +1,9 @@
 import styled from 'styled-components'
+import { FadeInKeyframe } from '@/ksh-styles/keyframes/fadeIn'
 
 export const Section = styled.section`
   margin-top: -4em;
+  ${FadeInKeyframe}
 `
 
 export const Frame = styled.div`
