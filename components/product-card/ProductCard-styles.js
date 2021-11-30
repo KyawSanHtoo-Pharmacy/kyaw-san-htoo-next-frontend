@@ -1,6 +1,9 @@
 import styled from 'styled-components'
+import { FadeInKeyframe } from '@/ksh-styles/keyframes/fadeIn'
 
-export const Section = styled.section``
+export const Section = styled.section`
+  ${FadeInKeyframe}
+`
 
 export const Heading = styled.h2`
   text-align: ${({ textAlign }) => textAlign || 'left'};
@@ -159,6 +162,7 @@ export const InfoBar = styled.div`
   padding-bottom: 0.8em;
   margin-top: 3.13em;
   border-bottom: 1px solid ${({ theme }) => theme.colors.dividerOne};
+  ${FadeInKeyframe}
 
   @media screen and (max-width: 1200px) {
     justify-content: space-between;

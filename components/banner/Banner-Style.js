@@ -1,6 +1,7 @@
 import styled, { keyframes, css } from 'styled-components'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
+import { FadeInKeyframe } from '@/ksh-styles/keyframes/fadeIn'
 
 export const BannerContainer = styled.section`
   min-height: calc(100vh - 6em);
@@ -8,6 +9,7 @@ export const BannerContainer = styled.section`
   align-items: center;
   justify-content: center;
   position: relative;
+  ${FadeInKeyframe}
 `
 
 export const BannerBackground = styled(Image)``

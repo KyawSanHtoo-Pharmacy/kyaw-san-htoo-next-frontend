@@ -5,13 +5,11 @@ import { CartWrapper, Inner, BlurOverlay } from './Cart-Styles'
 import { CartStates } from '@/ksh-contexts/Cart-Context'
 import { AnimatePresence } from 'framer-motion'
 
-
 function Cart() {
-  const value = useContext(CartStates);
+  const value = useContext(CartStates)
 
   const [medicineToBuy] = value.itemsInCart
   const [cartVisibile] = value.visibility //call the context
-
 
   const [pages, setPages] = useState(1)
   const nextPage = () => {
@@ -30,7 +28,6 @@ function Cart() {
     }
   }, [cartVisibile])
 
-
   return (
     <>
       <AnimatePresence>
@@ -39,10 +36,7 @@ function Cart() {
             <BlurOverlay />
             <CartWrapper>
               {pages === 1 ? (
-                <CartContent
-                  nextPage={nextPage}
-                  medicineToBuy={medicineToBuy}
-                />
+                <CartContent nextPage={nextPage} medicineToBuy={medicineToBuy} />
               ) : (
                 <Payment prePage={prePage} />
               )}

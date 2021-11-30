@@ -52,7 +52,7 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params: { productName, category } }) {
   const resp = await fetch(`${API_URL}/medicines?slug=${productName}`)
   const medicine = await resp.json()
-  console.log(medicine)
+
   const relatedMedicinesResp = await fetch(`${API_URL}/medicines?categories.slug_contains=${category}`)
   const relatedMedicines = await relatedMedicinesResp.json()
 
@@ -61,7 +61,8 @@ export async function getStaticProps({ params: { productName, category } }) {
       medicine_images: medicine[0] ? medicine[0].product_images : null,
       medicine_details: medicine[0] ? medicine[0].product_details : null,
       medicine_info: {
-        product_image : medicine[0] ? medicine[0].product_images[0].formats.thumbnail.url : null,
+        product_image: medicine[0] ? medicine[0].product_images[0].formats.thumbnail.url : null,
+        product_image_hash: medicine[0] ? medicine[0].product_images[0].hash : null,
         product_id: medicine[0] ? medicine[0].id : null,
         product_name_eng: medicine[0] ? medicine[0].product_name_eng : null,
         product_name_mm: medicine[0] ? medicine[0].product_name_mm : null,

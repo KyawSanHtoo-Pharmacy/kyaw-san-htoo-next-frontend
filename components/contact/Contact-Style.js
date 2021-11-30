@@ -1,7 +1,9 @@
 import styled from 'styled-components'
+import { FadeInKeyframe } from '@/ksh-styles/keyframes/fadeIn'
 
 export const ContactWrapper = styled.section`
   display: flex;
+  ${FadeInKeyframe}
 
   @media only screen and (max-width: 650px) {
     flex-direction: column-reverse;

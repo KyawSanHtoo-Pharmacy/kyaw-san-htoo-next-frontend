@@ -1,10 +1,12 @@
 import styled from 'styled-components'
+import { FadeInKeyframe } from '@/ksh-styles/keyframes/fadeIn'
 
 export const Container = styled.div`
   padding: 0 11.88em;
   margin-top: -4.6em;
   display: flex;
   align-items: center;
+  ${FadeInKeyframe}
 
   @media screen and (max-width: 1200px) {
     padding: 0;

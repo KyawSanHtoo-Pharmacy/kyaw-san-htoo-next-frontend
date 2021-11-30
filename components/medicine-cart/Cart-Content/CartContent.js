@@ -23,10 +23,9 @@ import { CartStates } from '@/ksh-contexts/Cart-Context'
 import { changeMyanNum } from '@/ksh-helpers'
 
 function CartContent({ nextPage, medicineToBuy }) {
-  
-  const value = useContext(CartStates);
-  const {dispatch} = useContext(CartStates)
-  const [cartVisibile, setCartVisible] = value.visibility 
+  const value = useContext(CartStates)
+  const { dispatch } = useContext(CartStates)
+  const [cartVisibile, setCartVisible] = value.visibility
 
   const BackHandler = () => {
     setCartVisible(!cartVisibile)
@@ -49,7 +48,7 @@ function CartContent({ nextPage, medicineToBuy }) {
           </svg>
           <CartTitle>
             <span className='text'>ဆေးဝယ်စာရင်း</span>
-            <span className='number'>{ medicineToBuy.length }</span>
+            <span className='number'>{medicineToBuy.length}</span>
           </CartTitle>
         </CartHeading>
 
@@ -61,28 +60,23 @@ function CartContent({ nextPage, medicineToBuy }) {
           </ItemTitles>
         </ItemTitleWrapper>
 
-        {medicineToBuy.map(({ id, image, name, quantity, price }) => (
+        {medicineToBuy.map(({ id, image, hash, name, quantity, price }) => (
           <ItemsWrapper key={id}>
             <ItemsToBuy>
               <ItemImg>
-                <Image src={image} layout='fill' alt={name} /> 
+                <Image src={image} layout='fill' alt={name} placeholder='blur' blurDataURL={hash} />
               </ItemImg>
               <ItemName>{name}</ItemName>
             </ItemsToBuy>
             <ItemQuentity>
-              <Min 
-              onClick = { () => dispatch({type : 'updateItemQuantity', payload : {id : id, amount : -1 } }) }
-              >-</Min>
+              <Min onClick={() => dispatch({ type: 'updateItemQuantity', payload: { id: id, amount: -1 } })}>-</Min>
               <QuantityShow
                 type='number'
                 value={changeMyanNum(quantity)}
-                min='0' 
-                onChange = { e => dispatch({type : 'handleQuantityChange', newQ : {id : id, val : e.target.value} }) }
-
+                min='0'
+                onChange={e => dispatch({ type: 'handleQuantityChange', newQ: { id: id, val: e.target.value } })}
               />
-              <Plus 
-                onClick = { () => dispatch({type : 'updateItemQuantity', payload : {id : id, amount : 1 } }) }
-              >+</Plus>
+              <Plus onClick={() => dispatch({ type: 'updateItemQuantity', payload: { id: id, amount: 1 } })}>+</Plus>
             </ItemQuentity>
             <ItemCost>
               <p>{price * quantity ? changeMyanNum(price * quantity) : changeMyanNum(0)}</p>
