@@ -9,7 +9,7 @@ import {
   InfoText,
   PaleText,
 } from './ProductDetails-styles'
-import { Counter, Button } from '@/ksh-components'
+import { Counter, Button, NoticePill } from '@/ksh-components'
 import { CartStates } from '@/ksh-contexts/Cart-Context'
 import { changeMyanNum } from '@/ksh-helpers'
 import { useRouter } from 'next/router'
@@ -60,7 +60,11 @@ export default function ProductDetails({ medicine_info }) {
       <HorizontalGroup>
         <VerticleGroup>
           <Label>ပမာဏ</Label>
-          <Counter amount={amount} setAmount={setAmount} product_uni={product_unit} />
+          {product_quantity === 0 ? (
+            <NoticePill availability={false}>ပစ္စည်း ကုန်နေပါတယ်</NoticePill>
+          ) : (
+            <Counter amount={amount} setAmount={setAmount} product_uni={product_unit} />
+          )}
         </VerticleGroup>
         <VerticleGroup>
           <Label>ကျသင့်ငွေ</Label>
@@ -69,7 +73,7 @@ export default function ProductDetails({ medicine_info }) {
           </InfoText>
         </VerticleGroup>
       </HorizontalGroup>
-      {product_quantity === '0' ? (
+      {product_quantity !== 0 ? (
         <Button
           onClick={() => {
             dispatch({ type: 'ADD_TO_CART', newItem })
@@ -83,7 +87,7 @@ export default function ProductDetails({ medicine_info }) {
             e.preventDefault()
             router.push(`/compare?outstock=${slug}&instock=${medicine_to_compare}`)
           }}>
-          <span>Compare ml ly </span>
+          <span>အနီးစပ်ဆုံးဆေးနဲ့ နှိုင်းယှဉ်မယ်</span>
         </Button>
       )}
     </Container>

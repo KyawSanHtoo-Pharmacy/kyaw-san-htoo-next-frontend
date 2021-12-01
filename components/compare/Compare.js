@@ -18,7 +18,7 @@ export default function Compare({ outstockMedicine, instockMedicine }) {
                 ? outstockMedicine.product_images[0].formats.large.url
                 : outstockMedicine.product_images[0].url
             }
-            alt={outstockMedicine.product_name_mm - outstockMedicine.product_name_eng}
+            alt={`${outstockMedicine.product_name_mm} - ${outstockMedicine.product_name_eng}`}
             layout='fill'
             placeholder='blur'
             blurDataURL={outstockMedicine.product_images[0].hash}
@@ -38,7 +38,7 @@ export default function Compare({ outstockMedicine, instockMedicine }) {
                 ? instockMedicine.product_images[0].formats.large.url
                 : instockMedicine.product_images[0].url
             }
-            alt={instockMedicine.product_name_mm - instockMedicine.product_name_eng}
+            alt={`${instockMedicine.product_name_mm} - ${instockMedicine.product_name_eng}`}
             layout='fill'
             placeholder='blur'
             blurDataURL={instockMedicine.product_images[0].hash}

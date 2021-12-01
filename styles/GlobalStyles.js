@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import { createGlobalStyle, css } from 'styled-components'
 
 export const GlobalContainer = styled.div`
+  height: 100%;
   padding: 6.25em 7.81em;
 
   @media screen and (max-width: 980px) {

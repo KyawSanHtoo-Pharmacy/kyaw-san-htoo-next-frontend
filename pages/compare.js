@@ -1,12 +1,16 @@
-import { Compare, Accordion, NoticePill, ProductCard } from '@/ksh-components'
+import { Compare, Accordion, NoticePill, ProductCard, Error } from '@/ksh-components'
 import { GlobalContainer } from '@/ksh-styles/GlobalStyles'
 import { API_URL } from '@/ksh-config/index'
 
-export default function compare({ outstockMedicine, instockMedicine }) {
+export default function compare({ isInjected = false, outstockMedicine, instockMedicine }) {
+  if (isInjected) {
+    return <Error message='URLကို မကလိပါနဲ့လား ကိုငြိမ်းမောင်' status='444 Error: Phin Yrr :(' />
+  }
+
   outstockMedicine = outstockMedicine[0]
   instockMedicine = instockMedicine[0]
 
-  const productDetailsCompareAccordionData = [
+  const productDetailsCompareData = [
     {
       id: 1,
       title: 'ဆေးအကြောင်း အကျဉ်းချုပ်',
@@ -50,7 +54,7 @@ export default function compare({ outstockMedicine, instockMedicine }) {
       <GlobalContainer>
         <Compare outstockMedicine={outstockMedicine} instockMedicine={instockMedicine} />
         <Accordion mb='6.25em'>
-          {productDetailsCompareAccordionData.map(({ id, title, outstockBody, instockBody }) => (
+          {productDetailsCompareData.map(({ id, title, outstockBody, instockBody }) => (
             <Accordion.Item key={id}>
               <Accordion.Title>{title}</Accordion.Title>
               <Accordion.AnswerWrapper>
@@ -89,6 +93,14 @@ export async function getServerSideProps({ query: { outstock, instock } }) {
   ])
   const outstockMedicine = await outstockResp.json()
   const instockMedicine = await instockResp.json()
+
+  if (outstockMedicine[0].medicine_to_compare !== instock) {
+    return {
+      props: {
+        isInjected: true,
+      },
+    }
+  }
 
   return {
     props: {
