@@ -5,6 +5,15 @@ import { CartWrapper, Inner, BlurOverlay } from './Cart-Styles'
 import { CartStates } from '@/ksh-contexts/Cart-Context'
 import { AnimatePresence } from 'framer-motion'
 
+const orderFormInitialState = {
+  name: '',
+  phone: '',
+  address: '',
+  delivery_method: 'ဆိုင်လာယူမယ်',
+  payment_method: 'ငွေသားနဲ့ ပေးချေမယ်',
+  payment_screenshot: '',
+}
+
 function Cart() {
   const value = useContext(CartStates)
 
@@ -28,6 +37,8 @@ function Cart() {
     }
   }, [cartVisibile])
 
+  const [orderFormData, setOrderFormData] = useState(orderFormInitialState)
+
   return (
     <>
       <AnimatePresence>
@@ -38,9 +49,9 @@ function Cart() {
               {pages === 1 ? (
                 <CartContent nextPage={nextPage} medicineToBuy={medicineToBuy} />
               ) : (
-                <Payment prePage={prePage} />
+                <Payment prePage={prePage} orderFormData={orderFormData} setOrderFormData={setOrderFormData} />
               )}
-            </CartWrapper>{' '}
+            </CartWrapper>
           </>
         ) : (
           ''

@@ -1,4 +1,3 @@
-import React, { useState } from 'react'
 import {
   PaymentForm,
   PaymentHeading,
@@ -32,17 +31,7 @@ import {
 } from './Payment-Style'
 import { Button } from '@/ksh-components'
 
-const orderFormInitialState = {
-  name: '',
-  phone: '',
-  address: '',
-  delivery_method: 'ဆိုင်လာယူမယ်',
-  payment_method: 'ငွေသားနဲ့ ပေးချေမယ်',
-  payment_screenshot: '',
-}
-
-export default function Payment({ prePage }) {
-  const [orderFormData, setOrderFormData] = useState(orderFormInitialState)
+export default function Payment({ prePage, orderFormData, setOrderFormData }) {
   const { name, phone, address, delivery_method, payment_method } = orderFormData
 
   const handleOrderFormDataChange = e => {
@@ -58,14 +47,33 @@ export default function Payment({ prePage }) {
     }
   }
 
-  console.log(orderFormData)
+  const sendOrder = async e => {
+    e.preventDefault()
+    console.log({ orderFormData })
+
+    const resp = await fetch('/api/order', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json, text/plain',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(orderFormData),
+    })
+    const order = await resp.json()
+
+    console.log(resp)
+
+    if (resp.ok) {
+      console.log(order)
+      console.log('Order received')
+      if (resp.status === 200) {
+        console.log('Order send!')
+      }
+    }
+  }
 
   return (
-    <PaymentForm
-      onSubmit={e => {
-        e.preventDefault()
-        console.log({ orderFormData })
-      }}>
+    <PaymentForm onSubmit={sendOrder}>
       <PaymentHeading>
         <svg
           width='24'

@@ -44,10 +44,10 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params: { category } }) {
-  const URL_TO_FETCH =
-    category === 'all' ? `${API_URL}/medicines` : `${API_URL}/medicines?categories.slug_contains=${category}`
-
-  const REQUESTS = [fetch(URL_TO_FETCH), fetch(`${API_URL}/categories?slug=${category}`)]
+  const REQUESTS = [
+    fetch(`${API_URL}/medicines?categories.slug_contains=${category}`),
+    fetch(`${API_URL}/categories?slug=${category}`),
+  ]
   const [medicinesResp, singleCategoryResp] = await Promise.all(REQUESTS)
   const categoryData = await medicinesResp.json()
   const singleCategory = await singleCategoryResp.json()
@@ -57,7 +57,7 @@ export async function getStaticProps({ params: { category } }) {
       medicines: categoryData,
       count: categoryData.length,
       // I dont know why this check for singleCategory[0] is needed, but to fix the error in console :((
-      category: category === 'all' ? 'ဆေးအားလုံး' : singleCategory[0] ? singleCategory[0].category_name_long : null,
+      category: singleCategory[0] ? singleCategory[0].category_name_long : null,
     },
   }
 }
