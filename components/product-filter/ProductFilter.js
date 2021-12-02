@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Button } from '@/ksh-components'
+import { useRouter } from 'next/router'
 import {
   Container,
   BlurOverlay,
@@ -13,12 +14,17 @@ import {
   Pill,
 } from './ProductFilter-styles'
 
-export default function ProductFilter() {
+export default function ProductFilter({longCat}) {
+  const router = useRouter()
   const [isFilterOpen, setIsFilterOpen] = useState(false)
-
   useEffect(() => {
-    document.body.style.overflow = isFilterOpen ? 'hidden' : 'unset'
+    document.body.style.overflow = isFilterOpen ? 'hidden' : 'unset';
   }, [isFilterOpen])
+
+  const clickHandler = (param) => {
+  
+    router.push(`/categories/${param}`)
+  }
 
   return (
     <>
@@ -68,12 +74,17 @@ export default function ProductFilter() {
                 <Icon src='/icons/plus.svg' alt='see-more-icon' />
               </TitleWrapper>
               <Body>
-                <Pill>နှလုံးရောဂါ ဆေးများ</Pill>
+                {
+                  longCat.map( cat => (
+                    <Pill key = {cat.id} onClick = {() => clickHandler(cat.slug)} >{ cat.category_name_long }</Pill>
+                  ) )
+                }
+                {/* <Pill>နှလုံးရောဂါ ဆေးများ</Pill>
                 <Pill>ကျောက်ကပ်ရောဂါ ဆေးများ</Pill>
                 <Pill>အဆုတ်ရောဂါ ဆေးများ</Pill>
                 <Pill>နှလုံးရောဂါ ဆေးများ</Pill>
                 <Pill>ကျောက်ကပ်ရောဂါ ဆေးများ</Pill>
-                <Pill>အဆုတ်ရောဂါ ဆေးများ</Pill>
+                <Pill>အဆုတ်ရောဂါ ဆေးများ</Pill> */}
               </Body>
             </Item>
 

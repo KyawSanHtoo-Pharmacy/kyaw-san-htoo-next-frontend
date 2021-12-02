@@ -4,13 +4,13 @@ import { GlobalContainer } from '@/ksh-styles/GlobalStyles'
 import { API_URL } from '@/ksh-config/index'
 import { changeMyanNum } from '@/ksh-helpers'
 
-export default function AllMedicinePage({ medicines, count, category }) {
+export default function AllMedicinePage({ medicines, count, category, longCat}) {
   return (
     <>
       <GlobalContainer>
         <SearchBar.Container>
           <SearchBar />
-          <ProductFilter />
+          <ProductFilter longCat = {longCat} />
         </SearchBar.Container>
 
         <ProductCard.InfoBar>
@@ -47,10 +47,12 @@ export async function getStaticProps({ params: { category } }) {
   const REQUESTS = [
     fetch(`${API_URL}/medicines?categories.slug_contains=${category}`),
     fetch(`${API_URL}/categories?slug=${category}`),
+     fetch(`${API_URL}/categories`)
   ]
-  const [medicinesResp, singleCategoryResp] = await Promise.all(REQUESTS)
+  const [medicinesResp, singleCategoryResp, respCat] = await Promise.all(REQUESTS)
   const categoryData = await medicinesResp.json()
   const singleCategory = await singleCategoryResp.json()
+  const longCat = await respCat.json();
 
   return {
     props: {
@@ -58,6 +60,10 @@ export async function getStaticProps({ params: { category } }) {
       count: categoryData.length,
       // I dont know why this check for singleCategory[0] is needed, but to fix the error in console :((
       category: singleCategory[0] ? singleCategory[0].category_name_long : null,
+      longCat : longCat
     },
   }
 }
+
+
+
