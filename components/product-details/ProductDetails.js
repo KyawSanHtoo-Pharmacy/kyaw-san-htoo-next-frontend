@@ -27,7 +27,7 @@ export default function ProductDetails({ medicine_info }) {
     product_unit,
     product_price,
     product_quantity,
-    medicine_to_compare,
+    product_to_compare,
     slug,
   } = medicine_info
   const [amount, setAmount] = useState(1)
@@ -85,7 +85,7 @@ export default function ProductDetails({ medicine_info }) {
         <Button
           onClick={e => {
             e.preventDefault()
-            router.push(`/compare?outstock=${slug}&instock=${medicine_to_compare}`)
+            router.push(`/compare?outstock=${slug}&instock=${product_to_compare[0].slug}`)
           }}>
           <span>အနီးစပ်ဆုံးဆေးနဲ့ နှိုင်းယှဉ်မယ်</span>
         </Button>

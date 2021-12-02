@@ -3,7 +3,6 @@ import { ImageShowcase, ProductCard } from '@/ksh-components'
 import ProductDetailsInfoContainer from '@/ksh-containers/ProductDetailsInfoContainer'
 import { API_URL } from '@/ksh-config/index'
 import { GlobalContainer } from '@/ksh-styles/GlobalStyles'
-import { memo } from 'react'
 
 function ProductDetailsPage({ medicine_images, medicine_details, medicine_info, relatedMedicines }) {
   return (
@@ -29,7 +28,7 @@ function ProductDetailsPage({ medicine_images, medicine_details, medicine_info, 
   )
 }
 
-export default memo(ProductDetailsPage)
+export default ProductDetailsPage
 
 export async function getStaticPaths() {
   const resp = await fetch(`${API_URL}/medicines`)

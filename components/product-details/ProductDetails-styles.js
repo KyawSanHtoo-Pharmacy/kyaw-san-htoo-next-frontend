@@ -31,6 +31,9 @@ export const HorizontalGroup = styled.div`
 
 export const VerticleGroup = styled.div`
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 `
 
 export const Label = styled.p`

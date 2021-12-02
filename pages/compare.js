@@ -1,6 +1,7 @@
-import { Compare, Accordion, NoticePill, ProductCard, Error } from '@/ksh-components'
+import { Compare, Accordion, NoticePill, ProductCard, Error, Button } from '@/ksh-components'
 import { GlobalContainer } from '@/ksh-styles/GlobalStyles'
 import { API_URL } from '@/ksh-config/index'
+import Link from 'next/link'
 
 export default function compare({ isInjected = false, outstockMedicine, instockMedicine }) {
   if (isInjected) {
@@ -72,6 +73,9 @@ export default function compare({ isInjected = false, outstockMedicine, instockM
               </Accordion.AnswerWrapper>
             </Accordion.Item>
           ))}
+          <Link href={`/categories/${instockMedicine.categories[0].slug}/${instockMedicine.slug}`} passHref>
+            <Button>{`Go to ${instockMedicine.product_name_eng}`}</Button>
+          </Link>
         </Accordion>
 
         <ProductCard.Heading>ဆက်စပ် ဆေးဝါးများ</ProductCard.Heading>
