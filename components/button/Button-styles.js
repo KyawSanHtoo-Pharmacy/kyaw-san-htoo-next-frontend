@@ -48,7 +48,7 @@ export const OffWhiteButton = styled(StyledButton)`
 
   &:hover {
     color: ${({ theme }) => theme.colors.bodyBg};
-    background: ${({ theme }) => theme.colors.text};
-    border: 1px solid ${({ theme }) => theme.colors.text};
+    background: ${({ theme }) => theme.colors.heading};
+    border: 1px solid ${({ theme }) => theme.colors.heading};
   }
 `

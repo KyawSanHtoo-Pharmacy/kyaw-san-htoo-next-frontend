@@ -6,32 +6,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
-      h1 {
-        background-color: red;
+      table {
+        font-family: Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+        text-align: center;
+        margin-bottom: 24px;
+      }
+
+      table td,
+      table th {
+        border: 1px solid #ddd;
+        padding: 8px;
+      }
+
+      table tr:nth-child(even) {
+        background-color: #f2f2f2;
+      }
+
+      table tr:hover {
+        background-color: #ddd;
+      }
+
+      table th,
+      tfoot td {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        background-color: #04aa6d;
+        color: white;
       }
     </style>
   </head>
   <body>
     <table>
+      <thead>
+        <th>Name</th>
+        <th>Phone</th>
+        <th>Address</th>
+        <th>Delivery Method</th>
+        <th>Payment Method</th>
+        <th>Amount</th>
+      </thead>
       <tbody>
         <tr>
-          <td>Name:</td>
           <td>${name}</td>
-        </tr>
-        <tr>
-          <td>Phone:</td>
           <td>${phone}</td>
-        </tr>
-        <tr>
-          <td>Address:</td>
           <td>${address}</td>
-        </tr>
-        <tr>
-          <td>Delivery Method:</td>
           <td>${delivery_method}</td>
-        </tr>
-        <tr>
-          <td>Payment Method:</td>
           <td>${payment_method}</td>
         </tr>
       </tbody>

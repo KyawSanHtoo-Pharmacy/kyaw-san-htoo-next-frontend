@@ -13,8 +13,14 @@ export const CartWrapper = styled(motion.div)`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  scrollbar-width: none;
 
-  ::-webkit-scrollbar {
+  &::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+  }
+
+  /* ::-webkit-scrollbar {
     width: 10px;
   }
 
@@ -27,7 +33,7 @@ export const CartWrapper = styled(motion.div)`
 
   ::-webkit-scrollbar-thumb:hover {
     background: ${({ theme }) => theme.colors.offWhite};
-  }
+  } */
 
   @media only screen and (max-width: 500px) {
     width: 100%;

@@ -49,7 +49,12 @@ function Cart() {
               {pages === 1 ? (
                 <CartContent nextPage={nextPage} medicineToBuy={medicineToBuy} />
               ) : (
-                <Payment prePage={prePage} orderFormData={orderFormData} setOrderFormData={setOrderFormData} />
+                <Payment
+                  prePage={prePage}
+                  orderFormData={orderFormData}
+                  setOrderFormData={setOrderFormData}
+                  medicineToBuy={medicineToBuy}
+                />
               )}
             </CartWrapper>
           </>

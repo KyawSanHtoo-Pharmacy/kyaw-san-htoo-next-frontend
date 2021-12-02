@@ -6,6 +6,8 @@ export const Container = styled.div`
   margin-top: -4.6em;
   display: flex;
   align-items: center;
+  position: relative;
+  z-index: 10;
   ${FadeInKeyframe}
 
   @media screen and (max-width: 1200px) {

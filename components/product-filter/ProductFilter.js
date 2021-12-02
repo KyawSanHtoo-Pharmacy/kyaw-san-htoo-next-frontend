@@ -16,9 +16,9 @@ import {
 export default function ProductFilter() {
   const [isFilterOpen, setIsFilterOpen] = useState(false)
 
-  useEffect(() => {
-    document.body.style.overflow = isFilterOpen ? 'hidden' : 'unset'
-  }, [isFilterOpen])
+  // useEffect(() => {
+  //   document.body.style.overflow = isFilterOpen ? 'hidden' : 'unset'
+  // }, [isFilterOpen])
 
   return (
     <>
@@ -40,7 +40,11 @@ export default function ProductFilter() {
         <Button.OffWhite
           small
           onClick={() => setIsFilterOpen(!isFilterOpen)}
-          style={{ backgroundColor: isFilterOpen && '#fff' }}>
+          style={{
+            color: isFilterOpen && '#FFFFFF',
+            background: isFilterOpen && '#5ABEAE',
+            borderColor: isFilterOpen && '#5ABEAE',
+          }}>
           <span>စစ်ထုတ်မယ်</span>
         </Button.OffWhite>
 

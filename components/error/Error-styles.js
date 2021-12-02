@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const Section = styled.section`
-  height: 85vh;
+  height: 86.6vh;
   background: url(/illustrations/ko-nyein-mg.jpg);
   background-repeat: no-repeat;
   background-size: cover;
@@ -27,4 +27,5 @@ export const Status = styled.h2`
   font-size: 1.25em;
   color: ${({ theme }) => theme.colors.warning};
   margin-top: 12em;
+  font-weight: 300;
 `
