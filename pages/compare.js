@@ -4,7 +4,7 @@ import { API_URL } from '@/ksh-config/index'
 
 export default function compare({ isInjected = false, outstockMedicine, instockMedicine }) {
   if (isInjected) {
-    return <Error message='URLကို မကလိပါနဲ့လား ကိုငြိမ်းမောင်' status='444 Error: Phin Yrr :(' />
+    return <Error message='URLကို မကလိပါနဲ့လား ကိုငြိမ်းမောင်' status='Error : tgg pan pr dl, plz.' />
   }
 
   outstockMedicine = outstockMedicine[0]
@@ -94,7 +94,7 @@ export async function getServerSideProps({ query: { outstock, instock } }) {
   const outstockMedicine = await outstockResp.json()
   const instockMedicine = await instockResp.json()
 
-  if (outstockMedicine[0].medicine_to_compare !== instock) {
+  if (outstockMedicine[0]?.medicine_to_compare !== instock) {
     return {
       props: {
         isInjected: true,

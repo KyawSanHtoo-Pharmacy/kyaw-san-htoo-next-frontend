@@ -46,7 +46,11 @@ export default function ProductFilter({longCat}) {
         <Button.OffWhite
           small
           onClick={() => setIsFilterOpen(!isFilterOpen)}
-          style={{ backgroundColor: isFilterOpen && '#fff' }}>
+          style={{
+            color: isFilterOpen && '#FFFFFF',
+            background: isFilterOpen && '#5ABEAE',
+            borderColor: isFilterOpen && '#5ABEAE',
+          }}>
           <span>စစ်ထုတ်မယ်</span>
         </Button.OffWhite>
 
@@ -79,12 +83,6 @@ export default function ProductFilter({longCat}) {
                     <Pill key = {cat.id} onClick = {() => clickHandler(cat.slug)} >{ cat.category_name_long }</Pill>
                   ) )
                 }
-                {/* <Pill>နှလုံးရောဂါ ဆေးများ</Pill>
-                <Pill>ကျောက်ကပ်ရောဂါ ဆေးများ</Pill>
-                <Pill>အဆုတ်ရောဂါ ဆေးများ</Pill>
-                <Pill>နှလုံးရောဂါ ဆေးများ</Pill>
-                <Pill>ကျောက်ကပ်ရောဂါ ဆေးများ</Pill>
-                <Pill>အဆုတ်ရောဂါ ဆေးများ</Pill> */}
               </Body>
             </Item>
 

@@ -30,8 +30,9 @@ import {
   UploadButtonWrapper,
 } from './Payment-Style'
 import { Button } from '@/ksh-components'
+import { getEmailTemplate } from '@/ksh-helpers'
 
-export default function Payment({ prePage, orderFormData, setOrderFormData }) {
+export default function Payment({ prePage, orderFormData, setOrderFormData, medicineToBuy }) {
   const { name, phone, address, delivery_method, payment_method } = orderFormData
 
   const handleOrderFormDataChange = e => {
@@ -49,7 +50,10 @@ export default function Payment({ prePage, orderFormData, setOrderFormData }) {
 
   const sendOrder = async e => {
     e.preventDefault()
-    console.log({ orderFormData })
+    const orderData = {
+      ...orderFormData,
+      medicines: medicineToBuy,
+    }
 
     const resp = await fetch('/api/order', {
       method: 'POST',
@@ -57,17 +61,12 @@ export default function Payment({ prePage, orderFormData, setOrderFormData }) {
         Accept: 'application/json, text/plain',
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(orderFormData),
+      body: JSON.stringify(orderData),
     })
     const order = await resp.json()
 
-    console.log(resp)
-
     if (resp.ok) {
-      console.log(order)
-      console.log('Order received')
       if (resp.status === 200) {
-        console.log('Order send!')
       }
     }
   }
