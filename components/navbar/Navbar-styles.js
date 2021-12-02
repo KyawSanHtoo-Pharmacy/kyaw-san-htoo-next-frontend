@@ -63,6 +63,11 @@ export const NavLink = styled.a`
   font-size: 1.25em;
   color: ${({ theme, active }) => active && theme.colors.heading};
   font-weight: ${({ active }) => active && '700'};
+  transition: color 0.1s ease-out;
+
+  &:hover {
+    color: ${({ theme }) => theme.colors.heading};
+  }
 `
 
 export const Logo = styled.a`

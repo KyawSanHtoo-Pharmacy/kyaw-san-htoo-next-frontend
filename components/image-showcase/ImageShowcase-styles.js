@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
   position: sticky;
-  top: 5em;
+  top: 8.8em;
 `
 
 export const MainImage = styled.div`
