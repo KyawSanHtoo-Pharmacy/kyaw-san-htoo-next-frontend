@@ -31,6 +31,7 @@ export const DropdownWrapper = styled.div`
 `
 export const ClickAble = styled.div`
   display: flex;
+  user-select: none;
 `
 
 const arrow = keyframes`${css`
@@ -67,12 +68,16 @@ export const DropdownData = styled(motion.div)`
   top: 3em;
   text-align: center;
   border-radius: 8px;
-  width: 400px;
+  width: 30em;
   background-color: ${({ theme }) => theme.colors.bodyBg};
   display: flex;
   flex-direction: column;
   justify-content: center;
   box-shadow: ${({ theme }) => theme.boxShadows.green};
+
+  @media screen and (max-width: 500px) {
+    width: 90vw;
+  }
 `
 export const PillWrapper = styled.div`
   display: flex;

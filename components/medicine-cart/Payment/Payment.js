@@ -30,21 +30,24 @@ import {
   UploadButtonWrapper,
 } from './Payment-Style'
 import { Button } from '@/ksh-components'
-import { getEmailTemplate } from '@/ksh-helpers'
+import { useState } from 'react'
 
 export default function Payment({ prePage, orderFormData, setOrderFormData, medicineToBuy }) {
   const { name, phone, address, delivery_method, payment_method } = orderFormData
+  const [base64KpayImage, setBase64KpayImage] = useState(null)
 
   const handleOrderFormDataChange = e => {
-    if (e.target.type === 'file') {
-      setOrderFormData(prevData => {
-        return { ...prevData, payment_screenshot: e.target.files[0] }
-      })
-    } else {
-      const { name, value } = e.target
-      setOrderFormData(prevData => {
-        return { ...prevData, [name]: value }
-      })
+    const { name, value } = e.target
+    setOrderFormData(data => {
+      return { ...data, [name]: value }
+    })
+  }
+
+  const generateAndSetBase64KpayImage = image => {
+    const reader = new FileReader()
+    reader.readAsDataURL(image)
+    reader.onloadend = () => {
+      setBase64KpayImage(reader.result)
     }
   }
 
@@ -52,6 +55,7 @@ export default function Payment({ prePage, orderFormData, setOrderFormData, medi
     e.preventDefault()
     const orderData = {
       ...orderFormData,
+      kpay_screenshot: base64KpayImage,
       medicines: medicineToBuy,
     }
 
@@ -64,10 +68,12 @@ export default function Payment({ prePage, orderFormData, setOrderFormData, medi
       body: JSON.stringify(orderData),
     })
     const order = await resp.json()
+    console.log(order)
 
-    if (resp.ok) {
-      if (resp.status === 200) {
-      }
+    if (order.message.accepted) {
+      console.log('Order accepted!')
+    } else {
+      console.log('Noooo')
     }
   }
 
@@ -194,17 +200,26 @@ export default function Payment({ prePage, orderFormData, setOrderFormData, medi
             <UploadDescripton>ငွေလွှဲဖြတ်ပိုင်း ထည့်သွင်းရန်</UploadDescripton>
             <UploadButtonWrapper>
               <label htmlFor='Screenshot'>ပုံတင်မယ်</label>
+              {/* <UploadButton
+                type='file'
+                id='Screenshot'
+                name='payment_screenshot'
+                onChange={handleOrderFormDataChange}></UploadButton> */}
               <UploadButton
                 type='file'
                 id='Screenshot'
                 name='payment_screenshot'
-                onChange={handleOrderFormDataChange}></UploadButton>
+                onChange={e => {
+                  generateAndSetBase64KpayImage(e.target.files[0])
+                }}></UploadButton>
             </UploadButtonWrapper>
           </UploadWrapper>
         </KPayWrapper>
       ) : (
         ''
       )}
+
+      {base64KpayImage && <img src={base64KpayImage} alt='chosen' style={{ height: '300px' }} />}
 
       <ButtonWrapper>
         <Button Big>အော်ဒါတင်မယ်</Button>

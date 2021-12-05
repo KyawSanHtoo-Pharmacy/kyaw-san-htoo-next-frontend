@@ -96,6 +96,7 @@ export const getEmailTemplate = data => {
     </style>
   </head>
   <body>
+    <img src='cid:kpay_screenshot' alt='Kpay Screenshot' style="width: 200px;" />
     ${customerInfoTableHTML}
     ${medicinesTableHTML}
   </body> 

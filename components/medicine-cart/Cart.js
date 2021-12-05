@@ -11,19 +11,19 @@ const orderFormInitialState = {
   address: '',
   delivery_method: 'ဆိုင်လာယူမယ်',
   payment_method: 'ငွေသားနဲ့ ပေးချေမယ်',
-  payment_screenshot: '',
 }
 
 function Cart() {
+  const [orderFormData, setOrderFormData] = useState(orderFormInitialState)
   const value = useContext(CartStates)
-
   const [medicineToBuy] = value.itemsInCart
   const [cartVisibile] = value.visibility //call the context
-
   const [pages, setPages] = useState(1)
+
   const nextPage = () => {
     setPages(pages + 1)
   }
+
   const prePage = () => {
     setPages(pages - 1)
   }
@@ -36,8 +36,6 @@ function Cart() {
       document.body.style.overflow = 'unset'
     }
   }, [cartVisibile])
-
-  const [orderFormData, setOrderFormData] = useState(orderFormInitialState)
 
   return (
     <>
