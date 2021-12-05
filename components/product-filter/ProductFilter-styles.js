@@ -78,12 +78,44 @@ export const Body = styled.div`
 
 export const Pill = styled.p`
   font-size: 1.09em;
-  color: ${({ theme }) => theme.colors.text};
-  background-color: ${({ theme }) => theme.colors.offWhite};
+  color: ${({ isActive, theme }) => isActive ? theme.colors.bodyBg : theme.colors.text};
+  background-color: ${({isActive, theme }) => isActive ? theme.colors.heading : theme.colors.offWhite};
   border: 1px solid ${({ theme }) => theme.colors.heading};
   border-radius: 100vw;
   padding: 0.2em 0.8em;
   margin: 0 0.5em 0.5em 0;
+  cursor : pointer;
+
+  &:hover{
+    background-color: ${({ theme }) => theme.colors.heading};
+    color: ${({ theme }) => theme.colors.bodyBg};
+  }
+`
+export const AlphabetPill = styled.div`
+  position : relative;
+  font-size: 1.09em;
+  color: ${({ isActive, theme }) => isActive ? theme.colors.bodyBg : theme.colors.text};
+  background-color: ${({isActive, theme }) => isActive ? theme.colors.heading : theme.colors.offWhite};
+  border: 1px solid ${({ theme }) => theme.colors.heading};
+  border-radius: 100vw;
+  margin: 0 0.5em 0.5em 0;  
+  width : 2.4em;
+  aspect-ratio: 1;
+  cursor : pointer;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.heading};
+    color: ${({ theme }) => theme.colors.bodyBg};
+  }
+
+`
+export const AlphabetText = styled.p`
+  position : absolute;
+  top : 50%;
+  left : 50%;
+  transform : translate(-50%, -50%);
+  margin-top : -0.1em;
+  
 `
 
 export const BlurOverlay = styled(motion.div)`

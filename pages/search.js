@@ -5,13 +5,13 @@ import { API_URL } from '@/ksh-config/index'
 import qs from 'qs'
 import { changeMyanNum } from '@/ksh-helpers'
 
-export default function AllMedicinePage({ medicines, keyword }) {
+export default function AllMedicinePage({ medicines, keyword, longCat }) {
   return (
     <>
       <GlobalContainer>
         <SearchBar.Container>
           <SearchBar />
-          <ProductFilter />
+          <ProductFilter longCat={longCat} />
         </SearchBar.Container>
 
         <ProductCard.InfoBar>
@@ -41,11 +41,14 @@ export async function getServerSideProps({ query: { keyword } }) {
 
   const resp = await fetch(`${API_URL}/medicines?${queryString}`)
   const medicines = await resp.json()
+  const catresp = await fetch(`${API_URL}/categories`)
+  const longCat = await catresp.json()
 
   return {
     props: {
       keyword,
       medicines,
+      longCat,
     },
   }
 }

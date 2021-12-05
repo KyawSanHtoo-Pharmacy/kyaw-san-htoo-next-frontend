@@ -99,13 +99,15 @@ export const ItemQuentity = styled.div`
   border-radius: 10px;
   overflow: hidden;
 `
-export const QuantityShow = styled.input`
+export const QuantityShow = styled.p`
+  padding-top : 8px;
   text-align: center;
   width: 100%;
   font-size: 20px;
   border: none;
   background-color: ${({ theme }) => theme.colors.offWhite};
   outline: none;
+  /* background-color : red; */
   &:focus-within {
     border: 0;
   }

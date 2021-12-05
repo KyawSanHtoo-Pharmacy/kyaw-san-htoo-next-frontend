@@ -30,6 +30,18 @@ function CartContent({ nextPage, medicineToBuy }) {
   const BackHandler = () => {
     setCartVisible(!cartVisibile)
   }
+
+  const changeToMM = (qty) => { //1
+    const myannums = ["၀", "၁", "၂", "၃", "၄", "၅", "၆", "၇", "၈", "၉"]
+    const processnum = qty.toString();
+    const spilitnum = processnum.split("");
+    const newarray = spilitnum.map( num => {
+      return  myannums[num]
+    } )
+    const result = newarray.join("");
+    return result;
+  }
+
   return (
     <>
       <Cart1stPage>
@@ -70,12 +82,21 @@ function CartContent({ nextPage, medicineToBuy }) {
             </ItemsToBuy>
             <ItemQuentity>
               <Min onClick={() => dispatch({ type: 'updateItemQuantity', payload: { id: id, amount: -1 } })}>-</Min>
-              <QuantityShow
-                type='number'
-                value={changeMyanNum(quantity)}
+              {/* <QuantityShow
+                type='text'
+                value={changeToMM(quantity) }
+          
+                // value={quantity}
                 min='0'
                 onChange={e => dispatch({ type: 'handleQuantityChange', newQ: { id: id, val: e.target.value } })}
-              />
+              /> */}
+              <QuantityShow
+                // value={ }
+          
+                // value={quantity}
+                // min='0'
+                // onChange={e => dispatch({ type: 'handleQuantityChange', newQ: { id: id, val: e.target.value } })}
+              > {changeMyanNum(quantity)} </QuantityShow>
               <Plus onClick={() => dispatch({ type: 'updateItemQuantity', payload: { id: id, amount: 1 } })}>+</Plus>
             </ItemQuentity>
             <ItemCost>

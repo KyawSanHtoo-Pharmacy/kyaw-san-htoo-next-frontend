@@ -17,7 +17,7 @@ export const LeftColumn = styled.div`
   }
 `
 export const Menu = styled.nav`
-  top: 1.5em;
+  top: 8em;
   position: sticky;
 `
 export const Menuheading = styled.h1`
@@ -36,17 +36,18 @@ export const MenuItem = styled.li`
 export const Content = styled.div`
   flex: 2;
   scroll-behavior: smooth;
+
 `
 export const ContentHeading = styled.h1`
   padding: 0px 0px 25px;
-  margin-top: -15px;
+  /* margin-top: -15px; */
   font-style: normal;
   font-weight: bold;
   font-size: 34px;
   line-height: 69px;
   color: ${({ theme }) => theme.colors.text};
   position: sticky;
-  top: 0;
+  top: 2.6em;
   background-color: #ffffff;
   z-index: 50;
 

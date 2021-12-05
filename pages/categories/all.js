@@ -4,13 +4,13 @@ import { GlobalContainer } from '@/ksh-styles/GlobalStyles'
 import { API_URL } from '@/ksh-config/index'
 import { changeMyanNum } from '@/ksh-helpers'
 
-export default function AllMedicinePage({ medicines, count, category }) {
+export default function AllMedicinePage({ medicines, count, category, longCat }) {
   return (
     <>
       <GlobalContainer padding='6.25em 7.81em 4.4em 7.81em'>
         <SearchBar.Container>
           <SearchBar />
-          <ProductFilter />
+          <ProductFilter longCat = {longCat} />
         </SearchBar.Container>
 
         <ProductCard.InfoBar>
@@ -29,12 +29,15 @@ export default function AllMedicinePage({ medicines, count, category }) {
 export async function getStaticProps() {
   const resp = await fetch(`${API_URL}/medicines`)
   const medicines = await resp.json()
-
+  const respCat = await fetch(`${API_URL}/categories`);
+  const longCat = await respCat.json();
+  console.log(longCat);
   return {
     props: {
       medicines,
       count: medicines.length,
       category: 'ဆေးအားလုံး',
+      longCat : longCat
     },
   }
 }
