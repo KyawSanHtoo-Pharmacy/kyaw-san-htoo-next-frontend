@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Button } from '@/ksh-components'
 import { useRouter } from 'next/router'
+const { Alphabets } = require('@/ksh-data/alphabets.json')
 import {
   Container,
   BlurOverlay,
@@ -12,18 +13,25 @@ import {
   Icon,
   Body,
   Pill,
+  AlphabetPill,
+  AlphabetText,
 } from './ProductFilter-styles'
 
-export default function ProductFilter({longCat}) {
+export default function ProductFilter({longCat,  routerChar, routerCat}) {
   const router = useRouter()
   const [isFilterOpen, setIsFilterOpen] = useState(false)
   useEffect(() => {
     document.body.style.overflow = isFilterOpen ? 'hidden' : 'unset';
   }, [isFilterOpen])
 
-  const clickHandler = (param) => {
-  
-    router.push(`/categories/${param}`)
+  const clickHandler = (param, type) => {
+    //param gets api endpoint. type gets route either it's supposed to go to cateogires or aphabets.
+    if( type === "cat") {
+      router.push(`/categories/${param}`)
+    }
+    else if (type === "alpha"){
+      router.push(`/categories/alphabets/${param}`)
+    }
   }
 
   return (
@@ -80,7 +88,7 @@ export default function ProductFilter({longCat}) {
               <Body>
                 {
                   longCat.map( cat => (
-                    <Pill key = {cat.id} onClick = {() => clickHandler(cat.slug)} >{ cat.category_name_long }</Pill>
+                    <Pill isActive = {routerCat === cat.slug ? true : false } key = {cat.id} onClick = {() => clickHandler(cat.slug, 'cat')} >{ cat.category_name_long }</Pill>
                   ) )
                 }
               </Body>
@@ -92,16 +100,13 @@ export default function ProductFilter({longCat}) {
                 <Icon src='/icons/plus.svg' alt='see-more-icon' />
               </TitleWrapper>
               <Body>
-                <Pill>နှလုံးရောဂါ ဆေးများ</Pill>
-                <Pill>ကျောက်ကပ်ရောဂါ ဆေးများ</Pill>
-                <Pill>အဆုတ်ရောဂါ ဆေးများ</Pill>
-                <Pill>နှလုံးရောဂါ ဆေးများ</Pill>
-                <Pill>ကျောက်ကပ်ရောဂါ ဆေးများ</Pill>
-                <Pill>အဆုတ်ရောဂါ ဆေးများ</Pill>
+                {
+                  Alphabets.map( char => (<AlphabetPill isActive={routerChar === char.char ? true : false} key = {char.id} onClick = { () => clickHandler(char.char, 'alpha') } > <AlphabetText> { char.char} </AlphabetText> </AlphabetPill>) )
+                }
               </Body>
             </Item>
 
-            <Item>
+            {/* <Item>
               <TitleWrapper>
                 <Title>အခြား</Title>
                 <Icon src='/icons/plus.svg' alt='see-more-icon' />
@@ -110,7 +115,7 @@ export default function ProductFilter({longCat}) {
                 <Pill>အသစ်ရောက်သော ဆေးများ</Pill>
                 <Pill>ပရိုမိုးရှင်း ရှိသောဆေးများ</Pill>
               </Body>
-            </Item>
+            </Item> */}
 
             <SquareArrow />
           </Frame>

@@ -7,6 +7,11 @@ module.exports = {
         destination: '/categories/all',
         permanent: true,
       },
+      {
+        source : '/categories/alphabets',
+        destination : '/categories/all',
+        permanent : true,
+      }
     ]
   },
   images: {

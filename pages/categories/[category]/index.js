@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router'
 import ProductCardContainer from '@/ksh-containers/ProductCardContainer'
 import { ProductCard, SearchBar, ProductFilter } from '@/ksh-components'
 import { GlobalContainer } from '@/ksh-styles/GlobalStyles'
@@ -5,12 +6,14 @@ import { API_URL } from '@/ksh-config/index'
 import { changeMyanNum } from '@/ksh-helpers'
 
 export default function AllMedicinePage({ medicines, count, category, longCat}) {
+  const router = useRouter();
+  console.log(router.query.category)
   return (
     <>
       <GlobalContainer>
         <SearchBar.Container>
           <SearchBar />
-          <ProductFilter longCat = {longCat} />
+          <ProductFilter longCat = {longCat} routerCat = {router.query.category} />
         </SearchBar.Container>
 
         <ProductCard.InfoBar>
@@ -47,7 +50,7 @@ export async function getStaticProps({ params: { category } }) {
   const REQUESTS = [
     fetch(`${API_URL}/medicines?categories.slug_contains=${category}`),
     fetch(`${API_URL}/categories?slug=${category}`),
-     fetch(`${API_URL}/categories`)
+    fetch(`${API_URL}/categories`)
   ]
   const [medicinesResp, singleCategoryResp, respCat] = await Promise.all(REQUESTS)
   const categoryData = await medicinesResp.json()
