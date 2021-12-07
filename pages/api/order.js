@@ -12,7 +12,7 @@ export default function handler(req, res) {
       },
       secure: true,
     })
-
+    // zideharron1111@gmail.com
     const mailData = {
       from: 'kshpharmacy.order@gmail.com',
       to: 'kyawsanhtoopharmacy@gmail.com',
