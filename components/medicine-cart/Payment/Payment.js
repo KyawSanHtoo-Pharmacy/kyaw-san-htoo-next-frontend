@@ -48,11 +48,14 @@ export default function Payment({ prePage, orderFormData, setOrderFormData, medi
     }
   }
 
+  const FilterEmptyProduct = medicineToBuy.filter( med => med.quantity !== 0 );
+
   const sendOrder = async e => {
+
     e.preventDefault()
     const orderData = {
       ...orderFormData,
-      medicines: medicineToBuy,
+      medicines: FilterEmptyProduct,
     }
 
     const resp = await fetch('/api/order', {
@@ -143,7 +146,9 @@ export default function Payment({ prePage, orderFormData, setOrderFormData, medi
 
         <CostdescriptionWrapper>
           <CostText>စုစုပေါင်း ကျသင့်ငွေ (ကျပ်)</CostText>
-          <Amount>၃၁၀၀</Amount>
+          <Amount>
+
+          </Amount>
         </CostdescriptionWrapper>
       </SummaryWrapper>
 

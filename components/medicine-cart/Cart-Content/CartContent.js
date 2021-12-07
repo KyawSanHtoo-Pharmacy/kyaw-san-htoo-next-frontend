@@ -21,7 +21,7 @@ import {
 import { Button } from '@/ksh-components'
 import { CartStates } from '@/ksh-contexts/Cart-Context'
 import { changeMyanNum } from '@/ksh-helpers'
-
+import { AiOutlineDelete } from 'react-icons/ai'
 function CartContent({ nextPage, medicineToBuy }) {
   const value = useContext(CartStates)
   const { dispatch } = useContext(CartStates)
@@ -41,7 +41,9 @@ function CartContent({ nextPage, medicineToBuy }) {
     const result = newarray.join("");
     return result;
   }
-
+  const totalQty =  medicineToBuy.reduce( (acc, med) => {
+                        return acc + med.quantity
+                    }, 0 ) 
   return (
     <>
       <Cart1stPage>
@@ -90,24 +92,35 @@ function CartContent({ nextPage, medicineToBuy }) {
                 min='0'
                 onChange={e => dispatch({ type: 'handleQuantityChange', newQ: { id: id, val: e.target.value } })}
               /> */}
-              <QuantityShow
-                // value={ }
-          
-                // value={quantity}
-                // min='0'
-                // onChange={e => dispatch({ type: 'handleQuantityChange', newQ: { id: id, val: e.target.value } })}
-              > {changeMyanNum(quantity)} </QuantityShow>
+       
+               <QuantityShow
+                  type='number'
+                  value={changeMyanNum(quantity) }
+                  // value={quantity}
+                  min='0'
+                  onChange={e => dispatch({ type: 'handleQuantityChange', newQ: { id: id, val: e.target.value } })}
+                > {changeToMM(quantity)}
+                </QuantityShow>
+     
+
               <Plus onClick={() => dispatch({ type: 'updateItemQuantity', payload: { id: id, amount: 1 } })}>+</Plus>
             </ItemQuentity>
             <ItemCost>
-              <p>{price * quantity ? changeMyanNum(price * quantity) : changeMyanNum(0)}</p>
+              {
+                quantity === 0 || "" ?    <p><AiOutlineDelete onClick = {() => dispatch({type : 'deleteItem', payload : {id : id}})} /> </p> :
+                <p>{price * quantity ? changeMyanNum(price * quantity) : changeMyanNum(0)}</p>
+              }
+           
             </ItemCost>
           </ItemsWrapper>
         ))}
       </Cart1stPage>
       {/* // <h1>Here Cart Comes</h1> */}
       <ButtonWrapper>
-        <Button Big onClick={nextPage}>
+       
+        <Button Big onClick={nextPage}
+          disabled = {totalQty === 0 ? true : false }
+        >
           <span>ဆက်လုပ်ဆောင်မယ်</span>
         </Button>
       </ButtonWrapper>

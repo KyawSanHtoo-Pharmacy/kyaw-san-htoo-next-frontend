@@ -100,7 +100,7 @@ export const ItemQuentity = styled.div`
   overflow: hidden;
 `
 export const QuantityShow = styled.p`
-  padding-top : 8px;
+  padding-top: 8px;
   text-align: center;
   width: 100%;
   font-size: 20px;

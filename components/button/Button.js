@@ -2,7 +2,7 @@ import { StyledButton, WhiteButton, OffWhiteButton } from './Button-styles'
 
 export default function Button({ children, ...restProps }) {
   return (
-    <StyledButton {...restProps}>
+    <StyledButton  {...restProps}>
       <span>{children}</span>
     </StyledButton>
   )

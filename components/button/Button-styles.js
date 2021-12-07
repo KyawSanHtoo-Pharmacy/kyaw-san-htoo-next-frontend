@@ -13,6 +13,16 @@ export const StyledButton = styled.button`
   overflow: hidden;
   transition: all 0.2s ease-out;
 
+  &:disabled {
+    background-color : ${({theme}) => theme.colors.offWhite };
+    border: 1px solid ${({ theme }) => theme.colors.offWhite};
+    color : ${({theme}) => theme.colors.dividerTwo };
+  }
+  &:disabled:hover{
+    background-color : ${({theme}) => theme.colors.offWhite };
+    border: 1px solid ${({ theme }) => theme.colors.offWhite};
+  }
+
   & > span {
     margin-bottom: -0.4em;
   }

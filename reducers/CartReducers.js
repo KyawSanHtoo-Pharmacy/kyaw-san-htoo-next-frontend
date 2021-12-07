@@ -47,7 +47,12 @@ export const cartReducer = (state, action) => {
                 return item
                 })
                 return(updatedMedListQChange)
-//Default Case
+// Case-4
+        case 'deleteItem' : 
+              const payloadId = action.payload.id
+              console.log(payloadId)
+              return state.filter(med => med.id !== payloadId);
+// Default case
         default : return state
     }
 }
