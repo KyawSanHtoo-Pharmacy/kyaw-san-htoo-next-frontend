@@ -7,7 +7,7 @@ import { changeMyanNum } from '@/ksh-helpers'
 export default function AllMedicinePage({ medicines, count, category, longCat }) {
   return (
     <>
-      <GlobalContainer>
+      <GlobalContainer padding='6.25em 7.81em 4.4em 7.81em'>
         <SearchBar.Container>
           <SearchBar />
           <ProductFilter longCat = {longCat} />

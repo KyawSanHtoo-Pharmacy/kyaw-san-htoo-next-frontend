@@ -3,7 +3,7 @@ import { createGlobalStyle, css } from 'styled-components'
 
 export const GlobalContainer = styled.div`
   height: 100%;
-  padding: 6.25em 7.81em;
+  padding: ${({ padding }) => padding || '6.25em 7.81em'};
 
   @media screen and (max-width: 980px) {
     padding: 3.13em 3.91em;
@@ -37,6 +37,7 @@ export const GlobalStyles = createGlobalStyle`${css`
   body {
     font-family: Bahnschrift, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans,
       Droid Sans, Helvetica Neue, sans-serif;
+      -webkit-tap-highlight-color: rgba(0,0,0,0.01);
   }
 
   body {

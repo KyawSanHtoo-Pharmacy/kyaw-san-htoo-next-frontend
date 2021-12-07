@@ -7,8 +7,8 @@ import { Header, Container, Group, NavLink, Logo, Button, Icon, MobileMenuButton
 
 import { CartStates } from '@/ksh-contexts/Cart-Context'
 
-export default function Navbar() {
-  const [cartVisibile, setCartVisible] = useContext(CartStates).visibility
+export default function Navbar({ isMobileNavOpen, setIsMobileNavOpen }) {
+  const [_, setCartVisible] = useContext(CartStates).visibility
 
   const CartButtonHandler = () => {
     setCartVisible(true)
@@ -55,7 +55,7 @@ export default function Navbar() {
           </Link>
         </Group>
 
-        <MobileMenuButton>
+        <MobileMenuButton onClick={() => setIsMobileNavOpen(!isMobileNavOpen)}>
           <Image src='/icons/mobile-menu.png' width='25' height='24' alt='mobile-menu-icon' />
         </MobileMenuButton>
       </Container>

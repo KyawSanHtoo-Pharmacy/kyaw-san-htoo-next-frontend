@@ -3,7 +3,7 @@ import { FadeInKeyframe } from '@/ksh-styles/keyframes/fadeIn'
 
 export const Container = styled.div`
   padding: 0 11.88em;
-  margin-top: -4.6em;
+  margin-top: -2.4em;
   display: flex;
   align-items: center;
   position: relative;

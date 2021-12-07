@@ -12,23 +12,27 @@ export default function handler(req, res) {
       },
       secure: true,
     })
-
-    const emailTemplate = getEmailTemplate(req.body)
-
+    // zideharron1111@gmail.com
     const mailData = {
       from: 'kshpharmacy.order@gmail.com',
       to: 'kyawsanhtoopharmacy@gmail.com',
       subject: `KyawSanHtoo Website: An Order Received from ${req.body.name}`,
+      attachments: [
+        {
+          filename: `${req.body.name}'s Kpay Screenshot'`,
+          path: `${req.body.kpay_screenshot}`,
+          cid: 'kpay_screenshot',
+        },
+      ],
       text: 'Sent by: ' + req.body.name,
-      html: emailTemplate,
+      html: getEmailTemplate(req.body),
     }
 
-    transporter.sendMail(mailData, function (err, info) {
+    transporter.sendMail(mailData).then((err, info) => {
       if (err) {
-        console.log(err)
+        res.status(405).json({ message: err })
       } else {
-        console.log(info)
-        res.status(200).json(req.body)
+        res.status(200).json(info)
       }
     })
   } else {

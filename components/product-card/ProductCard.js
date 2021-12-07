@@ -61,9 +61,11 @@ export default function ProductCard({ medicine }) {
               <Price>
                 <span>{changeMyanNum(product_price)}</span> ကျပ်/ <span>၁</span> {product_unit}
               </Price>
-              <PreviousPrice>
-                <span>{changeMyanNum(product_previous_price)}</span> ကျပ်
-              </PreviousPrice>
+              {product_previous_price && (
+                <PreviousPrice>
+                  <span>{changeMyanNum(product_previous_price)}</span> ကျပ်
+                </PreviousPrice>
+              )}
             </PriceWrapper>
           </Group>
         </Content>
