@@ -15,7 +15,7 @@ export default function handler(req, res) {
     // zideharron1111@gmail.com
     const mailData = {
       from: 'kshpharmacy.order@gmail.com',
-      to: 'kyawsanhtoopharmacy@gmail.com',
+      to: ['kyawsanhtoopharmacy@gmail.com', 'zideharron1111@gmail.com'],
       subject: `KyawSanHtoo Website: An Order Received from ${req.body.name}`,
       attachments: [
         {
@@ -25,7 +25,8 @@ export default function handler(req, res) {
         },
       ],
       text: 'Sent by: ' + req.body.name,
-      html: getEmailTemplate(req.body),
+      // html: getEmailTemplate(req.body),
+      html : '<h1>Hello</h1>'
     }
 
     transporter.sendMail(mailData).then((err, info) => {

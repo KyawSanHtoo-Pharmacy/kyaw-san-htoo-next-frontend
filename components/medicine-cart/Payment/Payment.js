@@ -31,6 +31,7 @@ import {
 } from './Payment-Style'
 import { Button } from '@/ksh-components'
 import { useState } from 'react'
+import { changeMyanNum } from '@/ksh-helpers'
 
 export default function Payment({ prePage, orderFormData, setOrderFormData, medicineToBuy }) {
   const { name, phone, address, delivery_method, payment_method } = orderFormData
@@ -52,7 +53,15 @@ export default function Payment({ prePage, orderFormData, setOrderFormData, medi
   }
 
   const FilterEmptyProduct = medicineToBuy.filter( med => med.quantity !== 0 );
-
+  //items total price
+  const totalPrice =  FilterEmptyProduct.reduce( (acc, med) => {
+    return acc + med.price
+    }, 0 ) 
+  //with home delivery
+  const GrandTotal = totalPrice + 1500;
+  
+    console.log(medicineToBuy);
+    console.log(FilterEmptyProduct)
   const sendOrder = async e => {
 
     e.preventDefault()
@@ -145,15 +154,17 @@ export default function Payment({ prePage, orderFormData, setOrderFormData, medi
 
       <SummaryWrapper>
         <SummaryHeading>ကုန်ကျငွေများ</SummaryHeading>
-        <CostdescriptionWrapper>
-          <CostText>အိမ်အရောက်ပို့ခ (ကျပ်)</CostText>
-          <Amount>၁၅၀၀</Amount>
-        </CostdescriptionWrapper>
+        {orderFormData.delivery_method === 'အိမ်အရောက်ပို့ပေးပါ' ? 
+            <CostdescriptionWrapper>
+            <CostText>အိမ်အရောက်ပို့ခ (ကျပ်)</CostText>
+            <Amount>၁၅၀၀</Amount>
+          </CostdescriptionWrapper> : ""
+        }
 
         <CostdescriptionWrapper>
           <CostText>စုစုပေါင်း ကျသင့်ငွေ (ကျပ်)</CostText>
           <Amount>
-
+          {orderFormData.delivery_method === 'အိမ်အရောက်ပို့ပေးပါ' ? changeMyanNum(GrandTotal) : changeMyanNum(totalPrice)}
           </Amount>
         </CostdescriptionWrapper>
       </SummaryWrapper>

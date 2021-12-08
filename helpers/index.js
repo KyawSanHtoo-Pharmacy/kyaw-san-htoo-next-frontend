@@ -5,7 +5,8 @@ export const changeMyanNum = num => myanmarNumbers(num, 'my')
 export const getEmailTemplate = data => {
   const { medicines, name, phone, address, delivery_method, payment_method } = data
 
-  const totalCost = medicines.reduce((acc, medicine) => acc + medicine.price * medicine.quantity, 0)
+  const totalCost = medicines.reduce((acc, medicine) => acc + medicine.price, 0)
+  const GrandTotal = totalPrice + 1500;
 
   let medicineListHTML = ''
   for (let medicine of medicines) {
@@ -23,7 +24,7 @@ export const getEmailTemplate = data => {
       <td style="width: 20%">${name}</td>
       <td style="width: 20%">${price}</td>
       <td style="width: 20%">${quantity}</td>
-      <td style="width: 20%">${price * quantity}</td>
+      <td style="width: 20%">${price}</td>
     </tr> 
           `
   }
@@ -148,12 +149,15 @@ export const getEmailTemplate = data => {
               <p>${delivery_method}</p>
             </div>
           </td>
-          <td style="width: 33%">
+          ${
+            delivery_method === "အိမ်အရောက်ပို့ပေးပါ" ? (<td style="width: 33%">
             <div style="margin-bottom: 24px">
               <h2 style="margin-bottom: 8px">လိပ်စာ</h2>
               <p>${address}</p>
             </div>
-          </td>
+          </td>) : "<td></td>"
+          }
+
         </tr>
         <tr>
           <td>
@@ -200,15 +204,16 @@ export const getEmailTemplate = data => {
       <tbody>
         <tr style="height: 32px"></tr>
         <tr>
-          <td colspan="2">စုစုပေါင်း ဆေးတန်ဖိုး</td>
-          <td style="width: 20%">၆၄၅၀</td>
+          <td colspan="2"ပို့ဆောင်ခ
+          </td>
+          <td style="width: 20%">${delivery_method === "အိမ်အရောက်ပို့ပေးပါ" ? changeMyanNum(1500) : changeMyanNum(0)}</td>
         </tr>
         <tr style="height: 24px"></tr>
         <tr style="border-bottom: 1pt solid #b6e2db">
           <td colspan="2">
             <p style="margin-bottom: 24px">စုစုပေါင်း ဆေးတန်ဖိုး</p>
           </td>
-          <td style="width: 20%"><p style="margin-bottom: 24px">၆၄၅၀</p></td>
+          <td style="width: 20%"><p style="margin-bottom: 24px">${changeMyanNum(totalPrice)}</p></td>
         </tr>
         <tr style="height: 16px"></tr>
       </tbody>
@@ -218,7 +223,7 @@ export const getEmailTemplate = data => {
       <tbody>
         <tr>
           <td colspan="2" style="font-weight: bold">စုစုပေါင်း ကုန်ကျငွေ</td>
-          <td style="width: 20%; font-weight: bold; font-size: 18px; color: #5abeae">${totalCost}</td>
+          <td style="width: 20%; font-weight: bold; font-size: 18px; color: #5abeae">${ delivery_method === "အိမ်အရောက်ပို့ပေးပါ" ? changeMyanNum(GrandTotal) : changeMyanNum(totalPrice) }</td>
         </tr>
       </tbody>
     </table>

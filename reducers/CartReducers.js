@@ -4,6 +4,7 @@ export const cartReducer = (state, action) => {
 //Case - 1
         case 'ADD_TO_CART' :
                 const {id, quantity} = action.newItem
+                console.log(action.newItem.price)
                 const isAlreadyInCart = state.some( med => med.id === id )
                 if(isAlreadyInCart) {
                     console.log("update ha!!!")
@@ -32,10 +33,21 @@ export const cartReducer = (state, action) => {
                     ...item,
                     quantity: PayloadAmount === -1 ? (item.quantity <= 0 ? 0 : item.quantity + PayloadAmount) : item.quantity + PayloadAmount,
                   }
+              
+                }
+                return item
+              });
+              const updatedPriceState = updatedMedicineToBuyList.map( item => {
+                const payloadId = action.payload.id
+                if (item.id === payloadId) {
+                  return {
+                    ...item,
+                    price : item.UnitPrice * item.quantity
+                  }
                 }
                 return item
               })
-              return(updatedMedicineToBuyList)
+              return(updatedPriceState)
 //Case-3
         case 'handleQuantityChange' : 
                 const updatedMedListQChange = state.map(item => {

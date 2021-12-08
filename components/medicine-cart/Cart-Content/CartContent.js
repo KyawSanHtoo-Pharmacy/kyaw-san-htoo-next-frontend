@@ -84,14 +84,7 @@ function CartContent({ nextPage, medicineToBuy }) {
             </ItemsToBuy>
             <ItemQuentity>
               <Min onClick={() => dispatch({ type: 'updateItemQuantity', payload: { id: id, amount: -1 } })}>-</Min>
-              {/* <QuantityShow
-                type='text'
-                value={changeToMM(quantity) }
-          
-                // value={quantity}
-                min='0'
-                onChange={e => dispatch({ type: 'handleQuantityChange', newQ: { id: id, val: e.target.value } })}
-              /> */}
+
        
                <QuantityShow
                   type='number'
@@ -108,7 +101,9 @@ function CartContent({ nextPage, medicineToBuy }) {
             <ItemCost>
               {
                 quantity === 0 || "" ?    <p><AiOutlineDelete onClick = {() => dispatch({type : 'deleteItem', payload : {id : id}})} /> </p> :
-                <p>{price * quantity ? changeMyanNum(price * quantity) : changeMyanNum(0)}</p>
+                <p>
+                  {price ? changeMyanNum(price) : changeMyanNum(0)}
+                </p>
               }
            
             </ItemCost>
