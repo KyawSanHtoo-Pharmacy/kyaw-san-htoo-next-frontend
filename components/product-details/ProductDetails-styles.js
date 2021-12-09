@@ -5,6 +5,10 @@ export const Container = styled.main`
   display: flex;
   flex-direction: column;
   margin-top: -1em;
+
+  @media screen and (max-width: 980px) {
+    margin-top: 2em;
+  }
 `
 
 export const MyanmarName = styled.h1`
@@ -26,6 +30,14 @@ export const HorizontalGroup = styled.div`
 
   &:last-of-type {
     margin-bottom: 3.2em;
+  }
+
+  @media screen and (max-width: 860px) {
+    flex-direction: column;
+  }
+
+  @media screen and (max-width: 730px) {
+    flex-direction: row;
   }
 `
 
