@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
-import { Navbar, MobileNav, Footer, MinimalFooter } from '@/ksh-components'
+import { Navbar, MobileNav, Footer, MinimalFooter, OrderSuccessPopup } from '@/ksh-components'
 import { ThemeProvider } from 'styled-components'
 import { lightTheme } from '@/ksh-theme/theme'
 import { Cart } from '@/ksh-components'
@@ -33,6 +33,7 @@ NProgress.configure({ showSpinner: false })
 function MyKSHApp({ Component, pageProps }) {
   const router = useRouter()
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false)
+  const [showOrderSuccessPopup, setShowOrderSuccessPopup] = useState(false)
   return (
     <>
       <Head>
@@ -49,6 +50,8 @@ function MyKSHApp({ Component, pageProps }) {
         <CartProvider>
           <Navbar isMobileNavOpen={isMobileNavOpen} setIsMobileNavOpen={setIsMobileNavOpen} />
           {isMobileNavOpen && <MobileNav isMobileNavOpen={isMobileNavOpen} setIsMobileNavOpen={setIsMobileNavOpen} />}
+          <button onClick={() => setShowOrderSuccessPopup(true)}>Open Success Popup</button>
+          {showOrderSuccessPopup && <OrderSuccessPopup setShowOrderSuccessPopup={setShowOrderSuccessPopup} />}
           <Cart />
           <Component {...pageProps} />
         </CartProvider>
