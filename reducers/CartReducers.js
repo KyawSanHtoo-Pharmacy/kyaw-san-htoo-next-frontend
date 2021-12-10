@@ -10,8 +10,10 @@ export const cartReducer = (state, action) => {
         const updatedMed = state.map(med => {
           if (med.id === id) {
             const newq = (med.quantity += quantity)
+            const newp = (med.price += med.UnitPrice * quantity)
+            console.log( {newq, newp});
             console.log('id same detected!')
-            return { ...med, quanity: newq }
+            return { ...med, quanity: newq, price : newp }
           } else {
             return med
           }
