@@ -7,6 +7,7 @@ import { lightTheme } from '@/ksh-theme/theme'
 import { Cart } from '@/ksh-components'
 import { CartProvider } from '@/ksh-contexts/Cart-Context'
 import { GlobalStyles } from '@/ksh-styles/GlobalStyles'
+
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
@@ -33,7 +34,7 @@ NProgress.configure({ showSpinner: false })
 function MyKSHApp({ Component, pageProps }) {
   const router = useRouter()
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false)
-  const [showOrderSuccessPopup, setShowOrderSuccessPopup] = useState(false)
+
   return (
     <>
       <Head>
@@ -45,13 +46,20 @@ function MyKSHApp({ Component, pageProps }) {
         <meta name='keywords' content='' />
         <link rel='shortcut icon' type='image/svg' href='/favicon.svg' />
       </Head>
+
       <ThemeProvider theme={lightTheme}>
         <GlobalStyles />
+
         <CartProvider>
           <Navbar isMobileNavOpen={isMobileNavOpen} setIsMobileNavOpen={setIsMobileNavOpen} />
           {isMobileNavOpen && <MobileNav isMobileNavOpen={isMobileNavOpen} setIsMobileNavOpen={setIsMobileNavOpen} />}
-          <button onClick={() => setShowOrderSuccessPopup(true)}>Open Success Popup</button>
-          {showOrderSuccessPopup && <OrderSuccessPopup setShowOrderSuccessPopup={setShowOrderSuccessPopup} />}
+          {/* <button
+            onClick={() => {
+              setShowOrderSuccessPopup(true)
+            }}>
+            Open Success Popup
+          </button> */}
+          {/* {showOrderSuccessPopup && <OrderSuccessPopup setShowOrderSuccessPopup={setShowOrderSuccessPopup} />} */}
           <Cart />
           <Component {...pageProps} />
         </CartProvider>

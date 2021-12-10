@@ -41,7 +41,7 @@ export default function ProductDetails({ medicine_info }) {
     quantity: amount,
     price: product_price * amount,
     hash: product_images[0].hash,
-    UnitPrice : product_price
+    UnitPrice: product_price,
   }
 
   return (

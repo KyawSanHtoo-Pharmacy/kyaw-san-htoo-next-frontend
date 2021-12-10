@@ -1,12 +1,16 @@
 import { ProductDetails } from '@/ksh-layouts'
-import { ImageShowcase, ProductCard } from '@/ksh-components'
+import { ImageShowcase, ProductCard, OrderSuccessPopup } from '@/ksh-components'
 import ProductDetailsInfoContainer from '@/ksh-containers/ProductDetailsInfoContainer'
 import { API_URL } from '@/ksh-config/index'
 import { GlobalContainer } from '@/ksh-styles/GlobalStyles'
+import { useContext } from 'react'
+import { CartStates } from '@/ksh-contexts/Cart-Context'
 
 function ProductDetailsPage({ medicine_images, medicine_details, medicine_info, relatedMedicines }) {
+  const { showOrderSuccessPopup } = useContext(CartStates)
   return (
     <>
+      {showOrderSuccessPopup && <OrderSuccessPopup />}
       <ProductDetails>
         <ProductDetails.StickySide>
           <ImageShowcase medicine_images={medicine_images} />

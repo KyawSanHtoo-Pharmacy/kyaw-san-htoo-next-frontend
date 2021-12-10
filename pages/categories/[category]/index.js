@@ -5,15 +5,14 @@ import { GlobalContainer } from '@/ksh-styles/GlobalStyles'
 import { API_URL } from '@/ksh-config/index'
 import { changeMyanNum } from '@/ksh-helpers'
 
-export default function AllMedicinePage({ medicines, count, category, longCat}) {
-  const router = useRouter();
-  console.log(router.query.category)
+export default function AllMedicinePage({ medicines, count, category, longCat }) {
+  const router = useRouter()
   return (
     <>
       <GlobalContainer>
         <SearchBar.Container>
           <SearchBar />
-          <ProductFilter longCat = {longCat} routerCat = {router.query.category} />
+          <ProductFilter longCat={longCat} routerCat={router.query.category} />
         </SearchBar.Container>
 
         <ProductCard.InfoBar>
@@ -50,12 +49,12 @@ export async function getStaticProps({ params: { category } }) {
   const REQUESTS = [
     fetch(`${API_URL}/medicines?categories.slug_contains=${category}`),
     fetch(`${API_URL}/categories?slug=${category}`),
-    fetch(`${API_URL}/categories`)
+    fetch(`${API_URL}/categories`),
   ]
   const [medicinesResp, singleCategoryResp, respCat] = await Promise.all(REQUESTS)
   const categoryData = await medicinesResp.json()
   const singleCategory = await singleCategoryResp.json()
-  const longCat = await respCat.json();
+  const longCat = await respCat.json()
 
   return {
     props: {
@@ -63,10 +62,7 @@ export async function getStaticProps({ params: { category } }) {
       count: categoryData.length,
       // I dont know why this check for singleCategory[0] is needed, but to fix the error in console :((
       category: singleCategory[0] ? singleCategory[0].category_name_long : null,
-      longCat : longCat
+      longCat: longCat,
     },
   }
 }
-
-
-

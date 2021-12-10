@@ -31,19 +31,20 @@ function CartContent({ nextPage, medicineToBuy }) {
     setCartVisible(!cartVisibile)
   }
 
-  const changeToMM = (qty) => { //1
-    const myannums = ["၀", "၁", "၂", "၃", "၄", "၅", "၆", "၇", "၈", "၉"]
-    const processnum = qty.toString();
-    const spilitnum = processnum.split("");
-    const newarray = spilitnum.map( num => {
-      return  myannums[num]
-    } )
-    const result = newarray.join("");
-    return result;
+  const changeToMM = qty => {
+    //1
+    const myannums = ['၀', '၁', '၂', '၃', '၄', '၅', '၆', '၇', '၈', '၉']
+    const processnum = qty.toString()
+    const spilitnum = processnum.split('')
+    const newarray = spilitnum.map(num => {
+      return myannums[num]
+    })
+    const result = newarray.join('')
+    return result
   }
-  const totalQty =  medicineToBuy.reduce( (acc, med) => {
-                        return acc + med.quantity
-                    }, 0 ) 
+  const totalQty = medicineToBuy.reduce((acc, med) => {
+    return acc + med.quantity
+  }, 0)
   return (
     <>
       <Cart1stPage>
@@ -85,37 +86,33 @@ function CartContent({ nextPage, medicineToBuy }) {
             <ItemQuentity>
               <Min onClick={() => dispatch({ type: 'updateItemQuantity', payload: { id: id, amount: -1 } })}>-</Min>
 
-       
-               <QuantityShow
-                  type='number'
-                  value={changeMyanNum(quantity) }
-                  // value={quantity}
-                  min='0'
-                  onChange={e => dispatch({ type: 'handleQuantityChange', newQ: { id: id, val: e.target.value } })}
-                > {changeToMM(quantity)}
-                </QuantityShow>
-     
+              <QuantityShow
+                type='number'
+                value={changeMyanNum(quantity)}
+                // value={quantity}
+                min='0'
+                onChange={e => dispatch({ type: 'handleQuantityChange', newQ: { id: id, val: e.target.value } })}>
+                {' '}
+                {changeToMM(quantity)}
+              </QuantityShow>
 
               <Plus onClick={() => dispatch({ type: 'updateItemQuantity', payload: { id: id, amount: 1 } })}>+</Plus>
             </ItemQuentity>
             <ItemCost>
-              {
-                quantity === 0 || "" ?    <p><AiOutlineDelete onClick = {() => dispatch({type : 'deleteItem', payload : {id : id}})} /> </p> :
+              {quantity === 0 || '' ? (
                 <p>
-                  {price ? changeMyanNum(price) : changeMyanNum(0)}
+                  <AiOutlineDelete onClick={() => dispatch({ type: 'deleteItem', payload: { id: id } })} />{' '}
                 </p>
-              }
-           
+              ) : (
+                <p>{price ? changeMyanNum(price) : changeMyanNum(0)}</p>
+              )}
             </ItemCost>
           </ItemsWrapper>
         ))}
       </Cart1stPage>
       {/* // <h1>Here Cart Comes</h1> */}
       <ButtonWrapper>
-       
-        <Button Big onClick={nextPage}
-          disabled = {totalQty === 0 ? true : false }
-        >
+        <Button Big onClick={nextPage} disabled={totalQty === 0 ? true : false}>
           <span>ဆက်လုပ်ဆောင်မယ်</span>
         </Button>
       </ButtonWrapper>

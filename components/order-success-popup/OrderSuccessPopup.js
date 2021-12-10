@@ -1,8 +1,11 @@
 import Image from 'next/image'
 import { Button } from '@/ksh-components'
 import { Container, Popup, Icon, Heading, ListTitle, List } from './OrderSuccessPopup-styles'
+import { useContext } from 'react'
+import { CartStates } from '@/ksh-contexts/Cart-Context'
 
-export default function OrderSuccessPopup({ setShowOrderSuccessPopup }) {
+export default function OrderSuccessPopup() {
+  const { setShowOrderSuccessPopup } = useContext(CartStates)
   return (
     <Container>
       <Popup>

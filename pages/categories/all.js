@@ -1,16 +1,20 @@
 import ProductCardContainer from '@/ksh-containers/ProductCardContainer'
-import { ProductCard, SearchBar, ProductFilter } from '@/ksh-components'
+import { ProductCard, SearchBar, ProductFilter, OrderSuccessPopup } from '@/ksh-components'
 import { GlobalContainer } from '@/ksh-styles/GlobalStyles'
 import { API_URL } from '@/ksh-config/index'
 import { changeMyanNum } from '@/ksh-helpers'
+import { useContext } from 'react'
+import { CartStates } from '@/ksh-contexts/Cart-Context'
 
 export default function AllMedicinePage({ medicines, count, category, longCat }) {
+  const { showOrderSuccessPopup } = useContext(CartStates)
   return (
     <>
+      {showOrderSuccessPopup && <OrderSuccessPopup />}
       <GlobalContainer padding='6.25em 7.81em 4.4em 7.81em'>
         <SearchBar.Container>
           <SearchBar />
-          <ProductFilter longCat = {longCat} />
+          <ProductFilter longCat={longCat} />
         </SearchBar.Container>
 
         <ProductCard.InfoBar>
@@ -29,15 +33,15 @@ export default function AllMedicinePage({ medicines, count, category, longCat })
 export async function getStaticProps() {
   const resp = await fetch(`${API_URL}/medicines`)
   const medicines = await resp.json()
-  const respCat = await fetch(`${API_URL}/categories`);
-  const longCat = await respCat.json();
-  console.log(longCat);
+  const respCat = await fetch(`${API_URL}/categories`)
+  const longCat = await respCat.json()
+  console.log(longCat)
   return {
     props: {
       medicines,
       count: medicines.length,
       category: 'ဆေးအားလုံး',
-      longCat : longCat
+      longCat: longCat,
     },
   }
 }
