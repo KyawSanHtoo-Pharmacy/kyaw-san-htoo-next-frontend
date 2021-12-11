@@ -4,7 +4,7 @@ import Payment from './Payment/Payment'
 import { CartWrapper, Inner, BlurOverlay } from './Cart-Styles'
 import { CartStates } from '@/ksh-contexts/Cart-Context'
 import { AnimatePresence } from 'framer-motion'
-
+import EmptyCart from './Empaty-Cart/EmptyCart'
 const orderFormInitialState = {
   name: '',
   phone: '',
@@ -36,7 +36,7 @@ function Cart() {
       document.body.style.overflow = 'unset'
     }
   }, [cartVisibile])
-
+  console.log(medicineToBuy.length) 
   return (
     <>
       <AnimatePresence>
@@ -44,7 +44,10 @@ function Cart() {
           <>
             <BlurOverlay />
             <CartWrapper>
-              {pages === 1 ? (
+              {
+              
+              medicineToBuy.length > 0 ? (
+              pages === 1 ? (
                 <CartContent nextPage={nextPage} medicineToBuy={medicineToBuy} />
               ) : (
                 <Payment
@@ -53,11 +56,11 @@ function Cart() {
                   setOrderFormData={setOrderFormData}
                   medicineToBuy={medicineToBuy}
                 />
-              )}
+              ) ) : <EmptyCart/> }
             </CartWrapper>
           </>
         ) : (
-          ''
+          ""
         )}
       </AnimatePresence>
     </>
