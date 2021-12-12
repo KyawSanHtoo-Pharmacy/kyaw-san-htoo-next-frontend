@@ -28,6 +28,7 @@ import {
   UploadDescripton,
   UploadButton,
   UploadButtonWrapper,
+  UploadButtonLabel,
 } from './Payment-Style'
 import { Button } from '@/ksh-components'
 import { useState } from 'react'
@@ -225,12 +226,10 @@ export default function Payment({ prePage, orderFormData, setOrderFormData, medi
             <UploadWrapper>
               <UploadDescripton>ငွေလွှဲဖြတ်ပိုင်း ထည့်သွင်းရန်</UploadDescripton>
               <UploadButtonWrapper>
-                <label htmlFor='Screenshot'>ပုံတင်မယ်</label>
-                {/* <UploadButton
-                type='file'
-                id='Screenshot'
-                name='payment_screenshot'
-                onChange={handleOrderFormDataChange}></UploadButton> */}
+                {base64KpayImage && <img src={base64KpayImage} alt='chosen' />}
+                <UploadButtonLabel htmlFor='Screenshot' active={Boolean(base64KpayImage)}>
+                  ပုံတင်မယ်
+                </UploadButtonLabel>
                 <UploadButton
                   type='file'
                   id='Screenshot'
@@ -244,8 +243,6 @@ export default function Payment({ prePage, orderFormData, setOrderFormData, medi
         ) : (
           ''
         )}
-
-        {base64KpayImage && <img src={base64KpayImage} alt='chosen' style={{ height: '300px' }} />}
 
         <ButtonWrapper>
           <Button Big>အော်ဒါတင်မယ်</Button>

@@ -3,10 +3,9 @@ import myanmarNumbers from 'myanmar-numbers'
 export const changeMyanNum = num => myanmarNumbers(num, 'my')
 
 export const getEmailTemplate = data => {
-  const { medicines, name, phone, address, delivery_method, payment_method } = data
-
-  const totalCost = medicines.reduce((acc, medicine) => acc + medicine.price, 0)
-  const GrandTotal = totalPrice + 1500;
+  const { medicines, name, phone, address, delivery_method, payment_method, kpay_screenshot } = data
+  const totalPrice = medicines.reduce((acc, medicine) => acc + medicine.price, 0)
+  const GrandTotal = totalPrice + 1500
 
   let medicineListHTML = ''
   for (let medicine of medicines) {
@@ -22,10 +21,10 @@ export const getEmailTemplate = data => {
         />
       </td>
       <td style="width: 20%">${name}</td>
-      <td style="width: 20%">${price}</td>
-      <td style="width: 20%">${quantity}</td>
-      <td style="width: 20%">${price}</td>
-    </tr> 
+      <td style="width: 20%">${changeMyanNum(price)}</td>
+      <td style="width: 20%">${changeMyanNum(quantity)}</td>
+      <td style="width: 20%">${changeMyanNum(price)}</td>
+    </tr>
           `
   }
 
@@ -149,14 +148,14 @@ export const getEmailTemplate = data => {
               <p>${delivery_method}</p>
             </div>
           </td>
-          ${
-            delivery_method === "အိမ်အရောက်ပို့ပေးပါ" ? (<td style="width: 33%">
-            <div style="margin-bottom: 24px">
-              <h2 style="margin-bottom: 8px">လိပ်စာ</h2>
-              <p>${address}</p>
-            </div>
-          </td>) : "<td></td>"
-          }
+
+              <td style='width: 33%'>
+                <div style='margin-bottom: 24px'>
+                  <h2 style='margin-bottom: 8px'>လိပ်စာ</h2>
+                  <p>${delivery_method === 'အိမ်အရောက်ပို့ပေးပါ' ? address : '-'}</p>
+                </div>
+              </td>
+          
 
         </tr>
         <tr>
@@ -204,9 +203,11 @@ export const getEmailTemplate = data => {
       <tbody>
         <tr style="height: 32px"></tr>
         <tr>
-          <td colspan="2"ပို့ဆောင်ခ
+          <td colspan="2">ပို့ဆောင်ခ
           </td>
-          <td style="width: 20%">${delivery_method === "အိမ်အရောက်ပို့ပေးပါ" ? changeMyanNum(1500) : changeMyanNum(0)}</td>
+          <td style="width: 20%">${
+            delivery_method === 'အိမ်အရောက်ပို့ပေးပါ' ? changeMyanNum(1500) : changeMyanNum(0)
+          }</td>
         </tr>
         <tr style="height: 24px"></tr>
         <tr style="border-bottom: 1pt solid #b6e2db">
@@ -223,27 +224,30 @@ export const getEmailTemplate = data => {
       <tbody>
         <tr>
           <td colspan="2" style="font-weight: bold">စုစုပေါင်း ကုန်ကျငွေ</td>
-          <td style="width: 20%; font-weight: bold; font-size: 18px; color: #5abeae">${ delivery_method === "အိမ်အရောက်ပို့ပေးပါ" ? changeMyanNum(GrandTotal) : changeMyanNum(totalPrice) }</td>
+          <td style="width: 20%; font-weight: bold; font-size: 18px; color: #5abeae">${
+            delivery_method === 'အိမ်အရောက်ပို့ပေးပါ' ? changeMyanNum(GrandTotal) : changeMyanNum(totalPrice)
+          }</td>
         </tr>
       </tbody>
     </table>
-    <table>
-      <tbody>
-        <tr>
-          <td colspan="5">
-            <h1 style="margin-bottom: 24px; margin-top: 40px">Ngwe Phyet Pine</h1>
-          </td>
-        </tr>
-        <tr>
-          <td style="text-align: center">
-            <img
-            src='cid:kpay_screenshot' alt='Kpay Screenshot'
-              class="kpay-screenshot"
-            />
-          </td>
-        </tr>
-      </tbody>
-    </table>
+   
+        <table>
+          <tbody>
+            <tr>
+              <td colspan='5'>
+                <h1 style='margin-bottom: 24px; margin-top: 40px; text-align: right'>${
+                  kpay_screenshot ? 'Ngwe Phyet Pine' : '-'
+                }</h1>
+              </td>
+            </tr>
+            <tr>
+              <td style='text-align: right'>
+               <img src='cid:kpay_screenshot' alt='' class='kpay-screenshot' />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+    
     <table>
       <tbody>
         <tr>
@@ -255,109 +259,5 @@ export const getEmailTemplate = data => {
     </table>
   </body>
 </html>
-
   `
 }
-
-// export const getEmailTemplate = data => {
-//   const { medicines, name, phone, address, delivery_method, payment_method } = data
-
-//   let medicineListHTML = ''
-//   for (let medicine of medicines) {
-//     const { image, name, price, quantity } = medicine
-//     medicineListHTML += `
-//             <tr>
-//               <td>
-//                 <img src=${image} alt=${name} />
-//               </td>
-//               <td>${name}</td>
-//               <td>${price}</td>
-//               <td>${quantity}</td>
-//               <td>${quantity * price}</td>
-//             </tr>
-//           `
-//   }
-
-//   const medicinesTableHTML = `
-//     <table>
-//         <thead>
-//           <th>Image</th>
-//           <th>Name</th>
-//           <th>Price</th>
-//           <th>Quantity</th>
-//           <th>Amount</th>
-//         </thead>
-//       ${medicineListHTML}
-//    </table>
-//   `
-
-//   const customerInfoTableHTML = `
-//   <table>
-//       <thead>
-//         <th>Name</th>
-//         <th>Phone</th>
-//         <th>Address</th>
-//         <th>Delivery Method</th>
-//         <th>Payment Method</th>
-//       </thead>
-//       <tbody>
-//         <tr>
-//           <td>${name}</td>
-//           <td>${phone}</td>
-//           <td>${address}</td>
-//           <td>${delivery_method}</td>
-//           <td>${payment_method}</td>
-//         </tr>
-//       </tbody>
-//   </table>
-//   `
-
-//   const emailTemplate = `
-// <!DOCTYPE html>
-// <html lang="en">
-//   <head>
-//     <meta charset="UTF-8" />
-//     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-//     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-//     <title>Document</title>
-//     <style>
-//       table {
-//         font-family: Arial, Helvetica, sans-serif;
-//         border-collapse: collapse;
-//         width: 100%;
-//         text-align: center;
-//         margin-bottom: 24px;
-//       }
-
-//       table td,
-//       table th {
-//         border: 1px solid #ddd;
-//         padding: 8px;
-//       }
-
-//       table tr:nth-child(even) {
-//         background-color: #f2f2f2;
-//       }
-
-//       table tr:hover {
-//         background-color: #ddd;
-//       }
-
-//       table th,
-//       tfoot td {
-//         padding-top: 12px;
-//         padding-bottom: 12px;
-//         background-color: #04aa6d;
-//         color: white;
-//       }
-//     </style>
-//   </head>
-//   <body>
-//     <img src='cid:kpay_screenshot' alt='Kpay Screenshot' style="width: 200px;" />
-//     ${customerInfoTableHTML}
-//     ${medicinesTableHTML}
-//   </body>
-// </html>
-// `
-//   return emailTemplate
-// }

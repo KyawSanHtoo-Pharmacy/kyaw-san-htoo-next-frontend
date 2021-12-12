@@ -1,0 +1,39 @@
+${
+            delivery_method === 'အိမ်အရောက်ပို့ပေးပါ' ? (
+              <td style='width: 33%'>
+                <div style='margin-bottom: 24px'>
+                  <h2 style='margin-bottom: 8px'>လိပ်စာ</h2>
+                  <p>${address}</p>
+                </div>
+              </td>
+            ) : (
+              ''
+            )
+          }
+
+
+
+
+
+
+
+          ${
+      kpay_screenshot ? (
+        <table>
+          <tbody>
+            <tr>
+              <td colspan='5'>
+                <h1 style='margin-bottom: 24px; margin-top: 40px'>Ngwe Phyet Pine</h1>
+              </td>
+            </tr>
+            <tr>
+              <td style='text-align: center'>
+                <img src='cid:kpay_screenshot' alt='Kpay Screenshot' class='kpay-screenshot' />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      ) : (
+        ''
+      )
+    }

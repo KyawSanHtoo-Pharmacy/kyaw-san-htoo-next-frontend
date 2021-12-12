@@ -7,6 +7,7 @@ export const Container = styled.div`
   background-color: ${({ theme }) => theme.colors.offWhite};
   border-radius: 0.63em;
   border: 1px solid ${({ theme }) => theme.colors.heading};
+  position: relative;
 `
 
 export const Button = styled.button`
@@ -19,3 +20,12 @@ export const Button = styled.button`
 `
 
 export const Amount = styled.p``
+
+export const Error = styled.p`
+  width: 200%;
+  position: absolute;
+  bottom: -2.4em;
+  left: 0;
+  font-size: 0.9em;
+  color: ${({ theme }) => theme.colors.warning};
+`
