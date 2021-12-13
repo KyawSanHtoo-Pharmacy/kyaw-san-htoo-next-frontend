@@ -9,7 +9,7 @@ export const getEmailTemplate = data => {
 
   let medicineListHTML = ''
   for (let medicine of medicines) {
-    const { image, name, price, quantity } = medicine
+    const { image, name, price, quantity, UnitPrice } = medicine
     medicineListHTML += `
     <tr style="height: 24px"></tr>
     <tr>
@@ -21,7 +21,7 @@ export const getEmailTemplate = data => {
         />
       </td>
       <td style="width: 20%">${name}</td>
-      <td style="width: 20%">${changeMyanNum(price)}</td>
+      <td style="width: 20%">${changeMyanNum(UnitPrice)}</td>
       <td style="width: 20%">${changeMyanNum(quantity)}</td>
       <td style="width: 20%">${changeMyanNum(price)}</td>
     </tr>

@@ -35,6 +35,7 @@ import { useState } from 'react'
 import { changeMyanNum } from '@/ksh-helpers'
 import { useContext } from 'react'
 import { CartStates } from '@/ksh-contexts/Cart-Context'
+import { API_URL } from '@/ksh-config/index'
 
 export default function Payment({ prePage, orderFormData, setOrderFormData, medicineToBuy }) {
   const { name, phone, address, delivery_method, payment_method } = orderFormData
@@ -65,8 +66,6 @@ export default function Payment({ prePage, orderFormData, setOrderFormData, medi
   //with home delivery
   const GrandTotal = totalPrice + 1500
 
-  console.log(medicineToBuy)
-  console.log(FilterEmptyProduct)
   const sendOrder = async e => {
     e.preventDefault()
     const orderData = {
@@ -83,15 +82,33 @@ export default function Payment({ prePage, orderFormData, setOrderFormData, medi
       },
       body: JSON.stringify(orderData),
     })
-    const order = await resp.json()
 
+    const order = await resp.json()
     if (order.message.accepted) {
       console.log('Order accepted!')
-      dispatch({ type: 'CLEAR_CART' })
-      setShowOrderSuccessPopup(true)
-      setCartVisible(false)
+      //requested to Strapi to substract the purchased quantity
+      Promise.all(
+        medicineToBuy.map(medicine =>
+          fetch(`${API_URL}/medicines/${medicine.id}`, {
+            method: 'PUT',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              product_quantity: medicine.product_quantity - medicine.quantity,
+            }),
+          })
+        )
+      )
+        .then(resp => resp[0].json())
+        .then(data => {
+          console.log(data)
+          dispatch({ type: 'CLEAR_CART' })
+          setShowOrderSuccessPopup(true)
+          setCartVisible(false)
+        })
     } else {
-      console.log('Noooo')
+      confirm('Noooo')
     }
   }
 

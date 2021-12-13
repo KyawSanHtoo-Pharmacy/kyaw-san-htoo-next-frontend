@@ -125,7 +125,7 @@ export const QuantityShow = styled.p`
     -moz-appearance: textfield;
   }
 `
-export const Error = styled.p`
+export const Error = styled.span`
   width: 200%;
   position: absolute;
   bottom: -2em;
