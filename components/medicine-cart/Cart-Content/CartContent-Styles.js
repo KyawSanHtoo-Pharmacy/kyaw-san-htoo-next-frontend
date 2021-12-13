@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { FadeInKeyframe } from '@/ksh-styles/keyframes/fadeIn'
 
 export const Cart1stPage = styled.div``
 export const CartHeading = styled.div`
@@ -58,7 +59,7 @@ export const ItemTitles = styled.h5`
 export const ItemsWrapper = styled.div`
   display: grid;
   grid-template-columns: 1.8fr 1fr 1fr;
-  margin-bottom: 1em;
+  margin-bottom: 2em;
 `
 //1st column
 export const ItemsToBuy = styled.div`
@@ -97,7 +98,8 @@ export const ItemQuentity = styled.div`
   margin: 0 auto;
   border: 1px solid ${({ theme }) => theme.colors.heading};
   border-radius: 10px;
-  overflow: hidden;
+  position: relative;
+  /* overflow: hidden; */
 `
 export const QuantityShow = styled.p`
   padding-top: 8px;
@@ -123,17 +125,30 @@ export const QuantityShow = styled.p`
     -moz-appearance: textfield;
   }
 `
+export const Error = styled.p`
+  width: 200%;
+  position: absolute;
+  bottom: -2em;
+  left: 0;
+  font-size: 0.6em;
+  text-align: left;
+  color: ${({ theme }) => theme.colors.warning};
+  ${FadeInKeyframe}
+`
+
 export const Plus = styled.button`
   background-color: ${({ theme }) => theme.colors.offWhite};
   color: ${({ theme }) => theme.colors.text};
   border: none;
   font-weight: 900;
+  border-radius: 10px;
 `
 export const Min = styled.button`
   background-color: ${({ theme }) => theme.colors.offWhite};
   color: ${({ theme }) => theme.colors.text};
   border: none;
   font-weight: 900;
+  border-radius: 10px;
 `
 
 //3rd column

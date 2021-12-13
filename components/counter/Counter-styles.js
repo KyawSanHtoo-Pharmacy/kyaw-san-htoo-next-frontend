@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { FadeInKeyframe } from '@/ksh-styles/keyframes/fadeIn'
 
 export const Container = styled.div`
   display: flex;
@@ -28,4 +29,5 @@ export const Error = styled.p`
   left: 0;
   font-size: 0.9em;
   color: ${({ theme }) => theme.colors.warning};
+  ${FadeInKeyframe}
 `

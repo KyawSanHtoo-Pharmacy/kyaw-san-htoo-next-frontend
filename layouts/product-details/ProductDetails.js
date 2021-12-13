@@ -4,7 +4,7 @@ import { GlobalContainer } from '@/ksh-styles/GlobalStyles'
 export default function ProductDetails({ children }) {
   return (
     <Section>
-      <GlobalContainer>
+      <GlobalContainer padding='2em 7.81em 6.25em 7.81em'>
         <Frame>{children}</Frame>
       </GlobalContainer>
     </Section>

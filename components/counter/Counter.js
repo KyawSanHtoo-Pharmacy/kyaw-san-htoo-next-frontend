@@ -5,7 +5,7 @@ import { changeMyanNum } from '@/ksh-helpers'
 export default function Counter({ setAmount, amount, medicine }) {
   const [overAmount, setOverAmount] = useState(false)
   const { product_name_mm, product_quantity, product_unit } = medicine
-  console.log(medicine)
+
   return (
     <Container>
       <Button
@@ -22,7 +22,6 @@ export default function Counter({ setAmount, amount, medicine }) {
         onClick={() => {
           if (amount === medicine.product_quantity) {
             setOverAmount(true)
-            return
           } else {
             setAmount(prev => prev + 1)
           }

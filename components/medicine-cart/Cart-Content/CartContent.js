@@ -1,5 +1,9 @@
 import React, { useContext } from 'react'
 import Image from 'next/image'
+import { Button } from '@/ksh-components'
+import { CartStates } from '@/ksh-contexts/Cart-Context'
+import { changeMyanNum } from '@/ksh-helpers'
+import { AiOutlineDelete } from 'react-icons/ai'
 import {
   Cart1stPage,
   CartHeading,
@@ -16,13 +20,12 @@ import {
   Plus,
   Min,
   MNum,
+  Error,
   ButtonWrapper,
 } from './CartContent-Styles'
-import { Button } from '@/ksh-components'
-import { CartStates } from '@/ksh-contexts/Cart-Context'
-import { changeMyanNum } from '@/ksh-helpers'
-import { AiOutlineDelete } from 'react-icons/ai'
+
 function CartContent({ nextPage, medicineToBuy }) {
+  console.log(medicineToBuy) //del later
   const value = useContext(CartStates)
   const { dispatch } = useContext(CartStates)
   const [cartVisibile, setCartVisible] = value.visibility
@@ -42,9 +45,11 @@ function CartContent({ nextPage, medicineToBuy }) {
     const result = newarray.join('')
     return result
   }
+
   const totalQty = medicineToBuy.reduce((acc, med) => {
     return acc + med.quantity
   }, 0)
+
   return (
     <>
       <Cart1stPage>
@@ -75,40 +80,43 @@ function CartContent({ nextPage, medicineToBuy }) {
           </ItemTitles>
         </ItemTitleWrapper>
 
-        {medicineToBuy.map(({ id, image, hash, name, quantity, price }) => (
-          <ItemsWrapper key={id}>
-            <ItemsToBuy>
-              <ItemImg>
-                <Image src={image} layout='fill' alt={name} placeholder='blur' blurDataURL={hash} />
-              </ItemImg>
-              <ItemName>{name}</ItemName>
-            </ItemsToBuy>
-            <ItemQuentity>
-              <Min onClick={() => dispatch({ type: 'updateItemQuantity', payload: { id: id, amount: -1 } })}>-</Min>
+        {medicineToBuy.map(
+          ({ id, image, hash, name, quantity, price, isOverAmount, product_quantity, product_unit }) => (
+            <ItemsWrapper key={id}>
+              <ItemsToBuy>
+                <ItemImg>
+                  <Image src={image} layout='fill' alt={name} placeholder='blur' blurDataURL={hash} />
+                </ItemImg>
+                <ItemName>{name}</ItemName>
+              </ItemsToBuy>
+              <ItemQuentity>
+                <Min onClick={() => dispatch({ type: 'updateItemQuantity', payload: { id: id, amount: -1 } })}>-</Min>
 
-              <QuantityShow
-                type='number'
-                value={changeMyanNum(quantity)}
-                // value={quantity}
-                min='0'
-                onChange={e => dispatch({ type: 'handleQuantityChange', newQ: { id: id, val: e.target.value } })}>
-                {' '}
-                {changeToMM(quantity)}
-              </QuantityShow>
+                <QuantityShow
+                  type='number'
+                  value={changeMyanNum(quantity)}
+                  // value={quantity}
+                  min='0'
+                  onChange={e => dispatch({ type: 'handleQuantityChange', newQ: { id: id, val: e.target.value } })}>
+                  {' '}
+                  {changeToMM(quantity)}
+                  {isOverAmount && <Error>{`${name} ${product_quantity}${product_unit} thr kyn pr tot tl!`}</Error>}
+                </QuantityShow>
 
-              <Plus onClick={() => dispatch({ type: 'updateItemQuantity', payload: { id: id, amount: 1 } })}>+</Plus>
-            </ItemQuentity>
-            <ItemCost>
-              {quantity === 0 || '' ? (
-                <p>
-                  <AiOutlineDelete onClick={() => dispatch({ type: 'deleteItem', payload: { id: id } })} />{' '}
-                </p>
-              ) : (
-                <p>{price ? changeMyanNum(price) : changeMyanNum(0)}</p>
-              )}
-            </ItemCost>
-          </ItemsWrapper>
-        ))}
+                <Plus onClick={() => dispatch({ type: 'updateItemQuantity', payload: { id: id, amount: 1 } })}>+</Plus>
+              </ItemQuentity>
+              <ItemCost>
+                {quantity === 0 || '' ? (
+                  <p>
+                    <AiOutlineDelete onClick={() => dispatch({ type: 'deleteItem', payload: { id: id } })} />{' '}
+                  </p>
+                ) : (
+                  <p>{price ? changeMyanNum(price) : changeMyanNum(0)}</p>
+                )}
+              </ItemCost>
+            </ItemsWrapper>
+          )
+        )}
       </Cart1stPage>
       {/* // <h1>Here Cart Comes</h1> */}
       <ButtonWrapper>
