@@ -63,7 +63,7 @@ function CartContent({ nextPage, medicineToBuy }) {
           </svg>
           <CartTitle>
             <span className='text'>ဆေးဝယ်စာရင်း</span>
-            <span className='number'>{medicineToBuy.length}</span>
+            <span className='number'><span className='num' >{ changeToMM( medicineToBuy.length ) }</span></span>
           </CartTitle>
         </CartHeading>
 
