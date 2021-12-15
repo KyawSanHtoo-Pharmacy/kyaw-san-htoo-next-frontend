@@ -60,8 +60,8 @@ export const Input = styled.input`
 export const Button = styled.button`
   position: absolute;
   top: 50%;
-  transform: translateY(-50%);
-  right: 0.5em;
+  transform: translateY(-50.8%);
+  right: 0.6em;
   background-color: ${({ theme }) => theme.colors.heading};
   color: ${({ theme }) => theme.colors.bodyBg};
   border: none;
@@ -78,7 +78,7 @@ export const Button = styled.button`
     transform: translateY(-69.5%);
     right: 0.6em;
   }
-  @media screen and (max-width: 42000px) {
+  @media screen and (max-width: 420px) {
     transform: translateY(-68.5%);
     right: 0.5em;
   }

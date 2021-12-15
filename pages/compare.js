@@ -1,18 +1,16 @@
-import { Compare, Accordion, NoticePill, ProductCard, Error, Button } from '@/ksh-components'
+import { Compare, Accordion, NoticePill, ProductCard, Error, Button, OrderSuccessPopup } from '@/ksh-components'
 import { GlobalContainer } from '@/ksh-styles/GlobalStyles'
 import { API_URL } from '@/ksh-config/index'
 import Link from 'next/link'
 import { useContext } from 'react'
 import { CartStates } from '@/ksh-contexts/Cart-Context'
 
-export default function compare({ isInjected = false, outstockMedicine, instockMedicine, relatedMedicines }) {
+export default function ComparePage({ isInjected = false, outstockMedicine, instockMedicine, relatedMedicines }) {
+  const { showOrderSuccessPopup } = useContext(CartStates)
+
   if (isInjected) {
     return <Error message='URLကို မကလိပါနဲ့လား ကိုငြိမ်းမောင်' status='Error : tgg pan pr dl, plz.' />
   }
-  const { showOrderSuccessPopup } = useContext(CartStates)
-
-  outstockMedicine = outstockMedicine[0]
-  instockMedicine = instockMedicine[0]
 
   const productDetailsCompareData = [
     {
@@ -108,6 +106,14 @@ export default function compare({ isInjected = false, outstockMedicine, instockM
 }
 
 export async function getServerSideProps({ query: { outstock, instock } }) {
+  if (!outstock || !instock) {
+    return {
+      props: {
+        isInjected: true,
+      },
+    }
+  }
+
   const [outstockResp, instockResp] = await Promise.all([
     fetch(`${API_URL}/medicines?slug=${outstock}`),
     fetch(`${API_URL}/medicines?slug=${instock}`),
@@ -129,8 +135,8 @@ export async function getServerSideProps({ query: { outstock, instock } }) {
 
   return {
     props: {
-      outstockMedicine,
-      instockMedicine,
+      outstockMedicine: outstockMedicine[0],
+      instockMedicine: instockMedicine[0],
       relatedMedicines: relatedMedicines.filter(
         medicine => medicine.slug !== outstockMedicine[0].slug && medicine.slug !== instockMedicine[0].slug
       ),
