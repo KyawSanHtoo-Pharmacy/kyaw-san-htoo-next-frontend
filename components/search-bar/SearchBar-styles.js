@@ -12,10 +12,11 @@ export const Container = styled.div`
 
   @media screen and (max-width: 1200px) {
     padding: 0;
-    margin-top: -2.3em;
   }
 
-  @media screen and (max-width: 1200px) {
+  @media screen and (max-width: 700px) {
+    padding: 0;
+    margin-top: -2.3em;
     flex-direction: column;
     align-items: stretch;
   }
@@ -26,7 +27,7 @@ export const Form = styled.form`
   position: relative;
   margin-right: 1em;
 
-  @media screen and (max-width: 1200px) {
+  @media screen and (max-width: 700px) {
     margin-right: 0;
   }
 `
@@ -51,7 +52,7 @@ export const Input = styled.input`
     border: 2px solid ${({ theme }) => theme.colors.heading};
   }
 
-  @media screen and (max-width: 1200px) {
+  @media screen and (max-width: 700px) {
     margin-bottom: 1em;
   }
 `
@@ -60,7 +61,7 @@ export const Button = styled.button`
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  right: 0.65em;
+  right: 0.5em;
   background-color: ${({ theme }) => theme.colors.heading};
   color: ${({ theme }) => theme.colors.bodyBg};
   border: none;
@@ -73,7 +74,12 @@ export const Button = styled.button`
     margin-bottom: -0.2em;
   }
 
-  @media screen and (max-width: 1200px) {
-    transform: translateY(-69%);
+  @media screen and (max-width: 700px) {
+    transform: translateY(-69.5%);
+    right: 0.6em;
+  }
+  @media screen and (max-width: 42000px) {
+    transform: translateY(-68.5%);
+    right: 0.5em;
   }
 `

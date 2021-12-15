@@ -9,6 +9,6 @@ export const Pill = styled.div`
 
   @media screen and (min-width: 361px) and (max-width: 400px) {
     padding: 0.47em 1.17em;
-    font-size: 0.78em;
+    font-size: 0.72em;
   }
 `
