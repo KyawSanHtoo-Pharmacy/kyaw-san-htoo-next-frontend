@@ -1,20 +1,34 @@
 import { useState } from 'react'
-import { Container, Button, Amount } from './Counter-styles'
+import { Container, Button, Amount, Error } from './Counter-styles'
 import { changeMyanNum } from '@/ksh-helpers'
 
-export default function Counter({ product_unit, setAmount, amount }) {
-  // const [amount, setAmount] = useState(1)
+export default function Counter({ setAmount, amount, medicine }) {
+  const [overAmount, setOverAmount] = useState(false)
+  const { product_name_mm, product_quantity, product_unit } = medicine
+
   return (
     <Container>
-      <Button onClick={() => amount > 1 && setAmount(prev => prev - 1)}>
+      <Button
+        onClick={() => {
+          setOverAmount(false)
+          amount > 1 && setAmount(prev => prev - 1)
+        }}>
         <img src='/icons/minus-blue.svg' alt='minus-icon' />
       </Button>
       <Amount>
-        <span className='mm-number'>{changeMyanNum(amount)}</span> <span>{product_unit || 'ကဒ်'}</span>
+        <span className='mm-number'>{changeMyanNum(amount)}</span> <span>{medicine.product_unit || 'ကဒ်'}</span>
       </Amount>
-      <Button onClick={() => setAmount(prev => prev + 1)}>
+      <Button
+        onClick={() => {
+          if (amount === medicine.product_quantity) {
+            setOverAmount(true)
+          } else {
+            setAmount(prev => prev + 1)
+          }
+        }}>
         <img src='/icons/blue-plus.svg' alt='plus-icon' />
       </Button>
+      {overAmount && <Error>{`${product_name_mm} ${product_quantity}${product_unit} thr kyn pr tot tl!`}</Error>}
     </Container>
   )
 }

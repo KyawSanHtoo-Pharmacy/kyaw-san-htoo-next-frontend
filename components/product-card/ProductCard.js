@@ -54,7 +54,7 @@ export default function ProductCard({ medicine }) {
           <MyanmarName>{product_name_mm}</MyanmarName>
           <Group>
             <EnglishName>{product_name_eng}</EnglishName>
-            <NoticePill availability={isAvailable}>{isAvailable ? 'ပစ္စည်း ရှိ' : 'ပစ္စည်း ကုန်'}</NoticePill>
+            <NoticePill availability={isAvailable}>{isAvailable ? 'ပစ္စည်းရှိ' : 'ပစ္စည်းကုန်'}</NoticePill>
           </Group>
           <Group>
             <PriceWrapper>

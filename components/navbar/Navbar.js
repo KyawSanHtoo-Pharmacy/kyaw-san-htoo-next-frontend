@@ -3,7 +3,18 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 const { navLinks } = require('@/ksh-data/navLinks.json')
-import { Header, Container, Group, NavLink, Logo, Button, Icon, MobileMenuButton } from './Navbar-styles'
+import {
+  Header,
+  Container,
+  Group,
+  NavLink,
+  Logo,
+  Button,
+  Icon,
+  MobileMenuButton,
+  MobileCartButton,
+  MobileCartIcon,
+} from './Navbar-styles'
 
 import { CartStates } from '@/ksh-contexts/Cart-Context'
 
@@ -55,8 +66,14 @@ export default function Navbar({ isMobileNavOpen, setIsMobileNavOpen }) {
           </Link>
         </Group>
 
+        <MobileCartButton onClick={CartButtonHandler}>
+          <MobileCartIcon>
+            <Image src='/icons/cart.svg' layout='fill' alt='cart-icon' />
+          </MobileCartIcon>
+        </MobileCartButton>
+
         <MobileMenuButton onClick={() => setIsMobileNavOpen(!isMobileNavOpen)}>
-          <Image src='/icons/mobile-menu.png' width='25' height='24' alt='mobile-menu-icon' />
+          <Image src='/icons/mobile-menu.svg' width='29' height='24' alt='mobile-menu-icon' />
         </MobileMenuButton>
       </Container>
     </Header>

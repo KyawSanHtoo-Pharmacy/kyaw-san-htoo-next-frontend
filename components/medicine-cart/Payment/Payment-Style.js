@@ -1,8 +1,6 @@
 import styled from 'styled-components'
 
-export const PaymentForm = styled.form`
-  /* padding : 0px 17px; */
-`
+export const PaymentForm = styled.form``
 
 export const PaymentHeading = styled.div`
   width: 100%;
@@ -206,32 +204,39 @@ export const ButtonWrapper = styled.div`
 `
 export const UploadWrapper = styled.div`
   margin-top: 30px;
-  display: grid;
-  grid-template-columns: 2.5fr 1fr;
+  display: flex;
   align-items: center;
 `
 export const UploadDescripton = styled.p`
   font-size: 14px;
   font-weight: bold;
+  flex: 1;
 `
 export const UploadButtonWrapper = styled.div`
-  label {
-    font-size: 1.09em;
-    flex: 1;
-    align-self: center;
-    color: ${({ theme, active }) => (active ? theme.colors.bodyBg : theme.colors.text)};
-    background-color: ${({ theme, active }) => (active ? theme.colors.heading : theme.colors.offWhite)};
-    border: 1px solid ${({ theme }) => theme.colors.heading};
-    border-radius: 100vw;
-    padding: 1.2em 0.8em;
-    margin: 0 0.5em 0.5em 0;
-    cursor: pointer;
-    text-align: center;
+  flex: 0.6;
+  display: flex;
 
-    &:hover {
-      background-color: ${({ theme }) => theme.colors.heading};
-      color: ${({ theme }) => theme.colors.bodyBg};
-    }
+  & img {
+    width: 3em;
+    margin: 0 1em 0 auto;
+    border-radius: 4px;
+  }
+`
+
+export const UploadButtonLabel = styled.label`
+  font-size: 1.09em;
+  color: ${({ theme, active }) => (active ? theme.colors.bodyBg : theme.colors.text)};
+  background-color: ${({ theme, active }) => (active ? theme.colors.heading : theme.colors.offWhite)};
+  border: 1px solid ${({ theme }) => theme.colors.heading};
+  border-radius: 100vw;
+  padding: 0.8em 2em;
+  cursor: pointer;
+  text-align: center;
+  margin-left: auto;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.heading};
+    color: ${({ theme }) => theme.colors.bodyBg};
   }
 `
 

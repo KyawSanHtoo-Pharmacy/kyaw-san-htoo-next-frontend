@@ -3,6 +3,8 @@ const cubiz = 'all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)'
 
 export const Container = styled.div`
   margin-bottom: ${({ mb }) => mb || 0};
+  display: flex;
+  flex-direction: column;
 `
 
 export const Item = styled.div`

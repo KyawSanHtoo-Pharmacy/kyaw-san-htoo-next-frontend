@@ -32,7 +32,7 @@ export default function ProductDetails({ medicine_info }) {
   const [amount, setAmount] = useState(1)
   const value = useContext(CartStates)
   const { dispatch } = useContext(CartStates)
-  const [, setCartVisible] = value.visibility
+  const [_, setCartVisible] = value.visibility
 
   const newItem = {
     id,
@@ -42,6 +42,9 @@ export default function ProductDetails({ medicine_info }) {
     price: product_price * amount,
     hash: product_images[0].hash,
     UnitPrice: product_price,
+    isOverAmount: false,
+    product_quantity: product_quantity,
+    product_unit,
   }
 
   return (
@@ -63,7 +66,7 @@ export default function ProductDetails({ medicine_info }) {
           {product_quantity === 0 ? (
             <NoticePill availability={false}>ပစ္စည်း ကုန်နေပါတယ်</NoticePill>
           ) : (
-            <Counter amount={amount} setAmount={setAmount} product_uni={product_unit} />
+            <Counter amount={amount} setAmount={setAmount} medicine={medicine_info} />
           )}
         </VerticleGroup>
         <VerticleGroup>

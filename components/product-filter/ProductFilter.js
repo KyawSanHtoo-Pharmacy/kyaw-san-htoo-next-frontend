@@ -17,19 +17,18 @@ import {
   AlphabetText,
 } from './ProductFilter-styles'
 
-export default function ProductFilter({longCat,  routerChar, routerCat}) {
+export default function ProductFilter({ longCat, routerChar, routerCat }) {
   const router = useRouter()
   const [isFilterOpen, setIsFilterOpen] = useState(false)
   useEffect(() => {
-    document.body.style.overflow = isFilterOpen ? 'hidden' : 'unset';
+    document.body.style.overflow = isFilterOpen ? 'hidden' : 'unset'
   }, [isFilterOpen])
 
   const clickHandler = (param, type) => {
     //param gets api endpoint. type gets route either it's supposed to go to cateogires or aphabets.
-    if( type === "cat") {
+    if (type === 'cat') {
       router.push(`/categories/${param}`)
-    }
-    else if (type === "alpha"){
+    } else if (type === 'alpha') {
       router.push(`/categories/alphabets/${param}`)
     }
   }
@@ -83,26 +82,35 @@ export default function ProductFilter({longCat,  routerChar, routerCat}) {
             <Item>
               <TitleWrapper>
                 <Title>ရောဂါများ</Title>
-                <Icon src='/icons/plus.svg' alt='see-more-icon' />
+                {/* <Icon src='/icons/plus.svg' alt='see-more-icon' /> */}
               </TitleWrapper>
               <Body>
-                {
-                  longCat.map( cat => (
-                    <Pill isActive = {routerCat === cat.slug ? true : false } key = {cat.id} onClick = {() => clickHandler(cat.slug, 'cat')} >{ cat.category_name_long }</Pill>
-                  ) )
-                }
+                {longCat.map(cat => (
+                  <Pill
+                    isActive={routerCat === cat.slug ? true : false}
+                    key={cat.id}
+                    onClick={() => clickHandler(cat.slug, 'cat')}>
+                    {cat.category_name_long}
+                  </Pill>
+                ))}
               </Body>
             </Item>
 
             <Item>
               <TitleWrapper>
                 <Title>ရောဂါများ</Title>
-                <Icon src='/icons/plus.svg' alt='see-more-icon' />
+                {/* <Icon src='/icons/plus.svg' alt='see-more-icon' /> */}
               </TitleWrapper>
               <Body>
-                {
-                  Alphabets.map( char => (<AlphabetPill isActive={routerChar === char.char ? true : false} key = {char.id} onClick = { () => clickHandler(char.char, 'alpha') } > <AlphabetText> { char.char} </AlphabetText> </AlphabetPill>) )
-                }
+                {Alphabets.map(char => (
+                  <AlphabetPill
+                    isActive={routerChar === char.char ? true : false}
+                    key={char.id}
+                    onClick={() => clickHandler(char.char, 'alpha')}>
+                    {' '}
+                    <AlphabetText> {char.char} </AlphabetText>{' '}
+                  </AlphabetPill>
+                ))}
               </Body>
             </Item>
 

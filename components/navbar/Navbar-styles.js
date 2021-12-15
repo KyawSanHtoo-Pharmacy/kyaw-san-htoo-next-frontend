@@ -92,6 +92,24 @@ export const Button = styled.button`
   }
 `
 
+export const MobileCartButton = styled.button`
+  display: none;
+  border: none;
+
+  @media screen and (max-width: 1100px) {
+    display: block;
+    background: ${({ theme }) => theme.colors.bodyBg};
+    width: 3em;
+    height: 3em;
+    border-radius: 100vw;
+    margin-right: 1.5em;
+    margin-bottom: 0.3em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+`
+
 export const Icon = styled.a`
   cursor: pointer;
   display: grid;
@@ -100,6 +118,11 @@ export const Icon = styled.a`
   aspect-ratio: 1;
   position: relative;
 `
+
+export const MobileCartIcon = styled(Icon)`
+  width: 2.6em;
+`
+
 export const MobileMenuButton = styled.button`
   background: none;
   border: none;
