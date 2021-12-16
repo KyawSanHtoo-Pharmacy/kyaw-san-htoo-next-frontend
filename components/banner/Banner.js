@@ -12,9 +12,15 @@ import {
   Pill,
   PillWrapper,
   ViewAll,
-  BannerBackground,
+  BannerBackgroundHuman,
+  BannerBackgroundBedo,
+  BannerBackgroundThoughts,
+  BannerBackgroundHumanMobile,
+  BannerBackgroundThoughtsMobile,
 } from './Banner-Style'
 import { AnimatePresence } from 'framer-motion'
+import Image from 'next/image'
+import { useWindowSize } from 'react-use'
 const { bannerpillData } = require('@/ksh-data/bannerpillData.json')
 
 const Banner = () => {
@@ -33,11 +39,6 @@ const Banner = () => {
   useEffect(() => {
     document.addEventListener('click', () => setDropdownState(false))
   }, [])
-  // const stateHandler = () => {
-  //   if (dropdownState == false) {
-  //     setDropdownText('နေမကောင်းဖြစ်')
-  //   }
-  // }
 
   useEffect(() => {
     //to throw back to default text of dropdown
@@ -109,14 +110,57 @@ export default Banner
 
 //Compound component spilittings
 Banner.Section = function BannerSection({ children, ...restProps }) {
+  const { width } = useWindowSize()
   return (
     <BannerContainer {...restProps}>
       {children}
-      <BannerBackground
+      {/* <BannerBackground
         src='/images/home-hero-bg-pc.svg'
         layout='fill'
         alt='a doctor in pharmacy asking how are you feeling today'
-      />
+      /> */}
+      {width > 700 ? (
+        <>
+          <BannerBackgroundHuman>
+            <Image
+              src='/illustrations/hero-pc-human.svg'
+              layout='fill'
+              alt='a doctor in pharmacy asking how are you feeling today'
+            />
+          </BannerBackgroundHuman>
+          <BannerBackgroundBedo>
+            <Image
+              src='/illustrations/hero-pc-bedo.svg'
+              layout='fill'
+              alt='a doctor in pharmacy asking how are you feeling today'
+            />
+          </BannerBackgroundBedo>
+          <BannerBackgroundThoughts>
+            <Image
+              src='/illustrations/hero-pc-thoughts.svg'
+              layout='fill'
+              alt='a doctor in pharmacy asking how are you feeling today'
+            />
+          </BannerBackgroundThoughts>
+        </>
+      ) : (
+        <>
+          <BannerBackgroundThoughtsMobile>
+            <Image
+              src='/illustrations/hero-mobile-thoughts.svg'
+              layout='fill'
+              alt='a doctor in pharmacy asking how are you feeling today'
+            />
+          </BannerBackgroundThoughtsMobile>
+          <BannerBackgroundHumanMobile>
+            <Image
+              src='/illustrations/hero-mobile-human.svg'
+              layout='fill'
+              alt='a doctor in pharmacy asking how are you feeling today'
+            />
+          </BannerBackgroundHumanMobile>
+        </>
+      )}
     </BannerContainer>
   )
 }

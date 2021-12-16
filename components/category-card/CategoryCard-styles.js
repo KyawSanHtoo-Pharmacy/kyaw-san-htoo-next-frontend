@@ -9,6 +9,10 @@ export const Heading = styled.h2`
 //lo ma lo ma ti tay
 export const Frame = styled.section`
   margin-top: 5em;
+
+  @media screen and (max-width: 500px) {
+    margin-top: 2.5em;
+  }
 `
 
 export const Item = styled.div`

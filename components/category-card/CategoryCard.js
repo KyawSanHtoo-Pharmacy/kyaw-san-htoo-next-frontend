@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { Section, Heading, Frame, Item, ImageWrapper, ContentWrapper, CategoryName } from './CategoryCard-styles'
 
 export default function CategoryCard({ category }) {
-  const { category_name_eng, category_name_mm, slug, category_image } = category
+  const { category_name_eng, category_name_long, slug, category_image } = category
 
   return (
     <Link href={`/categories/${slug}`} passHref>
@@ -13,13 +13,13 @@ export default function CategoryCard({ category }) {
           <Image
             src={category_image.formats.medium.url}
             layout='fill'
-            alt={`${category_name_eng} - ${category_name_mm}`}
+            alt={`${category_name_eng} - ${category_name_long}`}
             placeholder='blur'
             blurDataURL={category_image.hash}
           />
         </ImageWrapper>
         <ContentWrapper>
-          <CategoryName>{category_name_mm}</CategoryName>
+          <CategoryName>{category_name_long}</CategoryName>
         </ContentWrapper>
       </Item>
     </Link>

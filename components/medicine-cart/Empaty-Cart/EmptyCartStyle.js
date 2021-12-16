@@ -1,6 +1,10 @@
 import styled from 'styled-components'
 
-export const EmptyCartWrapper = styled.div``
+export const EmptyCartWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+`
 export const CartHeading = styled.div`
   width: 100%;
   background-color: ${({ theme }) => theme.colors.heading};
@@ -45,10 +49,10 @@ export const CartTitle = styled.h1`
   }
 `
 export const ImageWrapper = styled.div`
-  margin : 50px auto 0;
-  position:relative;
-  width : 32em; 
-  height : 32em;
+  margin: auto;
+  position: relative;
+  width: 24em;
+  aspect-ratio: 1;
 `
 
 export const ButtonWrapper = styled.div`
