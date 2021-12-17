@@ -56,6 +56,14 @@ export async function getStaticProps({ params: { category } }) {
   const singleCategory = await singleCategoryResp.json()
   const longCat = await respCat.json()
 
+  const isCategoryInCMS = longCat.some(cat => cat.slug === category)
+
+  if (!isCategoryInCMS) {
+    return {
+      notFound: true,
+    }
+  }
+
   return {
     props: {
       medicines: categoryData,
@@ -64,5 +72,6 @@ export async function getStaticProps({ params: { category } }) {
       category: singleCategory[0] ? singleCategory[0].category_name_long : null,
       longCat: longCat,
     },
+    revalidate: 5,
   }
 }

@@ -78,6 +78,7 @@ export const Pill = styled.p`
   border-radius: 100vw;
   padding: 0.2em 0.8em;
   margin: 0 0.5em 0.5em 0;
+  transition: all 0.1s ease-out;
   cursor: pointer;
 
   &:hover {
@@ -95,6 +96,7 @@ export const AlphabetPill = styled.div`
   margin: 0 0.5em 0.5em 0;
   width: 2.4em;
   aspect-ratio: 1;
+  transition: all 0.1s ease-out;
   cursor: pointer;
 
   &:hover {

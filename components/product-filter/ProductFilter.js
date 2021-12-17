@@ -20,6 +20,7 @@ import {
 export default function ProductFilter({ longCat, routerChar, routerCat }) {
   const router = useRouter()
   const [isFilterOpen, setIsFilterOpen] = useState(false)
+
   useEffect(() => {
     document.body.style.overflow = isFilterOpen ? 'hidden' : 'unset'
   }, [isFilterOpen])
@@ -106,7 +107,10 @@ export default function ProductFilter({ longCat, routerChar, routerCat }) {
                   <AlphabetPill
                     isActive={routerChar === char.char ? true : false}
                     key={char.id}
-                    onClick={() => clickHandler(char.char, 'alpha')}>
+                    onClick={() => {
+                      clickHandler(char.char, 'alpha')
+                      setIsFilterOpen(!isFilterOpen)
+                    }}>
                     {' '}
                     <AlphabetText> {char.char} </AlphabetText>{' '}
                   </AlphabetPill>

@@ -35,7 +35,7 @@ export async function getStaticProps() {
   const medicines = await resp.json()
   const respCat = await fetch(`${API_URL}/categories`)
   const longCat = await respCat.json()
-  console.log(longCat)
+
   return {
     props: {
       medicines,
@@ -43,5 +43,6 @@ export async function getStaticProps() {
       category: 'ဆေးအားလုံး',
       longCat: longCat,
     },
+    revalidate: 5,
   }
 }
