@@ -43,6 +43,21 @@ export const CartTitle = styled.h1`
     aspect-ratio: 1;
     border-radius: 100vw;
     margin-left: 10px;
+    position: relative;
+    @media only screen and (max-width: 550px) {
+      width: 30px;
+    }
+    .num {
+      position: absolute;
+
+      right: 40%;
+      @media only screen and (max-width: 550px) {
+        right: 37%;
+        bottom: 10%;
+      }
+      /* top : 50%; left : 50%;
+    transform: translate(-50%, -50%); */
+    }
   }
 `
 
@@ -55,6 +70,10 @@ export const ItemTitles = styled.h5`
   text-align: center;
   font-size: 1.2em;
   color: ${({ theme }) => theme.colors.text};
+
+  @media only screen and (max-width: 550px) {
+    font-size: 14px;
+  }
 `
 export const ItemsWrapper = styled.div`
   display: grid;
@@ -86,6 +105,10 @@ export const ItemName = styled.p`
   border-radius: 10px;
   background-color: ${({ theme }) => theme.colors.offWhite};
   margin-left: 10px;
+
+  @media only screen and (max-width: 550px) {
+    font-size: 14px;
+  }
 `
 
 //2nd column
@@ -102,7 +125,7 @@ export const ItemQuentity = styled.div`
   /* overflow: hidden; */
 `
 export const QuantityShow = styled.p`
-  padding-top: 8px;
+  padding-top: 4.5px;
   text-align: center;
   width: 100%;
   font-size: 20px;
@@ -124,6 +147,10 @@ export const QuantityShow = styled.p`
   &[type='number'] {
     -moz-appearance: textfield;
   }
+  @media only screen and (max-width: 550px) {
+    padding-top: 4px;
+    font-size: 14px;
+  }
 `
 export const Error = styled.span`
   width: 200%;
@@ -141,14 +168,19 @@ export const Plus = styled.button`
   color: ${({ theme }) => theme.colors.text};
   border: none;
   font-weight: 900;
-  border-radius: 10px;
+  @media only screen and (max-width: 550px) {
+    font-size: 14px;
+  }
 `
 export const Min = styled.button`
   background-color: ${({ theme }) => theme.colors.offWhite};
   color: ${({ theme }) => theme.colors.text};
   border: none;
   font-weight: 900;
-  border-radius: 10px;
+
+  @media only screen and (max-width: 550px) {
+    font-size: 14px;
+  }
 `
 
 //3rd column
@@ -156,12 +188,16 @@ export const ItemCost = styled.div`
   flex: 1;
   text-align: center;
   p {
-    font-size: 20px;
+    font-size: 18px;
     margin: 0 auto;
     width: 80%;
     padding: 0.6em 0em;
     border-radius: 10px;
     background-color: ${({ theme }) => theme.colors.offWhite};
+
+    @media only screen and (max-width: 550px) {
+      font-size: 14px;
+    }
   }
 `
 
