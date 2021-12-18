@@ -42,7 +42,7 @@ export default function ProductCard({ medicine }) {
       <ImageWrapper>
         {/* not sure bluring image works or not, just test */}
         <Image
-          src={product_images[0].formats.medium.url || product_images[0].url}
+          src={product_images[0].url}
           alt={`${product_name_eng} - ${product_name_mm} - ${product_nicknames}`}
           layout='fill'
           placeholder='blur'

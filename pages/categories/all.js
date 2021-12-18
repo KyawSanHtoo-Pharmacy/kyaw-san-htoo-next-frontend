@@ -24,7 +24,6 @@ export default function AllMedicinePage({ medicines, count, category, longCat })
           </ProductCard.Count>
         </ProductCard.InfoBar>
       </GlobalContainer>
-
       <ProductCardContainer medicines={medicines} />
     </>
   )

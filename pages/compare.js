@@ -4,6 +4,7 @@ import { API_URL } from '@/ksh-config/index'
 import Link from 'next/link'
 import { useContext } from 'react'
 import { CartStates } from '@/ksh-contexts/Cart-Context'
+import parse from 'html-react-parser'
 
 export default function ComparePage({ isInjected = false, outstockMedicine, instockMedicine, relatedMedicines }) {
   const { showOrderSuccessPopup } = useContext(CartStates)
@@ -65,12 +66,12 @@ export default function ComparePage({ isInjected = false, outstockMedicine, inst
                   <Accordion.TwoColAnswer>
                     <Accordion.TwoColAnswerColumn>
                       <NoticePill availability={false}>{outstockMedicine.product_name_mm}</NoticePill>
-                      <Accordion.Answer m='0.5em 0 0 0'>{outstockBody}</Accordion.Answer>
+                      <Accordion.Answer m='0.5em 0 0 0'>{parse(outstockBody)}</Accordion.Answer>
                     </Accordion.TwoColAnswerColumn>
 
                     <Accordion.TwoColAnswerColumn>
                       <NoticePill availability={true}>{instockMedicine.product_name_mm}</NoticePill>
-                      <Accordion.Answer m='0.5em 0 0 0'>{instockBody}</Accordion.Answer>
+                      <Accordion.Answer m='0.5em 0 0 0'>{parse(instockBody)}</Accordion.Answer>
                     </Accordion.TwoColAnswerColumn>
                   </Accordion.TwoColAnswer>
                 </Accordion.AnswerWrapper>
