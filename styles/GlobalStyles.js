@@ -111,7 +111,7 @@ export const GlobalStyles = createGlobalStyle`${css`
   }
 
   .swiper {
-    /* overflow-y: scroll; */
+    
   }
 
   .swiper-button-next,
@@ -120,7 +120,9 @@ export const GlobalStyles = createGlobalStyle`${css`
   }
 
   .swiper-pagination {
-    margin-bottom: -80px;
+    margin-bottom: -20px;
+    position : absolute;
+    bottom : 20%;
   }
 
   .swiper-pagination-bullet {

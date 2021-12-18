@@ -39,20 +39,25 @@ export const Content = styled.div`
 
 `
 export const ContentHeading = styled.h1`
-  padding: 0px 0px 25px;
+  padding: 20px 0px 25px;
   /* margin-top: -15px; */
   font-style: normal;
   font-weight: bold;
   font-size: 34px;
-  line-height: 69px;
+  line-height:1.8 ;
   color: ${({ theme }) => theme.colors.text};
   position: sticky;
-  top: 2.6em;
+  top: 2.2em;
   background-color: #ffffff;
   z-index: 50;
 
   @media only screen and (max-width: 700px) {
     font-size: 30px;
+  }
+  
+  @media only screen and (max-width: 550px) {
+    font-size: 25px;
+    padding: 15px 0px 25px;
   }
 `
 export const InstructionsWrapper = styled.div`
@@ -92,6 +97,10 @@ export const StepHeading = styled.p`
   font-weight: bold;
   font-size: 24px;
   line-height: 41px;
+
+  @media only screen and (max-width: 700px) {
+    font-size: 18px;
+  }
 `
 export const Steps = styled.p`
   margin-top: 12px;
@@ -99,6 +108,10 @@ export const Steps = styled.p`
   font-weight: normal;
   font-size: 16px;
   line-height: 31px;
+
+  @media only screen and (max-width: 700px) {
+    font-size: 14px;
+  }
 `
 export const ContentWrapper = styled.section`
   margin-bottom: 5em;

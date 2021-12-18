@@ -49,13 +49,16 @@ export const ContactContent = styled.div`
 
 export const UpperContent = styled.div`
   /* align-self: flex-start; */
+  @media only screen and (max-width: 650px) {
+    margin-bottom : 3em;
+  }
 `
 
 export const Description = styled.p``
 
 export const ContactTitle = styled.h1`
   font-size: 2.4em;
-  margin-top: 0.4em;
+  margin-top: 0.8em;
 
   @media only screen and (max-width: 955px) {
     font-size: 2em;

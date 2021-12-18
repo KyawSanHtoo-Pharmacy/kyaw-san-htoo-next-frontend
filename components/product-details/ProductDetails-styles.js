@@ -14,6 +14,9 @@ export const Container = styled.main`
 export const MyanmarName = styled.h1`
   color: ${({ theme }) => theme.colors.text};
   font-weight: normal;
+  @media screen and (max-width: 334px) {
+    font-size: 2.5em;
+  }
 `
 
 export const EnglishName = styled.h2`
@@ -21,6 +24,10 @@ export const EnglishName = styled.h2`
   color: ${({ theme }) => theme.colors.text};
   font-weight: normal;
   margin-bottom: 0.8em;
+
+  @media screen and (max-width: 334px) {
+    font-size: 2.5em;
+  }
 `
 
 export const HorizontalGroup = styled.div`
@@ -39,6 +46,10 @@ export const HorizontalGroup = styled.div`
   @media screen and (max-width: 730px) {
     flex-direction: row;
   }
+
+  @media screen and (max-width: 334px) {
+    flex-direction: column;
+  }
 `
 
 export const VerticleGroup = styled.div`
@@ -46,6 +57,10 @@ export const VerticleGroup = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+
+  @media screen and (max-width: 400px) {
+    margin-bottom : 15px;
+  }
 `
 
 export const Label = styled.p`

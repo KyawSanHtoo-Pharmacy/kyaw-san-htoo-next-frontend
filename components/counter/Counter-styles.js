@@ -7,6 +7,10 @@ export const Container = styled.div`
   background-color: ${({ theme }) => theme.colors.offWhite};
   border-radius: 0.63em;
   border: 1px solid ${({ theme }) => theme.colors.heading};
+
+  @media screen and (max-width: 400px) {
+    max-width: 150px;
+  }
 `
 
 export const Button = styled.button`
@@ -16,6 +20,13 @@ export const Button = styled.button`
   width: 4em;
   background-color: transparent;
   border: none;
+  @media screen and (max-width: 400px) {
+   font-size : 12px;
+  }
 `
 
-export const Amount = styled.p``
+export const Amount = styled.p`
+  @media screen and (max-width: 400px) {
+   font-size : 14px;
+  }
+`

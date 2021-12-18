@@ -31,7 +31,9 @@ export default function CategoryCardContainer({ categories }) {
             }}>
             {categories.map(category => (
               <SwiperSlide key={category.id}>
+          
                 <CategoryCard category={category} />
+     
               </SwiperSlide>
             ))}
           </Swiper>
