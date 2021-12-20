@@ -4,11 +4,19 @@ import { FadeInKeyframe } from '@/ksh-styles/keyframes/fadeIn'
 export const Section = styled.section`
   margin-top: -4em;
   ${FadeInKeyframe}
+
+  @media screen and (max-width: 980px) {
+    margin-top: -2em;
+  }
 `
 
 export const Frame = styled.div`
   display: flex;
   gap: 3.8em;
+
+  @media screen and (max-width: 540px) {
+    gap: 1.88em;
+  }
 `
 
 export const Column = styled.div`
@@ -28,13 +36,14 @@ export const MyanmarName = styled.h1`
   color: ${({ theme }) => theme.colors.text};
   font-weight: normal;
   width: 100%;
+
+  @media screen and (max-width: 540px) {
+    font-size: 1.88em;
+  }
 `
 
-export const EnglishName = styled.h2`
-  font-size: 3.13em;
-  color: ${({ theme }) => theme.colors.text};
-  font-weight: normal;
-  margin-bottom: -0.4em;
+export const EnglishName = styled(MyanmarName)`
+  margin-bottom: 0.3em;
 `
 
 export const ImageWrapper = styled.div`

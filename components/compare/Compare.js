@@ -8,7 +8,7 @@ export default function Compare({ outstockMedicine, instockMedicine }) {
       <Column>
         <NameWrapper>
           <MyanmarName>{outstockMedicine.product_name_mm}</MyanmarName>
-          <EnglishName>{outstockMedicine.product_name_eng}</EnglishName>
+          <EnglishName as='h2'>{outstockMedicine.product_name_eng}</EnglishName>
           <NoticePill availability={false}>ကုန်နေသော ဆေး</NoticePill>
         </NameWrapper>
         <ImageWrapper>

@@ -44,8 +44,8 @@ export const BannerBackgroundThoughts = styled.div`
 `
 
 export const BannerBackgroundThoughtsMobile = styled.div`
-  width: 13.5em;
-  height: 13em;
+  width: 144px;
+  height: 140px;
   position: absolute;
   top: 6.5em;
   left: 60%;

@@ -53,17 +53,10 @@ function MyKSHApp({ Component, pageProps }) {
         <CartProvider>
           <Navbar isMobileNavOpen={isMobileNavOpen} setIsMobileNavOpen={setIsMobileNavOpen} />
           {isMobileNavOpen && <MobileNav isMobileNavOpen={isMobileNavOpen} setIsMobileNavOpen={setIsMobileNavOpen} />}
-          {/* <button
-            onClick={() => {
-              setShowOrderSuccessPopup(true)
-            }}>
-            Open Success Popup
-          </button> */}
-          {/* {showOrderSuccessPopup && <OrderSuccessPopup setShowOrderSuccessPopup={setShowOrderSuccessPopup} />} */}
           <Cart />
           <Component {...pageProps} />
+          {router.pathname === '/contact' ? <MinimalFooter /> : <Footer />}
         </CartProvider>
-        {router.pathname === '/contact' ? <MinimalFooter /> : <Footer />}
       </ThemeProvider>
     </>
   )

@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import { useState } from 'react'
 import { Container, Button, Amount, Error } from './Counter-styles'
 import { changeMyanNum } from '@/ksh-helpers'
@@ -13,7 +14,7 @@ export default function Counter({ setAmount, amount, medicine }) {
           setOverAmount(false)
           amount > 1 && setAmount(prev => prev - 1)
         }}>
-        <img src='/icons/minus-blue.svg' alt='minus-icon' />
+        <Image src='/icons/minus-blue.svg' alt='minus-icon' width={12} height={2} />
       </Button>
       <Amount>
         <span className='mm-number'>{changeMyanNum(amount)}</span> <span>{medicine.product_unit || 'ကဒ်'}</span>
@@ -26,7 +27,7 @@ export default function Counter({ setAmount, amount, medicine }) {
             setAmount(prev => prev + 1)
           }
         }}>
-        <img src='/icons/blue-plus.svg' alt='plus-icon' />
+        <Image src='/icons/blue-plus.svg' alt='plus-icon' width={12} height={12} />
       </Button>
       {overAmount && <Error>{`${product_name_mm} ${product_quantity}${product_unit} thr kyn pr tot tl!`}</Error>}
     </Container>

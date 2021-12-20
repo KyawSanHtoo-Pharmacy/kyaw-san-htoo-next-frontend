@@ -80,6 +80,6 @@ export const Button = styled.button`
   }
   @media screen and (max-width: 420px) {
     transform: translateY(-68.5%);
-    right: 0.5em;
+    right: 0.4em;
   }
 `

@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
   position: sticky;
-  top: 8.8em;
+  top: 7.8em;
 
   @media screen and (max-width: 730px) {
     display: flex;
@@ -13,14 +13,13 @@ export const MainImage = styled.div`
   position: relative;
   border-radius: 0.63em;
   overflow: hidden;
-  aspect-ratio: 4/3;
+  aspect-ratio: 5/4;
   margin-bottom: 0.57em;
   width: 100%;
 
   @media screen and (max-width: 730px) {
     margin-bottom: 0;
     margin-right: 0.57em;
-    height: 16em;
   }
 `
 

@@ -35,7 +35,7 @@ export const Item = styled.div`
 
 export const ImageWrapper = styled.div`
   width: 80%;
-  aspect-ratio: 5 / 4;
+  aspect-ratio: 5/4;
   position: relative;
   overflow: hidden;
   border: 1px solid ${({ theme }) => theme.colors.testimonial};

@@ -38,7 +38,7 @@ function EmptyCart() {
           </CartTitle>
         </CartHeading>
         <ImageWrapper>
-          <Image src='/illustrations/cartempty.svg' layout='fill' />
+          <Image src='/illustrations/cartempty.svg' layout='fill' alt='' />
         </ImageWrapper>
       </EmptyCartWrapper>
       <ButtonWrapper onClick={reDirect}>
