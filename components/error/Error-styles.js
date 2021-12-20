@@ -29,3 +29,10 @@ export const Status = styled.h2`
   margin-top: 12em;
   font-weight: 300;
 `
+
+export const Button = styled.button`
+  background: ${({ theme }) => theme.colors.bodyBg};
+  border: none;
+  margin-top: 1em;
+  color: ${({ theme }) => theme.colors.text};
+`

@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { FadeInKeyframe } from '@/ksh-styles/keyframes/fadeIn'
 
 export const Cart1stPage = styled.div``
 export const CartHeading = styled.div`
@@ -44,23 +45,20 @@ export const CartTitle = styled.h1`
     margin-left: 10px;
     position: relative;
     @media only screen and (max-width: 550px) {
-    width: 30px;
-
-  }
-  .num {
-    position: absolute;
-  
-    right : 40%;
-    @media only screen and (max-width : 550px) {
-      right : 37%;
-      bottom : 10%;
+      width: 30px;
     }
-    /* top : 50%; left : 50%;
+    .num {
+      position: absolute;
+
+      right: 40%;
+      @media only screen and (max-width: 550px) {
+        right: 37%;
+        bottom: 10%;
+      }
+      /* top : 50%; left : 50%;
     transform: translate(-50%, -50%); */
+    }
   }
-  }
-
-
 `
 
 export const ItemTitleWrapper = styled.div`
@@ -80,7 +78,7 @@ export const ItemTitles = styled.h5`
 export const ItemsWrapper = styled.div`
   display: grid;
   grid-template-columns: 1.8fr 1fr 1fr;
-  margin-bottom: 1em;
+  margin-bottom: 2em;
 `
 //1st column
 export const ItemsToBuy = styled.div`
@@ -123,7 +121,8 @@ export const ItemQuentity = styled.div`
   margin: 0 auto;
   border: 1px solid ${({ theme }) => theme.colors.heading};
   border-radius: 10px;
-  overflow: hidden;
+  position: relative;
+  /* overflow: hidden; */
 `
 export const QuantityShow = styled.p`
   padding-top: 4.5px;
@@ -150,17 +149,27 @@ export const QuantityShow = styled.p`
   }
   @media only screen and (max-width: 550px) {
     padding-top: 4px;
-    font-size : 14px;
+    font-size: 14px;
   }
-
 `
+export const Error = styled.span`
+  width: 200%;
+  position: absolute;
+  bottom: -2em;
+  left: 0;
+  font-size: 0.6em;
+  text-align: left;
+  color: ${({ theme }) => theme.colors.warning};
+  ${FadeInKeyframe}
+`
+
 export const Plus = styled.button`
   background-color: ${({ theme }) => theme.colors.offWhite};
   color: ${({ theme }) => theme.colors.text};
   border: none;
   font-weight: 900;
   @media only screen and (max-width: 550px) {
-    font-size : 14px;
+    font-size: 14px;
   }
 `
 export const Min = styled.button`
@@ -170,7 +179,7 @@ export const Min = styled.button`
   font-weight: 900;
 
   @media only screen and (max-width: 550px) {
-    font-size : 14px;
+    font-size: 14px;
   }
 `
 
@@ -187,10 +196,9 @@ export const ItemCost = styled.div`
     background-color: ${({ theme }) => theme.colors.offWhite};
 
     @media only screen and (max-width: 550px) {
-    font-size: 14px;
+      font-size: 14px;
+    }
   }
-  }
-  
 `
 
 export const ButtonWrapper = styled.div`

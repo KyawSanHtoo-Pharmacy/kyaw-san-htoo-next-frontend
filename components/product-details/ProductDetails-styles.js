@@ -4,7 +4,7 @@ export const Container = styled.main`
   margin-bottom: 4.6em;
   display: flex;
   flex-direction: column;
-  margin-top: -1em;
+  margin-top: 0.5em;
 
   @media screen and (max-width: 980px) {
     margin-top: 2em;

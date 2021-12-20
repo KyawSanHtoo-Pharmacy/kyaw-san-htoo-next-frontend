@@ -23,13 +23,7 @@ export default function ImageShowcase({ medicine_images }) {
       <SmallImageWrapper>
         {medicine_images.map((image, index) => (
           <SmallImage key={index} onClick={() => setMainImage(medicine_images[index])}>
-            <Image
-              src={image.formats.small.url}
-              alt={image.caption}
-              layout='fill'
-              placeholder='blur'
-              blurDataURL={image.hash}
-            />
+            <Image src={image.url} alt={image.caption} layout='fill' placeholder='blur' blurDataURL={image.hash} />
           </SmallImage>
         ))}
       </SmallImageWrapper>

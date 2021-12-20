@@ -1,6 +1,8 @@
 import styled from 'styled-components'
+import { FadeInKeyframe } from '@/ksh-styles/keyframes/fadeIn'
 
 export const Container = styled.div`
+  position: relative;
   display: flex;
   justify-content: space-between;
   max-width: 192px;
@@ -11,6 +13,7 @@ export const Container = styled.div`
   @media screen and (max-width: 400px) {
     max-width: 150px;
   }
+
 `
 
 export const Button = styled.button`
@@ -29,4 +32,13 @@ export const Amount = styled.p`
   @media screen and (max-width: 400px) {
    font-size : 14px;
   }
+`
+export const Error = styled.p`
+  width: 200%;
+  position: absolute;
+  bottom: -2.4em;
+  left: 0;
+  font-size: 0.9em;
+  color: ${({ theme }) => theme.colors.warning};
+  ${FadeInKeyframe}
 `

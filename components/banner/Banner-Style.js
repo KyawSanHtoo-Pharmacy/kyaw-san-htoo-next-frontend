@@ -12,12 +12,55 @@ export const BannerContainer = styled.section`
   ${FadeInKeyframe}
 `
 
-export const BannerBackground = styled(Image)``
+export const BannerBackgroundHuman = styled.div`
+  width: 32em;
+  height: 22em;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+`
+export const BannerBackgroundHumanMobile = styled.div`
+  width: 100%;
+  height: 30em;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+`
+
+export const BannerBackgroundBedo = styled.div`
+  width: 30em;
+  height: 30em;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+`
+export const BannerBackgroundThoughts = styled.div`
+  width: 484px;
+  height: 144px;
+  position: absolute;
+  top: 4em;
+  left: 50%;
+  transform: translateX(-50%);
+`
+
+export const BannerBackgroundThoughtsMobile = styled.div`
+  width: 13.5em;
+  height: 13em;
+  position: absolute;
+  top: 6.5em;
+  left: 60%;
+  transform: translateX(-50%);
+  opacity: 0.5;
+`
 
 export const BannerContent = styled.div`
   margin-top: -10em;
   position: relative;
-  z-index: 1;
+  z-index: 2;
+
+  @media screen and (max-width: 700px) {
+    margin-top: -20em;
+  }
 `
 export const DropdownWrapper = styled.div`
   width: fit-content;

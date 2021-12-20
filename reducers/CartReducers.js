@@ -2,18 +2,24 @@ export const cartReducer = (state, action) => {
   switch (action.type) {
     //Case - 1
     case 'ADD_TO_CART':
-      const { id, quantity } = action.newItem
-      console.log(action.newItem.price)
+      const { id, quantity, product_quantity, UnitPrice } = action.newItem
+      console.log(action.newItem.price) //del later
       const isAlreadyInCart = state.some(med => med.id === id)
       if (isAlreadyInCart) {
-        console.log('update ha!!!')
+        console.log('update!!!') //del later
         const updatedMed = state.map(med => {
           if (med.id === id) {
-            const newq = (med.quantity += quantity)
-            const newp = (med.price += med.UnitPrice * quantity)
-            console.log( {newq, newp});
-            console.log('id same detected!')
-            return { ...med, quanity: newq, price : newp }
+            if (med.quantity + quantity > product_quantity) {
+              console.log('not ok') //del later
+              return { ...med, quantity: product_quantity, isOverAmount: true, price: product_quantity * UnitPrice }
+            } else {
+              console.log('ok') //del later
+              return {
+                ...med,
+                quantity: med.quantity + quantity,
+                price: (med.quantity + quantity) * UnitPrice,
+              }
+            }
           } else {
             return med
           }
@@ -30,14 +36,35 @@ export const cartReducer = (state, action) => {
         const payloadId = action.payload.id
         const PayloadAmount = action.payload.amount
         if (item.id === payloadId) {
-          return {
-            ...item,
-            quantity:
-              PayloadAmount === -1
-                ? item.quantity <= 0
-                  ? 0
-                  : item.quantity + PayloadAmount
-                : item.quantity + PayloadAmount,
+          if (PayloadAmount === -1) {
+            if (item.quantity <= 0) {
+              return {
+                ...item,
+                quantity: 0,
+                isOverAmount: false,
+              }
+            } else {
+              return {
+                ...item,
+                quantity: item.quantity + PayloadAmount,
+                isOverAmount: false,
+              }
+            }
+          } else {
+            const updatedQuantity = item.quantity + PayloadAmount
+            if (updatedQuantity > item.product_quantity) {
+              return {
+                ...item,
+                quantity: item.quantity,
+                isOverAmount: true,
+              }
+            } else {
+              return {
+                ...item,
+                quantity: updatedQuantity,
+                isOverAmount: false,
+              }
+            }
           }
         }
         return item

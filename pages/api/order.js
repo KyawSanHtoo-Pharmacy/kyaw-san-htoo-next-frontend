@@ -13,20 +13,31 @@ export default function handler(req, res) {
       secure: true,
     })
     // zideharron1111@gmail.com
-    const mailData = {
-      from: 'kshpharmacy.order@gmail.com',
-      to: 'kyawsanhtoopharmacy@gmail.com',
-      subject: `KyawSanHtoo Website: An Order Received from ${req.body.name}`,
-      attachments: [
-        {
-          filename: `${req.body.name}'s Kpay Screenshot'`,
-          path: `${req.body.kpay_screenshot}`,
-          cid: 'kpay_screenshot',
-        },
-      ],
-      text: 'Sent by: ' + req.body.name,
-      // html: getEmailTemplate(req.body),
-      html: '<h1>Hello</h1>',
+
+    let mailData = {}
+    if (req.body.kpay_screenshot) {
+      mailData = {
+        from: 'kshpharmacy.order@gmail.com',
+        to: 'kyawsanhtoopharmacy@gmail.com',
+        subject: `KyawSanHtoo Website: An Order Received from ${req.body.name}`,
+        attachments: [
+          {
+            filename: `${req.body.name}'s Kpay Screenshot'`,
+            path: `${req.body.kpay_screenshot}`,
+            cid: 'kpay_screenshot',
+          },
+        ],
+        text: 'Sent by: ' + req.body.name,
+        html: getEmailTemplate(req.body),
+      }
+    } else {
+      mailData = {
+        from: 'kshpharmacy.order@gmail.com',
+        to: 'kyawsanhtoopharmacy@gmail.com',
+        subject: `KyawSanHtoo Website: An Order Received from ${req.body.name}`,
+        text: 'Sent by: ' + req.body.name,
+        html: getEmailTemplate(req.body),
+      }
     }
 
     transporter.sendMail(mailData).then((err, info) => {

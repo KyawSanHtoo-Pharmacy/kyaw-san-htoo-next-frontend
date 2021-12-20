@@ -1,21 +1,22 @@
-import { useState } from "react"
-import { useRouter } from "next/router"
-import { API_URL } from "@/ksh-config/index"
+import { useState } from 'react'
+import { useRouter } from 'next/router'
+import { API_URL } from '@/ksh-config/index'
 import ProductCardContainer from '@/ksh-containers/ProductCardContainer'
-import { ProductCard, SearchBar, ProductFilter } from '@/ksh-components'
+import { ProductCard, SearchBar, ProductFilter, Empty } from '@/ksh-components'
 import { GlobalContainer } from '@/ksh-styles/GlobalStyles'
 import { changeMyanNum } from '@/ksh-helpers'
 const { Alphabets } = require('@/ksh-data/alphabets.json')
-export default function CharacterPage({filteredMedicines, count, char, longCat}) {
-  const router = useRouter();
-  const [isActive, setActive] = useState(false);
 
-    return (
-        <>  
-        <GlobalContainer>
+export default function CharacterPage({ filteredMedicines, count, char, longCat }) {
+  const router = useRouter()
+  const [isActive, setActive] = useState(false)
+
+  return (
+    <>
+      <GlobalContainer>
         <SearchBar.Container>
           <SearchBar />
-          <ProductFilter longCat = {longCat} isActive = {isActive} routerChar = {router.query.char} />
+          <ProductFilter longCat={longCat} isActive={isActive} routerChar={router.query.char} />
         </SearchBar.Container>
 
         <ProductCard.InfoBar>
@@ -26,37 +27,39 @@ export default function CharacterPage({filteredMedicines, count, char, longCat})
         </ProductCard.InfoBar>
       </GlobalContainer>
 
-      <ProductCardContainer medicines={filteredMedicines} />
-        </>
-    )
+      {filteredMedicines.length > 0 ? <ProductCardContainer medicines={filteredMedicines} /> : <Empty />}
+    </>
+  )
 }
 
 export function getStaticPaths() {
-    const paths = Alphabets.map( chararacter => {
-      return {
-        params : {
-           char : chararacter.char
-        }
-      }
-    } )
-return {
+  const paths = Alphabets.map(chararacter => {
+    return {
+      params: {
+        char: chararacter.char,
+      },
+    }
+  })
+  return {
     paths,
-    fallback: 'blocking'
-}
+    fallback: 'blocking',
+  }
 }
 
-export async function getStaticProps({params: {char}}) {
-    const resp = await fetch(`${API_URL}/medicines`)
-    const medicines = await resp.json()
-    const filteredMedicines = medicines.filter(medicine => medicine.product_name_eng.split('')[0].toLowerCase() === char)
-    const respCat = await fetch(`${API_URL}/categories`);
-    const longCat = await respCat.json();
-    return {
-        props: {
-            filteredMedicines,
-            count: filteredMedicines.length,
-            char,
-            longCat
-        }
-    }
+export async function getStaticProps({ params: { char } }) {
+  const resp = await fetch(`${API_URL}/medicines`)
+  const medicines = await resp.json()
+  const filteredMedicines = medicines.filter(medicine => medicine.product_name_eng.split('')[0].toLowerCase() === char)
+  const respCat = await fetch(`${API_URL}/categories`)
+  const longCat = await respCat.json()
+
+  return {
+    props: {
+      filteredMedicines,
+      count: filteredMedicines.length,
+      char,
+      longCat,
+    },
+    revalidate: 5,
+  }
 }

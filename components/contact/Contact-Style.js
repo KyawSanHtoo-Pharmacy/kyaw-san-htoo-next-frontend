@@ -68,7 +68,9 @@ export const ContactTitle = styled.h1`
   }
 `
 
-export const LowerContent = styled.div``
+export const LowerContent = styled.div`
+  margin-top: 4em;
+`
 export const ContactDetail = styled.p`
   padding: 0.3em 0;
 `

@@ -36,7 +36,7 @@ function Cart() {
       document.body.style.overflow = 'unset'
     }
   }, [cartVisibile])
-  console.log(medicineToBuy.length) 
+
   return (
     <>
       <AnimatePresence>
@@ -44,23 +44,24 @@ function Cart() {
           <>
             <BlurOverlay />
             <CartWrapper>
-              {
-              
-              medicineToBuy.length > 0 ? (
-              pages === 1 ? (
-                <CartContent nextPage={nextPage} medicineToBuy={medicineToBuy} />
+              {medicineToBuy.length > 0 ? (
+                pages === 1 ? (
+                  <CartContent nextPage={nextPage} medicineToBuy={medicineToBuy} />
+                ) : (
+                  <Payment
+                    prePage={prePage}
+                    orderFormData={orderFormData}
+                    setOrderFormData={setOrderFormData}
+                    medicineToBuy={medicineToBuy}
+                  />
+                )
               ) : (
-                <Payment
-                  prePage={prePage}
-                  orderFormData={orderFormData}
-                  setOrderFormData={setOrderFormData}
-                  medicineToBuy={medicineToBuy}
-                />
-              ) ) : <EmptyCart/> }
+                <EmptyCart />
+              )}
             </CartWrapper>
           </>
         ) : (
-          ""
+          ''
         )}
       </AnimatePresence>
     </>

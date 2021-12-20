@@ -1,15 +1,17 @@
-import { Compare, Accordion, NoticePill, ProductCard, Error, Button } from '@/ksh-components'
+import { Compare, Accordion, NoticePill, ProductCard, Error, Button, OrderSuccessPopup } from '@/ksh-components'
 import { GlobalContainer } from '@/ksh-styles/GlobalStyles'
 import { API_URL } from '@/ksh-config/index'
 import Link from 'next/link'
+import { useContext } from 'react'
+import { CartStates } from '@/ksh-contexts/Cart-Context'
+import parse from 'html-react-parser'
 
-export default function compare({ isInjected = false, outstockMedicine, instockMedicine }) {
+export default function ComparePage({ isInjected = false, outstockMedicine, instockMedicine, relatedMedicines }) {
+  const { showOrderSuccessPopup } = useContext(CartStates)
+
   if (isInjected) {
     return <Error message='URLကို မကလိပါနဲ့လား ကိုငြိမ်းမောင်' status='Error : tgg pan pr dl, plz.' />
   }
-
-  outstockMedicine = outstockMedicine[0]
-  instockMedicine = instockMedicine[0]
 
   const productDetailsCompareData = [
     {
@@ -51,46 +53,68 @@ export default function compare({ isInjected = false, outstockMedicine, instockM
   ]
 
   return (
-    <Compare.Section>
-      <GlobalContainer>
-        <Compare outstockMedicine={outstockMedicine} instockMedicine={instockMedicine} />
-        <Accordion mb='6.25em'>
-          {productDetailsCompareData.map(({ id, title, outstockBody, instockBody }) => (
-            <Accordion.Item key={id}>
-              <Accordion.Title>{title}</Accordion.Title>
-              <Accordion.AnswerWrapper>
-                <Accordion.TwoColAnswer>
-                  <Accordion.TwoColAnswerColumn>
-                    <NoticePill availability={false}>{outstockMedicine.product_name_mm}</NoticePill>
-                    <Accordion.Answer m='0.5em 0 0 0'>{outstockBody}</Accordion.Answer>
-                  </Accordion.TwoColAnswerColumn>
+    <>
+      {showOrderSuccessPopup && <OrderSuccessPopup />}
+      <Compare.Section>
+        <GlobalContainer>
+          <Compare outstockMedicine={outstockMedicine} instockMedicine={instockMedicine} />
+          <Accordion mb='6.25em'>
+            {productDetailsCompareData.map(({ id, title, outstockBody, instockBody }) => (
+              <Accordion.Item key={id}>
+                <Accordion.Title>{title}</Accordion.Title>
+                <Accordion.AnswerWrapper>
+                  <Accordion.TwoColAnswer>
+                    <Accordion.TwoColAnswerColumn>
+                      <NoticePill availability={false}>{outstockMedicine.product_name_mm}</NoticePill>
+                      <Accordion.Answer m='0.5em 0 0 0'>{parse(outstockBody)}</Accordion.Answer>
+                    </Accordion.TwoColAnswerColumn>
 
-                  <Accordion.TwoColAnswerColumn>
-                    <NoticePill availability={true}>{instockMedicine.product_name_mm}</NoticePill>
-                    <Accordion.Answer m='0.5em 0 0 0'>{instockBody}</Accordion.Answer>
-                  </Accordion.TwoColAnswerColumn>
-                </Accordion.TwoColAnswer>
-              </Accordion.AnswerWrapper>
-            </Accordion.Item>
-          ))}
-          <Link href={`/categories/${instockMedicine.categories[0].slug}/${instockMedicine.slug}`} passHref>
-            <Button>{`Go to ${instockMedicine.product_name_eng}`}</Button>
-          </Link>
-        </Accordion>
+                    <Accordion.TwoColAnswerColumn>
+                      <NoticePill availability={true}>{instockMedicine.product_name_mm}</NoticePill>
+                      <Accordion.Answer m='0.5em 0 0 0'>{parse(instockBody)}</Accordion.Answer>
+                    </Accordion.TwoColAnswerColumn>
+                  </Accordion.TwoColAnswer>
+                </Accordion.AnswerWrapper>
+              </Accordion.Item>
+            ))}
+            {/* {' this div is to group in one line'} */}
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'flex-end',
+                marginTop: '3em',
+              }}>
+              <Link href={`/categories/all`} passHref>
+                <Button.White style={{ marginRight: '1em' }}>{`Go to All`}</Button.White>
+              </Link>
+              <Link href={`/categories/${instockMedicine.categories[0].slug}/${instockMedicine.slug}`} passHref>
+                <Button>{`Go to ${instockMedicine.product_name_eng}`}</Button>
+              </Link>
+            </div>
+          </Accordion>
 
-        <ProductCard.Heading>ဆက်စပ် ဆေးဝါးများ</ProductCard.Heading>
-        {/* <ProductCard.Frame mt='3.13em'>
-          <ProductCard availability={true} />
-          <ProductCard availability={true} />
-          <ProductCard availability={false} />
-          <ProductCard availability={true} />
-        </ProductCard.Frame> */}
-      </GlobalContainer>
-    </Compare.Section>
+          <ProductCard.Heading>ဆက်စပ် ဆေးဝါးများ</ProductCard.Heading>
+          <ProductCard.Frame mt='3.13em'>
+            {relatedMedicines.map(medicine => (
+              <ProductCard key={medicine.id} medicine={medicine} />
+            ))}
+          </ProductCard.Frame>
+        </GlobalContainer>
+      </Compare.Section>
+    </>
   )
 }
 
 export async function getServerSideProps({ query: { outstock, instock } }) {
+  if (!outstock || !instock) {
+    return {
+      props: {
+        isInjected: true,
+      },
+    }
+  }
+
   const [outstockResp, instockResp] = await Promise.all([
     fetch(`${API_URL}/medicines?slug=${outstock}`),
     fetch(`${API_URL}/medicines?slug=${instock}`),
@@ -98,7 +122,11 @@ export async function getServerSideProps({ query: { outstock, instock } }) {
   const outstockMedicine = await outstockResp.json()
   const instockMedicine = await instockResp.json()
 
-  if (outstockMedicine[0]?.medicine_to_compare !== instock) {
+  const category = await outstockMedicine[0].categories[0].slug
+  const relatedMedicinesResp = await fetch(`${API_URL}/medicines?categories.slug_contains=${category}`)
+  const relatedMedicines = await relatedMedicinesResp.json()
+
+  if (outstockMedicine[0]?.product_to_compare[0].slug !== instock) {
     return {
       props: {
         isInjected: true,
@@ -108,8 +136,11 @@ export async function getServerSideProps({ query: { outstock, instock } }) {
 
   return {
     props: {
-      outstockMedicine,
-      instockMedicine,
+      outstockMedicine: outstockMedicine[0],
+      instockMedicine: instockMedicine[0],
+      relatedMedicines: relatedMedicines.filter(
+        medicine => medicine.slug !== outstockMedicine[0].slug && medicine.slug !== instockMedicine[0].slug
+      ),
     },
   }
 }
