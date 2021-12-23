@@ -213,11 +213,12 @@ export const UploadDescripton = styled.p`
   flex: 1;
 `
 export const UploadButtonWrapper = styled.div`
-  flex: 0.6;
+  flex: 1;
   display: flex;
 
   & span {
     width: 3em;
+    aspect-ratio: 1/1.5;
     margin: 0 1em 0 auto;
     border-radius: 4px;
     position: relative;
@@ -234,6 +235,12 @@ export const UploadButtonLabel = styled.label`
   cursor: pointer;
   text-align: center;
   margin-left: auto;
+  margin-top: 1em;
+  flex: 0.6;
+
+  @media screen and (max-width: 440px) {
+    flex: 1;
+  }
 
   &:hover {
     background-color: ${({ theme }) => theme.colors.heading};

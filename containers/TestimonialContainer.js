@@ -5,9 +5,9 @@ import { Navigation, Pagination, A11y } from 'swiper'
 
 export default function TestimonialContainer({ testimonials }) {
   return (
-    <GlobalContainer>
+    <TestimonialCard.Section>
       <TestimonialCard.Heading>ဝယ်သူတို့ရဲ့ စကားသံများ</TestimonialCard.Heading>
-      <TestimonialCard.Frame>
+      {/* <TestimonialCard.Frame>
         <Swiper
           // install Swiper modules
           modules={[Navigation, Pagination, A11y]}
@@ -35,7 +35,14 @@ export default function TestimonialContainer({ testimonials }) {
             </SwiperSlide>
           ))}
         </Swiper>
-      </TestimonialCard.Frame>
-    </GlobalContainer>
+      </TestimonialCard.Frame> */}
+      <TestimonialCard.OverflowAera>
+        <TestimonialCard.Frame>
+          {testimonials.map(testimonial => (
+            <TestimonialCard key={testimonial.id} testimonial={testimonial} />
+          ))}
+        </TestimonialCard.Frame>
+      </TestimonialCard.OverflowAera>
+    </TestimonialCard.Section>
   )
 }

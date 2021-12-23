@@ -140,13 +140,13 @@ Banner.Section = function BannerSection({ children, ...restProps }) {
         </>
       ) : (
         <>
-          <BannerBackgroundThoughtsMobile>
+          {/* <BannerBackgroundThoughtsMobile>
             <Image
               src='/illustrations/hero-mobile-thoughts.svg'
               layout='fill'
               alt='a doctor in pharmacy asking how are you feeling today'
             />
-          </BannerBackgroundThoughtsMobile>
+          </BannerBackgroundThoughtsMobile> */}
           <BannerBackgroundHumanMobile>
             <Image
               src='/illustrations/hero-mobile-human.svg'

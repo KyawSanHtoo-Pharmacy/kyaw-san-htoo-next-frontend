@@ -9,6 +9,7 @@ export default function SearchBar() {
     <Form>
       <Input placeholder='e.g. Biogesic' value={keyword} type='text' onChange={e => setKeyword(e.target.value)} />
       <Button
+        disabled={keyword === ''}
         onClick={e => {
           e.preventDefault()
           router.push(`/search?keyword=${keyword}`)
