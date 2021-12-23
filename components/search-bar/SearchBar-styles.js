@@ -60,7 +60,7 @@ export const Input = styled.input`
 export const Button = styled.button`
   position: absolute;
   top: 50%;
-  transform: translateY(-50.8%);
+  transform: translateY(-50.8%) scale(1);
   right: 0.6em;
   background-color: ${({ theme }) => theme.colors.heading};
   color: ${({ theme }) => theme.colors.bodyBg};
@@ -69,9 +69,14 @@ export const Button = styled.button`
   font-size: 1.09em;
   padding: 0.6em 1em;
   display: flex;
+  transition: transform 0.2s ease-out;
 
   & > span {
     margin-bottom: -0.2em;
+  }
+
+  &:active {
+    transform: translateY(-50.8%) scale(0.9);
   }
 
   @media screen and (max-width: 700px) {

@@ -1,6 +1,5 @@
 import styled, { keyframes, css } from 'styled-components'
 import { motion } from 'framer-motion'
-import Image from 'next/image'
 import { FadeInKeyframe } from '@/ksh-styles/keyframes/fadeIn'
 
 export const BannerContainer = styled.section`
@@ -10,6 +9,10 @@ export const BannerContainer = styled.section`
   justify-content: center;
   position: relative;
   ${FadeInKeyframe}
+
+  @media screen and (max-width: 460px) {
+    min-height: calc(100vh - 10em);
+  }
 `
 
 export const BannerBackgroundHuman = styled.div`
