@@ -8,6 +8,7 @@ import { CartStates } from '@/ksh-contexts/Cart-Context'
 
 export default function AllMedicinePage({ medicines, count, category, longCat }) {
   const { showOrderSuccessPopup } = useContext(CartStates)
+
   return (
     <>
       {showOrderSuccessPopup && <OrderSuccessPopup />}

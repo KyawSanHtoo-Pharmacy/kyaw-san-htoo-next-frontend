@@ -53,5 +53,5 @@ export const ContentWrapper = styled.div`
 export const CategoryName = styled.h3`
   color: ${({ theme }) => theme.colors.bodyBg};
   text-align: center;
-  font-size: 1.56em;
+  font-size: 1.3em;
 `

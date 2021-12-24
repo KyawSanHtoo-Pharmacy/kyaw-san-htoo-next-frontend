@@ -37,10 +37,10 @@ export const CartWrapper = styled(motion.div)`
 
   @media only screen and (max-width: 550px) {
     width: 100%;
-    border-radius : 15px 15px 0px 0px;
-    height : 80%;
-    bottom : 0;
-    top : unset;
+    border-radius: 15px 15px 0px 0px;
+    height: 80%;
+    bottom: 0;
+    top: unset;
   }
 `
 export const Inner = styled.div`
