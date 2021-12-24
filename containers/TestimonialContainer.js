@@ -1,7 +1,7 @@
 import { TestimonialCard } from '@/ksh-components'
-import { GlobalContainer } from '@/ksh-styles/GlobalStyles'
-import { Swiper, SwiperSlide } from 'swiper/react'
-import { Navigation, Pagination, A11y } from 'swiper'
+// import { GlobalContainer } from '@/ksh-styles/GlobalStyles'
+// import { Swiper, SwiperSlide } from 'swiper/react'
+// import { Navigation, Pagination, A11y } from 'swiper'
 
 export default function TestimonialContainer({ testimonials }) {
   return (
