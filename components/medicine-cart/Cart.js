@@ -5,6 +5,7 @@ import { CartWrapper, Inner, BlurOverlay } from './Cart-Styles'
 import { CartStates } from '@/ksh-contexts/Cart-Context'
 import { AnimatePresence } from 'framer-motion'
 import EmptyCart from './Empaty-Cart/EmptyCart'
+import { useWindowSize } from 'react-use'
 const orderFormInitialState = {
   name: '',
   phone: '',
@@ -37,13 +38,58 @@ function Cart() {
     }
   }, [cartVisibile])
 
+  const { width } = useWindowSize()
+  const ismobile = width < 550;
+
+  const Cartvariants = {
+    visible: {
+      [ ismobile ? 'y' : 'x' ]  : ismobile ? "0vh" : "0vw",
+      opacity : 1,
+      transition: 
+      {
+        duration: 0.2,
+        ease : [.55,.13,.86,.74]
+      },
+    },
+    hidden: {
+      [ ismobile ? 'y' : 'x' ]  : ismobile ? "10vh" : "10vw",
+      opacity : 0
+    },
+    exit: { 
+      [ ismobile ? 'y' : 'x' ]  : ismobile ? "10vh" : "10vw",
+    opacity: 0,
+    transition: {
+      duration: 0.4,
+    }}
+}
+  const OverlayVarients = {
+    visible: {
+      opacity : 1,
+      transition: {
+        duration: 0.4,
+      },
+    },
+    hidden: {
+      opacity : 0,
+    },
+    exit: {  opacity : 0,
+    transition: {
+      duration: 0.4,
+    }}
+  }
+
+
   return (
     <>
       <AnimatePresence>
         {cartVisibile ? (
           <>
-            <BlurOverlay />
-            <CartWrapper>
+            <BlurOverlay  variants={OverlayVarients}
+                    initial='hidden' animate='visible' exit='exit' />
+            <CartWrapper 
+                    variants={Cartvariants}
+                    initial='hidden' animate='visible' exit='exit'
+            >
               {medicineToBuy.length > 0 ? (
                 pages === 1 ? (
                   <CartContent nextPage={nextPage} medicineToBuy={medicineToBuy} />

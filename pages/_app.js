@@ -7,7 +7,7 @@ import { lightTheme } from '@/ksh-theme/theme'
 import { Cart } from '@/ksh-components'
 import { CartProvider } from '@/ksh-contexts/Cart-Context'
 import { GlobalStyles } from '@/ksh-styles/GlobalStyles'
-
+import { AnimatePresence } from 'framer-motion'
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
@@ -52,18 +52,15 @@ function MyKSHApp({ Component, pageProps }) {
 
         <CartProvider>
           <Navbar isMobileNavOpen={isMobileNavOpen} setIsMobileNavOpen={setIsMobileNavOpen} />
-          {isMobileNavOpen && <MobileNav isMobileNavOpen={isMobileNavOpen} setIsMobileNavOpen={setIsMobileNavOpen} />}
-          {/* <button
-            onClick={() => {
-              setShowOrderSuccessPopup(true)
-            }}>
-            Open Success Popup
-          </button> */}
-          {/* {showOrderSuccessPopup && <OrderSuccessPopup setShowOrderSuccessPopup={setShowOrderSuccessPopup} />} */}
+          <AnimatePresence>
+          {
+          isMobileNavOpen && <MobileNav isMobileNavOpen={isMobileNavOpen} setIsMobileNavOpen={setIsMobileNavOpen} />
+          }
+          </AnimatePresence>
           <Cart />
           <Component {...pageProps} />
+          {router.pathname === '/contact' ? <MinimalFooter /> : <Footer />}
         </CartProvider>
-        {router.pathname === '/contact' ? <MinimalFooter /> : <Footer />}
       </ThemeProvider>
     </>
   )

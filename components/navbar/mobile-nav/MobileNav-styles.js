@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components'
+import { motion } from 'framer-motion'
 
 const flexCloumn = css`
   display: flex;
@@ -8,7 +9,7 @@ const flexCloumn = css`
   padding: 6.25em 0 6.25em;
 `
 
-export const Container = styled.div`
+export const Container = styled(motion.div)`
   background: ${({ theme }) => theme.colors.bodyBg};
   position: fixed;
   z-index: 100;
@@ -18,7 +19,7 @@ export const Container = styled.div`
   ${flexCloumn}
 `
 
-export const LogoWrapper = styled.div`
+export const LogoWrapper = styled(motion.div)`
   width: 15em;
   height: 2.3em;
   position: relative;
@@ -29,7 +30,7 @@ export const NavLinkWrapper = styled.nav`
   padding: 0;
 `
 
-export const NavLink = styled.a`
+export const NavLink = styled(motion.a)`
   margin: 1.56em 0;
   font-size: ${({ active }) => (active ? '1.88em' : '1.25em')};
   color: ${({ theme, active }) => active && theme.colors.heading};
@@ -41,7 +42,7 @@ export const NavLink = styled.a`
   }
 `
 
-export const CloseButton = styled.button`
+export const CloseButton = styled(motion.button)`
   width: 5em;
   aspect-ratio: 1;
   position: relative;

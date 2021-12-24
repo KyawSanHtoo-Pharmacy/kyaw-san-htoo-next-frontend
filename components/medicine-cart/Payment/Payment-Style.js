@@ -216,10 +216,11 @@ export const UploadButtonWrapper = styled.div`
   flex: 0.6;
   display: flex;
 
-  & img {
+  & span {
     width: 3em;
     margin: 0 1em 0 auto;
     border-radius: 4px;
+    position: relative;
   }
 `
 

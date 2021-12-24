@@ -45,7 +45,8 @@ export const AnswerWrapper = styled.div`
 `
 
 export const Answer = styled.p`
-  font-size: 1.25em;
+  font-size: 0.9em;
+  font-weight: normal;
   margin: ${({ m }) => (m ? m : '')};
 `
 

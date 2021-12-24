@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { FadeInKeyframe } from '@/ksh-styles/keyframes/fadeIn'
 
-export const Container = styled.div`
+export const Container = styled.a`
   position: relative;
   display: flex;
   justify-content: space-between;
@@ -14,6 +14,12 @@ export const Container = styled.div`
     max-width: 150px;
   }
 
+  position: relative;
+  transition: transform 0.2s ease-out;
+
+  &:active {
+    transform: scale(0.95);
+  }
 `
 
 export const Button = styled.button`

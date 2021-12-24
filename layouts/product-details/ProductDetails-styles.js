@@ -9,7 +9,6 @@ export const Section = styled.section`
 
 export const Frame = styled.div`
   display: flex;
-  gap: 3.13em;
   justify-content: space-between;
 
   @media screen and (max-width: 730px) {
@@ -20,9 +19,17 @@ export const Frame = styled.div`
 
 export const StickySide = styled.div`
   position: relative;
-  flex: 1;
+  width: 48%;
+
+  @media screen and (max-width: 730px) {
+    width: 100%;
+  }
 `
 
 export const NormalSide = styled.div`
-  flex: 1;
+  width: 48%;
+
+  @media screen and (max-width: 730px) {
+    width: 100%;
+  }
 `

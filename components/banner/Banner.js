@@ -114,11 +114,6 @@ Banner.Section = function BannerSection({ children, ...restProps }) {
   return (
     <BannerContainer {...restProps}>
       {children}
-      {/* <BannerBackground
-        src='/images/home-hero-bg-pc.svg'
-        layout='fill'
-        alt='a doctor in pharmacy asking how are you feeling today'
-      /> */}
       {width > 700 ? (
         <>
           <BannerBackgroundHuman>

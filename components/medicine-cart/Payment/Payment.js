@@ -30,10 +30,10 @@ import {
   UploadButtonWrapper,
   UploadButtonLabel,
 } from './Payment-Style'
+import Image from 'next/image'
+import { useState, useContext } from 'react'
 import { Button } from '@/ksh-components'
-import { useState } from 'react'
 import { changeMyanNum } from '@/ksh-helpers'
-import { useContext } from 'react'
 import { CartStates } from '@/ksh-contexts/Cart-Context'
 import { API_URL } from '@/ksh-config/index'
 
@@ -243,7 +243,11 @@ export default function Payment({ prePage, orderFormData, setOrderFormData, medi
             <UploadWrapper>
               <UploadDescripton>ငွေလွှဲဖြတ်ပိုင်း ထည့်သွင်းရန်</UploadDescripton>
               <UploadButtonWrapper>
-                {base64KpayImage && <img src={base64KpayImage} alt='chosen' />}
+                {base64KpayImage && (
+                  <span>
+                    <Image src={base64KpayImage} alt='kpay-screenshot' layout='fill' />
+                  </span>
+                )}
                 <UploadButtonLabel htmlFor='Screenshot' active={Boolean(base64KpayImage)}>
                   ပုံတင်မယ်
                 </UploadButtonLabel>
