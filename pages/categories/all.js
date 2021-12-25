@@ -5,13 +5,14 @@ import { API_URL } from '@/ksh-config/index'
 import { changeMyanNum } from '@/ksh-helpers'
 import { useContext } from 'react'
 import { CartStates } from '@/ksh-contexts/Cart-Context'
+import { AnimatePresence } from 'framer-motion'
 
 export default function AllMedicinePage({ medicines, count, category, longCat }) {
-  const { showOrderSuccessPopup } = useContext(CartStates)
-
+  const { showOrderSuccessPopup, setShowOrderSuccessPopup } = useContext(CartStates)
   return (
     <>
-      {showOrderSuccessPopup && <OrderSuccessPopup />}
+      <button onClick={() => setShowOrderSuccessPopup(!showOrderSuccessPopup)}>Click Me!</button>
+      <AnimatePresence>{showOrderSuccessPopup && <OrderSuccessPopup />}</AnimatePresence>
       <GlobalContainer padding='6.25em 7.81em 4.4em 7.81em'>
         <SearchBar.Container>
           <SearchBar />

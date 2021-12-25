@@ -12,7 +12,7 @@ export const ContactWrapper = styled.section`
 
 export const ContactImg = styled.div`
   flex: 1;
-  height: calc(100vh - 13em);
+  height: calc(100vh - 12.9em);
   position: relative;
 
   @media only screen and (max-width: 650px) {
@@ -50,7 +50,7 @@ export const ContactContent = styled.div`
 export const UpperContent = styled.div`
   /* align-self: flex-start; */
   @media only screen and (max-width: 650px) {
-    margin-bottom : 3em;
+    margin-bottom: 1em;
   }
 `
 
@@ -69,7 +69,7 @@ export const ContactTitle = styled.h1`
 `
 
 export const LowerContent = styled.div`
-  margin-top: 4em;
+  margin-top: 2em;
 `
 export const ContactDetail = styled.p`
   padding: 0.3em 0;

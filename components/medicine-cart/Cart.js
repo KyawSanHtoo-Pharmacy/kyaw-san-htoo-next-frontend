@@ -29,67 +29,65 @@ function Cart() {
     setPages(pages - 1)
   }
 
-  useEffect(() => {
-    if (cartVisibile) {
-      //to alter scrollablity of the entire page
-      document.body.style.overflow = 'hidden'
-    } else {
-      document.body.style.overflow = 'unset'
-    }
-  }, [cartVisibile])
+  // useEffect(() => {
+  //   if (cartVisibile) {
+  //     //to alter scrollablity of the entire page
+  //     document.body.style.overflow = 'hidden'
+  //   } else {
+  //     document.body.style.overflow = 'unset'
+  //   }
+  // }, [cartVisibile])
 
   const { width } = useWindowSize()
-  const ismobile = width < 550;
+  const isMobile = width < 550
 
-  const Cartvariants = {
+  const cartVariants = {
     visible: {
-      [ ismobile ? 'y' : 'x' ]  : ismobile ? "0vh" : "0vw",
-      opacity : 1,
-      transition: 
-      {
-        duration: 0.2,
-        ease : [.55,.13,.86,.74]
+      [isMobile ? 'y' : 'x']: isMobile ? '0vh' : '0vw',
+      opacity: 1,
+      transition: {
+        duration: 0.8,
+        ease: [0.86, 0, 0.07, 1],
       },
     },
     hidden: {
-      [ ismobile ? 'y' : 'x' ]  : ismobile ? "10vh" : "10vw",
-      opacity : 0
+      [isMobile ? 'y' : 'x']: isMobile ? '10vh' : '10vw',
+      opacity: 0,
     },
-    exit: { 
-      [ ismobile ? 'y' : 'x' ]  : ismobile ? "10vh" : "10vw",
-    opacity: 0,
-    transition: {
-      duration: 0.4,
-    }}
-}
-  const OverlayVarients = {
+    exit: {
+      [isMobile ? 'y' : 'x']: isMobile ? '10vh' : '10vw',
+      opacity: 0,
+      transition: {
+        duration: 0.8,
+        ease: [0.86, 0, 0.07, 1],
+      },
+    },
+  }
+  const overlayVarients = {
     visible: {
-      opacity : 1,
+      opacity: 1,
       transition: {
         duration: 0.4,
       },
     },
     hidden: {
-      opacity : 0,
+      opacity: 0,
     },
-    exit: {  opacity : 0,
-    transition: {
-      duration: 0.4,
-    }}
+    exit: {
+      opacity: 0,
+      transition: {
+        duration: 0.4,
+      },
+    },
   }
-
 
   return (
     <>
       <AnimatePresence>
         {cartVisibile ? (
           <>
-            <BlurOverlay  variants={OverlayVarients}
-                    initial='hidden' animate='visible' exit='exit' />
-            <CartWrapper 
-                    variants={Cartvariants}
-                    initial='hidden' animate='visible' exit='exit'
-            >
+            <BlurOverlay variants={overlayVarients} initial='hidden' animate='visible' exit='exit' />
+            <CartWrapper variants={cartVariants} initial='hidden' animate='visible' exit='exit'>
               {medicineToBuy.length > 0 ? (
                 pages === 1 ? (
                   <CartContent nextPage={nextPage} medicineToBuy={medicineToBuy} />

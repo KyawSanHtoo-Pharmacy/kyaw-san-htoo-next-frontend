@@ -1,13 +1,17 @@
 import JumbotronContainer from '@/ksh-containers/JumbotronContainer'
 import CategoryCardContainer from '@/ksh-containers/CategoryCardContainer'
 import TestimonialContainer from '@/ksh-containers/TestimonialContainer'
-import { CtaSection } from '@/ksh-components'
+import { CtaSection, OrderSuccessPopup } from '@/ksh-components'
 import BannerContainer from '@/ksh-containers/BannerContainer'
 import { API_URL } from '@/ksh-config/index'
+import { useContext } from 'react'
+import { CartStates } from '@/ksh-contexts/Cart-Context'
 
 export default function HomePage({ testimonials, categories }) {
+  const { showOrderSuccessPopup } = useContext(CartStates)
   return (
     <>
+      {showOrderSuccessPopup && <OrderSuccessPopup />}
       <BannerContainer />
       <CategoryCardContainer categories={categories} />
       <JumbotronContainer />

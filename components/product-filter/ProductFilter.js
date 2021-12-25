@@ -1,7 +1,8 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { Button } from '@/ksh-components'
 import { useRouter } from 'next/router'
 const { Alphabets } = require('@/ksh-data/alphabets.json')
+import { AnimatePresence } from 'framer-motion'
 import {
   Container,
   BlurOverlay,
@@ -21,10 +22,6 @@ export default function ProductFilter({ longCat, routerChar, routerCat }) {
   const router = useRouter()
   const [isFilterOpen, setIsFilterOpen] = useState(false)
 
-  useEffect(() => {
-    document.body.style.overflow = isFilterOpen ? 'hidden' : 'unset'
-  }, [isFilterOpen])
-
   const clickHandler = (param, type) => {
     //param gets api endpoint. type gets route either it's supposed to go to cateogires or aphabets.
     if (type === 'cat') {
@@ -36,20 +33,31 @@ export default function ProductFilter({ longCat, routerChar, routerCat }) {
 
   return (
     <>
-      {isFilterOpen && (
-        <BlurOverlay
-          initial={{
-            opacity: 0,
-          }}
-          animate={{
-            opacity: 1,
-          }}
-          transition={{
-            duration: 0.2,
-          }}
-          onClick={() => setIsFilterOpen(!isFilterOpen)}
-        />
-      )}
+      <AnimatePresence>
+        {isFilterOpen && (
+          <BlurOverlay
+            initial={{
+              opacity: 0,
+            }}
+            animate={{
+              opacity: 1,
+              transition: {
+                duration: 0.8,
+                ease: [0.86, 0, 0.07, 1],
+              },
+            }}
+            exit={{
+              opacity: 0,
+              transition: {
+                duration: 0.8,
+                ease: [0.86, 0, 0.07, 1],
+              },
+            }}
+            onClick={() => setIsFilterOpen(!isFilterOpen)}
+          />
+        )}
+      </AnimatePresence>
+
       <Container>
         <Button.OffWhite
           small
@@ -61,77 +69,114 @@ export default function ProductFilter({ longCat, routerChar, routerCat }) {
           }}>
           <span>စစ်ထုတ်မယ်</span>
         </Button.OffWhite>
+        <AnimatePresence>
+          {isFilterOpen && (
+            <Frame
+              initial={{
+                opacity: 0,
+                y: 24,
+              }}
+              animate={{
+                opacity: 1,
+                y: 0,
+                transition: {
+                  when: 'beforeChildren',
+                  staggerChildren: 1,
+                  duration: 0.8,
+                  ease: [0.86, 0, 0.07, 1],
+                },
+              }}
+              exit={{
+                opacity: 0,
+                y: 24,
+                transition: {
+                  duration: 0.8,
+                  ease: [0.86, 0, 0.07, 1],
+                },
+              }}>
+              <Item
+                initial={{
+                  opacity: 0,
+                  y: 24,
+                }}
+                animate={{
+                  opacity: 1,
+                  y: 0,
+                  transition: {
+                    duration: 0.8,
+                    ease: [0.86, 0, 0.07, 1],
+                  },
+                }}
+                exit={{
+                  opacity: 0,
+                  y: 24,
+                  transition: {
+                    duration: 0.8,
+                    ease: [0.86, 0, 0.07, 1],
+                  },
+                }}>
+                <TitleWrapper>
+                  <Title>ရောဂါများ</Title>
+                </TitleWrapper>
+                <Body>
+                  {longCat.map(cat => (
+                    <Pill
+                      isActive={routerCat === cat.slug ? true : false}
+                      key={cat.id}
+                      onClick={() => {
+                        clickHandler(cat.slug, 'cat')
+                        setIsFilterOpen(!isFilterOpen)
+                      }}>
+                      {cat.category_name_long}
+                    </Pill>
+                  ))}
+                </Body>
+              </Item>
 
-        {isFilterOpen && (
-          <Frame
-            initial={{
-              opacity: 0,
-              y: 24,
-            }}
-            animate={{
-              opacity: 1,
-              y: 0,
-            }}
-            exit={{
-              opacity: 0,
-              y: 24,
-            }}
-            transition={{
-              duration: 0.4,
-              type: 'spring',
-            }}>
-            <Item>
-              <TitleWrapper>
-                <Title>ရောဂါများ</Title>
-                {/* <Icon src='/icons/plus.svg' alt='see-more-icon' /> */}
-              </TitleWrapper>
-              <Body>
-                {longCat.map(cat => (
-                  <Pill
-                    isActive={routerCat === cat.slug ? true : false}
-                    key={cat.id}
-                    onClick={() => clickHandler(cat.slug, 'cat')}>
-                    {cat.category_name_long}
-                  </Pill>
-                ))}
-              </Body>
-            </Item>
+              <Item
+                initial={{
+                  opacity: 0,
+                  y: 24,
+                }}
+                animate={{
+                  opacity: 1,
+                  y: 0,
+                  transition: {
+                    duration: 0.8,
+                    ease: [0.86, 0, 0.07, 1],
+                  },
+                }}
+                exit={{
+                  opacity: 0,
+                  y: 24,
+                  transition: {
+                    duration: 0.8,
+                    ease: [0.86, 0, 0.07, 1],
+                  },
+                }}>
+                <TitleWrapper>
+                  <Title>ရောဂါများ</Title>
+                </TitleWrapper>
+                <Body>
+                  {Alphabets.map(char => (
+                    <AlphabetPill
+                      isActive={routerChar === char.char ? true : false}
+                      key={char.id}
+                      onClick={() => {
+                        clickHandler(char.char, 'alpha')
+                        setIsFilterOpen(!isFilterOpen)
+                      }}>
+                      {' '}
+                      <AlphabetText> {char.char} </AlphabetText>{' '}
+                    </AlphabetPill>
+                  ))}
+                </Body>
+              </Item>
 
-            <Item>
-              <TitleWrapper>
-                <Title>ရောဂါများ</Title>
-                {/* <Icon src='/icons/plus.svg' alt='see-more-icon' /> */}
-              </TitleWrapper>
-              <Body>
-                {Alphabets.map(char => (
-                  <AlphabetPill
-                    isActive={routerChar === char.char ? true : false}
-                    key={char.id}
-                    onClick={() => {
-                      clickHandler(char.char, 'alpha')
-                      setIsFilterOpen(!isFilterOpen)
-                    }}>
-                    {' '}
-                    <AlphabetText> {char.char} </AlphabetText>{' '}
-                  </AlphabetPill>
-                ))}
-              </Body>
-            </Item>
-
-            {/* <Item>
-              <TitleWrapper>
-                <Title>အခြား</Title>
-                <Icon src='/icons/plus.svg' alt='see-more-icon' />
-              </TitleWrapper>
-              <Body>
-                <Pill>အသစ်ရောက်သော ဆေးများ</Pill>
-                <Pill>ပရိုမိုးရှင်း ရှိသောဆေးများ</Pill>
-              </Body>
-            </Item> */}
-
-            <SquareArrow />
-          </Frame>
-        )}
+              <SquareArrow />
+            </Frame>
+          )}
+        </AnimatePresence>
       </Container>
     </>
   )

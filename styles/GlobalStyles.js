@@ -22,6 +22,19 @@ export const GlobalStyles = createGlobalStyle`${css`
     src: local('Bahnschrift'), url('/fonts/bahnschrift.TTF') format('TTF');
   }
 
+  ::-webkit-scrollbar {
+    width: 12px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: ${({ theme }) => theme.colors.dividerOne};
+    
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: ${({ theme }) => theme.colors.heading};
+  }
+
   * {
     padding: 0;
     margin: 0;

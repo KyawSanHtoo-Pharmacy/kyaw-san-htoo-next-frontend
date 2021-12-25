@@ -20,21 +20,6 @@ export const CartWrapper = styled(motion.div)`
     background: transparent;
   }
 
-  /* ::-webkit-scrollbar {
-    width: 10px;
-  }
-
-  ::-webkit-scrollbar-track {
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background: ${({ theme }) => theme.colors.heading};
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-    background: ${({ theme }) => theme.colors.offWhite};
-  } */
-
   @media only screen and (max-width: 550px) {
     width: 100%;
     border-radius: 15px 15px 0px 0px;

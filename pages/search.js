@@ -1,13 +1,19 @@
 import ProductCardContainer from '@/ksh-containers/ProductCardContainer'
-import { ProductCard, SearchBar, ProductFilter } from '@/ksh-components'
+import { ProductCard, SearchBar, ProductFilter, OrderSuccessPopup } from '@/ksh-components'
 import { GlobalContainer } from '@/ksh-styles/GlobalStyles'
 import { API_URL } from '@/ksh-config/index'
 import qs from 'qs'
 import { changeMyanNum } from '@/ksh-helpers'
+import { useContext } from 'react'
+import { CartStates } from '@/ksh-contexts/Cart-Context'
 
 export default function AllMedicinePage({ medicines, keyword, longCat }) {
+  const { showOrderSuccessPopup } = useContext(CartStates)
+
   return (
     <>
+      {showOrderSuccessPopup && <OrderSuccessPopup />}
+
       <GlobalContainer>
         <SearchBar.Container>
           <SearchBar />
@@ -45,10 +51,6 @@ export async function getServerSideProps({ query: { keyword } }) {
   const longCat = await catresp.json()
 
   return {
-    props: {
-      keyword,
-      medicines,
-      longCat,
-    },
+    props: { keyword, medicines, longCat },
   }
 }
