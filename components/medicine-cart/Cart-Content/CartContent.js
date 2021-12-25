@@ -4,6 +4,7 @@ import { Button } from '@/ksh-components'
 import { CartStates } from '@/ksh-contexts/Cart-Context'
 import { changeMyanNum } from '@/ksh-helpers'
 import { AiOutlineDelete } from 'react-icons/ai'
+import { AnimatePresence } from 'framer-motion'
 import {
   Cart1stPage,
   CartHeading,
@@ -25,7 +26,6 @@ import {
 } from './CartContent-Styles'
 
 function CartContent({ nextPage, medicineToBuy }) {
-  console.log(medicineToBuy) //del later
   const value = useContext(CartStates)
   const { dispatch } = useContext(CartStates)
   const [cartVisibile, setCartVisible] = value.visibility
@@ -35,7 +35,6 @@ function CartContent({ nextPage, medicineToBuy }) {
   }
 
   const changeToMM = qty => {
-    //1
     const myannums = ['၀', '၁', '၂', '၃', '၄', '၅', '၆', '၇', '၈', '၉']
     const processnum = qty.toString()
     const spilitnum = processnum.split('')
@@ -68,7 +67,9 @@ function CartContent({ nextPage, medicineToBuy }) {
           </svg>
           <CartTitle>
             <span className='text'>ဆေးဝယ်စာရင်း</span>
-            <span className='number'><span className='num' >{ changeToMM( medicineToBuy.length ) }</span></span>
+            <span className='number'>
+              <span className='num'>{changeToMM(medicineToBuy.length)}</span>
+            </span>
           </CartTitle>
         </CartHeading>
 
@@ -80,45 +81,71 @@ function CartContent({ nextPage, medicineToBuy }) {
           </ItemTitles>
         </ItemTitleWrapper>
 
-        {medicineToBuy.map(
-          ({ id, image, hash, name, quantity, price, isOverAmount, product_quantity, product_unit }) => (
-            <ItemsWrapper key={id}>
-              <ItemsToBuy>
-                <ItemImg>
-                  <Image src={image} layout='fill' alt={name} placeholder='blur' blurDataURL={hash} />
-                </ItemImg>
-                <ItemName>{name}</ItemName>
-              </ItemsToBuy>
-              <ItemQuentity>
-                <Min onClick={() => dispatch({ type: 'updateItemQuantity', payload: { id: id, amount: -1 } })}>-</Min>
+        <AnimatePresence>
+          {medicineToBuy.map(
+            ({ id, image, hash, name, quantity, price, isOverAmount, product_quantity, product_unit }) => (
+              <ItemsWrapper
+                key={id}
+                initial={{
+                  opacity: 0,
+                  y: -40,
+                }}
+                animate={{
+                  opacity: 1,
+                  y: 0,
+                  transition: {
+                    when: 'beforeChildren',
+                    staggerChildren: 1,
+                    duration: 0.8,
+                    ease: [0.86, 0, 0.07, 1],
+                  },
+                }}
+                exit={{
+                  opacity: 0,
+                  y: 40,
+                  transition: {
+                    duration: 0.8,
+                    ease: [0.86, 0, 0.07, 1],
+                  },
+                }}>
+                <ItemsToBuy>
+                  <ItemImg>
+                    <Image src={image} layout='fill' alt={name} placeholder='blur' blurDataURL={hash} />
+                  </ItemImg>
+                  <ItemName>{name}</ItemName>
+                </ItemsToBuy>
+                <ItemQuentity>
+                  <Min onClick={() => dispatch({ type: 'updateItemQuantity', payload: { id: id, amount: -1 } })}>-</Min>
 
-                <QuantityShow
-                  type='number'
-                  value={changeMyanNum(quantity)}
-                  // value={quantity}
-                  min='0'
-                  onChange={e => dispatch({ type: 'handleQuantityChange', newQ: { id: id, val: e.target.value } })}>
-                  {' '}
-                  {changeToMM(quantity)}
-                  {isOverAmount && <Error>{`${name} ${product_quantity}${product_unit} thr kyn pr tot tl!`}</Error>}
-                </QuantityShow>
+                  <QuantityShow
+                    type='number'
+                    value={changeMyanNum(quantity)}
+                    min='0'
+                    onChange={e => dispatch({ type: 'handleQuantityChange', newQ: { id: id, val: e.target.value } })}>
+                    {' '}
+                    {changeToMM(quantity)}
+                    {isOverAmount && <Error>{`${name} ${product_quantity}${product_unit} thr kyn pr tot tl!`}</Error>}
+                  </QuantityShow>
 
-                <Plus onClick={() => dispatch({ type: 'updateItemQuantity', payload: { id: id, amount: 1 } })}>+</Plus>
-              </ItemQuentity>
-              <ItemCost>
-                {quantity === 0 || '' ? (
-                  <p>
-                    <AiOutlineDelete onClick={() => dispatch({ type: 'deleteItem', payload: { id: id } })} />{' '}
-                  </p>
-                ) : (
-                  <p>{price ? changeMyanNum(price) : changeMyanNum(0)}</p>
-                )}
-              </ItemCost>
-            </ItemsWrapper>
-          )
-        )}
+                  <Plus onClick={() => dispatch({ type: 'updateItemQuantity', payload: { id: id, amount: 1 } })}>
+                    +
+                  </Plus>
+                </ItemQuentity>
+                <ItemCost>
+                  {quantity === 0 || '' ? (
+                    <p>
+                      <AiOutlineDelete onClick={() => dispatch({ type: 'deleteItem', payload: { id: id } })} />{' '}
+                    </p>
+                  ) : (
+                    <p>{price ? changeMyanNum(price) : changeMyanNum(0)}</p>
+                  )}
+                </ItemCost>
+              </ItemsWrapper>
+            )
+          )}
+        </AnimatePresence>
       </Cart1stPage>
-      {/* // <h1>Here Cart Comes</h1> */}
+
       <ButtonWrapper>
         <Button Big onClick={nextPage} disabled={totalQty === 0 ? true : false}>
           <span>ဆက်လုပ်ဆောင်မယ်</span>

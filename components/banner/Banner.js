@@ -75,14 +75,18 @@ const Banner = () => {
               animate={{
                 opacity: 1,
                 y: 0,
+                transition: {
+                  duration: 0.8,
+                  ease: [0.86, 0, 0.07, 1],
+                },
               }}
               exit={{
                 opacity: 0,
                 y: 24,
-              }}
-              transition={{
-                duration: 0.3,
-                type: 'spring',
+                transition: {
+                  duration: 0.8,
+                  ease: [0.86, 0, 0.07, 1],
+                },
               }}>
               <PillWrapper>
                 {bannerpillData.map(pill => (

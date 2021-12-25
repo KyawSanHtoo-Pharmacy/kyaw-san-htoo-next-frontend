@@ -29,7 +29,7 @@ export default function OrderSuccessPopup() {
       <Popup
         initial={{
           opacity: 0,
-          y: 24,
+          y: -40,
         }}
         animate={{
           opacity: 1,
@@ -43,7 +43,7 @@ export default function OrderSuccessPopup() {
         }}
         exit={{
           opacity: 0,
-          y: 24,
+          y: 40,
           transition: {
             duration: 0.8,
             ease: [0.86, 0, 0.07, 1],

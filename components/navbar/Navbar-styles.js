@@ -77,7 +77,7 @@ export const Logo = styled.a`
   transition: all 0.2s ease-out;
 `
 
-export const Button = styled.button`
+export const Button = styled.a`
   display: flex;
   align-items: center;
   border: none;
@@ -86,9 +86,10 @@ export const Button = styled.button`
   padding: 1.17em 1.56em;
   margin-right: 1.88em;
   font-size: 1em;
+  transition: transform 0.2s ease-out;
 
-  & > span {
-    margin-bottom: -0.4em;
+  &:active {
+    transform: scale(0.95);
   }
 `
 

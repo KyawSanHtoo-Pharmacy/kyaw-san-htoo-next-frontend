@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { FadeInKeyframe } from '@/ksh-styles/keyframes/fadeIn'
+import { motion } from 'framer-motion'
 
 export const Cart1stPage = styled.div``
 export const CartHeading = styled.div`
@@ -49,14 +50,12 @@ export const CartTitle = styled.h1`
     }
     .num {
       position: absolute;
-
-      right: 40%;
+      right: 38%;
+      top: 7%;
       @media only screen and (max-width: 550px) {
         right: 37%;
-        bottom: 10%;
+        top: -10%;
       }
-      /* top : 50%; left : 50%;
-    transform: translate(-50%, -50%); */
     }
   }
 `
@@ -75,7 +74,7 @@ export const ItemTitles = styled.h5`
     font-size: 14px;
   }
 `
-export const ItemsWrapper = styled.div`
+export const ItemsWrapper = styled(motion.div)`
   display: grid;
   grid-template-columns: 1.8fr 1fr 1fr;
   margin-bottom: 2em;
@@ -112,7 +111,7 @@ export const ItemName = styled.p`
 `
 
 //2nd column
-export const ItemQuentity = styled.div`
+export const ItemQuentity = styled.a`
   flex: 1;
   display: grid;
   justify-content: center;
@@ -122,7 +121,11 @@ export const ItemQuentity = styled.div`
   border: 1px solid ${({ theme }) => theme.colors.heading};
   border-radius: 10px;
   position: relative;
-  /* overflow: hidden; */
+  transition: transform 0.2s ease-out;
+
+  &:active {
+    transform: scale(0.95);
+  }
 `
 export const QuantityShow = styled.p`
   padding-top: 4.5px;
@@ -168,6 +171,8 @@ export const Plus = styled.button`
   color: ${({ theme }) => theme.colors.text};
   border: none;
   font-weight: 900;
+  border-radius: 0.8em;
+
   @media only screen and (max-width: 550px) {
     font-size: 14px;
   }
@@ -177,6 +182,7 @@ export const Min = styled.button`
   color: ${({ theme }) => theme.colors.text};
   border: none;
   font-weight: 900;
+  border-radius: 0.8em;
 
   @media only screen and (max-width: 550px) {
     font-size: 14px;

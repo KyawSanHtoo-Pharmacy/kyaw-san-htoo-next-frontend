@@ -5,7 +5,7 @@ export const CartWrapper = styled(motion.div)`
   position: fixed;
   right: 0;
   top: 0;
-  width: 550px;
+  width: 36em;
   height: 100vh;
   overflow-y: scroll;
   background-color: white;
