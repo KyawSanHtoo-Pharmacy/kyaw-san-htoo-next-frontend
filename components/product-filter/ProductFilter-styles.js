@@ -24,7 +24,7 @@ export const Frame = styled(motion.div)`
   }
 `
 
-export const SquareArrow = styled.div`
+export const SquareArrow = styled(motion.div)`
   width: 1.41em;
   aspect-ratio: 1;
   position: absolute;
@@ -43,7 +43,7 @@ export const SquareArrow = styled.div`
   }
 `
 
-export const Item = styled.div`
+export const Item = styled(motion.div)`
   &:not(:first-of-type) {
     margin-top: 1.88em;
   }

@@ -1,9 +1,14 @@
 import Image from 'next/image'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Container, MainImage, SmallImageWrapper, SmallImage } from './ImageShowcase-styles'
 
 export default function ImageShowcase({ medicine_images }) {
   const [mainImage, setMainImage] = useState(medicine_images && medicine_images[0])
+
+  useEffect(() => {
+    setMainImage(medicine_images[0])
+  }, [medicine_images])
+
   // I dont know why this check is needed, but to fix the error in console :((
   if (!medicine_images) {
     return null

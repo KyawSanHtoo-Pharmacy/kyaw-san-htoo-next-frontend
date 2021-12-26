@@ -1,33 +1,40 @@
-import { useState } from 'react'
 import { useRouter } from 'next/router'
 import { API_URL } from '@/ksh-config/index'
 import ProductCardContainer from '@/ksh-containers/ProductCardContainer'
-import { ProductCard, SearchBar, ProductFilter, Empty } from '@/ksh-components'
+import { ProductCard, SearchBar, ProductFilter, Empty, OrderSuccessPopup } from '@/ksh-components'
 import { GlobalContainer } from '@/ksh-styles/GlobalStyles'
 import { changeMyanNum } from '@/ksh-helpers'
 const { Alphabets } = require('@/ksh-data/alphabets.json')
+import { useContext } from 'react'
+import { CartStates } from '@/ksh-contexts/Cart-Context'
 
 export default function CharacterPage({ filteredMedicines, count, char, longCat }) {
   const router = useRouter()
-  const [isActive, setActive] = useState(false)
+  const { showOrderSuccessPopup } = useContext(CartStates)
 
   return (
     <>
+      {showOrderSuccessPopup && <OrderSuccessPopup />}
+
       <GlobalContainer>
         <SearchBar.Container>
           <SearchBar />
-          <ProductFilter longCat={longCat} isActive={isActive} routerChar={router.query.char} />
+          <ProductFilter longCat={longCat} routerChar={router.query.char} />
         </SearchBar.Container>
 
         <ProductCard.InfoBar>
-          <ProductCard.CategoryName>Filtered results for letter: {char}</ProductCard.CategoryName>
+          <ProductCard.CategoryName>{`အက္ခရာ "${char}" နဲ့စသော ဆေးများ`}</ProductCard.CategoryName>
           <ProductCard.Count>
             ရလဒ်ပေါင်း <span className='mm-number'>{changeMyanNum(count)}</span>
           </ProductCard.Count>
         </ProductCard.InfoBar>
       </GlobalContainer>
 
-      {filteredMedicines.length > 0 ? <ProductCardContainer medicines={filteredMedicines} /> : <Empty />}
+      {filteredMedicines.length > 0 ? (
+        <ProductCardContainer medicines={filteredMedicines} />
+      ) : (
+        <Empty message={`"${char}" နဲ့စသော ဆေးများမရှိသေးပါ။`} />
+      )}
     </>
   )
 }

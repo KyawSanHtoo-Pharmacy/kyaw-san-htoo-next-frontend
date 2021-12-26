@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
-import { Navbar, MobileNav, Footer, MinimalFooter, OrderSuccessPopup } from '@/ksh-components'
+import { Navbar, MobileNav, Footer, MinimalFooter } from '@/ksh-components'
 import { ThemeProvider } from 'styled-components'
 import { lightTheme } from '@/ksh-theme/theme'
 import { Cart } from '@/ksh-components'
@@ -12,6 +12,8 @@ import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 import 'swiper/css/scrollbar'
+import 'slick-carousel/slick/slick.css'
+import 'slick-carousel/slick/slick-theme.css'
 
 import Router from 'next/router'
 import NProgress from 'nprogress'
@@ -49,13 +51,10 @@ function MyKSHApp({ Component, pageProps }) {
 
       <ThemeProvider theme={lightTheme}>
         <GlobalStyles />
-
         <CartProvider>
           <Navbar isMobileNavOpen={isMobileNavOpen} setIsMobileNavOpen={setIsMobileNavOpen} />
           <AnimatePresence>
-          {
-          isMobileNavOpen && <MobileNav isMobileNavOpen={isMobileNavOpen} setIsMobileNavOpen={setIsMobileNavOpen} />
-          }
+            {isMobileNavOpen && <MobileNav isMobileNavOpen={isMobileNavOpen} setIsMobileNavOpen={setIsMobileNavOpen} />}
           </AnimatePresence>
           <Cart />
           <Component {...pageProps} />

@@ -1,6 +1,7 @@
 import styled from 'styled-components'
+import { motion } from 'framer-motion'
 
-export const Container = styled.div`
+export const Container = styled(motion.div)`
   position: fixed;
   inset: 0;
   background: rgba(49, 51, 53, 0.46);
@@ -11,7 +12,7 @@ export const Container = styled.div`
   justify-content: center;
 `
 
-export const Popup = styled.div`
+export const Popup = styled(motion.div)`
   background: ${({ theme }) => theme.colors.bodyBg};
   padding: 1.88em;
   padding-top: 4.2em;

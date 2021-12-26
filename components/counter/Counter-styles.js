@@ -9,13 +9,12 @@ export const Container = styled.a`
   background-color: ${({ theme }) => theme.colors.offWhite};
   border-radius: 0.63em;
   border: 1px solid ${({ theme }) => theme.colors.heading};
+  position: relative;
+  transition: transform 0.2s ease-out;
 
   @media screen and (max-width: 400px) {
     max-width: 150px;
   }
-
-  position: relative;
-  transition: transform 0.2s ease-out;
 
   &:active {
     transform: scale(0.95);
@@ -30,13 +29,13 @@ export const Button = styled.button`
   background-color: transparent;
   border: none;
   @media screen and (max-width: 400px) {
-   font-size : 12px;
+    font-size: 12px;
   }
 `
 
 export const Amount = styled.p`
   @media screen and (max-width: 400px) {
-   font-size : 14px;
+    font-size: 14px;
   }
 `
 export const Error = styled.p`

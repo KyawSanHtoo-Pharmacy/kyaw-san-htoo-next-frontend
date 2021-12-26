@@ -30,7 +30,9 @@ function contact() {
           </ContactTitle>
         </UpperContent>
         <LowerContent>
-          <ContactDetail>၀၉ ၀၁၀၁၀၁၀၁၀ ၀၁ ၀၀၁ ၀၀၁</ContactDetail>
+          <ContactDetail>
+            <a href='tel:04224747'>၀၄၂ ၂၄၇၄၇</a>၊ <a href='tel:095021252'>၀၉ ၅၀၂၁ ၂၅၂</a>
+          </ContactDetail>
           <ContactDetail>info@kyawsantoopharmacy.com</ContactDetail>
           <ContactDetail>အမှတ် ကျူ/ဘီ၊ ပုသိမ်ဆေးရုံကြီးရှေ့၊ ပုသိမ်မြို့။</ContactDetail>
           <SocialWrapper>

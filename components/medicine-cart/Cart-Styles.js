@@ -5,7 +5,7 @@ export const CartWrapper = styled(motion.div)`
   position: fixed;
   right: 0;
   top: 0;
-  width: 550px;
+  width: 36em;
   height: 100vh;
   overflow-y: scroll;
   background-color: white;
@@ -19,21 +19,6 @@ export const CartWrapper = styled(motion.div)`
     width: 0px;
     background: transparent;
   }
-
-  /* ::-webkit-scrollbar {
-    width: 10px;
-  }
-
-  ::-webkit-scrollbar-track {
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background: ${({ theme }) => theme.colors.heading};
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-    background: ${({ theme }) => theme.colors.offWhite};
-  } */
 
   @media only screen and (max-width: 550px) {
     width: 100%;

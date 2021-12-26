@@ -20,16 +20,28 @@ export default function MinimalFooter() {
           <Group>
             <InfoText small>
               Designed & Developed by{' '}
-              <a href='google.com' target='_blank'>
+              <a
+                href='https://www.linkedin.com/in/aung-pyae-kyaw-2346aa16b/'
+                style={{ textDecoration: 'underline' }}
+                target='_blank'
+                rel='noreferrer'>
                 Aung Pyae
               </a>{' '}
               |{' '}
-              <a href='google.com' target='_blank'>
+              <a
+                href='https://www.linkedin.com/in/yanaunghein/'
+                style={{ textDecoration: 'underline' }}
+                target='_blank'
+                rel='noreferrer'>
                 Yaung
               </a>{' '}
               |{' '}
-              <a href='google.com' target='_blank'>
-                Ye
+              <a
+                href='https://www.linkedin.com/in/ye-min-htun-464622175/'
+                style={{ textDecoration: 'underline' }}
+                target='_blank'
+                rel='noreferrer'>
+                Yè Min
               </a>
             </InfoText>
           </Group>

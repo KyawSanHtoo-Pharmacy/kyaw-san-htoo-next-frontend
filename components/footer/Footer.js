@@ -24,7 +24,9 @@ export default function Footer() {
             </InfoText>
           </Group>
           <Group mt='-0.4em 0 0 0'>
-            <InfoText large>၀၉ ၀၁၀၁၀၁၀၁၀၊ ၀၁ ၀၀၁ ၀၀၁</InfoText>
+            <InfoText large>
+              <a href='tel:04224747'>၀၄၂ ၂၄၇၄၇</a>၊ <a href='tel:095021252'>၀၉ ၅၀၂၁ ၂၅၂</a>
+            </InfoText>
             <InfoText>အမှတ် ကျူ/ဘီ၊ ပုသိမ်ဆေးရုံကြီးရှေ့၊ ပုသိမ်မြို့။</InfoText>
           </Group>
           <Group>
@@ -56,16 +58,28 @@ export default function Footer() {
           <Group>
             <InfoText small>
               Designed & Developed by{' '}
-              <a href='google.com' target='_blank'>
+              <a
+                href='https://www.linkedin.com/in/aung-pyae-kyaw-2346aa16b/'
+                style={{ textDecoration: 'underline' }}
+                target='_blank'
+                rel='noreferrer'>
                 Aung Pyae
               </a>{' '}
               |{' '}
-              <a href='google.com' target='_blank'>
+              <a
+                href='https://www.linkedin.com/in/yanaunghein/'
+                style={{ textDecoration: 'underline' }}
+                target='_blank'
+                rel='noreferrer'>
                 Yaung
               </a>{' '}
               |{' '}
-              <a href='google.com' target='_blank'>
-                Ye
+              <a
+                href='https://www.linkedin.com/in/ye-min-htun-464622175/'
+                style={{ textDecoration: 'underline' }}
+                target='_blank'
+                rel='noreferrer'>
+                Yè Min
               </a>
             </InfoText>
           </Group>

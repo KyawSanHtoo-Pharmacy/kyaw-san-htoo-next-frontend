@@ -1,16 +1,17 @@
-import { Help } from '@/ksh-components'
 import Head from 'next/head'
-import React from 'react'
+import { useContext } from 'react'
+import { CartStates } from '@/ksh-contexts/Cart-Context'
+import { Help, OrderSuccessPopup } from '@/ksh-components'
 
-function help() {
-    return (
-        <>
-         <Head>
-             <title>Contact - Kyaw San Htoo - Pharmacy in Pathein</title>
-         </Head> 
-         <Help/>
-        </>
-    )
+export default function HelpPage() {
+  const { showOrderSuccessPopup } = useContext(CartStates)
+  return (
+    <>
+      <Head>
+        <title>Contact - Kyaw San Htoo - Pharmacy in Pathein</title>
+      </Head>
+      {showOrderSuccessPopup && <OrderSuccessPopup />}
+      <Help />
+    </>
+  )
 }
-
-export default help

@@ -10,12 +10,9 @@ export const Heading = styled.h2`
 
 export const Frame = styled.div`
   display: flex;
+  align-items: stretch;
   gap: 16px;
   margin-top: 5em;
-
-  //update
-  min-width: min-content;
-  padding-right: 7.81em;
 
   @media screen and (max-width: 980px) {
     padding-right: 3.91em;
@@ -26,26 +23,6 @@ export const Frame = styled.div`
   }
 `
 
-//update
-export const OverflowAera = styled.div`
-  padding: 0 7.81em 6.25em;
-  overflow-x: scroll;
-  scrollbar-width: none;
-
-  &::-webkit-scrollbar {
-    width: 0px;
-    background: transparent;
-  }
-
-  @media screen and (max-width: 980px) {
-    padding: 0 3.19em 6.25em;
-  }
-
-  @media screen and (max-width: 500px) {
-    padding: 0 1.25em 6.25em;
-  }
-`
-
 export const Item = styled.div`
   background-color: ${({ theme }) => theme.colors.offWhite};
   border-radius: 1.25em;
@@ -53,9 +30,7 @@ export const Item = styled.div`
   margin-top: 1.72em;
   display: flex;
   flex-direction: column;
-
-  //update
-  width: 26em;
+  height: 100%;
 
   @media screen and (max-width: 500px) {
     width: 24em;
@@ -71,7 +46,6 @@ export const InfoWrapper = styled.div`
   background-color: ${({ theme }) => theme.colors.testimonial};
   border-radius: 0 0 1.25em 1.25em;
   display: flex;
-  margin-top: auto;
 `
 
 export const Info = styled.div`
