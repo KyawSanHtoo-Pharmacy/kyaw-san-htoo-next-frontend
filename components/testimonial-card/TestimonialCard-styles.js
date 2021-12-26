@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const Section = styled.section`
-  padding-top: 6.25em;
+  /* padding-top: 6.25em; */
 `
 
 export const Heading = styled.h2`
@@ -9,9 +9,6 @@ export const Heading = styled.h2`
 `
 
 export const Frame = styled.div`
-  display: flex;
-  align-items: stretch;
-  gap: 16px;
   margin-top: 5em;
 
   @media screen and (max-width: 980px) {
@@ -24,6 +21,7 @@ export const Frame = styled.div`
 `
 
 export const Item = styled.div`
+  margin-right : 20px;
   background-color: ${({ theme }) => theme.colors.offWhite};
   border-radius: 1.25em;
   position: relative;
