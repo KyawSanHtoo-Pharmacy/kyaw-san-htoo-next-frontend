@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 
-export const Section = styled.section``
+export const Section = styled.section`
+  margin-bottom : 3em;
+`
 
 export const Heading = styled.h2`
   text-align: center;
@@ -21,7 +23,7 @@ export const Item = styled.div`
   align-items: center;
   position: relative;
   cursor: pointer;
-
+  margin: 0px 10px;
   &::before {
     content: '';
     position: absolute;
