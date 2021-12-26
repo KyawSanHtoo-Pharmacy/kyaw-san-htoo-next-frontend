@@ -4,7 +4,7 @@ export const Frame = styled.div`
   background: ${({ theme }) => theme.colors.offWhite};
   padding: 2em;
   border-radius: 0.56em;
-  max-width: 37em;
+  width: 100%;
 `
 
 export const Message = styled.p`

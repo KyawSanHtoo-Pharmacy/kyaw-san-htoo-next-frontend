@@ -14,7 +14,6 @@ export default function AllMedicinePage({ medicines, count, category, longCat })
 
   return (
     <>
-      <button onClick={() => setShowOrderSuccessPopup(!showOrderSuccessPopup)}>Click Me!</button>
       <AnimatePresence>{showOrderSuccessPopup && <OrderSuccessPopup />}</AnimatePresence>
 
       <GlobalContainer padding='6.25em 7.81em 4.4em 7.81em'>
@@ -33,7 +32,7 @@ export default function AllMedicinePage({ medicines, count, category, longCat })
       {medicines.length > 0 ? (
         <ProductCardContainer medicines={medicines} />
       ) : (
-        <Empty message={`${category} မရှိသေးပါ`} />
+        <Empty message={`${category} မရှိသေးပါ။`} />
       )}
     </>
   )

@@ -10,7 +10,8 @@
       "@/ksh-helpers": ["helpers/index"],
       "@/ksh-styles/*": ["styles/*"],
       "@/ksh-theme/*": ["theme/*"],
-      "@/ksh-config/*": ["config/*"]
+      "@/ksh-config/*": ["config/*"],
+      "@/ksh-hooks": ["hooks/index"]
     }
   }
 }

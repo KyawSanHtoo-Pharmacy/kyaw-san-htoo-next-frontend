@@ -33,7 +33,7 @@ export default function CharacterPage({ filteredMedicines, count, char, longCat 
       {filteredMedicines.length > 0 ? (
         <ProductCardContainer medicines={filteredMedicines} />
       ) : (
-        <Empty message={`"${char}" နဲ့စသော ဆေးများမရှိသေးပါ`} />
+        <Empty message={`"${char}" နဲ့စသော ဆေးများမရှိသေးပါ။`} />
       )}
     </>
   )

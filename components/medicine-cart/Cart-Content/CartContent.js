@@ -124,7 +124,9 @@ function CartContent({ nextPage, medicineToBuy }) {
                     onChange={e => dispatch({ type: 'handleQuantityChange', newQ: { id: id, val: e.target.value } })}>
                     {' '}
                     {changeToMM(quantity)}
-                    {isOverAmount && <Error>{`${name} ${product_quantity}${product_unit} thr kyn pr tot tl!`}</Error>}
+                    {isOverAmount && (
+                      <Error>{`${name} ${changeMyanNum(product_quantity)}${product_unit} သာကျန်ပါတော့တယ်`}</Error>
+                    )}
                   </QuantityShow>
 
                   <Plus onClick={() => dispatch({ type: 'updateItemQuantity', payload: { id: id, amount: 1 } })}>
@@ -134,7 +136,10 @@ function CartContent({ nextPage, medicineToBuy }) {
                 <ItemCost>
                   {quantity === 0 || '' ? (
                     <p>
-                      <AiOutlineDelete onClick={() => dispatch({ type: 'deleteItem', payload: { id: id } })} />{' '}
+                      <AiOutlineDelete
+                        style={{ color: '#EE5C3C' }}
+                        onClick={() => dispatch({ type: 'deleteItem', payload: { id: id } })}
+                      />{' '}
                     </p>
                   ) : (
                     <p>{price ? changeMyanNum(price) : changeMyanNum(0)}</p>

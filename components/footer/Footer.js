@@ -24,7 +24,9 @@ export default function Footer() {
             </InfoText>
           </Group>
           <Group mt='-0.4em 0 0 0'>
-            <InfoText large>၀၉ ၀၁၀၁၀၁၀၁၀၊ ၀၁ ၀၀၁ ၀၀၁</InfoText>
+            <InfoText large>
+              <a href='tel:04224747'>၀၄၂ ၂၄၇၄၇</a>၊ <a href='tel:095021252'>၀၉ ၅၀၂၁ ၂၅၂</a>
+            </InfoText>
             <InfoText>အမှတ် ကျူ/ဘီ၊ ပုသိမ်ဆေးရုံကြီးရှေ့၊ ပုသိမ်မြို့။</InfoText>
           </Group>
           <Group>

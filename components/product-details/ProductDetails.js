@@ -16,7 +16,6 @@ import { useRouter } from 'next/router'
 
 export default function ProductDetails({ medicine_info }) {
   const router = useRouter()
-
   const {
     product_images,
     id,

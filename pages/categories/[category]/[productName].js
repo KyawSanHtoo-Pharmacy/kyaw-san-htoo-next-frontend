@@ -1,12 +1,12 @@
 import { ProductDetails } from '@/ksh-layouts'
-import { ImageShowcase, ProductCard, OrderSuccessPopup, Error } from '@/ksh-components'
+import { ImageShowcase, ProductCard, OrderSuccessPopup, Error, Empty } from '@/ksh-components'
 import ProductDetailsInfoContainer from '@/ksh-containers/ProductDetailsInfoContainer'
 import { API_URL } from '@/ksh-config/index'
 import { GlobalContainer } from '@/ksh-styles/GlobalStyles'
 import { useContext } from 'react'
 import { CartStates } from '@/ksh-contexts/Cart-Context'
 
-function ProductDetailsPage({
+export default function ProductDetailsPage({
   isInjected = false,
   medicine_images,
   medicine_details,
@@ -31,19 +31,21 @@ function ProductDetailsPage({
         </ProductDetails.NormalSide>
       </ProductDetails>
 
-      <GlobalContainer style={{ marginTop: '-2.25em' }}>
-        <ProductCard.Heading>ဆက်စပ် ဆေးဝါးများ</ProductCard.Heading>
-        <ProductCard.Frame>
-          {relatedMedicines.map(medicine => (
-            <ProductCard key={medicine.id} medicine={medicine} />
-          ))}
-        </ProductCard.Frame>
-      </GlobalContainer>
+      {relatedMedicines.length > 0 ? (
+        <GlobalContainer style={{ marginTop: '-2.25em' }}>
+          <ProductCard.Heading>ဆက်စပ် ဆေးဝါးများ</ProductCard.Heading>
+          <ProductCard.Frame>
+            {relatedMedicines.map(medicine => (
+              <ProductCard key={medicine.id} medicine={medicine} />
+            ))}
+          </ProductCard.Frame>
+        </GlobalContainer>
+      ) : (
+        <Empty message='စပ်ဆက်ဆေးဝါးများ မရှိသေးပါ။' />
+      )}
     </>
   )
 }
-
-export default ProductDetailsPage
 
 export async function getStaticPaths() {
   const resp = await fetch(`${API_URL}/medicines`)

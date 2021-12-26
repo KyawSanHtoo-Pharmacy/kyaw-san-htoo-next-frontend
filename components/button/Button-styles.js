@@ -55,7 +55,6 @@ export const OffWhiteButton = styled(StyledButton)`
   border: 1px solid ${({ theme }) => theme.colors.offWhite};
   font-size: ${({ small }) => (small ? ' 1.09em' : '1.25em')};
   display: flex;
-
   & > span {
     margin-bottom: -0.4em;
   }
