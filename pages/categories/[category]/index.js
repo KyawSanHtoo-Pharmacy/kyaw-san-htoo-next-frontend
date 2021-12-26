@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router'
 import ProductCardContainer from '@/ksh-containers/ProductCardContainer'
-import { ProductCard, SearchBar, ProductFilter, OrderSuccessPopup } from '@/ksh-components'
+import { ProductCard, SearchBar, ProductFilter, OrderSuccessPopup, Empty } from '@/ksh-components'
 import { GlobalContainer } from '@/ksh-styles/GlobalStyles'
 import { API_URL } from '@/ksh-config/index'
 import { changeMyanNum } from '@/ksh-helpers'
@@ -30,8 +30,11 @@ export default function AllMedicinePage({ medicines, count, category, longCat })
           </ProductCard.Count>
         </ProductCard.InfoBar>
       </GlobalContainer>
-
-      <ProductCardContainer medicines={medicines} />
+      {medicines.length > 0 ? (
+        <ProductCardContainer medicines={medicines} />
+      ) : (
+        <Empty message={`${category} မရှိသေးပါ`} />
+      )}
     </>
   )
 }

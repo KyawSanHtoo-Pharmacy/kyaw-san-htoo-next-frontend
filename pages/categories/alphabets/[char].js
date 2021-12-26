@@ -23,14 +23,18 @@ export default function CharacterPage({ filteredMedicines, count, char, longCat 
         </SearchBar.Container>
 
         <ProductCard.InfoBar>
-          <ProductCard.CategoryName>Filtered results for letter: {char}</ProductCard.CategoryName>
+          <ProductCard.CategoryName>{`အက္ခရာ "${char}" နဲ့စသော ဆေးများ`}</ProductCard.CategoryName>
           <ProductCard.Count>
             ရလဒ်ပေါင်း <span className='mm-number'>{changeMyanNum(count)}</span>
           </ProductCard.Count>
         </ProductCard.InfoBar>
       </GlobalContainer>
 
-      {filteredMedicines.length > 0 ? <ProductCardContainer medicines={filteredMedicines} /> : <Empty />}
+      {filteredMedicines.length > 0 ? (
+        <ProductCardContainer medicines={filteredMedicines} />
+      ) : (
+        <Empty message={`"${char}" နဲ့စသော ဆေးများမရှိသေးပါ`} />
+      )}
     </>
   )
 }
