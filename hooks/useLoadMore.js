@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react'
 import { API_URL } from '@/ksh-config/index'
 
-let CURRENT_ITEMS_COUNT = 4
 let ITEMS_PER_LOAD = 4
 
 export default function useLoadMore(initialState = []) {
   const [loadedMedicines, setLoadedMedicines] = useState(initialState)
   const [loading, setLoading] = useState(false)
+  const [CURRENT_ITEMS_COUNT, setCurrentItemsCount] = useState(4)
 
   const loadMoreMedicines = async () => {
     setLoading(true)
@@ -19,7 +19,7 @@ export default function useLoadMore(initialState = []) {
   }
 
   useEffect(() => {
-    CURRENT_ITEMS_COUNT = loadedMedicines.length
+    setCurrentItemsCount(loadedMedicines.length)
   }, [loadedMedicines])
 
   return { loadedMedicines, loading, loadMoreMedicines, CURRENT_ITEMS_COUNT }

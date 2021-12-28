@@ -25,8 +25,8 @@ const LoadingSpinner = styled(ImSpinner9)`
   }
 `
 
-export default function AllMedicinePage({ medicines, count, category, longCat, totalCount }) {
-  const { showOrderSuccessPopup, setShowOrderSuccessPopup } = useContext(CartStates)
+export default function AllMedicinePage({ medicines, category, longCat, totalCount }) {
+  const { showOrderSuccessPopup } = useContext(CartStates)
   const { loadedMedicines, loading, loadMoreMedicines, CURRENT_ITEMS_COUNT } = useLoadMore(medicines)
 
   return (
@@ -86,11 +86,10 @@ export async function getStaticProps() {
   return {
     props: {
       medicines,
-      count: medicines.length,
       category: 'ဆေးအားလုံး',
       longCat: longCat,
       totalCount,
     },
-    revalidate: 5,
+    // revalidate: 5,
   }
 }

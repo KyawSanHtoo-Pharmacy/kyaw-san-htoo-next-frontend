@@ -9,10 +9,11 @@ import {
   InfoText,
   PaleText,
 } from './ProductDetails-styles'
-import { Counter, Button, NoticePill } from '@/ksh-components'
+import { Counter, Button, NoticePill, Chevron } from '@/ksh-components'
 import { CartStates } from '@/ksh-contexts/Cart-Context'
 import { changeMyanNum } from '@/ksh-helpers'
 import { useRouter } from 'next/router'
+import Link from 'next/link'
 
 export default function ProductDetails({ medicine_info }) {
   const router = useRouter()
@@ -46,6 +47,9 @@ export default function ProductDetails({ medicine_info }) {
     product_quantity: product_quantity,
     product_unit,
   }
+
+  //check even of the product_to_compare is available or not
+  const productToCompare = product_to_compare.find(medicine => medicine.product_quantity > 0)
 
   return (
     <Container>
@@ -84,7 +88,7 @@ export default function ProductDetails({ medicine_info }) {
           }}>
           <span>ဝယ်မယ့် စာရင်းထဲ ထည့်မယ်</span>
         </Button>
-      ) : (
+      ) : productToCompare ? (
         <Button
           onClick={e => {
             e.preventDefault()
@@ -92,6 +96,21 @@ export default function ProductDetails({ medicine_info }) {
           }}>
           <span>အနီးစပ်ဆုံးဆေးနဲ့ နှိုင်းယှဉ်မယ်</span>
         </Button>
+      ) : (
+        <>
+          <Button disabled>
+            <span>ဝယ်မယ့် စာရင်းထဲ ထည့်မယ်</span>
+          </Button>
+          <div style={{ marginTop: '1em', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+            <span style={{ color: '#EE5C3C', transform: 'translateY(1rem)' }}>အာနိသင်တူဆေးများလဲ မရှိသေးပါ။ 😥</span>
+            <Link href='/categories/all' passHref>
+              <a style={{ cursor: 'pointer', display: 'flex' }}>
+                <Chevron direction='left' style={{ transform: 'translateY(0)' }} />
+                <span style={{ transform: 'translateY(1rem)' }}>ဆေးမျိုးစုံပေ့ခ်ျသို့ပြန်သွားမယ်</span>
+              </a>
+            </Link>
+          </div>
+        </>
       )}
     </Container>
   )
