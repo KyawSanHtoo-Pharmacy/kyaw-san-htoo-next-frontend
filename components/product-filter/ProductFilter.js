@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { useWindowSize } from 'react-use'
 import { Button } from '@/ksh-components'
 import { useRouter } from 'next/router'
 const { Alphabets } = require('@/ksh-data/alphabets.json')
@@ -21,6 +22,7 @@ import {
 export default function ProductFilter({ longCat, routerChar, routerCat }) {
   const router = useRouter()
   const [isFilterOpen, setIsFilterOpen] = useState(false)
+  const { width } = useWindowSize()
 
   const clickHandler = (param, type) => {
     //param gets api endpoint. type gets route either it's supposed to go to cateogires or aphabets.
@@ -30,6 +32,12 @@ export default function ProductFilter({ longCat, routerChar, routerCat }) {
       router.push(`/categories/alphabets/${param}`)
     }
   }
+
+  useEffect(() => {
+    if (width < 700) {
+      document.body.style.overflow = isFilterOpen ? 'hidden' : 'unset'
+    }
+  }, [isFilterOpen, width])
 
   return (
     <>
@@ -155,7 +163,7 @@ export default function ProductFilter({ longCat, routerChar, routerCat }) {
                   },
                 }}>
                 <TitleWrapper>
-                  <Title>ရောဂါများ</Title>
+                  <Title>အစ စာလုံးများ</Title>
                 </TitleWrapper>
                 <Body>
                   {Alphabets.map(char => (

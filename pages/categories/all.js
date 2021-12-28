@@ -7,6 +7,23 @@ import { useContext } from 'react'
 import { CartStates } from '@/ksh-contexts/Cart-Context'
 import { AnimatePresence } from 'framer-motion'
 import { useLoadMore } from '@/ksh-hooks'
+import { ImSpinner9 } from 'react-icons/im'
+import styled from 'styled-components'
+
+const LoadingSpinner = styled(ImSpinner9)`
+  margin-left: 0.5em;
+  transform: translateY(0.15em) rotate(0deg);
+  animation: spin 1s linear infinite;
+
+  @keyframes spin {
+    from {
+      transform: translateY(0.15em) rotate(0deg);
+    }
+    to {
+      transform: translateY(0.15em) rotate(360deg);
+    }
+  }
+`
 
 export default function AllMedicinePage({ medicines, count, category, longCat, totalCount }) {
   const { showOrderSuccessPopup, setShowOrderSuccessPopup } = useContext(CartStates)
@@ -42,7 +59,13 @@ export default function AllMedicinePage({ medicines, count, category, longCat, t
           <Button.OffWhite
             onClick={loadMoreMedicines}
             style={{ background: loading && '#5ABEAE', color: loading && '#FFFFFF' }}>
-            {loading ? 'ခဏစောင့်ပါ' : 'ဆေးတွေထပ်ပြပါ'}
+            {loading ? (
+              <>
+                ခဏစောင့်ပါ <LoadingSpinner />
+              </>
+            ) : (
+              <>ဆေးတွေထပ်ပြပါ</>
+            )}
           </Button.OffWhite>
         </div>
       )}

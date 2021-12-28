@@ -24,6 +24,7 @@ import {
   Error,
   ButtonWrapper,
 } from './CartContent-Styles'
+import parse from 'html-react-parser'
 
 function CartContent({ nextPage, medicineToBuy }) {
   const value = useContext(CartStates)
@@ -88,7 +89,7 @@ function CartContent({ nextPage, medicineToBuy }) {
                 key={id}
                 initial={{
                   opacity: 0,
-                  y: -40,
+                  y: 40,
                 }}
                 animate={{
                   opacity: 1,
@@ -125,7 +126,13 @@ function CartContent({ nextPage, medicineToBuy }) {
                     {' '}
                     {changeToMM(quantity)}
                     {isOverAmount && (
-                      <Error>{`${name} ${changeMyanNum(product_quantity)}${product_unit} သာကျန်ပါတော့တယ်`}</Error>
+                      <Error>
+                        {parse(
+                          `${name} <span className='mm-number'>${changeMyanNum(
+                            product_quantity
+                          )}</span> ${product_unit} သာကျန်ပါတော့တယ်`
+                        )}
+                      </Error>
                     )}
                   </QuantityShow>
 

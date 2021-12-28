@@ -1,6 +1,7 @@
 import { GlobalContainer } from '@/ksh-styles/GlobalStyles'
 import { Frame, Message, Button } from './Empty-styles'
 import { useRouter } from 'next/router'
+import { Chevron } from '@/ksh-components'
 
 export default function Empty({ message, children }) {
   const router = useRouter()
@@ -9,7 +10,10 @@ export default function Empty({ message, children }) {
       <Frame>
         <Message>{message}</Message>
         {children}
-        <Button onClick={() => router.back()}>{'<'} နောက်သို့</Button>
+        <Button onClick={() => router.back()}>
+          <Chevron direction='left' />
+          နောက်သို့
+        </Button>
       </Frame>
     </GlobalContainer>
   )

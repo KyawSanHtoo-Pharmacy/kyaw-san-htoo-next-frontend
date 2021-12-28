@@ -78,6 +78,7 @@ export const Logo = styled.a`
 `
 
 export const Button = styled.a`
+  position: relative;
   display: flex;
   align-items: center;
   border: none;
@@ -93,9 +94,34 @@ export const Button = styled.a`
   }
 `
 
+export const TotalCount = styled.div`
+  width: 2em;
+  aspect-ratio: 1;
+  border-radius: 100vw;
+  background: ${({ theme }) => theme.colors.warning};
+  color: ${({ theme }) => theme.colors.bodyBg};
+  position: absolute;
+  top: 0;
+  left: 2.2em;
+  transform: scale(0.7);
+
+  & > span {
+    position: absolute;
+    top: 48%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+`
+
+export const TotalCountMobile = styled(TotalCount)`
+  top: -0.6em;
+  left: 1.4em;
+`
+
 export const MobileCartButton = styled.button`
   display: none;
   border: none;
+  position: relative;
 
   @media screen and (max-width: 1100px) {
     display: block;

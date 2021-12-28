@@ -112,6 +112,7 @@ export const GlobalStyles = createGlobalStyle`${css`
     color: inherit;
     text-decoration: none;
     cursor: pointer;
+    user-select: none;
   }
 
   img {
@@ -123,6 +124,7 @@ export const GlobalStyles = createGlobalStyle`${css`
   .mm-number {
     font-size: 1.2em;
   }
+
   .slick-dots {
     /* transform: translateY(40px); */
     bottom : -50px;
@@ -130,54 +132,24 @@ export const GlobalStyles = createGlobalStyle`${css`
     justify-content : center;
     align-item : center;
   }
-  /* @media only screen and (max-width: 960px) {
-    .slick-dots{
-      bottom : -20px;
-    }
-  } */
+
   .slick-dots li{
-    background-color : ${({theme}) => theme.colors.testimonial };
+    background-color : ${({ theme }) => theme.colors.testimonial};
     width : 0.8em !important;
     height : 0.8em !important;
     border-radius : 100vh;
     transition: 0.5s all ease-out;
   }
+
   .slick-dots li.slick-active{
-    background-color : ${({theme}) => theme.colors.heading };
+    background-color : ${({ theme }) => theme.colors.heading};
     width : 2em !important;
     height : 0.8em !important;
     border-radius : 100vh;
   }
+
   .slick-dots li button:before{
       content : ''
-  }
-
-  /* .swiper {
-    
-  }
-
-  .swiper-button-next,
-  .swiper-button-prev {
-    display: none;
-  }
-
-  .swiper-pagination {
-    margin-bottom: -20px;
-    position : absolute;
-    bottom : 20%;
-  }
-
-  .swiper-pagination-bullet {
-    background: ${({ theme }) => theme.colors.heading};
-    transition: all 0.2s ease-out;
-    border-radius: 0.2em;
-    width: 20px;
-    height: 20px;
-    
-  } */
-
-  .swiper-pagination-bullet-active {
-    transform: scaleX(1.5);
   }
 
   #nprogress .bar {

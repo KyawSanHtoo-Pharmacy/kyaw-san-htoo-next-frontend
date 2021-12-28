@@ -82,9 +82,18 @@ export const Button = styled.button`
   @media screen and (max-width: 700px) {
     transform: translateY(-69.5%);
     right: 0.6em;
+
+    &:active {
+      transform: translateY(-69.5%) scale(0.9);
+    }
   }
+
   @media screen and (max-width: 420px) {
     transform: translateY(-68.5%);
     right: 0.4em;
+
+    &:active {
+      transform: translateY(-68.5%) scale(0.9);
+    }
   }
 `

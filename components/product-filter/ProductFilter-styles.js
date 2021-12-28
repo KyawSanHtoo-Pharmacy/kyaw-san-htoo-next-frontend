@@ -2,7 +2,6 @@ import styled from 'styled-components'
 import { motion } from 'framer-motion'
 
 export const Container = styled.div`
-  /* position: relative; */
   z-index: 10;
 
   @media screen and (max-width: 1200px) {
@@ -68,6 +67,21 @@ export const Icon = styled.img``
 export const Body = styled.div`
   display: flex;
   flex-wrap: wrap;
+  max-height: 13em;
+  overflow-y: auto;
+
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: ${({ theme }) => theme.colors.dividerOne};
+    border-radius: 100vw;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: ${({ theme }) => theme.colors.heading};
+  }
 `
 
 export const Pill = styled.p`

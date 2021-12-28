@@ -43,7 +43,7 @@ function EmptyCart() {
       </EmptyCartWrapper>
       <ButtonWrapper onClick={reDirect}>
         <Button Big>
-          <span>ဆေးတွေသွားကြည့်ဟာ</span>
+          <span>ဆေးမျိုးစုံပေ့ခ်ျကိုသွားမယ်</span>
         </Button>
       </ButtonWrapper>
     </>

@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react'
 import { API_URL } from '@/ksh-config/index'
 
-let ITEMS_PER_LOAD = 4
 let CURRENT_ITEMS_COUNT = 4
+let ITEMS_PER_LOAD = 4
 
 export default function useLoadMore(initialState = []) {
   const [loadedMedicines, setLoadedMedicines] = useState(initialState)

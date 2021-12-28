@@ -2,6 +2,7 @@ import Image from 'next/image'
 import { useState, useEffect } from 'react'
 import { Container, Button, Amount, Error } from './Counter-styles'
 import { changeMyanNum } from '@/ksh-helpers'
+import parse from 'html-react-parser'
 
 export default function Counter({ setAmount, amount, medicine }) {
   const [overAmount, setOverAmount] = useState(false)
@@ -36,7 +37,13 @@ export default function Counter({ setAmount, amount, medicine }) {
         <Image src='/icons/blue-plus.svg' alt='plus-icon' width={12} height={12} />
       </Button>
       {overAmount && (
-        <Error>{`${product_name_mm} ${changeMyanNum(product_quantity)}${product_unit} သာကျန်ပါတော့တယ်`}</Error>
+        <Error>
+          {parse(
+            `${product_name_mm} <span className='mm-number'>${changeMyanNum(
+              product_quantity
+            )}</span> ${product_unit} သာကျန်ပါတော့တယ်`
+          )}
+        </Error>
       )}
     </Container>
   )

@@ -22,6 +22,7 @@ export default function ProductDetails({ medicine_info }) {
     product_name_eng,
     product_name_mm,
     product_company,
+    product_country,
     product_unit,
     product_price,
     product_quantity,
@@ -56,7 +57,7 @@ export default function ProductDetails({ medicine_info }) {
         </VerticleGroup>
         <VerticleGroup>
           <Label>{product_company}</Label>
-          <PaleText>မြန်မာပြည်တွင် ထုတ်လုပ်သည်</PaleText>
+          {product_country ? <PaleText>{product_country}</PaleText> : ''}
         </VerticleGroup>
       </HorizontalGroup>
       <HorizontalGroup>
