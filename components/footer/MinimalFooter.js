@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { StyledFooter, Container, GroupWrapper, Group, InfoText, MiniLogo } from './Footer-styles'
+import { changeMyanNum } from '@/ksh-helpers'
 
 export default function MinimalFooter() {
   return (
@@ -15,7 +16,7 @@ export default function MinimalFooter() {
             </Link>
           </Group>
           <Group>
-            <InfoText small>ကျော်စံထူး မူပိုင်ခွင့်/ ၂၀၂၁ခုနှစ်</InfoText>
+            <InfoText small>ကျော်စံထူး မူပိုင်ခွင့်/ {changeMyanNum(new Date().getFullYear())}ခုနှစ် </InfoText>
           </Group>
           <Group>
             <InfoText small>

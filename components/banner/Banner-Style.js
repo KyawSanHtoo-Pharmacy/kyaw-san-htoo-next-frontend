@@ -8,10 +8,14 @@ export const BannerContainer = styled.section`
   align-items: center;
   justify-content: center;
   position: relative;
-  ${FadeInKeyframe}
+  overflow: hidden;
+  ${FadeInKeyframe};
 
-  @media screen and (max-width: 460px) {
+  @media screen and (max-width: 700px) {
     min-height: calc(100vh - 10em);
+    background: url('/illustrations/hero-mobile-thoughts.svg');
+    background-repeat: no-repeat;
+    background-position: 60% 10%;
   }
 `
 
@@ -44,16 +48,6 @@ export const BannerBackgroundThoughts = styled.div`
   top: 4em;
   left: 50%;
   transform: translateX(-50%);
-`
-
-export const BannerBackgroundThoughtsMobile = styled.div`
-  width: 144px;
-  height: 140px;
-  position: absolute;
-  top: 6.5em;
-  left: 60%;
-  transform: translateX(-50%);
-  opacity: 0.5;
 `
 
 export const BannerContent = styled.div`

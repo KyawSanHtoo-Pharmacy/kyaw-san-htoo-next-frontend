@@ -1,7 +1,11 @@
 import styled from 'styled-components'
 
 export const Section = styled.section`
-  margin-bottom : 3em;
+  overflow: hidden;
+
+  @media screen and (max-width: 500px) {
+    padding: 0 1em 3em 1em;
+  }
 `
 
 export const Heading = styled.h2`
@@ -17,13 +21,14 @@ export const Frame = styled.section`
   }
 `
 
-export const Item = styled.div`
+export const Item = styled.a`
   display: flex;
   flex-direction: column;
   align-items: center;
   position: relative;
   cursor: pointer;
   margin: 0px 10px;
+
   &::before {
     content: '';
     position: absolute;
@@ -55,5 +60,5 @@ export const ContentWrapper = styled.div`
 export const CategoryName = styled.h3`
   color: ${({ theme }) => theme.colors.bodyBg};
   text-align: center;
-  font-size: 1.3em;
+  font-size: 1.2em;
 `

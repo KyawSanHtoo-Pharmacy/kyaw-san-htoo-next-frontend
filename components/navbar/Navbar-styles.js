@@ -10,7 +10,6 @@ export const Header = styled.header`
 `
 
 export const Container = styled.div`
-  /* padding: 1em 7.81em; */
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -18,11 +17,11 @@ export const Container = styled.div`
   transition: all 0.2s ease-out;
 
   @media screen and (max-width: 980px) {
-    padding: 1.56em 3.91em;
+    padding: ${({ isScrolled }) => (isScrolled ? '1.4em 3.91em' : '1.56em 3.91em')};
   }
 
   @media screen and (max-width: 500px) {
-    padding: 1.56em 1.25em;
+    padding: ${({ isScrolled }) => (isScrolled ? '1.2em 1.25em' : '1.56em 1.25em')};
   }
 `
 
@@ -75,6 +74,11 @@ export const Logo = styled.a`
   height: ${({ isScrolled }) => (isScrolled ? '2.2em' : '2.3em')};
   position: relative;
   transition: all 0.2s ease-out;
+
+  @media screen and (max-width: 500px) {
+    width: ${({ isScrolled }) => (isScrolled ? '12em' : '14em')};
+    height: ${({ isScrolled }) => (isScrolled ? '1.85em' : '2.1em')};
+  }
 `
 
 export const Button = styled.a`

@@ -143,22 +143,13 @@ Banner.Section = function BannerSection({ children, ...restProps }) {
           </BannerBackgroundThoughts>
         </>
       ) : (
-        <>
-          {/* <BannerBackgroundThoughtsMobile>
-            <Image
-              src='/illustrations/hero-mobile-thoughts.svg'
-              layout='fill'
-              alt='a doctor in pharmacy asking how are you feeling today'
-            />
-          </BannerBackgroundThoughtsMobile> */}
-          <BannerBackgroundHumanMobile>
-            <Image
-              src='/illustrations/hero-mobile-human.svg'
-              layout='fill'
-              alt='a doctor in pharmacy asking how are you feeling today'
-            />
-          </BannerBackgroundHumanMobile>
-        </>
+        <BannerBackgroundHumanMobile>
+          <Image
+            src='/illustrations/hero-mobile-human.svg'
+            layout='fill'
+            alt='a doctor in pharmacy asking how are you feeling today'
+          />
+        </BannerBackgroundHumanMobile>
       )}
     </BannerContainer>
   )

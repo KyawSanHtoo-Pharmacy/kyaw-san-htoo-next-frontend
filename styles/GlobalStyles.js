@@ -152,6 +152,10 @@ export const GlobalStyles = createGlobalStyle`${css`
       content : ''
   }
 
+  .slick-prev::before, .slick-next::before{
+    color : ${({ theme }) => theme.colors.heading};
+  }
+
   #nprogress .bar {
     background: ${({ theme }) => theme.colors.heading}; !important;
     height: 3px !important;

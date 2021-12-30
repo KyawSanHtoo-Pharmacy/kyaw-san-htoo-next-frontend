@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
+import { changeMyanNum } from '@/ksh-helpers'
 import {
   StyledFooter,
   Container,
@@ -53,7 +54,7 @@ export default function Footer() {
             </Link>
           </Group>
           <Group>
-            <InfoText small>ကျော်စံထူး မူပိုင်ခွင့်/ ၂၀၂၁ခုနှစ်</InfoText>
+            <InfoText small>ကျော်စံထူး မူပိုင်ခွင့်/ {changeMyanNum(new Date().getFullYear())}ခုနှစ် </InfoText>
           </Group>
           <Group>
             <InfoText small>

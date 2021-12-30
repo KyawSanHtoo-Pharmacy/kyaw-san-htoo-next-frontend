@@ -1,7 +1,11 @@
 import styled from 'styled-components'
 
 export const Section = styled.section`
-  /* padding-top: 6.25em; */
+  overflow: hidden;
+
+  @media screen and (max-width: 500px) {
+    padding: 0 1em 3em 1em;
+  }
 `
 
 export const Heading = styled.h2`
@@ -21,7 +25,7 @@ export const Frame = styled.div`
 `
 
 export const Item = styled.div`
-  margin-right : 20px;
+  margin-right: 20px;
   background-color: ${({ theme }) => theme.colors.offWhite};
   border-radius: 1.25em;
   position: relative;
