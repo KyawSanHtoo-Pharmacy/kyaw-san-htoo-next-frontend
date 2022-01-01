@@ -24,7 +24,7 @@ export const Popup = styled(motion.div)`
   max-width: 27em;
 `
 
-export const Icon = styled.div`
+export const IconWrapper = styled.div`
   width: 5em;
   aspect-ratio: 1;
   background: ${({ theme }) => theme.colors.heading};
@@ -33,6 +33,9 @@ export const Icon = styled.div`
   top: -2.5em;
   left: 50%;
   transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `
 
 export const Heading = styled.h2`

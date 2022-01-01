@@ -12,6 +12,9 @@ export const StyledButton = styled.button`
   isolation: isolate;
   overflow: hidden;
   transition: all 0.2s ease-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   &:active {
     transform: scale(0.95);
@@ -41,6 +44,11 @@ export const WhiteButton = styled(StyledButton)`
   color: ${({ theme }) => theme.colors.text};
   background: ${({ theme }) => theme.colors.bodyBg};
   border: 1px solid ${({ theme }) => theme.colors.bodyBg};
+  display: flex;
+
+  & > span {
+    margin-bottom: -0.4em;
+  }
 
   &:hover {
     color: ${({ theme }) => theme.colors.bodyBg};
@@ -55,6 +63,7 @@ export const OffWhiteButton = styled(StyledButton)`
   border: 1px solid ${({ theme }) => theme.colors.offWhite};
   font-size: ${({ small }) => (small ? ' 1.09em' : '1.25em')};
   display: flex;
+
   & > span {
     margin-bottom: -0.4em;
   }

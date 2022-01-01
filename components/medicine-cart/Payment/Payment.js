@@ -36,12 +36,30 @@ import { Button } from '@/ksh-components'
 import { changeMyanNum } from '@/ksh-helpers'
 import { CartStates } from '@/ksh-contexts/Cart-Context'
 import { API_URL } from '@/ksh-config/index'
+import { ImSpinner9 } from 'react-icons/im'
+import styled from 'styled-components'
+
+const LoadingSpinner = styled(ImSpinner9)`
+  margin-left: 0.5em;
+  transform: translateY(0.15em) rotate(0deg);
+  animation: spin 1s linear infinite;
+
+  @keyframes spin {
+    from {
+      transform: translateY(0.15em) rotate(0deg);
+    }
+    to {
+      transform: translateY(0.15em) rotate(360deg);
+    }
+  }
+`
 
 export default function Payment({ prePage, orderFormData, setOrderFormData, medicineToBuy }) {
   const { name, phone, address, delivery_method, payment_method } = orderFormData
   const [base64KpayImage, setBase64KpayImage] = useState(null)
   const [_, setCartVisible] = useContext(CartStates).visibility
   const { setShowOrderSuccessPopup, dispatch } = useContext(CartStates)
+  const [orderOnTheProcess, setOrderOnTheProcess] = useState(false)
 
   const handleOrderFormDataChange = e => {
     const { name, value } = e.target
@@ -68,6 +86,7 @@ export default function Payment({ prePage, orderFormData, setOrderFormData, medi
 
   const sendOrder = async e => {
     e.preventDefault()
+    setOrderOnTheProcess(true)
     const orderData = {
       ...orderFormData,
       medicines: FilterEmptyProduct,
@@ -103,6 +122,7 @@ export default function Payment({ prePage, orderFormData, setOrderFormData, medi
         .then(resp => resp[0].json())
         .then(data => {
           console.log(data)
+          setOrderOnTheProcess(false)
           dispatch({ type: 'CLEAR_CART' })
           setShowOrderSuccessPopup(true)
           setCartVisible(false)
@@ -266,7 +286,15 @@ export default function Payment({ prePage, orderFormData, setOrderFormData, medi
         )}
 
         <ButtonWrapper>
-          <Button Big>အော်ဒါတင်မယ်</Button>
+          <Button Big>
+            {orderOnTheProcess ? (
+              <>
+                <span>အော်ဒါတင်နေပါတယ်။ ခဏစောင့်ပါ။</span> <LoadingSpinner />
+              </>
+            ) : (
+              'အော်ဒါတင်မယ် '
+            )}
+          </Button>
         </ButtonWrapper>
       </PaymentForm>
     </>

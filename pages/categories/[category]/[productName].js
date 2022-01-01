@@ -5,6 +5,7 @@ import { API_URL } from '@/ksh-config/index'
 import { GlobalContainer } from '@/ksh-styles/GlobalStyles'
 import { useContext } from 'react'
 import { CartStates } from '@/ksh-contexts/Cart-Context'
+import { AnimatePresence } from 'framer-motion'
 
 export default function ProductDetailsPage({
   isInjected = false,
@@ -21,7 +22,8 @@ export default function ProductDetailsPage({
 
   return (
     <>
-      {showOrderSuccessPopup && <OrderSuccessPopup />}
+      <AnimatePresence>{showOrderSuccessPopup && <OrderSuccessPopup />}</AnimatePresence>
+      {/* <OrderSuccessPopup /> */}
       <ProductDetails>
         <ProductDetails.StickySide>
           <ImageShowcase medicine_images={medicine_images} />

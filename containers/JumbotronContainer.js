@@ -12,8 +12,8 @@ export default function JumbotronContainer() {
           {jumbotronData.map(jumbotron => (
             <Jumbotron key={jumbotron.id} data={jumbotron} />
           ))}
-          <Link href='/help'>
-            <Button as='a'>
+          <Link href='/help' passHref>
+            <Button>
               <span>အသုံးပြုနည်း</span>
             </Button>
           </Link>

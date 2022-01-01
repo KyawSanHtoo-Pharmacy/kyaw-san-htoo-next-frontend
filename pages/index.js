@@ -6,12 +6,13 @@ import BannerContainer from '@/ksh-containers/BannerContainer'
 import { API_URL } from '@/ksh-config/index'
 import { useContext } from 'react'
 import { CartStates } from '@/ksh-contexts/Cart-Context'
+import { AnimatePresence } from 'framer-motion'
 
 export default function HomePage({ testimonials, categories }) {
   const { showOrderSuccessPopup } = useContext(CartStates)
   return (
     <>
-      {showOrderSuccessPopup && <OrderSuccessPopup />}
+      <AnimatePresence>{showOrderSuccessPopup && <OrderSuccessPopup />}</AnimatePresence>
       <BannerContainer />
       <CategoryCardContainer categories={categories} />
       <JumbotronContainer />

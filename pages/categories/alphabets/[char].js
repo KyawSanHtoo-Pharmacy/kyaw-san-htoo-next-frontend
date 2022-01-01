@@ -7,6 +7,7 @@ import { changeMyanNum } from '@/ksh-helpers'
 const { Alphabets } = require('@/ksh-data/alphabets.json')
 import { useContext } from 'react'
 import { CartStates } from '@/ksh-contexts/Cart-Context'
+import { AnimatePresence } from 'framer-motion'
 
 export default function CharacterPage({ filteredMedicines, count, char, longCat }) {
   const router = useRouter()
@@ -14,7 +15,7 @@ export default function CharacterPage({ filteredMedicines, count, char, longCat 
 
   return (
     <>
-      {showOrderSuccessPopup && <OrderSuccessPopup />}
+      <AnimatePresence>{showOrderSuccessPopup && <OrderSuccessPopup />}</AnimatePresence>
 
       <GlobalContainer>
         <SearchBar.Container>

@@ -4,6 +4,7 @@ import { API_URL } from '@/ksh-config/index'
 import Link from 'next/link'
 import { useContext } from 'react'
 import { CartStates } from '@/ksh-contexts/Cart-Context'
+import { AnimatePresence } from 'framer-motion'
 import parse from 'html-react-parser'
 
 export default function ComparePage({ isInjected = false, outstockMedicine, instockMedicine, relatedMedicines }) {
@@ -54,7 +55,7 @@ export default function ComparePage({ isInjected = false, outstockMedicine, inst
 
   return (
     <>
-      {showOrderSuccessPopup && <OrderSuccessPopup />}
+      <AnimatePresence>{showOrderSuccessPopup && <OrderSuccessPopup />}</AnimatePresence>
       <Compare.Section>
         <GlobalContainer>
           <Compare outstockMedicine={outstockMedicine} instockMedicine={instockMedicine} />

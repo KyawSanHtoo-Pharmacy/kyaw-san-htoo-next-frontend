@@ -21,7 +21,9 @@ import {
   StickyImg,
 } from './helpStyle'
 const { HelpData } = require('@/ksh-data/helpData.json')
-function Help() {
+import parse from 'html-react-parser'
+
+export default function HelpPage() {
   useEffect(() => {
     console.log('component mount')
     const option = {
@@ -82,7 +84,7 @@ function Help() {
                     {help.instructions.map(instru => (
                       <StepWrapper key={instru.id}>
                         <StepHeading>{instru.step}</StepHeading>
-                        <Steps>{instru.text}</Steps>
+                        <Steps>{parse(instru.text)}</Steps>
                       </StepWrapper>
                     ))}
                   </Instructions>
@@ -95,5 +97,3 @@ function Help() {
     </>
   )
 }
-
-export default Help
