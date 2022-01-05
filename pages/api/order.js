@@ -12,14 +12,18 @@ export default function handler(req, res) {
       },
       secure: true,
     })
-    // zideharron1111@gmail.com
 
-    let mailData = {}
+    let mailData = {
+      from: 'kshpharmacy.order@gmail.com',
+      to: 'kyawsanhtoopharmacy@gmail.com',
+      subject: `KyawSanHtoo Website: An Order Received from ${req.body.name}`,
+      text: 'Sent by: ' + req.body.name,
+      html: getEmailTemplate(req.body),
+    }
+
     if (req.body.kpay_screenshot) {
       mailData = {
-        from: 'kshpharmacy.order@gmail.com',
-        to: 'kyawsanhtoopharmacy@gmail.com',
-        subject: `KyawSanHtoo Website: An Order Received from ${req.body.name}`,
+        ...mailData,
         attachments: [
           {
             filename: `${req.body.name}'s Kpay Screenshot'`,
@@ -27,16 +31,6 @@ export default function handler(req, res) {
             cid: 'kpay_screenshot',
           },
         ],
-        text: 'Sent by: ' + req.body.name,
-        html: getEmailTemplate(req.body),
-      }
-    } else {
-      mailData = {
-        from: 'kshpharmacy.order@gmail.com',
-        to: 'kyawsanhtoopharmacy@gmail.com',
-        subject: `KyawSanHtoo Website: An Order Received from ${req.body.name}`,
-        text: 'Sent by: ' + req.body.name,
-        html: getEmailTemplate(req.body),
       }
     }
 

@@ -25,6 +25,7 @@ import {
   ButtonWrapper,
 } from './CartContent-Styles'
 import parse from 'html-react-parser'
+import { ToastContainer, toast } from 'react-toastify'
 
 function CartContent({ nextPage, medicineToBuy }) {
   const value = useContext(CartStates)
@@ -145,7 +146,15 @@ function CartContent({ nextPage, medicineToBuy }) {
                     <p>
                       <AiOutlineDelete
                         style={{ color: '#EE5C3C' }}
-                        onClick={() => dispatch({ type: 'deleteItem', payload: { id: id } })}
+                        onClick={() => {
+                          const sure = confirm(`${name}ကို ဝယ်မယ့်စာရင်းထဲကဖယ်ချင်တာ သေချာပြီလား အချောလေး😌`)
+                          if (sure) {
+                            dispatch({ type: 'deleteItem', payload: { id: id } })
+                            toast.success(`${name}ကို ဝယ်မယ့်စာရင်းထဲကဖယ်လိုက်ပါပြီ။😘`)
+                          } else {
+                            return
+                          }
+                        }}
                       />{' '}
                     </p>
                   ) : (
@@ -157,6 +166,8 @@ function CartContent({ nextPage, medicineToBuy }) {
           )}
         </AnimatePresence>
       </Cart1stPage>
+
+      <ToastContainer position='bottom-center' draggable />
 
       <ButtonWrapper>
         <Button Big onClick={nextPage} disabled={totalQty === 0 ? true : false}>

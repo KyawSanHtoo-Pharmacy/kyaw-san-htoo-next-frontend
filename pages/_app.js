@@ -14,6 +14,7 @@ import 'swiper/css/pagination'
 import 'swiper/css/scrollbar'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
+import 'react-toastify/dist/ReactToastify.css'
 
 import Router from 'next/router'
 import NProgress from 'nprogress'

@@ -2,6 +2,7 @@
   "navLinks": [
     { "id": 1, "text": "ပင်မစာမျက်နှာ", "path": "/" },
     { "id": 2, "text": "ဆေးမျိုးစုံ", "path": "/categories/all" },
-    { "id": 3, "text": "ဆက်သွယ်ရန်", "path": "/contact" }
+    { "id": 3, "text": "ဆက်သွယ်ရန်", "path": "/contact" },
+    { "id": 4, "text": "အသုံးပြုနည်းများ", "path": "/help" }
   ]
 }

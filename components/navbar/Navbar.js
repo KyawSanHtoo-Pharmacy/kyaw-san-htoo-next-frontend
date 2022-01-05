@@ -40,11 +40,13 @@ export default function Navbar({ isMobileNavOpen, setIsMobileNavOpen }) {
     <Header isScrolled={isScrolled}>
       <Container as='nav' isScrolled={isScrolled}>
         <Group>
-          {navLinks.map(link => (
-            <Link href={link.path} key={link.id} passHref>
-              <NavLink active={router.pathname === link.path}>{link.text}</NavLink>
-            </Link>
-          ))}
+          {navLinks
+            .filter(link => link.text !== 'အသုံးပြုနည်းများ')
+            .map(link => (
+              <Link href={link.path} key={link.id} passHref>
+                <NavLink active={router.pathname === link.path}>{link.text}</NavLink>
+              </Link>
+            ))}
         </Group>
 
         <Group>
@@ -69,7 +71,7 @@ export default function Navbar({ isMobileNavOpen, setIsMobileNavOpen }) {
           </Button>
           <Link href='/help' passHref>
             <Icon>
-              <Image src='/icons/help.svg' layout='fill' alt='help-icon' />
+              <Image src='/icons/help.svg' layout='fill' alt='help-icon' title='အသုံးပြုနည်းများ' />
             </Icon>
           </Link>
         </Group>

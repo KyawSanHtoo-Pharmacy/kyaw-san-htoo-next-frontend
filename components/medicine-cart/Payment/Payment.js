@@ -103,6 +103,7 @@ export default function Payment({ prePage, orderFormData, setOrderFormData, medi
     })
 
     const order = await resp.json()
+    console.log(order)
     if (order.message.accepted) {
       console.log('Order accepted!')
       //requested to Strapi to substract the purchased quantity
@@ -110,9 +111,6 @@ export default function Payment({ prePage, orderFormData, setOrderFormData, medi
         medicineToBuy.map(medicine =>
           fetch(`${API_URL}/medicines/${medicine.id}`, {
             method: 'PUT',
-            headers: {
-              'Content-Type': 'application/json',
-            },
             body: JSON.stringify({
               product_quantity: medicine.product_quantity - medicine.quantity,
             }),

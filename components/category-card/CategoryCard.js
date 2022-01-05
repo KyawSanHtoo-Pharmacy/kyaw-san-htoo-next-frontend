@@ -11,7 +11,7 @@ export default function CategoryCard({ category }) {
         <ImageWrapper>
           {/* not sure bluring image works or not, just test */}
           <Image
-            src={category_image.formats.medium.url}
+            src={category_image.url}
             layout='fill'
             alt={`${category_name_eng} - ${category_name_long}`}
             placeholder='blur'
