@@ -2,6 +2,7 @@ import { ProductCard } from '@/ksh-components'
 import { GlobalContainer } from '@/ksh-styles/GlobalStyles'
 
 export default function ProductCardContainer({ medicines }) {
+  console.log(medicines)
   return (
     <ProductCard.Section>
       <GlobalContainer style={{ paddingTop: '0' }}>

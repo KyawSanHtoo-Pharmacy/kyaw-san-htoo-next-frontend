@@ -23,6 +23,19 @@ export const MainImage = styled.div`
   }
 `
 
+export const ImageNumberWrapper = styled.div`
+  position: absolute;
+  bottom: 0.5em;
+  right: 0.5em;
+  background: ${({ theme }) => theme.colors.bodyBg};
+  padding: 0.05em 0.8em;
+  border-radius: 100vw;
+`
+
+export const ImageNumber = styled.span`
+  font-size: 0.8em;
+`
+
 export const SmallImageWrapper = styled.div`
   display: flex;
   gap: 0.63em;
@@ -38,7 +51,7 @@ export const SmallImage = styled.div`
   position: relative;
   border-radius: 0.63em;
   overflow: hidden;
-  flex-grow: 1;
+  flex-basis: 15em;
   height: 8em;
   cursor: pointer;
 
@@ -46,5 +59,6 @@ export const SmallImage = styled.div`
     flex-grow: unset;
     width: 62px;
     height: 45px;
+    flex-basis: 4em;
   }
 `

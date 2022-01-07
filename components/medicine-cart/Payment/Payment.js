@@ -31,7 +31,7 @@ import {
   UploadButtonLabel,
 } from './Payment-Style'
 import Image from 'next/image'
-import { useState, useContext } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import { Button } from '@/ksh-components'
 import { changeMyanNum } from '@/ksh-helpers'
 import { CartStates } from '@/ksh-contexts/Cart-Context'
@@ -60,6 +60,16 @@ export default function Payment({ prePage, orderFormData, setOrderFormData, medi
   const [_, setCartVisible] = useContext(CartStates).visibility
   const { setShowOrderSuccessPopup, dispatch } = useContext(CartStates)
   const [orderOnTheProcess, setOrderOnTheProcess] = useState(false)
+
+  useEffect(() => {
+    if (payment_method === 'ငွေသားနဲ့ ပေးချေမယ်') {
+      setBase64KpayImage(null)
+    }
+  }, [payment_method])
+
+  console.log({ orderFormData, base64KpayImage })
+
+  const isFormValid = () => {}
 
   const handleOrderFormDataChange = e => {
     const { name, value } = e.target
@@ -103,30 +113,21 @@ export default function Payment({ prePage, orderFormData, setOrderFormData, medi
     })
 
     const order = await resp.json()
-    console.log(order)
     if (order.message.accepted) {
       console.log('Order accepted!')
       //requested to Strapi to substract the purchased quantity
-      Promise.all(
-        medicineToBuy.map(medicine =>
-          fetch(`${API_URL}/medicines/${medicine.id}`, {
-            method: 'PUT',
-            body: JSON.stringify({
-              product_quantity: medicine.product_quantity - medicine.quantity,
-            }),
-          })
-        )
-      )
-        .then(resp => resp[0].json())
+      fetch('/api/updateMedicinesAmount', {
+        method: 'PUT',
+        body: JSON.stringify(medicineToBuy),
+      })
+        .then(resp => resp.json())
         .then(data => {
           console.log(data)
           setOrderOnTheProcess(false)
           dispatch({ type: 'CLEAR_CART' })
-          setShowOrderSuccessPopup(true)
           setCartVisible(false)
+          setShowOrderSuccessPopup(true)
         })
-    } else {
-      confirm('Noooo')
     }
   }
 

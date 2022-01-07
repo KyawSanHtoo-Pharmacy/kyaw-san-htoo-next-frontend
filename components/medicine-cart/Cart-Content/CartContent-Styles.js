@@ -171,7 +171,7 @@ export const Plus = styled.button`
   color: ${({ theme }) => theme.colors.text};
   border: none;
   font-weight: 900;
-  border-radius: 0.8em;
+  border-radius: 0 0.8em 0.8em 0;
 
   @media only screen and (max-width: 550px) {
     font-size: 14px;
@@ -182,7 +182,7 @@ export const Min = styled.button`
   color: ${({ theme }) => theme.colors.text};
   border: none;
   font-weight: 900;
-  border-radius: 0.8em;
+  border-radius: 0.8em 0 0 0.8em;
 
   @media only screen and (max-width: 550px) {
     font-size: 14px;

@@ -31,36 +31,6 @@ export default function AllMedicinePage({ medicines, category, longCat, totalCou
 
   return (
     <>
-      {/* <button
-        onClick={() => {
-          fetch('http://localhost:3000/api/updateMedicinesAmount', {
-            method: 'PUT',
-          })
-            .then(resp => resp.json())
-            .then(data => console.log(data))
-            .catch(err => console.log(err))
-
-          fetch('https://ksh-backend.herokuapp.com/medicines', {
-            headers: {
-              Authorization:
-                'Bearer',
-            },
-          })
-            .then(resp => resp.json())
-            .then(data => console.log(data))
-            .catch(err => console.log(err))
-
-          fetch('https://ksh-backend.herokuapp.com/auth/local', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ identifier: 'yaunghein@gmail.com', password: 'yaunghein' }),
-          })
-            .then(resp => resp.json())
-            .then(data => console.log(data))
-            .catch(err => console.log(err))
-        }}>
-        Click Me
-      </button> */}
       <AnimatePresence>{showOrderSuccessPopup && <OrderSuccessPopup />}</AnimatePresence>
       <GlobalContainer padding='6.25em 7.81em 4.4em 7.81em'>
         <SearchBar.Container>

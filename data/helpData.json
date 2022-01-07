@@ -4,7 +4,7 @@
       "id": 1,
       "contentId": "content-1",
       "heading": "ဆေးတွေ ဘယ်လိုရှာမလဲ",
-      "img": "/temp/phoneImage.png",
+      "img": "/illustrations/HelpPlaceholder.svg",
       "instructions": [
         {
           "id": "1",
@@ -23,7 +23,7 @@
       "id": 2,
       "contentId": "content-2",
       "heading": "လိုချင်တဲ့ဆေးကုန်နေရင် ဘာလုပ်လို့ရမလဲ။",
-      "img": "/temp/phoneImage.png",
+      "img": "/illustrations/HelpPlaceholder.svg",
       "instructions": [
         {
           "id": "1",
@@ -47,7 +47,7 @@
       "id": 3,
       "contentId": "content-3",
       "heading": "ဆေးဝယ်စာရင်းကို ဘယ်လိုသုံးမလဲ။",
-      "img": "/temp/phoneImage.png",
+      "img": "/illustrations/HelpPlaceholder.svg",
       "instructions": [
         {
           "id": "1",
@@ -81,7 +81,7 @@
       "id": 4,
       "contentId": "content-4",
       "heading": "အော်ဒါဘယ်လိုတင်မလဲ။",
-      "img": "/temp/phoneImage.png",
+      "img": "/illustrations/HelpPlaceholder.svg",
       "instructions": [
         {
           "id": "1",

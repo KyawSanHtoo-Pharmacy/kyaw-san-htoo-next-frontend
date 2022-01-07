@@ -36,7 +36,6 @@ export const MenuItem = styled.li`
 export const Content = styled.div`
   flex: 2;
   scroll-behavior: smooth;
-
 `
 export const ContentHeading = styled.h1`
   padding: 20px 0px 25px;
@@ -44,7 +43,7 @@ export const ContentHeading = styled.h1`
   font-style: normal;
   font-weight: bold;
   font-size: 34px;
-  line-height:1.8 ;
+  line-height: 1.8;
   color: ${({ theme }) => theme.colors.text};
   position: sticky;
   top: 2.2em;
@@ -54,7 +53,7 @@ export const ContentHeading = styled.h1`
   @media only screen and (max-width: 700px) {
     font-size: 30px;
   }
-  
+
   @media only screen and (max-width: 550px) {
     font-size: 25px;
     padding: 15px 0px 25px;
@@ -73,7 +72,7 @@ export const ImgColumn = styled.div`
   position: sticky;
   top: 8em;
   width: 198px;
-  height: 420px;
+  height: 429px;
 
   @media only screen and (max-width: 450px) {
     top: 0;

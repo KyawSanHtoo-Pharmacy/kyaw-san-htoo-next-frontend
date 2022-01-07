@@ -10,6 +10,8 @@ import parse from 'html-react-parser'
 export default function ComparePage({ isInjected = false, outstockMedicine, instockMedicine, relatedMedicines }) {
   const { showOrderSuccessPopup } = useContext(CartStates)
 
+  console.log({ instockMedicine, relatedMedicines })
+
   if (isInjected) {
     return <Error message='URLကို မကလိပါနဲ့လား ကိုငြိမ်းမောင်' status='Error : tgg pan pr dl, plz.' />
   }
@@ -18,38 +20,38 @@ export default function ComparePage({ isInjected = false, outstockMedicine, inst
     {
       id: 1,
       title: 'ဆေးအကြောင်း အကျဉ်းချုပ်',
-      outstockBody: outstockMedicine.product_details.description,
-      instockBody: instockMedicine.product_details.description,
+      outstockBody: outstockMedicine.product_details.description_rt,
+      instockBody: instockMedicine.product_details.description_rt,
     },
     {
       id: 2,
       title: 'ကောင်းကျိုးများ',
-      outstockBody: outstockMedicine.product_details.benefits,
-      instockBody: instockMedicine.product_details.benefits,
+      outstockBody: outstockMedicine.product_details.benefits_rt,
+      instockBody: instockMedicine.product_details.benefits_rt,
     },
     {
       id: 3,
       title: 'ဘေးထွက်ဆိုးကျိုးများ',
-      outstockBody: outstockMedicine.product_details.side_effects,
-      instockBody: instockMedicine.product_details.side_effects,
+      outstockBody: outstockMedicine.product_details.side_effects_rt,
+      instockBody: instockMedicine.product_details.side_effects_rt,
     },
     {
       id: 4,
       title: 'ဆရာဝန် အကြုံပြုချက်များ',
-      outstockBody: outstockMedicine.product_details.doctor_suggestions,
-      instockBody: instockMedicine.product_details.doctor_suggestions,
+      outstockBody: outstockMedicine.product_details.doctor_suggestions_rt,
+      instockBody: instockMedicine.product_details.doctor_suggestions_rt,
     },
     {
       id: 5,
       title: 'သုံးစွဲနည်း',
-      outstockBody: outstockMedicine.product_details.how_to,
-      instockBody: outstockMedicine.product_details.how_to,
+      outstockBody: outstockMedicine.product_details.how_to_rt,
+      instockBody: outstockMedicine.product_details.how_to_rt,
     },
     {
       id: 6,
       title: 'ဓာတ်မတည့်မှု သတိပေးချက်များ',
-      outstockBody: outstockMedicine.product_details.warnings,
-      instockBody: instockMedicine.product_details.warnings,
+      outstockBody: outstockMedicine.product_details.warnings_rt,
+      instockBody: instockMedicine.product_details.warnings_rt,
     },
   ]
 
@@ -87,10 +89,10 @@ export default function ComparePage({ isInjected = false, outstockMedicine, inst
                 marginTop: '3em',
               }}>
               <Link href={`/categories/all`} passHref>
-                <Button.White style={{ marginRight: '1em' }}>{`Go to All`}</Button.White>
+                <Button.White style={{ marginRight: '1em' }}>ဆေးမျိုးစုံပေ့ခ်ျကိုပြန်သွားမယ်</Button.White>
               </Link>
               <Link href={`/categories/${instockMedicine.categories[0].slug}/${instockMedicine.slug}`} passHref>
-                <Button>{`Go to ${instockMedicine.product_name_eng}`}</Button>
+                <Button>{`${instockMedicine.product_name_mm}ကိုကြည့်ကြည့်မယ်`}</Button>
               </Link>
             </div>
           </Accordion>
