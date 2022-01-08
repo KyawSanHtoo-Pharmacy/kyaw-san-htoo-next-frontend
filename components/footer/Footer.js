@@ -33,12 +33,12 @@ export default function Footer() {
           <Group>
             <InfoText>info@kyawsanhtoopharmacy.com</InfoText>
             <SocialIconWrapper>
-              <SocialIcon href='google.com' target='_blank'>
+              <SocialIcon href='https://www.facebook.com/kyawsanhtoopharmacy' target='_blank'>
                 <Image src='/icons/facebook.svg' width='18' height='18' alt='facebook-icon' />
               </SocialIcon>
-              <SocialIcon href='google.com' target='_blank'>
+              {/* <SocialIcon href='https://google.com' target='_blank'>
                 <Image src='/icons/viber.svg' width='19' height='19' alt='viber-icon' />
-              </SocialIcon>
+              </SocialIcon> */}
             </SocialIconWrapper>
           </Group>
         </GroupWrapper>

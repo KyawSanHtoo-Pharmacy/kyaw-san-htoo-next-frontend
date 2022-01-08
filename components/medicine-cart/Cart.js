@@ -7,7 +7,12 @@ import { AnimatePresence } from 'framer-motion'
 import EmptyCart from './Empaty-Cart/EmptyCart'
 import { useWindowSize } from 'react-use'
 const orderFormInitialState = {
-  name: '',
+  name: {
+    value : "",
+    isValid : false,
+    pattern : "test",
+    require : true
+  },
   phone: '',
   address: '',
   delivery_method: 'ဆိုင်လာယူမယ်',
@@ -29,14 +34,6 @@ function Cart() {
     setPages(pages - 1)
   }
 
-  // useEffect(() => {
-  //   if (cartVisibile) {
-  //     //to alter scrollablity of the entire page
-  //     document.body.style.overflow = 'hidden'
-  //   } else {
-  //     document.body.style.overflow = 'unset'
-  //   }
-  // }, [cartVisibile])
 
   const { width } = useWindowSize()
   const isMobile = width < 550

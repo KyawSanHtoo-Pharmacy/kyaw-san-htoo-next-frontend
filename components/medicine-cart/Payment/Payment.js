@@ -78,6 +78,13 @@ export default function Payment({ prePage, orderFormData, setOrderFormData, medi
     })
   }
 
+  const handlerTest = e => {
+    console.log(e.target.value);
+    setOrderFormData( data => {
+      return {...data, name : {...name, value : e.target.value}};
+    } )
+  }
+
   const generateAndSetBase64KpayImage = image => {
     const reader = new FileReader()
     reader.readAsDataURL(image)
@@ -179,16 +186,16 @@ export default function Payment({ prePage, orderFormData, setOrderFormData, medi
         <PaymentInputWrapper>
           <FormGroup>
             <Label htmlFor='name'>နာမည်</Label>
-            <FormInput type='text' name='name' id='name' value={name} onChange={handleOrderFormDataChange} />
+            <FormInput type='text' name='name' id='name' value={name.value} onChange={handlerTest} required= {name.require} />
           </FormGroup>
           <FormGroup>
-            <Label htmlFor='phone'>ဖုန်းနံပါတယ်</Label>
-            <FormInput type='text' name='phone' id='phone' value={phone} onChange={handleOrderFormDataChange} />
-          </FormGroup>
+            <Label htmlFor='phone'>ဖုန်းနံပါတ်</Label>
+            <FormInput type="text"  name='phone' id='phone' value={phone} onChange={handleOrderFormDataChange} pattern = "^0(9|4)\d{9}$" required title='Please enter your 11 digit phone number starting with 09' />
+           </FormGroup>
           {orderFormData.delivery_method === 'အိမ်အရောက်ပို့ပေးပါ' ? (
             <FormGroup>
               <Label htmlFor='address'>နေရပ်လိပ်စာ</Label>
-              <FormInput type='text' name='address' id='address' value={address} onChange={handleOrderFormDataChange} />
+              <FormInput type='text' name='address' id='address' value={address} onChange={handleOrderFormDataChange} required />
             </FormGroup>
           ) : (
             ''

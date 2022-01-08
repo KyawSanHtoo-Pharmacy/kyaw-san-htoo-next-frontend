@@ -94,7 +94,7 @@ export const Group = styled.div`
 export const EnglishName = styled.p`
   color: ${({ theme }) => theme.colors.text};
   font-weight: normal;
-
+  max-width : 30px;
   @media screen and (min-width: 361px) and (max-width: 400px) {
     font-size: 1.09em;
   }

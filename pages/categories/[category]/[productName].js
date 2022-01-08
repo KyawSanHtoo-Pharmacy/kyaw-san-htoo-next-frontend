@@ -1,11 +1,18 @@
-import { ProductDetails } from '@/ksh-layouts'
-import { ImageShowcase, ProductCard, OrderSuccessPopup, Error, Empty } from '@/ksh-components'
-import ProductDetailsInfoContainer from '@/ksh-containers/ProductDetailsInfoContainer'
-import { API_URL } from '@/ksh-config/index'
-import { GlobalContainer } from '@/ksh-styles/GlobalStyles'
-import { useContext } from 'react'
-import { CartStates } from '@/ksh-contexts/Cart-Context'
-import { AnimatePresence } from 'framer-motion'
+import Head from "next/head";
+import { ProductDetails } from "@/ksh-layouts";
+import {
+  ImageShowcase,
+  ProductCard,
+  OrderSuccessPopup,
+  Error,
+  Empty,
+} from "@/ksh-components";
+import ProductDetailsInfoContainer from "@/ksh-containers/ProductDetailsInfoContainer";
+import { API_URL } from "@/ksh-config/index";
+import { GlobalContainer } from "@/ksh-styles/GlobalStyles";
+import { useContext } from "react";
+import { CartStates } from "@/ksh-contexts/Cart-Context";
+import { AnimatePresence } from "framer-motion";
 
 export default function ProductDetailsPage({
   isInjected = false,
@@ -14,83 +21,104 @@ export default function ProductDetailsPage({
   medicine_info,
   relatedMedicines,
 }) {
-  const { showOrderSuccessPopup } = useContext(CartStates)
+  const { showOrderSuccessPopup } = useContext(CartStates);
 
   if (isInjected) {
-    return <Error message='URLကို မကလိပါနဲ့လား ကိုငြိမ်းမောင်' status='Error : tgg pan pr dl, plz.' />
+    return (
+      <Error
+        message="URLကို မကလိပါနဲ့လား ကိုငြိမ်းမောင်"
+        status="Error : tgg pan pr dl, plz."
+      />
+    );
   }
-
   return (
     <>
-      <AnimatePresence>{showOrderSuccessPopup && <OrderSuccessPopup />}</AnimatePresence>
+      <Head>
+        <title>
+          {" "}
+          {medicine_info.product_name_eng} - Kyaw San Htoo - Pharmacy in Pathein
+        </title>
+      </Head>
+      <AnimatePresence>
+        {showOrderSuccessPopup && <OrderSuccessPopup />}
+      </AnimatePresence>
       {/* <OrderSuccessPopup /> */}
       <ProductDetails>
         <ProductDetails.StickySide>
           <ImageShowcase medicine_images={medicine_images} />
         </ProductDetails.StickySide>
         <ProductDetails.NormalSide>
-          <ProductDetailsInfoContainer medicine_details={medicine_details} medicine_info={medicine_info} />
+          <ProductDetailsInfoContainer
+            medicine_details={medicine_details}
+            medicine_info={medicine_info}
+          />
         </ProductDetails.NormalSide>
       </ProductDetails>
 
       {relatedMedicines.length > 0 ? (
-        <GlobalContainer style={{ marginTop: '-2.25em' }}>
+        <GlobalContainer style={{ marginTop: "-2.25em" }}>
           <ProductCard.Heading>ဆက်စပ် ဆေးဝါးများ</ProductCard.Heading>
           <ProductCard.Frame>
-            {relatedMedicines.map(medicine => (
+            {relatedMedicines.map((medicine) => (
               <ProductCard key={medicine.id} medicine={medicine} />
             ))}
           </ProductCard.Frame>
         </GlobalContainer>
       ) : (
-        <Empty message='စပ်ဆက်ဆေးဝါးများ မရှိသေးပါ။' />
+        <Empty message="စပ်ဆက်ဆေးဝါးများ မရှိသေးပါ။" />
       )}
     </>
-  )
+  );
 }
 
 export async function getStaticPaths() {
-  const resp = await fetch(`${API_URL}/medicines`)
-  const medicines = await resp.json()
-  const paths = medicines.map(medicine => {
+  const resp = await fetch(`${API_URL}/medicines`);
+  const medicines = await resp.json();
+  const paths = medicines.map((medicine) => {
     return {
       params: {
         category: medicine.categories[0].slug,
         productName: medicine.slug,
       },
-    }
-  })
+    };
+  });
 
   return {
     paths,
-    fallback: 'blocking',
-  }
+    fallback: "blocking",
+  };
 }
 
 export async function getStaticProps({ params: { productName, category } }) {
-  const resp = await fetch(`${API_URL}/medicines?slug=${productName}`)
-  const medicine = await resp.json()
+  const resp = await fetch(`${API_URL}/medicines?slug=${productName}`);
+  const medicine = await resp.json();
 
-  const relatedMedicinesResp = await fetch(`${API_URL}/medicines?categories.slug_contains=${category}`)
-  const relatedMedicines = await relatedMedicinesResp.json()
+  const relatedMedicinesResp = await fetch(
+    `${API_URL}/medicines?categories.slug_contains=${category}`
+  );
+  const relatedMedicines = await relatedMedicinesResp.json();
 
-  const isMedicineInCMS = relatedMedicines.some(medicine => medicine.slug === productName)
+  const isMedicineInCMS = relatedMedicines.some(
+    (medicine) => medicine.slug === productName
+  );
 
   if (!isMedicineInCMS) {
     return {
       props: {
         isInjected: true,
       },
-    }
+    };
   }
 
   return {
     props: {
       medicine_images: medicine[0] ? medicine[0].product_images : null,
       medicine_details: medicine[0] ? medicine[0].product_details : null,
-      medicine_info: medicine[0] ? medicine[0] : 'null',
-      relatedMedicines: relatedMedicines.filter(medicine => medicine.slug !== productName),
+      medicine_info: medicine[0] ? medicine[0] : "null",
+      relatedMedicines: relatedMedicines.filter(
+        (medicine) => medicine.slug !== productName
+      ),
     },
     revalidate: 5,
-  }
+  };
 }
