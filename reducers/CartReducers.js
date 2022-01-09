@@ -3,17 +3,13 @@ export const cartReducer = (state, action) => {
     //Case - 1
     case 'ADD_TO_CART':
       const { id, quantity, product_quantity, UnitPrice } = action.newItem
-      console.log(action.newItem.price) //del later
       const isAlreadyInCart = state.some(med => med.id === id)
       if (isAlreadyInCart) {
-        console.log('update!!!') //del later
         const updatedMed = state.map(med => {
           if (med.id === id) {
             if (med.quantity + quantity > product_quantity) {
-              console.log('not ok') //del later
               return { ...med, quantity: product_quantity, isOverAmount: true, price: product_quantity * UnitPrice }
             } else {
-              console.log('ok') //del later
               return {
                 ...med,
                 quantity: med.quantity + quantity,
@@ -26,7 +22,6 @@ export const cartReducer = (state, action) => {
         })
         return updatedMed
       } else {
-        console.log('new new!!')
         return [...state, action.newItem]
       }
 

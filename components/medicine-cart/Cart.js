@@ -7,12 +7,7 @@ import { AnimatePresence } from 'framer-motion'
 import EmptyCart from './Empaty-Cart/EmptyCart'
 import { useWindowSize } from 'react-use'
 const orderFormInitialState = {
-  name: {
-    value : "",
-    isValid : false,
-    pattern : "test",
-    require : true
-  },
+  name: '',
   phone: '',
   address: '',
   delivery_method: 'ဆိုင်လာယူမယ်',
@@ -33,7 +28,6 @@ function Cart() {
   const prePage = () => {
     setPages(pages - 1)
   }
-
 
   const { width } = useWindowSize()
   const isMobile = width < 550

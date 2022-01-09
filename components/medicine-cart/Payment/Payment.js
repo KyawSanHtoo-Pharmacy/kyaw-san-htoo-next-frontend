@@ -35,7 +35,6 @@ import { useState, useEffect, useContext } from 'react'
 import { Button } from '@/ksh-components'
 import { changeMyanNum } from '@/ksh-helpers'
 import { CartStates } from '@/ksh-contexts/Cart-Context'
-import { API_URL } from '@/ksh-config/index'
 import { ImSpinner9 } from 'react-icons/im'
 import styled from 'styled-components'
 
@@ -67,22 +66,11 @@ export default function Payment({ prePage, orderFormData, setOrderFormData, medi
     }
   }, [payment_method])
 
-  console.log({ orderFormData, base64KpayImage })
-
-  const isFormValid = () => {}
-
   const handleOrderFormDataChange = e => {
     const { name, value } = e.target
     setOrderFormData(data => {
       return { ...data, [name]: value }
     })
-  }
-
-  const handlerTest = e => {
-    console.log(e.target.value);
-    setOrderFormData( data => {
-      return {...data, name : {...name, value : e.target.value}};
-    } )
   }
 
   const generateAndSetBase64KpayImage = image => {
@@ -129,7 +117,6 @@ export default function Payment({ prePage, orderFormData, setOrderFormData, medi
       })
         .then(resp => resp.json())
         .then(data => {
-          console.log(data)
           setOrderOnTheProcess(false)
           dispatch({ type: 'CLEAR_CART' })
           setCartVisible(false)
@@ -186,16 +173,32 @@ export default function Payment({ prePage, orderFormData, setOrderFormData, medi
         <PaymentInputWrapper>
           <FormGroup>
             <Label htmlFor='name'>နာမည်</Label>
-            <FormInput type='text' name='name' id='name' value={name.value} onChange={handlerTest} required= {name.require} />
+            <FormInput type='text' name='name' id='name' value={name} onChange={handleOrderFormDataChange} required />
           </FormGroup>
           <FormGroup>
             <Label htmlFor='phone'>ဖုန်းနံပါတ်</Label>
-            <FormInput type="text"  name='phone' id='phone' value={phone} onChange={handleOrderFormDataChange} pattern = "^0(9|4)\d{9}$" required title='Please enter your 11 digit phone number starting with 09' />
-           </FormGroup>
+            <FormInput
+              type='text'
+              name='phone'
+              id='phone'
+              value={phone}
+              onChange={handleOrderFormDataChange}
+              pattern='^0(9|4)\d{9}$'
+              required
+              title='Please enter your 11 digit phone number starting with 09'
+            />
+          </FormGroup>
           {orderFormData.delivery_method === 'အိမ်အရောက်ပို့ပေးပါ' ? (
             <FormGroup>
               <Label htmlFor='address'>နေရပ်လိပ်စာ</Label>
-              <FormInput type='text' name='address' id='address' value={address} onChange={handleOrderFormDataChange} required />
+              <FormInput
+                type='text'
+                name='address'
+                id='address'
+                value={address}
+                onChange={handleOrderFormDataChange}
+                required
+              />
             </FormGroup>
           ) : (
             ''
