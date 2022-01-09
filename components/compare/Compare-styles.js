@@ -54,3 +54,24 @@ export const ImageWrapper = styled.div`
   border-radius: 1.25em;
   margin-bottom: 6.25em;
 `
+
+export const ButtonWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 3em;
+
+  & > button:first-of-type {
+    margin-right: 1em;
+
+    @media screen and (max-width: 640px) {
+      margin-right: 0;
+      margin-top: 1em;
+      order: 2;
+    }
+  }
+
+  @media screen and (max-width: 640px) {
+    flex-direction: column;
+  }
+`

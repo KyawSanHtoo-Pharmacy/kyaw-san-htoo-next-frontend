@@ -1,5 +1,14 @@
 import Image from 'next/image'
-import { Section, Frame, Column, NameWrapper, MyanmarName, EnglishName, ImageWrapper } from './Compare-styles'
+import {
+  Section,
+  Frame,
+  Column,
+  NameWrapper,
+  MyanmarName,
+  EnglishName,
+  ImageWrapper,
+  ButtonWrapper,
+} from './Compare-styles'
 import { NoticePill } from '@/ksh-components'
 
 export default function Compare({ outstockMedicine, instockMedicine }) {
@@ -51,4 +60,8 @@ export default function Compare({ outstockMedicine, instockMedicine }) {
 
 Compare.Section = function CompareSection({ children, ...restProps }) {
   return <Section {...restProps}>{children}</Section>
+}
+
+Compare.ButtonWrapper = function CompareButtonWrapper({ children, ...restProps }) {
+  return <ButtonWrapper {...restProps}>{children}</ButtonWrapper>
 }
