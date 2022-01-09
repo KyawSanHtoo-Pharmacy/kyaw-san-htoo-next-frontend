@@ -298,7 +298,7 @@ export default function Payment({ prePage, orderFormData, setOrderFormData, medi
           <Button Big>
             {orderOnTheProcess ? (
               <>
-                <span>အော်ဒါတင်နေပါတယ်။ ခဏစောင့်ပါ။</span> <LoadingSpinner />
+                <span>အော်ဒါတင်နေပါတယ်။ </span> <LoadingSpinner />
               </>
             ) : (
               'အော်ဒါတင်မယ် '
